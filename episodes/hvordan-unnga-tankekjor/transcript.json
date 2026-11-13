@@ -1,0 +1,2011 @@
+{
+ "slug": "hvordan-unnga-tankekjor",
+ "title": "Hvordan unngå tankekjør?",
+ "show": "Burde vært pensum",
+ "host": "Dennis Siva Lie",
+ "published": "2024-09-27",
+ "durationSec": 1296,
+ "episodeUrl": "https://radio.nrk.no/podkast/burde_vaert_pensum/l_470e544d-5a5a-4aed-8e54-4d5a5afaed95",
+ "audioUrl": "https://podkast.nrk.no/fil/burde_vaert_pensum/811d463d-f2e0-416e-9829-41406152f602_0_ID192MP3.mp3",
+ "description": "Formidler Dennis Siva Lie forklarer en metode som kan få deg opp og ut av negativt tankekjør.",
+ "transcriptSource": "whisper-medium",
+ "transcriptNote": "Machine transcript (faster-whisper medium, int8, CPU, language=no), lightly hand-corrected for obvious ASR errors; [uklart]/[usikkert] mark unclear audio. NRK publishes no transcript or subtitles for this episode.",
+ "segments": [
+  {
+   "id": "s1",
+   "start": 0,
+   "end": 118.85,
+   "title": "Cold open: midnight worries; host intro",
+   "text": "En podcast fra NRK. Klokken nærmer seg midnatt. Jeg legger hodet på puta og er på vei til å gli over i søvn. Men så en liten stemme i hodet mitt. Kommer jeg til å miste jobben? Har jeg nok penger til å betale husleia denne måneden? Hvorfor er jeg ikke bra nok? Hvorfor har jeg ikke kontroll på livet mitt? Sånn her har jeg, og kanskje du også, ligget mange netter, og tenkt, og grublet. Heldigvis kan man lære seg å håndtere sånne negative tanker. For meg har det hjulpet såpass mye at jeg synes denne metoden burde vært pensum. Mitt navn er Dennis Siva Lie, [vitenskaps]formidler. Og, som du nå vet, har jeg slitt en del med negative tanker. Men ved hjelp av en spesiell metode, har jeg lært å håndtere bekymringer, grubling og tankekjør. Og det er den metoden jeg vil at du også skal lære. For at du skal skjønne metoden jeg snakker om, skal du få bli med på en reise fra negative til positive tanker. Og den starter der mange personlige reiser begynner. Hallo, velkommen til meg! Hos psykologen. Du sliter [uklart] en del med negative tanker og sånt, stemmer det? Skal vi sette oss med å prate mer om det?",
+   "lines": [
+    {
+     "start": 0.0,
+     "end": 4.0,
+     "text": "En podcast fra NRK.",
+     "es": "Un pódcast de NRK."
+    },
+    {
+     "start": 8.6,
+     "end": 11.6,
+     "text": "Klokken nærmer seg midnatt.",
+     "es": "Se acerca la medianoche."
+    },
+    {
+     "start": 13.3,
+     "end": 19.0,
+     "text": "Jeg legger hodet på puta og er på vei til å gli over i søvn.",
+     "es": "Apoyo la cabeza en la almohada y estoy a punto de quedarme dormido."
+    },
+    {
+     "start": 19.0,
+     "end": 23.6,
+     "text": "Men så en liten stemme i hodet mitt.",
+     "es": "Pero entonces, una vocecita en mi cabeza."
+    },
+    {
+     "start": 23.6,
+     "end": 26.9,
+     "text": "Kommer jeg til å miste jobben?",
+     "es": "¿Voy a perder el trabajo?"
+    },
+    {
+     "start": 27.0,
+     "end": 31.5,
+     "text": "Har jeg nok penger til å betale husleia denne måneden?",
+     "es": "¿Tengo suficiente dinero para pagar el alquiler este mes?"
+    },
+    {
+     "start": 31.6,
+     "end": 34.2,
+     "text": "Hvorfor er jeg ikke bra nok?",
+     "es": "¿Por qué no soy lo bastante bueno?"
+    },
+    {
+     "start": 34.3,
+     "end": 38.8,
+     "text": "Hvorfor har jeg ikke kontroll på livet mitt?",
+     "es": "¿Por qué no tengo control sobre mi vida?"
+    },
+    {
+     "start": 39.14,
+     "end": 46.54,
+     "text": "Sånn her har jeg, og kanskje du også, ligget mange netter, og tenkt, og grublet.",
+     "es": "Así me he pasado muchas noches, y quizá tú también, pensando y dándole vueltas."
+    },
+    {
+     "start": 47.54,
+     "end": 51.54,
+     "text": "Heldigvis kan man lære seg å håndtere sånne negative tanker.",
+     "es": "Por suerte, se puede aprender a manejar este tipo de pensamientos negativos."
+    },
+    {
+     "start": 51.54,
+     "end": 67.22,
+     "text": "For meg har det hjulpet såpass mye at jeg synes denne metoden burde vært pensum.",
+     "es": "A mí me ha ayudado tanto que creo que este método debería ser materia obligatoria."
+    },
+    {
+     "start": 67.22,
+     "end": 72.22,
+     "text": "Mitt navn er Dennis Siva Lie, [vitenskaps]formidler.",
+     "es": "Me llamo Dennis Siva Lie, divulgador [científico]."
+    },
+    {
+     "start": 72.22,
+     "end": 77.62,
+     "text": "Og, som du nå vet, har jeg slitt en del med negative tanker.",
+     "es": "Y, como ya sabes, he luchado bastante con pensamientos negativos."
+    },
+    {
+     "start": 77.62,
+     "end": 84.62,
+     "text": "Men ved hjelp av en spesiell metode, har jeg lært å håndtere bekymringer, grubling og tankekjør.",
+     "es": "Pero con la ayuda de un método especial he aprendido a manejar las preocupaciones, la rumiación y el pensamiento en bucle."
+    },
+    {
+     "start": 85.62,
+     "end": 89.62,
+     "text": "Og det er den metoden jeg vil at du også skal lære.",
+     "es": "Y ese es el método que quiero que tú también aprendas."
+    },
+    {
+     "start": 90.62,
+     "end": 97.62,
+     "text": "For at du skal skjønne metoden jeg snakker om, skal du få bli med på en reise fra negative til positive tanker.",
+     "es": "Para que entiendas el método del que hablo, vas a acompañarme en un viaje de los pensamientos negativos a los positivos."
+    },
+    {
+     "start": 97.62,
+     "end": 105.34,
+     "text": "Og den starter der mange personlige reiser begynner.",
+     "es": "Y empieza donde empiezan muchos viajes personales."
+    },
+    {
+     "start": 105.34,
+     "end": 106.34,
+     "text": "Hallo, velkommen til meg!",
+     "es": "¡Hola, bienvenido!"
+    },
+    {
+     "start": 106.34,
+     "end": 108.34,
+     "text": "Hos psykologen.",
+     "es": "En el psicólogo."
+    },
+    {
+     "start": 108.34,
+     "end": 113.34,
+     "text": "Du sliter [uklart] en del med negative tanker og sånt, stemmer det?",
+     "es": "Tú luchas bastante con pensamientos negativos y cosas así, ¿verdad?"
+    },
+    {
+     "start": 113.42,
+     "end": 118.83,
+     "text": "Skal vi sette oss med å prate mer om det?",
+     "es": "¿Nos sentamos y hablamos más de ello?"
+    }
+   ],
+   "titleEs": "Inicio: preocupaciones a medianoche; presentación"
+  },
+  {
+   "id": "s2",
+   "start": 118.85,
+   "end": 223.5,
+   "title": "At the psychologist; what negative thoughts are; worries",
+   "text": "Jeg er hos psykolog Kristoffer Haugen Hetlebakke [navn usikkert]. Han jobber til daglig på Modum Bad og kjenner godt til metoden jeg skal lære deg. Men aller først, hva er egentlig negative tanker? Jeg gruer meg [skikkelig] til oppkjøring i morgen. Tenk om du ikke liker meg. [uklart] [uklart] Jeg har ikke lyst til å kjøre opp i morgen. Dette ble mye på en gang. La oss prøve å rydde litt opp i hvilke negative tanker som finnes. Først har vi bekymringer. La oss høre med folk på gata. Det jeg bekymrer meg mest for i livet er, fremtiden, hvor jeg skal bo, hvem jeg skal etablere meg med, hvor jeg jobber, at det blir noe av meg til slutt. Økonomi og studier. Jeg bekymrer meg mest for å bli syk, eller at foreldre og venner skal bli syke, for jeg føler det kan bare skje hvem som helst. Bekymringer kan ofte høres ut som hva-hvis-tanker. Tanker om hva som kan eller ikke kan skje i fremtiden. Det kan hende at man ser for seg katastrofescenarier, situasjoner der man driter seg ut eller feiler [uklart], hendelser som det er svært lite sannsynlig at kommer til å skje. Men inni hodet ditt får katastrofetankene leve sitt eget liv. De kan skape unødvendig stress og frykt i kroppen din. Og dukker typisk opp på kvelden rett før du skal sove.",
+   "lines": [
+    {
+     "start": 118.91,
+     "end": 123.35,
+     "text": "Jeg er hos psykolog Kristoffer Haugen Hetlebakke [navn usikkert].",
+     "es": "Estoy con el psicólogo Kristoffer Haugen Hetlebakke [nombre inseguro]."
+    },
+    {
+     "start": 123.43,
+     "end": 129.31,
+     "text": "Han jobber til daglig på Modum Bad og kjenner godt til metoden jeg skal lære deg.",
+     "es": "Trabaja a diario en Modum Bad y conoce bien el método que te voy a enseñar."
+    },
+    {
+     "start": 129.39,
+     "end": 134.15,
+     "text": "Men aller først, hva er egentlig negative tanker?",
+     "es": "Pero antes que nada, ¿qué son en realidad los pensamientos negativos?"
+    },
+    {
+     "start": 134.23,
+     "end": 137.31,
+     "text": "Jeg gruer meg [skikkelig] til oppkjøring i morgen.",
+     "es": "Me da mucho miedo el examen de conducir de mañana."
+    },
+    {
+     "start": 137.31,
+     "end": 139.55,
+     "text": "Tenk om du ikke liker meg.",
+     "es": "¿Y si no le gusto?"
+    },
+    {
+     "start": 139.63,
+     "end": 142.15,
+     "text": "[uklart]",
+     "es": "[no se entiende]"
+    },
+    {
+     "start": 142.23,
+     "end": 144.83,
+     "text": "[uklart]",
+     "es": "[no se entiende]"
+    },
+    {
+     "start": 144.91,
+     "end": 148.59,
+     "text": "Jeg har ikke lyst til å kjøre opp i morgen.",
+     "es": "No tengo ganas de hacer el examen de conducir mañana."
+    },
+    {
+     "start": 148.67,
+     "end": 151.43,
+     "text": "Dette ble mye på en gang.",
+     "es": "Esto ha sido mucho de golpe."
+    },
+    {
+     "start": 151.51,
+     "end": 157.35,
+     "text": "La oss prøve å rydde litt opp i hvilke negative tanker som finnes.",
+     "es": "Intentemos ordenar un poco qué pensamientos negativos existen."
+    },
+    {
+     "start": 157.43,
+     "end": 160.67,
+     "text": "Først har vi bekymringer.",
+     "es": "Primero tenemos las preocupaciones."
+    },
+    {
+     "start": 160.75,
+     "end": 162.83,
+     "text": "La oss høre med folk på gata.",
+     "es": "Preguntemos a la gente en la calle."
+    },
+    {
+     "start": 162.83,
+     "end": 171.83,
+     "text": "Det jeg bekymrer meg mest for i livet er, fremtiden, hvor jeg skal bo, hvem jeg skal etablere meg med, hvor jeg jobber, at det blir noe av meg til slutt.",
+     "es": "Lo que más me preocupa en la vida es el futuro: dónde voy a vivir, con quién voy a formar una vida, dónde trabajo, que al final llegue a ser alguien."
+    },
+    {
+     "start": 171.83,
+     "end": 174.83,
+     "text": "Økonomi og studier.",
+     "es": "La economía y los estudios."
+    },
+    {
+     "start": 174.83,
+     "end": 188.91,
+     "text": "Jeg bekymrer meg mest for å bli syk, eller at foreldre og venner skal bli syke, for jeg føler det kan bare skje hvem som helst.",
+     "es": "Lo que más me preocupa es enfermarme, o que mis padres y amigos se enfermen, porque siento que le puede pasar a cualquiera."
+    },
+    {
+     "start": 188.91,
+     "end": 193.51,
+     "text": "Bekymringer kan ofte høres ut som hva-hvis-tanker.",
+     "es": "Las preocupaciones suelen sonar como pensamientos del tipo «¿y si…?»."
+    },
+    {
+     "start": 194.51,
+     "end": 198.51,
+     "text": "Tanker om hva som kan eller ikke kan skje i fremtiden.",
+     "es": "Pensamientos sobre lo que puede o no puede pasar en el futuro."
+    },
+    {
+     "start": 199.51,
+     "end": 202.51,
+     "text": "Det kan hende at man ser for seg katastrofescenarier,",
+     "es": "Puede que uno se imagine escenarios catastróficos,"
+    },
+    {
+     "start": 202.71,
+     "end": 206.11,
+     "text": "situasjoner der man driter seg ut eller feiler [uklart],",
+     "es": "situaciones en las que uno hace el ridículo o fracasa,"
+    },
+    {
+     "start": 206.31,
+     "end": 209.71,
+     "text": "hendelser som det er svært lite sannsynlig at kommer til å skje.",
+     "es": "cosas que es muy poco probable que vayan a pasar."
+    },
+    {
+     "start": 210.51,
+     "end": 215.51,
+     "text": "Men inni hodet ditt får katastrofetankene leve sitt eget liv.",
+     "es": "Pero dentro de tu cabeza, los pensamientos catastróficos viven su propia vida."
+    },
+    {
+     "start": 215.51,
+     "end": 219.51,
+     "text": "De kan skape unødvendig stress og frykt i kroppen din.",
+     "es": "Pueden crear estrés y miedo innecesarios en tu cuerpo."
+    },
+    {
+     "start": 219.51,
+     "end": 223.51,
+     "text": "Og dukker typisk opp på kvelden rett før du skal sove.",
+     "es": "Y suelen aparecer por la noche, justo antes de dormir."
+    }
+   ],
+   "titleEs": "En el psicólogo: qué son los pensamientos negativos; las preocupaciones"
+  },
+  {
+   "id": "s3",
+   "start": 223.5,
+   "end": 359.3,
+   "title": "Rumination (grubling) and tankekjør",
+   "text": "Og så er det grubling. Hvorfor sa jeg det [...]? [uklart] Hvorfor er jeg sånn som alltid sier så dumme ting? Du grubler over ting som allerede har skjedd. Grubling er ofte hvorfor-tanker, Og kan for eksempel bunne i tap, svik, manglende mestring eller ting man skulle ønske var annerledes. Grubling får du ofte til å føle deg trist, alene eller skuffet. Og nå kan du spørre deg selv. Hva pleier du å tenke det mest over? Fortida eller fremtida? Er du en som bekymrer deg eller en som grubler mest? Eller er du en som både grubler over fortiden og bekymrer deg for framtida i et evig tankekjør? Hvis jeg ikke består den eksamen, da kommer jeg ikke inn på ingeniørstudiet. Da kommer drømmen min til å bli helt ødelagt. Altså mamma og pappa kommer til bli så skuffet, og jeg kommer til være ulykkelig resten av livet. Altså, jeg skulle bare ha øvd mer. Jeg burde vært smartere. Tankekjør er masse repeterende negative tanker. Du vender alt fokuset innover mot deg selv. I stedet for å distansere deg fra det som skjer i hodet ditt, så dykker du dypere inn i hva enn du ser for deg. Den samme tanken spilles av, igjen og igjen og igjen. Hvorfor er jeg ikke bra nok? Pusten blir raskere, hjertet banker, og 100% av fokuset ditt er på dette ene problemet, som nå har tatt over hele deg. Du er nå blitt tankene dine, for det er det eneste som eksisterer i hodet. Men, heldigvis er det aldri slik at du er tankene dine. Du kan lære deg å stoppe bekymringen, grublingen og tankekjøret før det tar over. Og nå skal jeg fortelle deg hvordan.",
+   "lines": [
+    {
+     "start": 223.51,
+     "end": 228.02,
+     "text": "Og så er det grubling.",
+     "es": "Y luego está la rumiación."
+    },
+    {
+     "start": 228.02,
+     "end": 231.02,
+     "text": "Hvorfor sa jeg det [...]? [uklart]",
+     "es": "¿Por qué dije eso? [no se entiende]"
+    },
+    {
+     "start": 231.02,
+     "end": 235.02,
+     "text": "Hvorfor er jeg sånn som alltid sier så dumme ting?",
+     "es": "¿Por qué soy así, que siempre digo cosas tan tontas?"
+    },
+    {
+     "start": 235.02,
+     "end": 240.58,
+     "text": "Du grubler over ting som allerede har skjedd.",
+     "es": "Le das vueltas a cosas que ya han pasado."
+    },
+    {
+     "start": 240.58,
+     "end": 244.58,
+     "text": "Grubling er ofte hvorfor-tanker,",
+     "es": "La rumiación suele ser pensamientos del tipo «¿por qué?»,"
+    },
+    {
+     "start": 244.58,
+     "end": 251.78,
+     "text": "Og kan for eksempel bunne i tap, svik, manglende mestring eller ting man skulle ønske var annerledes.",
+     "es": "y puede venir, por ejemplo, de una pérdida, una traición, no sentirse capaz o cosas que uno desearía que fueran distintas."
+    },
+    {
+     "start": 252.68,
+     "end": 257.68,
+     "text": "Grubling får du ofte til å føle deg trist, alene eller skuffet.",
+     "es": "La rumiación a menudo te hace sentir triste, solo o decepcionado."
+    },
+    {
+     "start": 257.78,
+     "end": 261.04,
+     "text": "Og nå kan du spørre deg selv.",
+     "es": "Y ahora puedes preguntarte a ti mismo:"
+    },
+    {
+     "start": 261.84,
+     "end": 263.74,
+     "text": "Hva pleier du å tenke det mest over?",
+     "es": "¿En qué sueles pensar más?"
+    },
+    {
+     "start": 264.14,
+     "end": 266.54,
+     "text": "Fortida eller fremtida?",
+     "es": "¿En el pasado o en el futuro?"
+    },
+    {
+     "start": 268.58,
+     "end": 271.58,
+     "text": "Er du en som bekymrer deg eller en som grubler mest?",
+     "es": "¿Eres de los que se preocupan o de los que más le dan vueltas a las cosas?"
+    },
+    {
+     "start": 271.58,
+     "end": 279.58,
+     "text": "Eller er du en som både grubler over fortiden og bekymrer deg for framtida i et evig tankekjør?",
+     "es": "¿O eres de los que dan vueltas al pasado y se preocupan por el futuro en un bucle de pensamientos sin fin?"
+    },
+    {
+     "start": 279.58,
+     "end": 283.58,
+     "text": "Hvis jeg ikke består den eksamen, da kommer jeg ikke inn på ingeniørstudiet.",
+     "es": "Si no apruebo ese examen, no entro en la carrera de ingeniería."
+    },
+    {
+     "start": 283.58,
+     "end": 285.58,
+     "text": "Da kommer drømmen min til å bli helt ødelagt.",
+     "es": "Entonces mi sueño quedará completamente destrozado."
+    },
+    {
+     "start": 285.58,
+     "end": 290.58,
+     "text": "Altså mamma og pappa kommer til bli så skuffet, og jeg kommer til være ulykkelig resten av livet.",
+     "es": "Mamá y papá se van a decepcionar mucho, y voy a ser infeliz el resto de mi vida."
+    },
+    {
+     "start": 290.58,
+     "end": 292.58,
+     "text": "Altså, jeg skulle bare ha øvd mer.",
+     "es": "Tendría que haber practicado más."
+    },
+    {
+     "start": 292.58,
+     "end": 293.58,
+     "text": "Jeg burde vært smartere.",
+     "es": "Debería haber sido más listo."
+    },
+    {
+     "start": 293.58,
+     "end": 298.86,
+     "text": "Tankekjør er masse repeterende negative tanker.",
+     "es": "El pensamiento en bucle son muchos pensamientos negativos repetitivos."
+    },
+    {
+     "start": 298.86,
+     "end": 302.86,
+     "text": "Du vender alt fokuset innover mot deg selv.",
+     "es": "Diriges toda tu atención hacia dentro, hacia ti mismo."
+    },
+    {
+     "start": 302.86,
+     "end": 306.86,
+     "text": "I stedet for å distansere deg fra det som skjer i hodet ditt,",
+     "es": "En lugar de tomar distancia de lo que pasa en tu cabeza,"
+    },
+    {
+     "start": 306.86,
+     "end": 310.86,
+     "text": "så dykker du dypere inn i hva enn du ser for deg.",
+     "es": "te sumerges más hondo en lo que sea que te imaginas."
+    },
+    {
+     "start": 310.86,
+     "end": 316.86,
+     "text": "Den samme tanken spilles av, igjen og igjen og igjen.",
+     "es": "El mismo pensamiento se repite una y otra y otra vez."
+    },
+    {
+     "start": 316.86,
+     "end": 326.6,
+     "text": "Hvorfor er jeg ikke bra nok? Pusten blir raskere, hjertet banker,",
+     "es": "¿Por qué no soy lo bastante bueno? La respiración se acelera, el corazón late fuerte,"
+    },
+    {
+     "start": 326.6,
+     "end": 330.6,
+     "text": "og 100% av fokuset ditt er på dette ene problemet,",
+     "es": "y el cien por cien de tu atención está en este único problema,"
+    },
+    {
+     "start": 330.6,
+     "end": 333.6,
+     "text": "som nå har tatt over hele deg.",
+     "es": "que ahora se ha apoderado de ti por completo."
+    },
+    {
+     "start": 333.6,
+     "end": 338.81,
+     "text": "Du er nå blitt tankene dine,",
+     "es": "Ahora te has convertido en tus pensamientos,"
+    },
+    {
+     "start": 338.81,
+     "end": 342.81,
+     "text": "for det er det eneste som eksisterer i hodet.",
+     "es": "porque es lo único que existe en tu cabeza."
+    },
+    {
+     "start": 342.81,
+     "end": 350.35,
+     "text": "Men, heldigvis er det aldri slik at du er tankene dine.",
+     "es": "Pero, por suerte, nunca es cierto que tú seas tus pensamientos."
+    },
+    {
+     "start": 350.35,
+     "end": 356.35,
+     "text": "Du kan lære deg å stoppe bekymringen, grublingen og tankekjøret før det tar over.",
+     "es": "Puedes aprender a parar la preocupación, la rumiación y el pensamiento en bucle antes de que tomen el control."
+    },
+    {
+     "start": 357.35,
+     "end": 359.35,
+     "text": "Og nå skal jeg fortelle deg hvordan.",
+     "es": "Y ahora te voy a contar cómo."
+    }
+   ],
+   "titleEs": "La rumiación y el pensamiento en bucle"
+  },
+  {
+   "id": "s4",
+   "start": 359.3,
+   "end": 505.0,
+   "title": "Metacognitive therapy: leave the thoughts alone",
+   "text": "Det som har hjulpet meg med å bli kvitt negative tanker, er nemlig metakognitiv terapi. Ja, et tungt ord, men det er faktisk ikke så vanskelig som det høres ut. La oss høre Kristoffers definisjon på metakognitiv terapi. Metakognitiv terapi handler i bunn og grunn om å endre måten man forholder seg til tanker, følelser og indre opplevelser på. Mange som strever med bekymring og grubling, de har ofte en opplevelse av at det lever sitt eget liv. At man ikke kan stoppe opp. Hvis man gjennom terapi kan oppdage at det er mulig, så vil man ofte føle seg mye bedre. Så, hva skal du gjøre når bekymringer og grubling tar over? Vi drar tilbake til Kristoffer på psykologkontoret. Jeg er kommet i den alderen der, hvor foreldrene mine nå har blitt pensjonister. Jeg har vært veldig heldig å aldri oppleve noen form for død i nærfamilie. Den tanken gjør meg veldig trist og lei meg, og jeg vil at de skal ha det bra. Det kan påvirke meg i løpet av en dag, ganske mye, så jeg lurer på hva man gjør når det dukker opp. Så man får sånne negative tanker som man blir veldig lei seg av, trist eller engstelig over, så er det et triks å ikke gjøre noe som helst med de tankene. Bare la de være, uten å enten gå dypt inn i de grave masse i de eller prøve å skyve de bort, for da ender man uansett på en måte opp med å bare gi de tankene mer oppmerksomhet, signalisere til hjernen at den tanken her er farlig eller vond, Den vil jeg ikke ha, så da ender man i stedet opp med å forsterke den, den tanken og den følelsen. Så da vil det også bare dukke opp mer og mer av disse tankene, det vil bare øke intensiteten. Løsningen er altså å ikke gjøre noen ting. Du skal altså la tankene være og gi dem så lite fokus som mulig. Hjernen din trenger ikke å løse problem du selv har skapt Ikke la tankene overta. Ta deg selv i å tenke negativt, anerkjenn at tankene er der, og bytt tema. Kanskje enklere sagt enn gjort, men øvelse gjør mester.",
+   "lines": [
+    {
+     "start": 359.35,
+     "end": 366.35,
+     "text": "Det som har hjulpet meg med å bli kvitt negative tanker, er nemlig metakognitiv terapi.",
+     "es": "Lo que me ha ayudado a librarme de los pensamientos negativos es, de hecho, la terapia metacognitiva."
+    },
+    {
+     "start": 366.35,
+     "end": 377.35,
+     "text": "Ja, et tungt ord, men det er faktisk ikke så vanskelig som det høres ut. La oss høre Kristoffers definisjon på metakognitiv terapi.",
+     "es": "Sí, es una palabra pesada, pero en realidad no es tan difícil como suena. Escuchemos la definición de Kristoffer de la terapia metacognitiva."
+    },
+    {
+     "start": 377.35,
+     "end": 386.35,
+     "text": "Metakognitiv terapi handler i bunn og grunn om å endre måten man forholder seg til tanker, følelser og indre opplevelser på.",
+     "es": "La terapia metacognitiva trata, en el fondo, de cambiar la manera en que uno se relaciona con los pensamientos, los sentimientos y las experiencias internas."
+    },
+    {
+     "start": 386.35,
+     "end": 392.35,
+     "text": "Mange som strever med bekymring og grubling, de har ofte en opplevelse av at det lever sitt eget liv.",
+     "es": "Muchos que luchan con la preocupación y la rumiación suelen sentir que esto vive su propia vida."
+    },
+    {
+     "start": 392.35,
+     "end": 395.35,
+     "text": "At man ikke kan stoppe opp.",
+     "es": "Que uno no puede parar."
+    },
+    {
+     "start": 395.35,
+     "end": 401.35,
+     "text": "Hvis man gjennom terapi kan oppdage at det er mulig, så vil man ofte føle seg mye bedre.",
+     "es": "Si a través de la terapia uno descubre que sí es posible, a menudo se siente mucho mejor."
+    },
+    {
+     "start": 401.35,
+     "end": 406.35,
+     "text": "Så, hva skal du gjøre når bekymringer og grubling tar over?",
+     "es": "Entonces, ¿qué debes hacer cuando las preocupaciones y la rumiación toman el control?"
+    },
+    {
+     "start": 406.35,
+     "end": 410.35,
+     "text": "Vi drar tilbake til Kristoffer på psykologkontoret.",
+     "es": "Volvemos con Kristoffer a la consulta del psicólogo."
+    },
+    {
+     "start": 410.35,
+     "end": 414.35,
+     "text": "Jeg er kommet i den alderen der, hvor foreldrene mine nå har blitt pensjonister.",
+     "es": "He llegado a esa edad en la que mis padres ya se han jubilado."
+    },
+    {
+     "start": 414.35,
+     "end": 420.35,
+     "text": "Jeg har vært veldig heldig å aldri oppleve noen form for død i nærfamilie.",
+     "es": "He tenido mucha suerte de no haber vivido nunca una muerte en la familia cercana."
+    },
+    {
+     "start": 420.35,
+     "end": 425.35,
+     "text": "Den tanken gjør meg veldig trist og lei meg, og jeg vil at de skal ha det bra.",
+     "es": "Ese pensamiento me pone muy triste y apenado, y quiero que ellos estén bien."
+    },
+    {
+     "start": 425.35,
+     "end": 430.35,
+     "text": "Det kan påvirke meg i løpet av en dag, ganske mye,",
+     "es": "Puede afectarme bastante a lo largo del día,"
+    },
+    {
+     "start": 430.35,
+     "end": 433.35,
+     "text": "så jeg lurer på hva man gjør når det dukker opp.",
+     "es": "así que me pregunto qué hace uno cuando aparece."
+    },
+    {
+     "start": 433.35,
+     "end": 437.35,
+     "text": "Så man får sånne negative tanker som man blir veldig lei seg av,",
+     "es": "Si uno tiene pensamientos negativos que le ponen muy triste,"
+    },
+    {
+     "start": 437.35,
+     "end": 442.11,
+     "text": "trist eller engstelig over, så er det et triks å ikke gjøre noe som helst med de tankene.",
+     "es": "o con angustia, el truco es no hacer absolutamente nada con esos pensamientos."
+    },
+    {
+     "start": 442.11,
+     "end": 447.87,
+     "text": "Bare la de være, uten å enten gå dypt inn i de grave masse i de eller prøve å skyve de bort,",
+     "es": "Simplemente déjalos estar, sin meterte a fondo en ellos ni escarbar mucho, ni intentar apartarlos,"
+    },
+    {
+     "start": 447.87,
+     "end": 453.23,
+     "text": "for da ender man uansett på en måte opp med å bare gi de tankene mer oppmerksomhet,",
+     "es": "porque de todos modos uno termina dándoles más atención a esos pensamientos,"
+    },
+    {
+     "start": 453.23,
+     "end": 457.91,
+     "text": "signalisere til hjernen at den tanken her er farlig eller vond,",
+     "es": "y le indica al cerebro que ese pensamiento es peligroso o doloroso,"
+    },
+    {
+     "start": 457.91,
+     "end": 463.27,
+     "text": "Den vil jeg ikke ha, så da ender man i stedet opp med å forsterke den,",
+     "es": "«no lo quiero», así que en cambio uno acaba reforzándolo,"
+    },
+    {
+     "start": 463.27,
+     "end": 465.59,
+     "text": "den tanken og den følelsen.",
+     "es": "ese pensamiento y ese sentimiento."
+    },
+    {
+     "start": 465.59,
+     "end": 470.87,
+     "text": "Så da vil det også bare dukke opp mer og mer av disse tankene, det vil bare øke intensiteten.",
+     "es": "Y entonces aparecerán cada vez más de esos pensamientos; solo aumentará la intensidad."
+    },
+    {
+     "start": 470.87,
+     "end": 478.71,
+     "text": "Løsningen er altså å ikke gjøre noen ting.",
+     "es": "La solución, por tanto, es no hacer nada."
+    },
+    {
+     "start": 478.71,
+     "end": 484.95,
+     "text": "Du skal altså la tankene være og gi dem så lite fokus som mulig.",
+     "es": "O sea, debes dejar estar los pensamientos y darles la menor atención posible."
+    },
+    {
+     "start": 484.95,
+     "end": 489.63,
+     "text": "Hjernen din trenger ikke å løse problem du selv har skapt",
+     "es": "Tu cerebro no necesita resolver problemas que tú mismo has creado."
+    },
+    {
+     "start": 489.63,
+     "end": 492.27,
+     "text": "Ikke la tankene overta.",
+     "es": "No dejes que los pensamientos tomen el control."
+    },
+    {
+     "start": 492.27,
+     "end": 498.95,
+     "text": "Ta deg selv i å tenke negativt, anerkjenn at tankene er der, og bytt tema.",
+     "es": "Sorpréndete pensando en negativo, reconoce que los pensamientos están ahí y cambia de tema."
+    },
+    {
+     "start": 498.95,
+     "end": 502.95,
+     "text": "Kanskje enklere sagt enn gjort, men øvelse gjør mester.",
+     "es": "Quizá es más fácil decirlo que hacerlo, pero la práctica hace al maestro."
+    }
+   ],
+   "titleEs": "Terapia metacognitiva: deja estar los pensamientos"
+  },
+  {
+   "id": "s5",
+   "start": 505.0,
+   "end": 651.3,
+   "title": "Spotting loops; thoughts are just thoughts; street voices",
+   "text": "Når var sist gang du tok deg selv, i å bekymre deg, eller gruble over problemene dine? Sannsynligvis er svaret at du sjelden tenker over det. Så de negative tankene får bare spinne videre, uten mål og mening. Så en sentral del i den metakognitive terapien er altså å klare å la tankene være. Selve nøkkelen er å innse hvilke problemer som er reelle og ikke. Og innse når tankene bare går i loop. Når de negative tankene får spinne vilt, og krisescenario på krisescenario dukker opp i hodet, Da kan det kanskje være et tegn på at du skal bare slappe av og legge tankene vekk. Og dersom det ikke er noe du kan gjøre med det, der og da, så trenger du faktisk ikke å gjøre noe som helst. Hvorfor skal du bruke tid, tid og energi på å løse problem som du ikke engang får gjort noe med? Det skaper kun unødvendig stress og er bortkastet tid. Nå skal jeg fortelle deg noe som tok tid for meg å skjønne. Negative tanker er ikke farlige, selv om det kan føles slik ut. Så ikke tro på alt du tenker. Tanker er bare tanker. Å ikke gjøre noe med tankene dine, skaper faktisk ikke mer problemer, men mindre av dem. Når man tenker over, gir det jo mening. Men hva pleier du egentlig å gjøre når du dukker opp negative tanker? La oss ta en tur ut på gata igjen. Når jeg har negative tanker, så blir kroppen litt sånn stresset og urolig. Jeg tror han går litt i sånn forsvarsmodus. Og da må man jo egentlig bare ryste det av seg, ta sin løpetur, eller ro litt [uklart]. Ja, altså den eneste greien når jeg er urolig liksom, det er jo bare at hodet er tungt [usikkert] det er tungt, og det føles ut som om det er mange tanker på en gang, så man blir litt anspent. Kanskje kjenner du deg igjen i dette. i så fall bør du følge ekstra nøye med nå.",
+   "lines": [
+    {
+     "start": 507.0,
+     "end": 513.56,
+     "text": "Når var sist gang du tok deg selv, i å bekymre deg, eller gruble over problemene dine?",
+     "es": "¿Cuándo fue la última vez que te pillaste preocupándote o dándole vueltas a tus problemas?"
+    },
+    {
+     "start": 515.28,
+     "end": 518.52,
+     "text": "Sannsynligvis er svaret at du sjelden tenker over det.",
+     "es": "Probablemente la respuesta es que casi nunca lo piensas."
+    },
+    {
+     "start": 518.52,
+     "end": 523.52,
+     "text": "Så de negative tankene får bare spinne videre, uten mål og mening.",
+     "es": "Así que los pensamientos negativos siguen girando sin rumbo ni sentido."
+    },
+    {
+     "start": 524.52,
+     "end": 530.52,
+     "text": "Så en sentral del i den metakognitive terapien er altså å klare å la tankene være.",
+     "es": "Por eso, una parte central de la terapia metacognitiva es lograr dejar estar los pensamientos."
+    },
+    {
+     "start": 531.52,
+     "end": 536.52,
+     "text": "Selve nøkkelen er å innse hvilke problemer som er reelle og ikke.",
+     "es": "La clave en sí es darse cuenta de qué problemas son reales y cuáles no."
+    },
+    {
+     "start": 537.52,
+     "end": 539.52,
+     "text": "Og innse når tankene bare går i loop.",
+     "es": "Y darse cuenta de cuándo los pensamientos solo dan vueltas en bucle."
+    },
+    {
+     "start": 540.52,
+     "end": 547.52,
+     "text": "Når de negative tankene får spinne vilt, og krisescenario på krisescenario dukker opp i hodet,",
+     "es": "Cuando los pensamientos negativos giran sin control y aparece en tu cabeza una crisis tras otra,"
+    },
+    {
+     "start": 548.52,
+     "end": 553.52,
+     "text": "Da kan det kanskje være et tegn på at du skal bare slappe av og legge tankene vekk.",
+     "es": "eso puede ser una señal de que simplemente debes relajarte y dejar los pensamientos a un lado."
+    },
+    {
+     "start": 553.52,
+     "end": 561.58,
+     "text": "Og dersom det ikke er noe du kan gjøre med det, der og da,",
+     "es": "Y si no hay nada que puedas hacer al respecto en ese momento,"
+    },
+    {
+     "start": 561.58,
+     "end": 566.58,
+     "text": "så trenger du faktisk ikke å gjøre noe som helst.",
+     "es": "entonces en realidad no necesitas hacer nada en absoluto."
+    },
+    {
+     "start": 566.58,
+     "end": 573.58,
+     "text": "Hvorfor skal du bruke tid, tid og energi på å løse problem som du ikke engang får gjort noe med?",
+     "es": "¿Por qué gastar tiempo y energía en resolver problemas sobre los que ni siquiera puedes hacer nada?"
+    },
+    {
+     "start": 573.58,
+     "end": 577.58,
+     "text": "Det skaper kun unødvendig stress og er bortkastet tid.",
+     "es": "Solo crea estrés innecesario y es tiempo perdido."
+    },
+    {
+     "start": 577.58,
+     "end": 586.28,
+     "text": "Nå skal jeg fortelle deg noe som tok tid for meg å skjønne.",
+     "es": "Ahora te voy a contar algo que me costó tiempo entender."
+    },
+    {
+     "start": 586.28,
+     "end": 593.28,
+     "text": "Negative tanker er ikke farlige, selv om det kan føles slik ut.",
+     "es": "Los pensamientos negativos no son peligrosos, aunque lo parezca."
+    },
+    {
+     "start": 593.28,
+     "end": 598.28,
+     "text": "Så ikke tro på alt du tenker. Tanker er bare tanker.",
+     "es": "Así que no te creas todo lo que piensas. Los pensamientos son solo pensamientos."
+    },
+    {
+     "start": 599.28,
+     "end": 604.6,
+     "text": "Å ikke gjøre noe med tankene dine, skaper faktisk ikke mer problemer, men mindre av dem.",
+     "es": "No hacer nada con tus pensamientos, de hecho, no crea más problemas, sino menos."
+    },
+    {
+     "start": 605.8,
+     "end": 608.0,
+     "text": "Når man tenker over, gir det jo mening.",
+     "es": "Si lo piensas bien, tiene sentido."
+    },
+    {
+     "start": 608.8,
+     "end": 613.52,
+     "text": "Men hva pleier du egentlig å gjøre når du dukker opp negative tanker?",
+     "es": "Pero ¿qué sueles hacer realmente cuando te aparecen pensamientos negativos?"
+    },
+    {
+     "start": 615.72,
+     "end": 617.72,
+     "text": "La oss ta en tur ut på gata igjen.",
+     "es": "Salgamos otra vez a la calle."
+    },
+    {
+     "start": 618.4,
+     "end": 620.6,
+     "text": "Når jeg har negative tanker, så blir kroppen",
+     "es": "Cuando tengo pensamientos negativos, el cuerpo se pone"
+    },
+    {
+     "start": 620.6,
+     "end": 622.84,
+     "text": "litt sånn stresset og urolig.",
+     "es": "un poco estresado e inquieto."
+    },
+    {
+     "start": 622.84,
+     "end": 625.84,
+     "text": "Jeg tror han går litt i sånn forsvarsmodus.",
+     "es": "Creo que entra como en modo defensa."
+    },
+    {
+     "start": 625.84,
+     "end": 633.36,
+     "text": "Og da må man jo egentlig bare ryste det av seg, ta sin løpetur, eller ro litt [uklart].",
+     "es": "Y entonces hay que sacudírselo de encima, salir a correr o remar un poco."
+    },
+    {
+     "start": 633.36,
+     "end": 637.5,
+     "text": "Ja, altså den eneste greien når jeg er urolig liksom, det er jo bare at hodet er tungt [usikkert]",
+     "es": "Sí, lo único cuando estoy inquieto es que la cabeza me pesa,"
+    },
+    {
+     "start": 637.5,
+     "end": 644.84,
+     "text": "det er tungt, og det føles ut som om det er mange tanker på en gang, så man blir litt anspent.",
+     "es": "pesa, y se siente como si hubiera muchos pensamientos a la vez, así que uno se pone un poco tenso."
+    },
+    {
+     "start": 645.84,
+     "end": 651.32,
+     "text": "Kanskje kjenner du deg igjen i dette. i så fall bør du følge ekstra nøye med nå.",
+     "es": "Quizá te reconoces en esto. En ese caso, presta especial atención ahora."
+    }
+   ],
+   "titleEs": "Detectar los bucles; los pensamientos son solo pensamientos"
+  },
+  {
+   "id": "s6",
+   "start": 651.3,
+   "end": 746.0,
+   "title": "Therapy session: the urge to drop everything",
+   "text": "Nå skal du få bli med på en time med metakognitiv terapi. Vi drar tilbake til Kristoffer på psykologkontoret. Det er tid for behandling. En følelse jeg ofte får [...] [uklart] nesten alt det jeg holder på med bare er helt poengløst, så får jeg veldig lyst til å bare slenge alt fra meg, for jeg føler at jeg har ikke noe gøy, jeg har ikke det liv jeg har lyst på, og så videre. Dra til Thailand, slapp av, på stranda, og bare drikke litt mimosa også, liksom. Hvorfor burde jeg ikke gjøre det, altså hvorfor burde jeg ikke dra til stranda, liksom? Ja, det høres ikke ut som at akkurat mens du kjenner på den følelsen der er det tidspunktet du skal ta den avgjørelsen på. Og så tror jeg at det er veldig mange som kan kjenne seg igjen i det du beskriver. Lever det livet jeg har lyst å leve, er det sånn her det skal være, er det noe mer i vente, liksom. Det er fint at du er bevisst på at dette er tanker som dukker opp, eller en følelse du får da, i gitte situasjoner. Og da er det en fordel at du kan håndtere det på en litt annen måte. At du ikke trenger å verken ta den avgjørelsen der og da, eller at du trenger å bruke så mye tid på å dvele. Det er altså viktig å bli oppmerksom på våre egne vaner og tankemønstre. Først når man har blitt klar over hvordan hjernen pleier å reagere, kan man øve seg på å, å gjøre noe annet.",
+   "lines": [
+    {
+     "start": 651.32,
+     "end": 655.64,
+     "text": "Nå skal du få bli med på en time med metakognitiv terapi.",
+     "es": "Ahora vas a acompañarme a una sesión de terapia metacognitiva."
+    },
+    {
+     "start": 655.84,
+     "end": 660.84,
+     "text": "Vi drar tilbake til Kristoffer på psykologkontoret.",
+     "es": "Volvemos con Kristoffer a la consulta del psicólogo."
+    },
+    {
+     "start": 660.92,
+     "end": 664.98,
+     "text": "Det er tid for behandling.",
+     "es": "Es hora del tratamiento."
+    },
+    {
+     "start": 665.06,
+     "end": 672.1,
+     "text": "En følelse jeg ofte får [...] [uklart]",
+     "es": "Una sensación que tengo a menudo [no se entiende]"
+    },
+    {
+     "start": 672.18,
+     "end": 677.26,
+     "text": "nesten alt det jeg holder på med bare er helt poengløst,",
+     "es": "es que casi todo lo que hago no tiene ningún sentido,"
+    },
+    {
+     "start": 677.34,
+     "end": 681.02,
+     "text": "så får jeg veldig lyst til å bare slenge alt fra meg,",
+     "es": "y entonces me dan muchas ganas de mandarlo todo a paseo,"
+    },
+    {
+     "start": 681.1,
+     "end": 683.1,
+     "text": "for jeg føler at jeg har ikke noe gøy,",
+     "es": "porque siento que no me divierto,"
+    },
+    {
+     "start": 683.18,
+     "end": 686.06,
+     "text": "jeg har ikke det liv jeg har lyst på, og så videre.",
+     "es": "no tengo la vida que quiero, etcétera."
+    },
+    {
+     "start": 686.32,
+     "end": 689.32,
+     "text": "Dra til Thailand, slapp av, på stranda, og bare drikke",
+     "es": "Irme a Tailandia, relajarme en la playa y tomarme"
+    },
+    {
+     "start": 689.32,
+     "end": 690.66,
+     "text": "litt mimosa også, liksom.",
+     "es": "una mimosa también, ¿sabes?"
+    },
+    {
+     "start": 692.66,
+     "end": 695.7,
+     "text": "Hvorfor burde jeg ikke gjøre det, altså hvorfor burde jeg ikke dra til stranda, liksom?",
+     "es": "¿Por qué no debería hacerlo? O sea, ¿por qué no debería irme a la playa?"
+    },
+    {
+     "start": 695.7,
+     "end": 700.22,
+     "text": "Ja, det høres ikke ut som at akkurat mens du kjenner på den følelsen der",
+     "es": "Bueno, no parece que justo mientras sientes esa emoción"
+    },
+    {
+     "start": 700.22,
+     "end": 703.66,
+     "text": "er det tidspunktet du skal ta den avgjørelsen på.",
+     "es": "sea el momento de tomar esa decisión."
+    },
+    {
+     "start": 703.66,
+     "end": 709.94,
+     "text": "Og så tror jeg at det er veldig mange som kan kjenne seg igjen i det du beskriver.",
+     "es": "Y creo que muchísima gente se puede identificar con lo que describes."
+    },
+    {
+     "start": 709.94,
+     "end": 715.78,
+     "text": "Lever det livet jeg har lyst å leve, er det sånn her det skal være, er det noe mer i vente, liksom.",
+     "es": "¿Vivo la vida que quiero vivir? ¿Es así como debe ser? ¿Me espera algo más?"
+    },
+    {
+     "start": 716.06,
+     "end": 722.48,
+     "text": "Det er fint at du er bevisst på at dette er tanker som dukker opp, eller en følelse du får da, i gitte situasjoner.",
+     "es": "Está bien que seas consciente de que son pensamientos que aparecen, o una sensación que tienes en ciertas situaciones."
+    },
+    {
+     "start": 722.48,
+     "end": 725.48,
+     "text": "Og da er det en fordel at du kan håndtere det på en litt annen måte.",
+     "es": "Y entonces es una ventaja que puedas manejarlo de una forma un poco distinta."
+    },
+    {
+     "start": 725.48,
+     "end": 731.54,
+     "text": "At du ikke trenger å verken ta den avgjørelsen der og da, eller at du trenger å bruke så mye tid på å dvele.",
+     "es": "Que no necesites ni tomar esa decisión en ese momento, ni pasar tanto tiempo dándole vueltas."
+    },
+    {
+     "start": 732.54,
+     "end": 737.82,
+     "text": "Det er altså viktig å bli oppmerksom på våre egne vaner og tankemønstre.",
+     "es": "Es importante, por tanto, darnos cuenta de nuestros propios hábitos y patrones de pensamiento."
+    },
+    {
+     "start": 738.86,
+     "end": 745.0,
+     "text": "Først når man har blitt klar over hvordan hjernen pleier å reagere, kan man øve seg på å, å gjøre noe annet.",
+     "es": "Solo cuando uno sabe cómo suele reaccionar el cerebro, puede practicar hacer otra cosa."
+    }
+   ],
+   "titleEs": "Sesión de terapia: las ganas de dejarlo todo"
+  },
+  {
+   "id": "s7",
+   "start": 746.0,
+   "end": 897.0,
+   "title": "Technique 1: detached attention",
+   "text": "En teknikk som har vært kjempenyttig for meg, og som er selve nøkkelen i metakognitiv terapi, er frakoblet oppmerksomhet. Her er Kristoffer igjen. Det er på mange måter en tilstand eller en slags holdning som innebærer at man på ene siden er bevisst på indre opplevelser, det være seg tanker som tenkvis, eller hvorfor, følelser som tristhet, skam, skyld, eller mer sånn kroppslige fornemmelser som hjertebank eller svetting eller varme eller hva det skulle være, uten at man velger å respondere noe mer på de signalene. Så det vil si at man på ene siden oppmerksom på det [uklart] som foregår, uten at man låser seg fast til det. Det innebærer ingen form for sånn sannhetstesting eller skille mellom ekte problemer eller tenkte problemer, og man forholder seg på en måte bare til en tanke, som om det var bare en tanke. Det er derfor også direkte motsatt til bekymring og grubling. Frakoblet oppmerksomhet er altså en teknikk som skal som skal lære deg å observere tankene dine uten å engasjere deg ytterligere i dem. Du skal altså kunne observere tankene dine med et mer objektivt perspektiv og skape en slags distanse. Så når jeg bekymrer meg over at foreldrene mine på et eller annet tidspunkt kommer til å gå bort så er det viktig at jeg ikke drar meg selv inn i masse tankekjør rundt dette, og heller fokuserer på tiden jeg har med dem nå. Så til hvordan du kan øve på dette. Prøv å ikke stoppe tankene, men heller la dem spille seg ut uten at du engasjerer deg i dem. La tankene, dukke opp, bli bevisst på at de kommer, og la dem passere. Du skifter da fokuset vekk fra å være den, som gjør det du tenker på, til å kun observere. Dette kan føles veldig rart og uvant ut i begynnelsen. Noen ganger kan helt forferdelige tanker dukke opp, og man får et sterkt behov [uklart] for å løse problemet. Øvelsen da er å ikke la tankene kontrollere deg. Observer dem uten å dømme. Du har nå lært om frakoblet oppmerksomhet.",
+   "lines": [
+    {
+     "start": 746.06,
+     "end": 748.54,
+     "text": "En teknikk som har vært kjempenyttig for meg,",
+     "es": "Una técnica que me ha sido utilísima,"
+    },
+    {
+     "start": 748.54,
+     "end": 751.98,
+     "text": "og som er selve nøkkelen i metakognitiv terapi,",
+     "es": "y que es la clave misma de la terapia metacognitiva,"
+    },
+    {
+     "start": 751.98,
+     "end": 755.34,
+     "text": "er frakoblet oppmerksomhet.",
+     "es": "es la atención desconectada."
+    },
+    {
+     "start": 755.34,
+     "end": 757.58,
+     "text": "Her er Kristoffer igjen.",
+     "es": "Aquí está Kristoffer otra vez."
+    },
+    {
+     "start": 757.58,
+     "end": 761.62,
+     "text": "Det er på mange måter en tilstand eller en slags holdning",
+     "es": "En muchos sentidos es un estado o una especie de actitud"
+    },
+    {
+     "start": 761.62,
+     "end": 765.7,
+     "text": "som innebærer at man på ene siden er bevisst på indre opplevelser,",
+     "es": "que implica que, por un lado, uno es consciente de las experiencias internas,"
+    },
+    {
+     "start": 765.7,
+     "end": 768.66,
+     "text": "det være seg tanker som tenkvis, eller hvorfor,",
+     "es": "ya sean pensamientos del tipo «¿y si…?» o «¿por qué?»,"
+    },
+    {
+     "start": 768.66,
+     "end": 772.58,
+     "text": "følelser som tristhet, skam, skyld,",
+     "es": "sentimientos como tristeza, vergüenza, culpa,"
+    },
+    {
+     "start": 772.58,
+     "end": 779.3,
+     "text": "eller mer sånn kroppslige fornemmelser som hjertebank eller svetting eller varme eller hva det skulle være,",
+     "es": "o sensaciones más corporales como palpitaciones, sudor, calor o lo que sea,"
+    },
+    {
+     "start": 779.3,
+     "end": 783.54,
+     "text": "uten at man velger å respondere noe mer på de signalene.",
+     "es": "sin que uno elija responder más a esas señales."
+    },
+    {
+     "start": 783.54,
+     "end": 790.62,
+     "text": "Så det vil si at man på ene siden oppmerksom på det [uklart] som foregår, uten at man låser seg fast til det.",
+     "es": "Es decir, que por un lado uno es consciente de lo que está pasando, sin quedarse enganchado a ello."
+    },
+    {
+     "start": 790.62,
+     "end": 796.86,
+     "text": "Det innebærer ingen form for sånn sannhetstesting eller skille mellom ekte problemer eller tenkte problemer,",
+     "es": "No implica ningún tipo de comprobar si es verdad, ni distinguir entre problemas reales o imaginados,"
+    },
+    {
+     "start": 796.86,
+     "end": 801.26,
+     "text": "og man forholder seg på en måte bare til en tanke, som om det var bare en tanke.",
+     "es": "y uno simplemente se relaciona con un pensamiento como si fuera solo un pensamiento."
+    },
+    {
+     "start": 801.26,
+     "end": 804.66,
+     "text": "Det er derfor også direkte motsatt til bekymring og grubling.",
+     "es": "Por eso es justo lo contrario de la preocupación y la rumiación."
+    },
+    {
+     "start": 806.34,
+     "end": 809.14,
+     "text": "Frakoblet oppmerksomhet er altså en teknikk som skal",
+     "es": "La atención desconectada es, por tanto, una técnica que debe"
+    },
+    {
+     "start": 809.14,
+     "end": 811.9,
+     "text": "som skal lære deg å observere tankene dine",
+     "es": "que debe enseñarte a observar tus pensamientos"
+    },
+    {
+     "start": 811.9,
+     "end": 814.5,
+     "text": "uten å engasjere deg ytterligere i dem.",
+     "es": "sin involucrarte más en ellos."
+    },
+    {
+     "start": 815.62,
+     "end": 818.06,
+     "text": "Du skal altså kunne observere tankene dine",
+     "es": "O sea, debes poder observar tus pensamientos"
+    },
+    {
+     "start": 818.06,
+     "end": 820.58,
+     "text": "med et mer objektivt perspektiv",
+     "es": "con una perspectiva más objetiva"
+    },
+    {
+     "start": 820.58,
+     "end": 822.38,
+     "text": "og skape en slags distanse.",
+     "es": "y crear una especie de distancia."
+    },
+    {
+     "start": 822.38,
+     "end": 828.86,
+     "text": "Så når jeg bekymrer meg over at foreldrene mine på et eller annet tidspunkt kommer til",
+     "es": "Así que, cuando me preocupa que mis padres en algún momento vayan"
+    },
+    {
+     "start": 828.86,
+     "end": 833.98,
+     "text": "å gå bort så er det viktig at jeg ikke drar meg selv inn i masse tankekjør rundt",
+     "es": "a morir, es importante que no me meta en un montón de pensamientos en bucle sobre"
+    },
+    {
+     "start": 833.98,
+     "end": 838.98,
+     "text": "dette, og heller fokuserer på tiden jeg har med dem nå.",
+     "es": "esto, y que más bien me concentre en el tiempo que tengo con ellos ahora."
+    },
+    {
+     "start": 838.98,
+     "end": 842.58,
+     "text": "Så til hvordan du kan øve på dette.",
+     "es": "Y ahora, cómo puedes practicar esto."
+    },
+    {
+     "start": 842.58,
+     "end": 850.18,
+     "text": "Prøv å ikke stoppe tankene, men heller la dem spille seg ut uten at du engasjerer",
+     "es": "Intenta no parar los pensamientos, sino más bien dejar que se desarrollen sin que te involucres"
+    },
+    {
+     "start": 850.18,
+     "end": 852.18,
+     "text": "deg i dem.",
+     "es": "en ellos."
+    },
+    {
+     "start": 852.18,
+     "end": 854.18,
+     "text": "La tankene, dukke opp,",
+     "es": "Deja que los pensamientos aparezcan,"
+    },
+    {
+     "start": 854.82,
+     "end": 856.82,
+     "text": "bli bevisst på at de kommer,",
+     "es": "date cuenta de que vienen,"
+    },
+    {
+     "start": 857.26,
+     "end": 860.6,
+     "text": "og la dem passere.",
+     "es": "y déjalos pasar."
+    },
+    {
+     "start": 860.6,
+     "end": 866.64,
+     "text": "Du skifter da fokuset vekk fra å være den, som gjør det du tenker på, til å kun observere.",
+     "es": "Así cambias el foco: de ser quien hace lo que piensas a solo observar."
+    },
+    {
+     "start": 867.88,
+     "end": 871.8,
+     "text": "Dette kan føles veldig rart og uvant ut i begynnelsen.",
+     "es": "Al principio esto puede sentirse muy raro y extraño."
+    },
+    {
+     "start": 872.6,
+     "end": 876.2,
+     "text": "Noen ganger kan helt forferdelige tanker dukke opp,",
+     "es": "A veces pueden aparecer pensamientos horribles,"
+    },
+    {
+     "start": 876.56,
+     "end": 879.92,
+     "text": "og man får et sterkt behov [uklart] for å løse problemet.",
+     "es": "y uno siente una fuerte necesidad de resolver el problema."
+    },
+    {
+     "start": 879.92,
+     "end": 884.44,
+     "text": "Øvelsen da er å ikke la tankene kontrollere deg.",
+     "es": "El ejercicio entonces es no dejar que los pensamientos te controlen."
+    },
+    {
+     "start": 884.44,
+     "end": 892.0,
+     "text": "Observer dem uten å dømme.",
+     "es": "Obsérvalos sin juzgar."
+    },
+    {
+     "start": 892.24,
+     "end": 895.04,
+     "text": "Du har nå lært om frakoblet oppmerksomhet.",
+     "es": "Ya has aprendido sobre la atención desconectada."
+    }
+   ],
+   "titleEs": "Técnica 1: atención desconectada"
+  },
+  {
+   "id": "s8",
+   "start": 897.0,
+   "end": 994.6,
+   "title": "Technique 2: flexible attention",
+   "text": "Det neste jeg vil lære deg er fleksibel oppmerksomhet. Når man blir stresset, bekymra, nervøs eller irritert så kan man bli veldig fast, i måten man tenker på. Ofte vil det som skjer oppe i hodet eller inn i kroppen være så overdøvende at det stjeler all oppmerksomheten vår. La oss dra tilbake til Kristoffer. I terapirommet øver vi ofte på å øke fleksibiliteten til oppmerksomheten. Da kan det handle om at man for eksempel presenterer ulike kilder til lyd rundt omkring i rommet. For eksempel banker jeg ofte litt på ene siden, og så er det noe biler utenfor vinduet på andre siden og så går. Kanskje går noen utenfor døren foran terapi-rommet. Så øver man på å flytte fokuset mellom disse ulike kildene, så da man velger å fokusere på én type lyd, mens man lar det andre bare være. Og jo bedre man blir på å kunne skifte litt sånn mellom disse ulike kildene, så vil man også være bedre rustet til å håndtere og flytte fokus ut av kroppen og hodet når det oppstår negative tanker eller følelser der. Hovedpoenget er å klare å forskyve oppmerksomheten, gjerne fra inne i hodet til ut i verden. Hvis jeg er ute og at jeg merker at irriterende og plagsomme tanker dukker opp, så pleier jeg å flytte fokuset over på fugler eller biler eller lyder som er rundt meg. Dette funker, enda bedre om jeg prøver å beskrive det jeg ser eller hører. Det tok meg faktisk veldig kort tid før dette ble et effektivt verktøy som jeg kunne bruke.",
+   "lines": [
+    {
+     "start": 897.2,
+     "end": 899.2,
+     "text": "Det neste jeg vil lære deg er fleksibel oppmerksomhet.",
+     "es": "Lo siguiente que quiero enseñarte es la atención flexible."
+    },
+    {
+     "start": 899.2,
+     "end": 908.92,
+     "text": "Når man blir stresset, bekymra, nervøs eller irritert så kan man bli veldig fast, i måten man tenker på.",
+     "es": "Cuando uno se estresa, se preocupa, se pone nervioso o se irrita, puede quedarse muy rígido en su manera de pensar."
+    },
+    {
+     "start": 908.92,
+     "end": 916.92,
+     "text": "Ofte vil det som skjer oppe i hodet eller inn i kroppen være så overdøvende at det stjeler all oppmerksomheten vår.",
+     "es": "A menudo lo que pasa en la cabeza o dentro del cuerpo es tan ensordecedor que nos roba toda la atención."
+    },
+    {
+     "start": 917.92,
+     "end": 919.92,
+     "text": "La oss dra tilbake til Kristoffer.",
+     "es": "Volvamos con Kristoffer."
+    },
+    {
+     "start": 920.92,
+     "end": 925.92,
+     "text": "I terapirommet øver vi ofte på å øke fleksibiliteten til oppmerksomheten.",
+     "es": "En la sala de terapia practicamos a menudo aumentar la flexibilidad de la atención."
+    },
+    {
+     "start": 925.92,
+     "end": 932.92,
+     "text": "Da kan det handle om at man for eksempel presenterer ulike kilder til lyd rundt omkring i rommet.",
+     "es": "Puede tratarse, por ejemplo, de presentar distintas fuentes de sonido por la sala."
+    },
+    {
+     "start": 932.92,
+     "end": 935.94,
+     "text": "For eksempel banker jeg ofte litt på ene siden,",
+     "es": "Por ejemplo, a menudo doy unos golpecitos por un lado,"
+    },
+    {
+     "start": 935.94,
+     "end": 938.94,
+     "text": "og så er det noe biler utenfor vinduet på andre siden",
+     "es": "y luego hay coches fuera de la ventana por el otro lado,"
+    },
+    {
+     "start": 938.94,
+     "end": 941.82,
+     "text": "og så går. Kanskje går noen utenfor døren foran terapi-rommet.",
+     "es": "y luego pasa… Quizá alguien camina fuera de la puerta de la sala de terapia."
+    },
+    {
+     "start": 942.3,
+     "end": 945.26,
+     "text": "Så øver man på å flytte fokuset mellom",
+     "es": "Entonces se practica mover el foco entre"
+    },
+    {
+     "start": 945.26,
+     "end": 948.22,
+     "text": "disse ulike kildene, så da man velger",
+     "es": "estas distintas fuentes, de modo que uno elige"
+    },
+    {
+     "start": 948.22,
+     "end": 951.02,
+     "text": "å fokusere på én type lyd, mens man",
+     "es": "concentrarse en un tipo de sonido, mientras"
+    },
+    {
+     "start": 951.02,
+     "end": 952.02,
+     "text": "lar det andre bare være.",
+     "es": "deja los demás en paz."
+    },
+    {
+     "start": 952.02,
+     "end": 958.02,
+     "text": "Og jo bedre man blir på å kunne skifte litt sånn mellom disse ulike kildene,",
+     "es": "Y cuanto mejor se vuelve uno en cambiar un poco entre estas distintas fuentes,"
+    },
+    {
+     "start": 958.02,
+     "end": 962.02,
+     "text": "så vil man også være bedre rustet til å håndtere og flytte fokus ut av kroppen og hodet",
+     "es": "mejor preparado estará para manejar y sacar el foco del cuerpo y de la cabeza"
+    },
+    {
+     "start": 962.02,
+     "end": 965.02,
+     "text": "når det oppstår negative tanker eller følelser der.",
+     "es": "cuando surgen ahí pensamientos o sentimientos negativos."
+    },
+    {
+     "start": 966.02,
+     "end": 972.02,
+     "text": "Hovedpoenget er å klare å forskyve oppmerksomheten, gjerne fra inne i hodet til ut i verden.",
+     "es": "La idea principal es lograr desplazar la atención, preferiblemente de dentro de la cabeza hacia el mundo."
+    },
+    {
+     "start": 973.02,
+     "end": 978.02,
+     "text": "Hvis jeg er ute og at jeg merker at irriterende og plagsomme tanker dukker opp,",
+     "es": "Si estoy fuera y noto que aparecen pensamientos irritantes y molestos,"
+    },
+    {
+     "start": 978.02,
+     "end": 983.62,
+     "text": "så pleier jeg å flytte fokuset over på fugler eller biler eller lyder som er rundt meg.",
+     "es": "suelo mover el foco hacia los pájaros, los coches o los sonidos que hay a mi alrededor."
+    },
+    {
+     "start": 983.62,
+     "end": 988.9,
+     "text": "Dette funker, enda bedre om jeg prøver å beskrive det jeg ser eller hører.",
+     "es": "Esto funciona aún mejor si intento describir lo que veo u oigo."
+    },
+    {
+     "start": 988.9,
+     "end": 994.66,
+     "text": "Det tok meg faktisk veldig kort tid før dette ble et effektivt verktøy som jeg kunne bruke.",
+     "es": "De hecho, me llevó muy poco tiempo que esto se convirtiera en una herramienta eficaz que podía usar."
+    }
+   ],
+   "titleEs": "Técnica 2: atención flexible"
+  },
+  {
+   "id": "s9",
+   "start": 994.6,
+   "end": 1207.4,
+   "title": "Ingrained thought patterns and self-esteem",
+   "text": "Alt begynner i at vi må utfordre tongrodde [usikkert: inngrodde] tankemønstre. Og hva betyr det? Kanskje har du en tanke om at du ikke er bra nok? Eller at du ikke fortjener å føle glede i livet. Kanskje du har en tanke om at du er misslykket og at du ikke får til ting. Dette er ofte tankemønstre som har satt seg og som konstant påvirker deg negativt i livet. Så hvordan kan du lære deg å håndtere negative tanker som har boret seg fast i hjernen din så dypt at du tror at det er sant? Jeg vil avslutte terapietimen hos Kristoffer med å jobbe med dette. Noen ganger kan jeg få litt følelse av at jeg ikke er bra nok, [usikkert] at jeg burde gjort noe mer med livet mitt, eller at jeg burde vært et annet sted. Så det her med dårlig selvfølelse gjør noe som er veldig relevant, for jeg tror at det er utrolig mange som kan kjenne seg igjen i det. Kanskje til og med spesielt ungdommer som har en tendens til å sammenligne seg selv med andre i større grad. Det er vanskelig å tro at man er god nok når man ser andre rundt seg, får ting til, sterkere enn oss, flinkere enn oss. Og så, hva kjennetegner egentlig de som har veldig god selvfølelse? [usikkert] Hvordan skal man egentlig få det til? Og jeg tror det at veien dit er ikke gjennom å snakke veldig positivt til seg selv, prøve å si hyggelig ting, prøve å tenke veldig positivt, fordi at man kan alltid på en måte stille spørsmål ved de tankene. Det leder kanskje til grubling igjen. Så jeg tror man kommer mye lenger ved å rett og slett redusere tiden man, man bruker på å stille veldig høye krav til seg selv eller å slå seg selv ned. Jeg tror at hvis man bruker mindre tid på det, så tror man vil merke en større forskjell ganske fort. I metakognitiv terapi tenker man ikke at man skal bygge selvfølelse, men heller slutte å holde selvfølelsen lav. Det betyr at du skal slutte å sette spørsmål ved om du er god nok, Granske deg selv etter feil, si negative ting til deg selv, sammenligne deg med andre, og for all del, slutt å spille av alle flauser og ting du har sagt feil på repeat i hodet. For jo mer du graver i disse tankene, jo verre blir det. Så neste gang du prater negativt til deg selv, bli bevisst på det og la det gå. Det kan ta lang tid å lære seg dette. Som regel handler det om tankemønstre som har satt dype spor i hjernen din. For kanskje har du pratet negativt til deg selv i mange år. Det som er viktig å vite her, er at uansett hvem du er, så fortjener du å oppleve glede i livet. Du trenger ikke å være perfekt for å eksistere. Og du fortjener å ha det godt. Du vil aldri leve et liv fritt for negativitet, for ting skjer, og livet er ikke alltid en dans på roser. Men jeg håper at disse metakognitive teknikkene kan hjelpe deg med å håndtere negative tanker på en bedre måte, og inspirere deg til å gruble mindre.",
+   "lines": [
+    {
+     "start": 994.66,
+     "end": 1000.58,
+     "text": "Alt begynner i at vi må utfordre tongrodde [usikkert: inngrodde] tankemønstre.",
+     "es": "Todo empieza con que tenemos que desafiar patrones de pensamiento arraigados."
+    },
+    {
+     "start": 1000.58,
+     "end": 1002.58,
+     "text": "Og hva betyr det?",
+     "es": "¿Y qué significa eso?"
+    },
+    {
+     "start": 1002.58,
+     "end": 1006.74,
+     "text": "Kanskje har du en tanke om at du ikke er bra nok?",
+     "es": "¿Quizá tienes la idea de que no eres lo bastante bueno?"
+    },
+    {
+     "start": 1006.74,
+     "end": 1010.48,
+     "text": "Eller at du ikke fortjener å føle glede i livet.",
+     "es": "O de que no mereces sentir alegría en la vida."
+    },
+    {
+     "start": 1011.36,
+     "end": 1014.32,
+     "text": "Kanskje du har en tanke om at du er misslykket",
+     "es": "Quizá piensas que eres un fracasado"
+    },
+    {
+     "start": 1014.32,
+     "end": 1016.46,
+     "text": "og at du ikke får til ting.",
+     "es": "y que no consigues hacer las cosas."
+    },
+    {
+     "start": 1017.16,
+     "end": 1019.96,
+     "text": "Dette er ofte tankemønstre som har satt seg",
+     "es": "A menudo son patrones de pensamiento que se han asentado"
+    },
+    {
+     "start": 1019.96,
+     "end": 1024.96,
+     "text": "og som konstant påvirker deg negativt i livet.",
+     "es": "y que te afectan negativamente en la vida todo el tiempo."
+    },
+    {
+     "start": 1024.96,
+     "end": 1029.96,
+     "text": "Så hvordan kan du lære deg å håndtere negative tanker",
+     "es": "Entonces, ¿cómo puedes aprender a manejar pensamientos negativos"
+    },
+    {
+     "start": 1029.96,
+     "end": 1035.96,
+     "text": "som har boret seg fast i hjernen din så dypt at du tror at det er sant?",
+     "es": "que se han clavado tan hondo en tu cerebro que crees que son verdad?"
+    },
+    {
+     "start": 1036.96,
+     "end": 1041.96,
+     "text": "Jeg vil avslutte terapietimen hos Kristoffer med å jobbe med dette.",
+     "es": "Quiero terminar la sesión de terapia con Kristoffer trabajando en esto."
+    },
+    {
+     "start": 1042.96,
+     "end": 1046.96,
+     "text": "Noen ganger kan jeg få litt følelse av at jeg ikke er bra nok, [usikkert]",
+     "es": "A veces tengo un poco la sensación de que no soy lo bastante bueno,"
+    },
+    {
+     "start": 1046.96,
+     "end": 1051.8,
+     "text": "at jeg burde gjort noe mer med livet mitt, eller at jeg burde vært et annet sted.",
+     "es": "de que debería haber hecho algo más con mi vida, o de que debería estar en otro sitio."
+    },
+    {
+     "start": 1051.8,
+     "end": 1055.0,
+     "text": "Så det her med dårlig selvfølelse gjør noe som er veldig relevant,",
+     "es": "Esto de la baja autoestima es algo muy relevante,"
+    },
+    {
+     "start": 1055.0,
+     "end": 1057.92,
+     "text": "for jeg tror at det er utrolig mange som kan kjenne seg igjen i det.",
+     "es": "porque creo que muchísima gente se puede identificar con ello."
+    },
+    {
+     "start": 1057.92,
+     "end": 1063.48,
+     "text": "Kanskje til og med spesielt ungdommer som har en tendens til å sammenligne seg selv med andre i større grad.",
+     "es": "Quizá incluso sobre todo los jóvenes, que tienden a compararse más con los demás."
+    },
+    {
+     "start": 1063.48,
+     "end": 1068.56,
+     "text": "Det er vanskelig å tro at man er god nok når man ser andre rundt seg, får ting til,",
+     "es": "Es difícil creer que uno es lo bastante bueno cuando ve que otros a su alrededor consiguen cosas,"
+    },
+    {
+     "start": 1068.56,
+     "end": 1071.48,
+     "text": "sterkere enn oss, flinkere enn oss.",
+     "es": "más fuertes que nosotros, más hábiles que nosotros."
+    },
+    {
+     "start": 1071.48,
+     "end": 1074.96,
+     "text": "Og så, hva kjennetegner egentlig de som har veldig god selvfølelse? [usikkert]",
+     "es": "Y entonces, ¿qué caracteriza en realidad a quienes tienen muy buena autoestima?"
+    },
+    {
+     "start": 1074.96,
+     "end": 1077.08,
+     "text": "Hvordan skal man egentlig få det til?",
+     "es": "¿Cómo se consigue eso en realidad?"
+    },
+    {
+     "start": 1077.08,
+     "end": 1082.32,
+     "text": "Og jeg tror det at veien dit er ikke gjennom å snakke veldig positivt til seg selv,",
+     "es": "Y yo creo que el camino no es hablarse a uno mismo de forma muy positiva,"
+    },
+    {
+     "start": 1082.32,
+     "end": 1085.72,
+     "text": "prøve å si hyggelig ting, prøve å tenke veldig positivt,",
+     "es": "intentar decirse cosas bonitas, intentar pensar muy en positivo,"
+    },
+    {
+     "start": 1085.72,
+     "end": 1088.76,
+     "text": "fordi at man kan alltid på en måte stille spørsmål ved de tankene.",
+     "es": "porque uno siempre puede, de algún modo, cuestionar esos pensamientos."
+    },
+    {
+     "start": 1088.76,
+     "end": 1091.4,
+     "text": "Det leder kanskje til grubling igjen.",
+     "es": "Eso quizá lleva otra vez a la rumiación."
+    },
+    {
+     "start": 1091.4,
+     "end": 1095.36,
+     "text": "Så jeg tror man kommer mye lenger ved å rett og slett redusere tiden man,",
+     "es": "Así que creo que uno llega mucho más lejos simplemente reduciendo el tiempo que,"
+    },
+    {
+     "start": 1095.36,
+     "end": 1099.88,
+     "text": "man bruker på å stille veldig høye krav til seg selv eller å slå seg selv ned.",
+     "es": "que dedica a exigirse muchísimo a sí mismo o a machacarse."
+    },
+    {
+     "start": 1099.88,
+     "end": 1107.55,
+     "text": "Jeg tror at hvis man bruker mindre tid på det, så tror man vil merke en større forskjell ganske fort.",
+     "es": "Creo que si uno dedica menos tiempo a eso, notará una gran diferencia bastante rápido."
+    },
+    {
+     "start": 1107.55,
+     "end": 1111.83,
+     "text": "I metakognitiv terapi tenker man ikke at man skal bygge selvfølelse,",
+     "es": "En la terapia metacognitiva no se piensa que haya que construir la autoestima,"
+    },
+    {
+     "start": 1111.83,
+     "end": 1116.47,
+     "text": "men heller slutte å holde selvfølelsen lav.",
+     "es": "sino más bien dejar de mantenerla baja."
+    },
+    {
+     "start": 1116.47,
+     "end": 1119.15,
+     "text": "Det betyr at du skal slutte å",
+     "es": "Eso significa que debes dejar de"
+    },
+    {
+     "start": 1119.15,
+     "end": 1121.99,
+     "text": "sette spørsmål ved om du er god nok,",
+     "es": "cuestionarte si eres lo bastante bueno,"
+    },
+    {
+     "start": 1121.99,
+     "end": 1129.83,
+     "text": "Granske deg selv etter feil, si negative ting til deg selv, sammenligne deg med andre,",
+     "es": "examinarte buscando fallos, decirte cosas negativas, compararte con los demás,"
+    },
+    {
+     "start": 1129.83,
+     "end": 1138.47,
+     "text": "og for all del, slutt å spille av alle flauser og ting du har sagt feil på repeat i hodet.",
+     "es": "y, sobre todo, deja de repetir en bucle en tu cabeza todas las meteduras de pata y cosas que dijiste mal."
+    },
+    {
+     "start": 1138.47,
+     "end": 1143.27,
+     "text": "For jo mer du graver i disse tankene, jo verre blir det.",
+     "es": "Porque cuanto más escarbas en esos pensamientos, peor se pone."
+    },
+    {
+     "start": 1143.27,
+     "end": 1152.2,
+     "text": "Så neste gang du prater negativt til deg selv, bli bevisst på det og la det gå.",
+     "es": "Así que la próxima vez que te hables en negativo, date cuenta y déjalo ir."
+    },
+    {
+     "start": 1152.2,
+     "end": 1155.24,
+     "text": "Det kan ta lang tid å lære seg dette.",
+     "es": "Aprender esto puede llevar mucho tiempo."
+    },
+    {
+     "start": 1155.32,
+     "end": 1160.96,
+     "text": "Som regel handler det om tankemønstre som har satt dype spor i hjernen din.",
+     "es": "Por lo general se trata de patrones de pensamiento que han dejado huellas profundas en tu cerebro."
+    },
+    {
+     "start": 1161.04,
+     "end": 1166.64,
+     "text": "For kanskje har du pratet negativt til deg selv i mange år.",
+     "es": "Porque quizá llevas muchos años hablándote en negativo."
+    },
+    {
+     "start": 1166.72,
+     "end": 1170.4,
+     "text": "Det som er viktig å vite her, er at uansett hvem du er,",
+     "es": "Lo importante que hay que saber aquí es que, seas quien seas,"
+    },
+    {
+     "start": 1170.48,
+     "end": 1174.16,
+     "text": "så fortjener du å oppleve glede i livet.",
+     "es": "mereces vivir alegría en la vida."
+    },
+    {
+     "start": 1174.24,
+     "end": 1177.52,
+     "text": "Du trenger ikke å være perfekt for å eksistere.",
+     "es": "No necesitas ser perfecto para existir."
+    },
+    {
+     "start": 1177.6,
+     "end": 1179.96,
+     "text": "Og du fortjener å ha det godt.",
+     "es": "Y mereces estar bien."
+    },
+    {
+     "start": 1179.96,
+     "end": 1191.96,
+     "text": "Du vil aldri leve et liv fritt for negativitet, for ting skjer, og livet er ikke alltid en dans på roser.",
+     "es": "Nunca vivirás una vida libre de negatividad, porque las cosas pasan, y la vida no siempre es un camino de rosas."
+    },
+    {
+     "start": 1191.96,
+     "end": 1207.48,
+     "text": "Men jeg håper at disse metakognitive teknikkene kan hjelpe deg med å håndtere negative tanker på en bedre måte, og inspirere deg til å gruble mindre.",
+     "es": "Pero espero que estas técnicas metacognitivas puedan ayudarte a manejar mejor los pensamientos negativos e inspirarte a darle menos vueltas a las cosas."
+    }
+   ],
+   "titleEs": "Patrones arraigados y autoestima"
+  },
+  {
+   "id": "s10",
+   "start": 1207.4,
+   "end": 1296.0,
+   "title": "Three takeaways and credits",
+   "text": "Jeg heter Dennis Siva, og nå som du har hørt denne episoden om metakognitiv terapi, er det tre ting jeg ønsker at du sitter igjen med. En. Du er ikke tankene dine. Negative tanker og følelser har ingen betydning for hvordan livet ditt vil bli. For måten du håndterer det på er det du som bestemmer. To. De fleste problemer blir ikke mindre av å tenke, gruble og bekymre seg over den, 3. Å leve er veldig komplisert og rart, og det burde være utrolig morsomt [uklart], så ikke ta alt så seriøst, ikke grav deg ned i negativt tankespinn. Kos deg med hva du gjør, og husk at du fortjener å ha det bra. Har du lyst til å høre om flere temaer som burde vært pensum følg burde vært pensum i appen NRK radio. Burde vært pensum er laget av [produksjonsselskap, uklart] for NRK. Produsent Sigrid Jølstad-Borge Eksekutivprodusent Kristian Marstrander Musikken er laget av Hallvarhagen og Jens Petter Nielsen Lyddesign er [uklart] Ansvarlig redaktør [...] [navn uklart]",
+   "lines": [
+    {
+     "start": 1207.48,
+     "end": 1213.48,
+     "text": "Jeg heter Dennis Siva, og nå som du har hørt denne episoden om metakognitiv terapi,",
+     "es": "Me llamo Dennis Siva, y ahora que has escuchado este episodio sobre terapia metacognitiva,"
+    },
+    {
+     "start": 1213.48,
+     "end": 1216.48,
+     "text": "er det tre ting jeg ønsker at du sitter igjen med.",
+     "es": "hay tres cosas que quiero que te lleves."
+    },
+    {
+     "start": 1217.48,
+     "end": 1220.48,
+     "text": "En. Du er ikke tankene dine.",
+     "es": "Uno. Tú no eres tus pensamientos."
+    },
+    {
+     "start": 1220.48,
+     "end": 1226.48,
+     "text": "Negative tanker og følelser har ingen betydning for hvordan livet ditt vil bli.",
+     "es": "Los pensamientos y sentimientos negativos no determinan cómo será tu vida."
+    },
+    {
+     "start": 1226.48,
+     "end": 1230.48,
+     "text": "For måten du håndterer det på er det du som bestemmer.",
+     "es": "Porque la manera en que lo manejas la decides tú."
+    },
+    {
+     "start": 1231.48,
+     "end": 1236.48,
+     "text": "To. De fleste problemer blir ikke mindre av å tenke, gruble og bekymre seg over den,",
+     "es": "Dos. La mayoría de los problemas no se hacen más pequeños por pensar, darle vueltas y preocuparse por ellos."
+    },
+    {
+     "start": 1236.48,
+     "end": 1253.48,
+     "text": "3. Å leve er veldig komplisert og rart, og det burde være utrolig morsomt [uklart], så ikke ta alt så seriøst, ikke grav deg ned i negativt tankespinn.",
+     "es": "Tres. Vivir es muy complicado y raro, y debería ser muy divertido, así que no te tomes todo tan en serio; no te hundas en pensamientos negativos en bucle."
+    },
+    {
+     "start": 1253.48,
+     "end": 1259.48,
+     "text": "Kos deg med hva du gjør, og husk at du fortjener å ha det bra.",
+     "es": "Disfruta de lo que haces y recuerda que mereces estar bien."
+    },
+    {
+     "start": 1259.48,
+     "end": 1262.5,
+     "text": "Har du lyst til",
+     "es": "Si te apetece"
+    },
+    {
+     "start": 1262.5,
+     "end": 1265.48,
+     "text": "å høre om flere temaer som burde vært pensum",
+     "es": "escuchar más temas que deberían ser materia obligatoria,"
+    },
+    {
+     "start": 1265.48,
+     "end": 1267.48,
+     "text": "følg burde vært pensum i",
+     "es": "sigue «Burde vært pensum» en"
+    },
+    {
+     "start": 1267.48,
+     "end": 1268.48,
+     "text": "appen",
+     "es": "la app"
+    },
+    {
+     "start": 1268.48,
+     "end": 1270.48,
+     "text": "NRK radio.",
+     "es": "NRK Radio."
+    },
+    {
+     "start": 1270.48,
+     "end": 1273.48,
+     "text": "Burde vært pensum er laget av [produksjonsselskap, uklart] for NRK.",
+     "es": "«Burde vært pensum» está hecho por [productora, no se entiende] para NRK."
+    },
+    {
+     "start": 1273.48,
+     "end": 1275.48,
+     "text": "Produsent Sigrid Jølstad-Borge",
+     "es": "Productora: Sigrid Jølstad-Borge."
+    },
+    {
+     "start": 1275.48,
+     "end": 1277.48,
+     "text": "Eksekutivprodusent Kristian Marstrander",
+     "es": "Productor ejecutivo: Kristian Marstrander."
+    },
+    {
+     "start": 1277.48,
+     "end": 1280.48,
+     "text": "Musikken er laget av Hallvarhagen og Jens Petter Nielsen",
+     "es": "La música es de Hallvarhagen y Jens Petter Nielsen."
+    },
+    {
+     "start": 1280.48,
+     "end": 1282.48,
+     "text": "Lyddesign er [uklart]",
+     "es": "Diseño de sonido: [no se entiende]."
+    },
+    {
+     "start": 1282.48,
+     "end": 1283.48,
+     "text": "Ansvarlig redaktør [...]",
+     "es": "Editor responsable: [...]"
+    },
+    {
+     "start": 1283.48,
+     "end": 1286.16,
+     "text": "[navn uklart]",
+     "es": "[nombre no se entiende]"
+    }
+   ],
+   "titleEs": "Tres ideas para llevarte y créditos"
+  }
+ ],
+ "vocabulary": [
+  {
+   "no": "tankekjør (et)",
+   "en": "racing/spiralling thoughts, overthinking",
+   "note": "neuter noun; title word",
+   "segmentId": "s3",
+   "es": "pensamiento en bucle, darle vueltas a todo"
+  },
+  {
+   "no": "bekymring (en/ei), bekymre seg for",
+   "en": "worry; to worry about",
+   "note": "reflexive verb: jeg bekymrer meg for å bli syk",
+   "segmentId": "s2",
+   "es": "preocupación; preocuparse por"
+  },
+  {
+   "no": "grubling (en/ei), gruble over",
+   "en": "rumination; to brood over",
+   "note": "Du grubler over ting som allerede har skjedd.",
+   "segmentId": "s3",
+   "es": "rumiación; darle vueltas a algo (del pasado)"
+  },
+  {
+   "no": "håndtere",
+   "en": "to handle, to cope with",
+   "note": "lære seg å håndtere sånne negative tanker",
+   "segmentId": "s1",
+   "es": "manejar, gestionar"
+  },
+  {
+   "no": "burde vært pensum",
+   "en": "should have been on the syllabus",
+   "note": "burde + vært (past participle) = should have been; show title",
+   "segmentId": "s1",
+   "es": "debería ser materia obligatoria"
+  },
+  {
+   "no": "slite med",
+   "en": "to struggle with",
+   "note": "har jeg slitt en del med negative tanker",
+   "segmentId": "s1",
+   "es": "luchar con, tener problemas con"
+  },
+  {
+   "no": "ved hjelp av",
+   "en": "with the help of, by means of",
+   "note": "ved hjelp av en spesiell metode",
+   "segmentId": "s1",
+   "es": "con ayuda de"
+  },
+  {
+   "no": "grue seg til",
+   "en": "to dread (something coming)",
+   "note": "Jeg gruer meg til oppkjøring i morgen.",
+   "segmentId": "s2",
+   "es": "temer, darle miedo (algo que viene)"
+  },
+  {
+   "no": "kjøre opp / oppkjøring (en/ei)",
+   "en": "to take the driving test / driving test",
+   "note": "Jeg har ikke lyst til å kjøre opp i morgen.",
+   "segmentId": "s2",
+   "es": "hacer el examen de conducir / examen práctico de conducir"
+  },
+  {
+   "no": "hva-hvis-tanker",
+   "en": "what-if thoughts",
+   "note": "Bekymringer kan ofte høres ut som hva-hvis-tanker.",
+   "segmentId": "s2",
+   "es": "pensamientos de «¿y si…?»"
+  },
+  {
+   "no": "se for seg",
+   "en": "to imagine, picture",
+   "note": "man ser for seg katastrofescenarier",
+   "segmentId": "s2",
+   "es": "imaginarse"
+  },
+  {
+   "no": "sannsynlig / sannsynligvis",
+   "en": "likely / probably",
+   "note": "svært lite sannsynlig at kommer til å skje",
+   "segmentId": "s2",
+   "es": "probable / probablemente"
+  },
+  {
+   "no": "dukke opp",
+   "en": "to pop up, appear",
+   "note": "dukker typisk opp på kvelden rett før du skal sove",
+   "segmentId": "s2",
+   "es": "aparecer, surgir"
+  },
+  {
+   "no": "bli kvitt",
+   "en": "to get rid of",
+   "note": "bli kvitt negative tanker",
+   "segmentId": "s4",
+   "es": "librarse de"
+  },
+  {
+   "no": "metakognitiv terapi",
+   "en": "metacognitive therapy",
+   "note": "the method taught in the episode",
+   "segmentId": "s4",
+   "es": "terapia metacognitiva"
+  },
+  {
+   "no": "forholde seg til",
+   "en": "to relate to, deal with",
+   "note": "endre måten man forholder seg til tanker",
+   "segmentId": "s4",
+   "es": "relacionarse con, manejar"
+  },
+  {
+   "no": "i bunn og grunn",
+   "en": "basically, fundamentally",
+   "note": "handler i bunn og grunn om å endre ...",
+   "segmentId": "s4",
+   "es": "en el fondo, básicamente"
+  },
+  {
+   "no": "skyve bort",
+   "en": "to push away",
+   "note": "prøve å skyve de bort",
+   "segmentId": "s4",
+   "es": "apartar, empujar lejos"
+  },
+  {
+   "no": "oppmerksomhet (en)",
+   "en": "attention",
+   "note": "gi de tankene mer oppmerksomhet",
+   "segmentId": "s4",
+   "es": "atención"
+  },
+  {
+   "no": "forsterke",
+   "en": "to reinforce, intensify",
+   "note": "ender man opp med å forsterke den",
+   "segmentId": "s4",
+   "es": "reforzar, intensificar"
+  },
+  {
+   "no": "anerkjenne",
+   "en": "to acknowledge",
+   "note": "anerkjenn at tankene er der, og bytt tema",
+   "segmentId": "s4",
+   "es": "reconocer, aceptar"
+  },
+  {
+   "no": "bytte tema",
+   "en": "to change the subject",
+   "note": "... og bytt tema",
+   "segmentId": "s4",
+   "es": "cambiar de tema"
+  },
+  {
+   "no": "enklere sagt enn gjort",
+   "en": "easier said than done",
+   "note": "idiom",
+   "segmentId": "s4",
+   "es": "más fácil decirlo que hacerlo"
+  },
+  {
+   "no": "øvelse gjør mester",
+   "en": "practice makes perfect",
+   "note": "proverb",
+   "segmentId": "s4",
+   "es": "la práctica hace al maestro"
+  },
+  {
+   "no": "ta seg selv i å ...",
+   "en": "to catch oneself (doing)",
+   "note": "Ta deg selv i å tenke negativt",
+   "segmentId": "s4",
+   "es": "pillarse a uno mismo (haciendo algo)"
+  },
+  {
+   "no": "uten mål og mening",
+   "en": "aimlessly, pointlessly",
+   "note": "spinne videre uten mål og mening",
+   "segmentId": "s5",
+   "es": "sin rumbo ni sentido"
+  },
+  {
+   "no": "innse",
+   "en": "to realise, recognise",
+   "note": "innse hvilke problemer som er reelle",
+   "segmentId": "s5",
+   "es": "darse cuenta, reconocer"
+  },
+  {
+   "no": "der og da",
+   "en": "then and there",
+   "note": "dersom det ikke er noe du kan gjøre med det, der og da",
+   "segmentId": "s5",
+   "es": "en ese momento, ahí mismo"
+  },
+  {
+   "no": "bortkastet tid",
+   "en": "wasted time",
+   "note": "Det skaper kun unødvendig stress og er bortkastet tid.",
+   "segmentId": "s5",
+   "es": "tiempo perdido"
+  },
+  {
+   "no": "kjenne seg igjen (i)",
+   "en": "to recognise oneself (in), relate to",
+   "note": "mange som kan kjenne seg igjen i det du beskriver",
+   "segmentId": "s6",
+   "es": "identificarse (con), sentirse reflejado"
+  },
+  {
+   "no": "ta en avgjørelse",
+   "en": "to make a decision",
+   "note": "ta den avgjørelsen der og da",
+   "segmentId": "s6",
+   "es": "tomar una decisión"
+  },
+  {
+   "no": "frakoblet oppmerksomhet",
+   "en": "detached attention (detached mindfulness)",
+   "note": "technique 1",
+   "segmentId": "s7",
+   "es": "atención desconectada (mindfulness desapegado)"
+  },
+  {
+   "no": "la dem passere",
+   "en": "let them pass",
+   "note": "La tankene dukke opp, bli bevisst på at de kommer, og la dem passere.",
+   "segmentId": "s7",
+   "es": "déjalos pasar"
+  },
+  {
+   "no": "uten å dømme",
+   "en": "without judging",
+   "note": "Observer dem uten å dømme.",
+   "segmentId": "s7",
+   "es": "sin juzgar"
+  },
+  {
+   "no": "fleksibel oppmerksomhet",
+   "en": "flexible attention",
+   "note": "technique 2",
+   "segmentId": "s8",
+   "es": "atención flexible"
+  },
+  {
+   "no": "selvfølelse (en)",
+   "en": "self-esteem",
+   "note": "slutte å holde selvfølelsen lav",
+   "segmentId": "s9",
+   "es": "autoestima"
+  },
+  {
+   "no": "sammenligne seg med",
+   "en": "to compare oneself with",
+   "note": "sammenligne deg med andre",
+   "segmentId": "s9",
+   "es": "compararse con"
+  },
+  {
+   "no": "fortjene",
+   "en": "to deserve",
+   "note": "du fortjener å ha det godt",
+   "segmentId": "s9",
+   "es": "merecer"
+  },
+  {
+   "no": "en dans på roser",
+   "en": "a bed of roses",
+   "note": "livet er ikke alltid en dans på roser",
+   "segmentId": "s9",
+   "es": "un camino de rosas"
+  },
+  {
+   "no": "sitte igjen med",
+   "en": "to be left with, take away",
+   "note": "tre ting jeg ønsker at du sitter igjen med",
+   "segmentId": "s10",
+   "es": "quedarse con (una idea)"
+  }
+ ],
+ "image": "https://gfx.nrk.no/HJjHYYg-joSMXEsVS841aQGwoMmEuykyg74ssqYjNt0g.png",
+ "showImage": "https://gfx.nrk.no/sth_HzEd1L_Zc-oheoLI1Q6_lnNWjjZ_fnxAbq3EjiBQ.png",
+ "showUrl": "https://radio.nrk.no/podkast/burde_vaert_pensum",
+ "translationNote": "Traducción automática al español (generada por IA, revisada línea a línea contra el noruego). Puede contener errores.",
+ "translationNoteEs": "Traducción automática al español (generada por IA, revisada línea a línea contra el noruego). Puede contener errores.",
+ "transcriptNoteEs": "Transcripción automática del audio (Whisper), corregida a mano. NRK no publica transcripción. [uklart] = audio poco claro."
+}

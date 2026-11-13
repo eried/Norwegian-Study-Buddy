@@ -1,0 +1,6 @@
+*.mp3
+*.raw
+*.wav
+tools/site-worker.js
+tools/deploy-execute.js
+node_modules/
