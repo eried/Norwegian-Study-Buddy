@@ -42,9 +42,7 @@ button{font:inherit;color:inherit}
 .tbtn .badge{background:var(--doubt);color:#000;border-radius:999px;font-size:14px;min-width:26px;height:26px;padding:0 7px;display:inline-grid;place-items:center}
 .dot{width:14px;height:14px;border-radius:50%;background:var(--dim);display:inline-block;flex:0 0 auto}
 .dot[data-state=synced]{background:var(--go)}
-.dot[data-state=saving]{background:var(--accent);animation:pulse 1s infinite}
-.dot[data-state=local],.dot[data-state=pending],.dot[data-state=offline]{background:var(--es)}
-.dot[data-state=auth],.dot[data-state=error]{background:var(--stop)}
+.dot[data-state=saving],.dot[data-state=pending]{background:var(--go);animation:pulse 1s infinite}
 @keyframes pulse{50%{opacity:.25}}
 
 /* ---------- transcript (flexible middle, scrolls on its own) ---------- */

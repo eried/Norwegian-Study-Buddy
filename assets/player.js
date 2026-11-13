@@ -9,7 +9,6 @@
   const PREFS_KEY = "nsb:prefs";
   const prefs = Object.assign({ es: true, autoSpeak: true, autoResume: true, follow: true, askedPass: false, rate: 1, voiceURI: "" }, lsGet(PREFS_KEY, {}));
   const savePrefs = () => lsSet(PREFS_KEY, prefs);
-  let serverConfigured = null;
 
   const audio = $("#audio");
   let ep, lines = [], vocab = [], store, current = -1;
@@ -40,7 +39,6 @@
       fallbackUrl: "notes/" + slug + ".json",
       retryIntervalMs: cfg.retryIntervalMs,
     });
-    store.onAuthError = () => toast("Contraseña incorrecta: tus dudas siguen guardadas aquí");
     store.on(onStoreChange);
     store.load();
 
@@ -297,7 +295,7 @@
   function onStoreChange() {
     const list = dudas();
     $("#dudas-count").textContent = list.length;
-    $("#sync-dot").dataset.state = store.state;
+    $("#sync-dot").dataset.state = store.cloudOk ? store.state : "local";
     const marked = new Set(list.map((d) => d.lineIndex));
     lines.forEach((l) => l.node.classList.toggle("marked", marked.has(l.idx)));
     if (!$("#panel").hidden) renderDudas();
@@ -314,7 +312,7 @@
     }
     $("#dudas-list").replaceChildren(...list.map((d) => {
       const c = d.context || {};
-      return el("div", { class: "item" + (d.pending ? " syncing" : "") },
+      return el("div", { class: "item" + (d.pending && store.cloudOk ? " syncing" : "") },
         el("button", { class: "main", type: "button", onclick: () => { closePanel(); seek(d.t - 1); play(); } },
           el("span", { class: "when" }, "▶ " + fmtTime(d.t)),
           el("span", { class: "no", lang: "nb" }, d.no),
@@ -430,29 +428,15 @@
 
   // ---------- settings ----------
   function statusText() {
-    if (serverConfigured === false) {
-      return "⚠️ El servidor aún no tiene contraseña configurada. Tus dudas se guardan solo en este dispositivo.";
-    }
-    const n = store ? store.pending.length : 0;
-    switch (store && store.state) {
-      case "synced": return "✅ Guardado en la nube.";
-      case "saving": return "⏳ Guardando en la nube…";
-      case "pending": return "⏳ " + n + " cambio(s) por sincronizar.";
-      case "local": return "📱 Solo en este dispositivo" + (n ? " (" + n + " sin subir)" : "") + ". Añade la contraseña para sincronizar.";
-      case "offline": return "📴 Sin conexión. Se sincroniza al volver la conexión.";
-      case "auth": return "❌ Contraseña incorrecta. Tus dudas siguen guardadas aquí.";
-      case "error":
-        if (NSB.isPassphraseUnconfigured(store)) return "⚠️ El servidor aún no tiene contraseña configurada. Tus dudas se guardan solo en este dispositivo.";
-        return "⚠️ " + (store.detail || "Problema al sincronizar. Se reintentará.");
-      default: return NSB.passphrase.get() ? "Listo." : "📱 Solo en este dispositivo.";
-    }
+    if (store && store.cloudOk && store.state === "saving") return "Guardando…";
+    if (store && store.cloudOk && store.state === "pending") return "Guardando…";
+    if (store && store.cloudOk) return "Guardado.";
+    return "Tus dudas se guardan en este dispositivo.";
   }
   function renderStatus() {
     const box = $("#s-status");
-    const text = statusText();
-    box.textContent = text;
-    box.classList.toggle("warn", serverConfigured === false || NSB.isPassphraseUnconfigured(store));
-    box.classList.toggle("err", !!(store && store.state === "auth"));
+    box.textContent = statusText();
+    box.classList.remove("warn", "err");
   }
   function closeSettings() { $("#settings").hidden = true; }
   function closeMore() { $("#more").hidden = true; }
@@ -466,15 +450,6 @@
     $("#s-autoresume").checked = prefs.autoResume;
     $("#s-follow").checked = prefs.follow;
     $("#s-about").textContent = msg || "";
-    renderStatus();
-    checkServerConfig();
-  }
-  async function checkServerConfig() {
-    if (!cfg.workerUrl) return;
-    try {
-      const h = await fetchJSON(cfg.workerUrl.replace(/\/+$/, "") + "/health", { cache: "no-store" });
-      serverConfigured = !!(h && h.configured);
-    } catch (_) { /* offline or blocked; keep the last known status */ }
     renderStatus();
   }
   function dismissOnBackdrop(overlay, closeFn) {
@@ -538,19 +513,25 @@
     dismissOnBackdrop($("#panel"), closePanel);
     dismissOnBackdrop($("#meaning"), () => closeMeaning(true));
     dismissOnBackdrop($("#review"), () => review.stop());
-    $("#s-save").addEventListener("click", async () => {
+    $("#s-save").addEventListener("click", () => {
       const v = $("#s-pass").value.trim();
       if (v) {
         NSB.passphrase.set(v);
-        toast("Contraseña guardada en este dispositivo");
+        store.rejectedPass = null;
+        store.flush();
       }
       $("#s-pass").value = "";
       $("#s-pass").placeholder = NSB.passphrase.get() ? "•••••• (guardada)" : "Solo para guardar en la nube";
-      await checkServerConfig();
-      if (serverConfigured !== false) store.flush();
+      renderStatus();
     });
     $("#s-pass").addEventListener("keydown", (e) => { if (e.key === "Enter") $("#s-save").click(); });
-    $("#s-forget").addEventListener("click", () => { NSB.passphrase.forget(); store.setState("local"); toast("Contraseña olvidada en este dispositivo"); openSettings(); });
+    $("#s-forget").addEventListener("click", () => {
+      NSB.passphrase.forget();
+      store.rejectedPass = null;
+      store.cloudOk = false;
+      store.setState("local");
+      openSettings();
+    });
     $("#s-autospeak").addEventListener("change", (e) => { prefs.autoSpeak = e.target.checked; savePrefs(); });
     $("#s-autoresume").addEventListener("change", (e) => { prefs.autoResume = e.target.checked; savePrefs(); });
     $("#s-follow").addEventListener("change", (e) => { prefs.follow = e.target.checked; savePrefs(); });

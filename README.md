@@ -3,9 +3,11 @@
 A driving-friendly page for learning Norwegian with podcasts, with the interface in Spanish.
 Plain HTML/CSS/JS, no build step.
 
-**Live:** https://norwegian-study-buddy.erwin-ce6.workers.dev/episode.html?ep=hvordan-unnga-tankekjor
+**Hub:** https://ried.cl/Norwegian-Study-Buddy/
 
-The same files are ready to be the GitHub Pages hub at `https://eried.github.io/Norwegian-Study-Buddy/` once Pages is turned on for this repo (`main` branch, `/` root). The Cloudflare site Worker can then 301 to that hub; `tools/redirect-worker.js` is the redirect script.
+The tankekjør episode: [open the episode](https://ried.cl/Norwegian-Study-Buddy/episode.html?ep=hvordan-unnga-tankekjor).
+
+`https://eried.github.io/Norwegian-Study-Buddy/` and the previous Cloudflare address both redirect here.
 
 ## What it does
 - Plays the original NRK MP3 and shows the full transcript **line by line**, with the current line highlighted and scrolled into view.
@@ -44,7 +46,7 @@ Audio is streamed from the publisher. No audio files are committed.
 ## Hosting and deploying
 `index.html` is the hub for every language study: it groups entries by the `lang` field in `episodes/index.json` (for example `"lang": "no"`). Existing episode URLs such as `episode.html?ep=hvordan-unnga-tankekjor` stay the same. New languages can later use folders like `episodes/<lang>/<slug>/` without moving the studies already in the repo.
 
-The site currently runs on Cloudflare Worker `norwegian-study-buddy` (static files bundled into the script). Run `python3 tools/build-site-worker.py`, then upload `tools/site-worker.js`. After GitHub Pages is enabled on `main` `/`, that Worker should be replaced with `tools/redirect-worker.js`, which 301s path and query to `https://eried.github.io/Norwegian-Study-Buddy/`.
+The site is served by GitHub Pages from the `main` branch root, at `https://ried.cl/Norwegian-Study-Buddy/` (a project-site subpath on the custom domain; `eried.github.io` redirects there). Cloudflare Worker `norwegian-study-buddy` 301s path and query to that hub (`tools/redirect-worker.js`).
 
 Cloudflare Worker `norwegian-study-buddy-notes` is the save/password backend (`GET/POST /notes/<slug>`). CORS allows `https://eried.github.io` and the older Workers / Pages origins. `config.js` points at that Worker.
 

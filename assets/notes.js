@@ -26,8 +26,10 @@
       this.pending = Array.isArray(cached.pending) ? cached.pending : [];
       this.pending.forEach((op) => { op.inFlight = false; });
       this.lastSync = cached.lastSync || null;
-      this.state = this.pending.length ? "pending" : (this.lastSync ? "synced" : "idle");
+      this.state = "local";
       this.detail = "";
+      this.cloudOk = false;      // true only after a successful authenticated write
+      this.rejectedPass = null;  // last passphrase that got 401/403; do not retry it
       this.listeners = new Set();
       this.flushing = false;
       this.retryMs = opts.retryIntervalMs || 30000;
@@ -88,8 +90,15 @@
 
     changed() {
       this.persist();
-      this.setState(this.pending.length ? "pending" : "synced");
+      this.setState(this.uiState());
       this.flush();
+    }
+
+    uiState() {
+      if (this.cloudOk && this.flushing) return "saving";
+      if (this.cloudOk && this.pending.length) return "pending";
+      if (this.cloudOk) return "synced";
+      return "local";
     }
 
     async load() {
@@ -100,7 +109,7 @@
         this.server = Array.isArray(data.notes) ? data.notes : [];
         this.lastSync = new Date().toISOString();
         this.persist();
-        this.setState(this.pending.length ? "pending" : "synced");
+        this.setState(this.uiState());
       } catch (e) {
         // Worker unreachable: try the static copy committed to the repo, else keep the local cache.
         if (this.fallbackUrl) {
@@ -109,7 +118,7 @@
             if (Array.isArray(data.notes)) { this.server = data.notes; this.persist(); }
           } catch (_) { /* no static copy yet */ }
         }
-        this.setState(navigator.onLine === false ? "offline" : "error", "Couldn't reach the notes server. Showing notes saved on this device.");
+        this.setState(this.uiState());
         return;
       }
       this.flush();
@@ -118,7 +127,7 @@
     async flush() {
       if (this.flushing || !this.pending.length || !this.api) return;
       const pass = NSB.passphrase.get();
-      if (!pass) { this.setState("local", "Saved on this device. Add your passphrase to sync."); return; }
+      if (!pass || pass === this.rejectedPass) { this.setState("local"); return; }
       this.flushing = true;
       try {
         while (this.pending.length) {
@@ -142,25 +151,19 @@
             });
           } catch (netErr) {
             op.inFlight = false;
-            this.setState("offline", "Offline. Your notes are kept on this device and will sync later.");
+            this.setState(this.uiState());
             return;
           }
           op.inFlight = false;
           if (op.deleted && !res.ok) { this.pending.shift(); this.persist(); continue; }
-          if (res.status === 503) {
-            let msg = "El servidor aún no tiene contraseña configurada";
-            try {
-              const j = await res.json();
-              if (j && /passphrase not configured/i.test(j.error || "")) msg = "El servidor aún no tiene contraseña configurada";
-              else if (j && j.error) msg = j.error;
-            } catch (_) {}
-            this.setState("error", msg);
-            if (typeof NSB.toast === "function") NSB.toast(msg);
+          if (res.status === 401 || res.status === 403) {
+            this.rejectedPass = pass;
+            this.cloudOk = false;
+            this.setState("local");
             return;
           }
-          if (res.status === 401 || res.status === 403) {
-            this.setState("auth", "The passphrase was not accepted.");
-            this.emitAuth();
+          if (res.status === 503) {
+            this.setState(this.uiState());
             return;
           }
           if (res.status === 404 && op.action !== "add") {
@@ -170,14 +173,14 @@
             continue;
           }
           if (!res.ok) {
-            let msg = "Server error (" + res.status + "). Will retry.";
-            try { const j = await res.json(); if (j && j.error) msg = j.error + " (" + res.status + "). Will retry."; } catch (_) {}
-            this.setState("error", msg);
+            this.setState(this.uiState());
             return;
           }
           let data = null;
           try { data = await res.json(); } catch (_) {}
           this.pending.shift();
+          this.cloudOk = true;
+          this.rejectedPass = null;
           if (data && Array.isArray(data.notes)) this.server = data.notes;
           if (op.action === "add") {
             // Changes made while the add was in flight: replay them against the new server id.
@@ -188,36 +191,24 @@
           this.lastSync = new Date().toISOString();
           this.persist();
         }
-        this.setState("synced");
+        this.setState(this.uiState());
       } finally {
         this.flushing = false;
+        this.setState(this.uiState());
       }
     }
-
-    emitAuth() { if (typeof this.onAuthError === "function") this.onAuthError(); }
 
     exportJSON() {
       return JSON.stringify({ slug: this.slug, exported: new Date().toISOString(), notes: this.notes.map(({ _pending, ...n }) => n) }, null, 2);
     }
   }
 
-  NSB.isPassphraseUnconfigured = function (store) {
-    return !!(store && store.detail && /contraseña configurada|passphrase not configured/i.test(store.detail));
-  };
-
   NSB.NotesStore = NotesStore;
 
   NSB.syncLabel = function (store) {
-    const n = store.pending.length;
-    switch (store.state) {
-      case "synced": return ["Synced", "All notes saved to GitHub"];
-      case "saving": return ["Saving…", "Saving to GitHub"];
-      case "pending": return [n + " unsaved", n + " change(s) waiting to sync"];
-      case "local": return ["On this device", "Add your passphrase to sync " + n + " change(s)"];
-      case "offline": return ["Offline", n ? n + " change(s) will sync when you're back online" : "Showing cached notes"];
-      case "auth": return ["Passphrase?", "The passphrase was not accepted"];
-      case "error": return [NSB.isPassphraseUnconfigured(store) ? "Sin configurar" : "Sync problem", store.detail || "Will retry"];
-      default: return ["Notes", "Notes"];
-    }
+    if (store && store.cloudOk && store.state === "saving") return ["Saving…", "Saving"];
+    if (store && store.cloudOk && store.state === "pending") return ["Saving…", "Saving"];
+    if (store && store.cloudOk) return ["Synced", "Saved"];
+    return ["Ready", "Saved on this device"];
   };
 })();
