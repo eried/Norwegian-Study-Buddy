@@ -22,6 +22,7 @@
     <symbol id="i-trash" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></symbol>
     <symbol id="i-list" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M8 6h13M8 12h13M8 18h13"/><circle cx="3.5" cy="6" r="1.5" fill="currentColor"/><circle cx="3.5" cy="12" r="1.5" fill="currentColor"/><circle cx="3.5" cy="18" r="1.5" fill="currentColor"/></symbol>
     <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="2.2"/><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M12 2.5l1.6 2.6 3-.8.8 3 2.6 1.6-1.4 2.9 1.4 2.9-2.6 1.6-.8 3-3-.8L12 21.5l-1.6-2.6-3 .8-.8-3-2.6-1.6L5.4 12 4 9.1l2.6-1.6.8-3 3 .8z"/></symbol>
+    <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="2.3" fill="currentColor"/><circle cx="12" cy="12" r="2.3" fill="currentColor"/><circle cx="19" cy="12" r="2.3" fill="currentColor"/></symbol>
     <symbol id="i-home" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M15 5l-7 7 7 7"/></symbol>
     <symbol id="i-x" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></symbol>
     <symbol id="i-replay" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5"/></symbol>
@@ -33,7 +34,7 @@
     <a class="tbtn" href="./" aria-label="Volver a la lista"><svg width="26" height="26"><use href="#i-home"/></svg></a>
     <div class="title"><b id="ep-title"></b><small id="ep-show"></small></div>
     <button class="tbtn" id="btn-dudas" type="button" aria-label="Mis dudas"><svg width="26" height="26"><use href="#i-list"/></svg><span class="badge" id="dudas-count">0</span></button>
-    <button class="tbtn" id="btn-settings" type="button" aria-label="Ajustes y sincronización"><span class="dot" id="sync-dot"></span><svg width="24" height="24"><use href="#i-gear"/></svg></button>
+    <button class="tbtn" id="btn-more" type="button" aria-label="Más opciones" aria-haspopup="dialog" aria-controls="more"><span class="dot" id="sync-dot"></span><svg width="26" height="26"><use href="#i-more"/></svg></button>
   </header>
 
   <main class="stage" id="stage" aria-label="Transcripción"></main>
@@ -44,25 +45,19 @@
       <input id="seek" type="range" min="0" max="1296" step="1" value="0" aria-label="Posición">
       <span id="t-dur">0:00</span>
     </div>
-    <button class="doubt" id="btn-doubt" type="button" aria-keyshortcuts="N"><svg><use href="#i-q"/></svg>No entendí</button>
-    <div class="row3">
-      <button class="big" id="btn-back" type="button" aria-label="Atrás 10 segundos (mantén para línea anterior)"><svg><use href="#i-back"/></svg><span>−10 s</span></button>
+    <div class="row-main">
+      <button class="big" id="btn-prev" type="button" aria-label="Línea anterior"><svg><use href="#i-prev"/></svg><span>Línea</span></button>
       <button class="big play" id="btn-play" type="button" aria-label="Reproducir"><svg><use id="play-icon" href="#i-play"/></svg><span id="play-label">Play</span></button>
-      <button class="big" id="btn-fwd" type="button" aria-label="Adelante 10 segundos (mantén para línea siguiente)"><svg><use href="#i-fwd"/></svg><span>+10 s</span></button>
-    </div>
-    <div class="row4">
-      <button class="mini" id="btn-prev" type="button" aria-label="Línea anterior"><svg><use href="#i-prev"/></svg>Línea</button>
-      <button class="mini" id="btn-speak" type="button" aria-label="Leer en español"><svg><use href="#i-speak"/></svg>Leer ES</button>
-      <button class="mini" id="btn-es" type="button" aria-pressed="true" aria-label="Mostrar español">ES</button>
-      <button class="mini" id="btn-next" type="button" aria-label="Línea siguiente">Línea<svg><use href="#i-next"/></svg></button>
+      <button class="doubt" id="btn-doubt" type="button" aria-keyshortcuts="N"><svg><use href="#i-q"/></svg>No entendí</button>
+      <button class="big" id="btn-next" type="button" aria-label="Línea siguiente"><svg><use href="#i-next"/></svg><span>Línea</span></button>
     </div>
   </section>
 
   <audio id="audio" preload="metadata"></audio>
 
   <!-- "Esto significa" card -->
-  <div class="overlay" id="meaning" hidden role="dialog" aria-modal="true" aria-labelledby="m-es">
-    <div class="meaning">
+  <div class="overlay" id="meaning" hidden>
+    <div class="meaning-card meaning" role="dialog" aria-modal="true" aria-labelledby="m-es">
       <div class="kicker">Esto significa:</div>
       <div class="es-big" id="m-es"></div>
       <div class="no-big" id="m-no" lang="nb"></div>
@@ -77,10 +72,11 @@
   </div>
 
   <!-- Mis dudas / Vocabulario / Apuntes -->
-  <div class="overlay" id="panel" hidden role="dialog" aria-modal="true" aria-labelledby="panel-title">
+  <div class="overlay" id="panel" hidden>
+    <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="panel-title">
     <div class="panel-head">
       <h2 id="panel-title">Mis dudas</h2>
-      <button class="tbtn" id="panel-close" type="button" aria-label="Cerrar"><svg width="28" height="28"><use href="#i-x"/></svg></button>
+      <button class="btn-cerrar" id="panel-close" type="button">✕ Cerrar</button>
     </div>
     <div class="tabs" role="tablist">
       <button class="tab" role="tab" data-tab="dudas" aria-selected="true">Mis dudas</button>
@@ -93,11 +89,13 @@
     </div>
     <div data-pane="vocab" hidden><div class="list vocab" id="vocab-list"></div></div>
     <div data-pane="notes" hidden><div class="md" id="study-notes"><p class="hint">Cargando…</p></div></div>
+    <button class="btn-cerrar wide" id="panel-close-2" type="button">Cerrar</button>
+    </div>
   </div>
 
   <!-- Review mode -->
-  <div class="overlay" id="review" hidden role="dialog" aria-modal="true" aria-label="Repaso">
-    <div class="review">
+  <div class="overlay" id="review" hidden>
+    <div class="review-card review" role="dialog" aria-modal="true" aria-label="Repaso">
       <div class="count" id="r-count"></div>
       <div class="phase" id="r-phase"></div>
       <div class="meaning" style="margin:0">
@@ -113,10 +111,41 @@
   </div>
 
   <!-- Settings -->
-  <div class="overlay" id="settings" hidden role="dialog" aria-modal="true" aria-labelledby="s-title">
+  <div class="overlay" id="more" hidden>
+    <div class="menu-card" role="dialog" aria-modal="true" aria-labelledby="more-title">
+      <div class="panel-head">
+        <h2 id="more-title">Más</h2>
+        <button class="btn-cerrar" id="more-close" type="button">✕ Cerrar</button>
+      </div>
+      <div class="menu-body">
+        <div class="menu-row">
+          <button class="big" id="btn-back" type="button" aria-label="Atrás 10 segundos"><svg><use href="#i-back"/></svg><span>−10 s</span></button>
+          <button class="big" id="btn-fwd" type="button" aria-label="Adelante 10 segundos"><svg><use href="#i-fwd"/></svg><span>+10 s</span></button>
+        </div>
+        <div class="menu-label">Velocidad</div>
+        <div class="speed" id="speed" role="group" aria-label="Velocidad de reproducción">
+          <button type="button" data-rate="0.75">0.75×</button>
+          <button type="button" data-rate="1" aria-pressed="true">1×</button>
+          <button type="button" data-rate="1.25">1.25×</button>
+          <button type="button" data-rate="1.5">1.5×</button>
+        </div>
+        <label class="menu-label" for="more-voice">Voz en español
+          <select id="more-voice"><option value="">Automática (es-ES)</option></select>
+        </label>
+        <div class="menu-row">
+          <button class="act" id="btn-speak" type="button"><svg><use href="#i-speak"/></svg>Leer ES</button>
+          <button class="act" id="btn-es" type="button" aria-pressed="true">ES visible</button>
+        </div>
+        <button class="act" id="btn-settings" type="button"><svg><use href="#i-gear"/></svg>Ajustes y contraseña</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="settings" hidden>
+    <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="s-title">
     <div class="panel-head">
       <h2 id="s-title">Ajustes</h2>
-      <button class="tbtn" id="settings-close" type="button" aria-label="Cerrar"><svg width="28" height="28"><use href="#i-x"/></svg></button>
+      <button class="btn-cerrar" id="settings-close" type="button">✕ Cerrar</button>
     </div>
     <div class="form">
       <div class="status" id="s-status"></div>
@@ -134,6 +163,8 @@
       <button class="act" id="s-export" type="button">Exportar mis dudas (JSON)</button>
       <p class="hint" id="s-about"></p>
       <p class="hint">Atajos de teclado: Espacio = play/pausa · ← → = 10 s · ↑ ↓ = línea · N = No entendí · L = leer en español · E = mostrar español · D = Mis dudas</p>
+      <button class="btn-cerrar wide" id="settings-close-2" type="button">Cerrar</button>
+    </div>
     </div>
   </div>
 

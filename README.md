@@ -3,7 +3,11 @@
 A driving-friendly page for learning Norwegian with podcasts, with the interface in Spanish.
 Plain HTML/CSS/JS, no build step.
 
-**Live:** https://norwegian-study-buddy.erwin-ce6.workers.dev/episode.html?ep=hvordan-unnga-tankekjor
+**Hub (GitHub Pages):** https://eried.github.io/Norwegian-Study-Buddy/
+
+The same player, with the tankekjør episode already loaded: [open the episode](https://eried.github.io/Norwegian-Study-Buddy/episode.html?ep=hvordan-unnga-tankekjor).
+
+The previous Cloudflare address redirects here, so old links keep working.
 
 ## What it does
 - Plays the original NRK MP3 and shows the full transcript **line by line**, with the current line highlighted and scrolled into view.
@@ -30,7 +34,7 @@ notes/<slug>.json          written by the Worker (do not edit by hand)
 
 ## Saving without a login
 1. **localStorage first.** Every duda is saved on the device right away, so it works offline.
-2. **Optional cloud sync.** Enter a shared passphrase once in Ajustes. The page sends each change to the Cloudflare Worker `norwegian-study-buddy-notes` (`GET/POST /notes/<slug>`, header `X-Passphrase`). The Worker commits `notes/<slug>.json` to this repo using its own fine-grained GitHub token, so no token ever reaches the browser. A duda is stored as a note of type `highlight` whose `text` is the duda's JSON (`kind: "duda"`).
+2. **Optional cloud sync.** Enter a shared passphrase once in Ajustes. The page sends each change to the Cloudflare Worker `norwegian-study-buddy-notes` (`GET/POST /notes/<slug>`, header `X-Passphrase`). The Worker commits `notes/<slug>.json` to this repo using its own fine-grained GitHub token, so no token ever reaches the browser. A duda is stored as a note of type `highlight` whose `text` is the duda's JSON (`kind: "duda"`). If `SAVE_PASSPHRASE` has not been set on the Worker, `/health` reports `configured: false`, writes return HTTP 503 (`passphrase not configured on server`), and Ajustes explains in Spanish that the server has no password yet. Your dudas still stay on the device.
 3. Changes made offline or before a passphrase is entered are queued and sync later. The sync dot on the gear button shows the status: green = synced, yellow = only on this device or pending, red = wrong passphrase or error.
 
 Note: the repo is public, so synced dudas are public too.
@@ -40,7 +44,10 @@ Add `episodes/<slug>/transcript.json` in the same shape and list it in `episodes
 Audio is streamed from the publisher. No audio files are committed.
 
 ## Hosting and deploying
-The site is hosted on Cloudflare as the Worker `norwegian-study-buddy`, with the static files bundled into the script.
-Run `python3 tools/build-site-worker.py`, then upload `tools/site-worker.js` as the Worker's module.
-It is not deployed with GitHub Pages. A Cloudflare Pages project (`norwegian-study-buddy.pages.dev`) can serve the same files unchanged,
-and the notes Worker's CORS rules already allow `*.norwegian-study-buddy.pages.dev`.
+The site is the GitHub Pages hub for every language study: `https://eried.github.io/Norwegian-Study-Buddy/` (main branch, `/` root).
+`index.html` groups studies by the `lang` field in `episodes/index.json` (for example `"lang": "no"`). Existing episode URLs such as `episode.html?ep=hvordan-unnga-tankekjor` stay the same. New languages can later use folders like `episodes/<lang>/<slug>/` without moving the studies already in the repo.
+
+Cloudflare Worker `norwegian-study-buddy` is only a 301 redirect to the Pages hub, keeping the path and query string.
+Cloudflare Worker `norwegian-study-buddy-notes` remains the save/password backend (`GET/POST /notes/<slug>`). CORS allows `https://eried.github.io` and the older Workers / Pages origins. `config.js` points at that Worker.
+
+To update the notes Worker, upload `tools/notes-worker.js` (keep the existing `GITHUB_TOKEN` binding; set `SAVE_PASSPHRASE` separately). The optional bundled-site helper is still `python3 tools/build-site-worker.py`.

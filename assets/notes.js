@@ -7,9 +7,9 @@
 
   NSB.passphrase = {
     get: () => {
-      try { return localStorage.getItem(PASS_KEY) || ""; } catch (e) { return ""; }
+      try { return (localStorage.getItem(PASS_KEY) || "").trim(); } catch (e) { return ""; }
     },
-    set: (v) => { try { localStorage.setItem(PASS_KEY, v); } catch (e) {} },
+    set: (v) => { try { localStorage.setItem(PASS_KEY, String(v || "").trim()); } catch (e) {} },
     forget: () => { try { localStorage.removeItem(PASS_KEY); } catch (e) {} },
   };
 
@@ -147,6 +147,17 @@
           }
           op.inFlight = false;
           if (op.deleted && !res.ok) { this.pending.shift(); this.persist(); continue; }
+          if (res.status === 503) {
+            let msg = "El servidor aún no tiene contraseña configurada";
+            try {
+              const j = await res.json();
+              if (j && /passphrase not configured/i.test(j.error || "")) msg = "El servidor aún no tiene contraseña configurada";
+              else if (j && j.error) msg = j.error;
+            } catch (_) {}
+            this.setState("error", msg);
+            if (typeof NSB.toast === "function") NSB.toast(msg);
+            return;
+          }
           if (res.status === 401 || res.status === 403) {
             this.setState("auth", "The passphrase was not accepted.");
             this.emitAuth();
@@ -190,6 +201,10 @@
     }
   }
 
+  NSB.isPassphraseUnconfigured = function (store) {
+    return !!(store && store.detail && /contraseña configurada|passphrase not configured/i.test(store.detail));
+  };
+
   NSB.NotesStore = NotesStore;
 
   NSB.syncLabel = function (store) {
@@ -201,7 +216,7 @@
       case "local": return ["On this device", "Add your passphrase to sync " + n + " change(s)"];
       case "offline": return ["Offline", n ? n + " change(s) will sync when you're back online" : "Showing cached notes"];
       case "auth": return ["Passphrase?", "The passphrase was not accepted"];
-      case "error": return ["Sync problem", store.detail || "Will retry"];
+      case "error": return [NSB.isPassphraseUnconfigured(store) ? "Sin configurar" : "Sync problem", store.detail || "Will retry"];
       default: return ["Notes", "Notes"];
     }
   };

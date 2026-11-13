@@ -4,3 +4,4 @@
 tools/site-worker.js
 tools/deploy-execute.js
 node_modules/
+tools/deploy-*-execute.js

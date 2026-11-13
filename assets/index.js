@@ -8,18 +8,72 @@
     return s;
   };
 
+  const LANGS = {
+    no: { name: "Noruego", flag: "🇳🇴", titleLang: "nb" },
+    en: { name: "Inglés", flag: "🇬🇧", titleLang: "en" },
+    es: { name: "Español", flag: "🇪🇸", titleLang: "es" },
+    de: { name: "Alemán", flag: "🇩🇪", titleLang: "de" },
+    fr: { name: "Francés", flag: "🇫🇷", titleLang: "fr" },
+    sv: { name: "Sueco", flag: "🇸🇪", titleLang: "sv" },
+    da: { name: "Danés", flag: "🇩🇰", titleLang: "da" },
+  };
+  const langInfo = (code) => LANGS[code] || { name: code, flag: "", titleLang: "en" };
+
+  function card(ep) {
+    const lang = langInfo(ep.lang);
+    return el("a", { class: "ep", href: "episode.html?ep=" + encodeURIComponent(ep.slug) },
+      ep.image ? el("img", { src: ep.image, alt: "" }) : null,
+      el("div", null, el("b", { lang: lang.titleLang }, ep.title),
+        el("small", null, [ep.show, fmtDuration(ep.durationSec), fmtDate(ep.published)].filter(Boolean).join(" · ")),
+        ep.descriptionEs && el("small", null, ep.descriptionEs)),
+      el("span", { class: "go", "aria-hidden": "true" }, playIcon()));
+  }
+
   (async function () {
     const box = $("#episodes");
+    const filters = $("#lang-filters");
     try {
       const data = await fetchJSON("episodes/index.json", { cache: "no-cache" });
       const eps = (data.episodes || []).slice().sort((a, b) => String(b.published).localeCompare(String(a.published)));
-      box.replaceChildren(...eps.map((ep) => el("a", { class: "ep", href: "episode.html?ep=" + encodeURIComponent(ep.slug) },
-        ep.image ? el("img", { src: ep.image, alt: "" }) : null,
-        el("div", null, el("b", { lang: "nb" }, ep.title),
-          el("small", null, [ep.show, fmtDuration(ep.durationSec), fmtDate(ep.published)].filter(Boolean).join(" · ")),
-          ep.descriptionEs && el("small", null, ep.descriptionEs)),
-        el("span", { class: "go", "aria-hidden": "true" }, playIcon()))));
-      if (!eps.length) box.replaceChildren(el("div", { class: "empty" }, "Todavía no hay episodios."));
+      const langs = [...new Set(eps.map((e) => e.lang || "no"))];
+      let current = langs.length === 1 ? langs[0] : "all";
+
+      function paintFilters() {
+        if (!filters) return;
+        const chips = [el("button", { class: "chip", type: "button", "data-lang": "all", "aria-pressed": String(current === "all") }, "Todos")];
+        for (const code of langs) {
+          const L = langInfo(code);
+          chips.push(el("button", { class: "chip", type: "button", "data-lang": code, "aria-pressed": String(current === code) }, (L.flag ? L.flag + " " : "") + L.name));
+        }
+        filters.replaceChildren(...chips);
+        filters.querySelectorAll(".chip").forEach((b) => b.addEventListener("click", () => { current = b.dataset.lang; render(); }));
+      }
+
+      function render() {
+        paintFilters();
+        const visible = current === "all" ? eps : eps.filter((e) => (e.lang || "no") === current);
+        if (!visible.length) {
+          box.replaceChildren(el("div", { class: "empty" }, "Todavía no hay estudios en este idioma."));
+          return;
+        }
+        if (current === "all" && langs.length > 1) {
+          const nodes = [];
+          for (const code of langs) {
+            const group = visible.filter((e) => (e.lang || "no") === code);
+            if (!group.length) continue;
+            const L = langInfo(code);
+            nodes.push(el("section", { class: "lang-group" },
+              el("h2", null, (L.flag ? L.flag + " " : "") + L.name),
+              ...group.map(card)));
+          }
+          box.replaceChildren(...nodes);
+        } else {
+          box.replaceChildren(...visible.map(card));
+        }
+      }
+
+      if (!eps.length) box.replaceChildren(el("div", { class: "empty" }, "Todavía no hay estudios."));
+      else render();
     } catch (e) {
       box.replaceChildren(el("div", { class: "empty" }, "No se pudo cargar la lista (" + e.message + ")."));
     }

@@ -7,8 +7,9 @@
   const params = new URLSearchParams(location.search);
   const slug = (params.get("ep") || "hvordan-unnga-tankekjor").replace(/[^a-z0-9-]/g, "");
   const PREFS_KEY = "nsb:prefs";
-  const prefs = Object.assign({ es: true, autoSpeak: true, autoResume: true, follow: true, askedPass: false }, lsGet(PREFS_KEY, {}));
+  const prefs = Object.assign({ es: true, autoSpeak: true, autoResume: true, follow: true, askedPass: false, rate: 1, voiceURI: "" }, lsGet(PREFS_KEY, {}));
   const savePrefs = () => lsSet(PREFS_KEY, prefs);
+  let serverConfigured = null;
 
   const audio = $("#audio");
   let ep, lines = [], vocab = [], store, current = -1;
@@ -46,16 +47,10 @@
     $("#loading").hidden = true;
     $("#top").hidden = false;
     $("#dock").hidden = false;
-    const ro = new ResizeObserver(() => document.documentElement.style.setProperty("--dock-h", $("#dock").offsetHeight + "px"));
-    ro.observe($("#dock"));
     setupMediaSession();
     wire();
+    applyRate();
     setCurrent(0, false);
-
-    if (!NSB.passphrase.get() && !prefs.askedPass) {
-      prefs.askedPass = true; savePrefs();
-      openSettings("Opcional: escribe tu contraseña una vez para guardar tus dudas en la nube. Sin ella se guardan solo en este dispositivo.");
-    }
   }
 
   // ---------- transcript ----------
@@ -184,9 +179,29 @@
   function pickVoice() {
     if (!("speechSynthesis" in window)) return;
     const vs = speechSynthesis.getVoices();
-    voice = vs.find((v) => /^es[-_]ES/i.test(v.lang)) || vs.find((v) => /^es/i.test(v.lang)) || null;
+    voice = (prefs.voiceURI && vs.find((v) => v.voiceURI === prefs.voiceURI))
+      || vs.find((v) => /^es[-_]ES/i.test(v.lang))
+      || vs.find((v) => /^es/i.test(v.lang))
+      || null;
+    fillVoices(vs);
+  }
+  function fillVoices(vs) {
+    const sel = $("#more-voice");
+    if (!sel) return;
+    const list = (vs || []).filter((v) => /^es/i.test(v.lang));
+    const cur = prefs.voiceURI || "";
+    sel.replaceChildren(el("option", { value: "" }, "Automática (es-ES)"));
+    for (const v of list) sel.append(el("option", { value: v.voiceURI }, v.name + " (" + v.lang + ")"));
+    if (cur && !list.some((v) => v.voiceURI === cur)) sel.append(el("option", { value: cur }, "Voz guardada"));
+    sel.value = cur;
   }
   if ("speechSynthesis" in window) { pickVoice(); speechSynthesis.addEventListener?.("voiceschanged", pickVoice); }
+
+  function applyRate() {
+    const r = Number(prefs.rate) || 1;
+    audio.playbackRate = r;
+    $$("#speed [data-rate]").forEach((b) => b.setAttribute("aria-pressed", String(Number(b.dataset.rate) === r)));
+  }
 
   function speakEs(text, { resume = true } = {}) {
     return new Promise((resolve) => {
@@ -415,6 +430,9 @@
 
   // ---------- settings ----------
   function statusText() {
+    if (serverConfigured === false) {
+      return "⚠️ El servidor aún no tiene contraseña configurada. Tus dudas se guardan solo en este dispositivo.";
+    }
     const n = store ? store.pending.length : 0;
     switch (store && store.state) {
       case "synced": return "✅ Guardado en la nube.";
@@ -423,12 +441,24 @@
       case "local": return "📱 Solo en este dispositivo" + (n ? " (" + n + " sin subir)" : "") + ". Añade la contraseña para sincronizar.";
       case "offline": return "📴 Sin conexión. Se sincroniza al volver la conexión.";
       case "auth": return "❌ Contraseña incorrecta. Tus dudas siguen guardadas aquí.";
-      case "error": return "⚠️ Problema al sincronizar. Se reintentará.";
+      case "error":
+        if (NSB.isPassphraseUnconfigured(store)) return "⚠️ El servidor aún no tiene contraseña configurada. Tus dudas se guardan solo en este dispositivo.";
+        return "⚠️ " + (store.detail || "Problema al sincronizar. Se reintentará.");
       default: return NSB.passphrase.get() ? "Listo." : "📱 Solo en este dispositivo.";
     }
   }
-  function renderStatus() { $("#s-status").textContent = statusText(); }
+  function renderStatus() {
+    const box = $("#s-status");
+    const text = statusText();
+    box.textContent = text;
+    box.classList.toggle("warn", serverConfigured === false || NSB.isPassphraseUnconfigured(store));
+    box.classList.toggle("err", !!(store && store.state === "auth"));
+  }
+  function closeSettings() { $("#settings").hidden = true; }
+  function closeMore() { $("#more").hidden = true; }
+  function openMore() { $("#more").hidden = false; applyRate(); pickVoice(); }
   function openSettings(msg) {
+    closeMore();
     $("#settings").hidden = false;
     $("#s-pass").value = "";
     $("#s-pass").placeholder = NSB.passphrase.get() ? "•••••• (guardada)" : "Solo para guardar en la nube";
@@ -437,11 +467,24 @@
     $("#s-follow").checked = prefs.follow;
     $("#s-about").textContent = msg || "";
     renderStatus();
+    checkServerConfig();
+  }
+  async function checkServerConfig() {
+    if (!cfg.workerUrl) return;
+    try {
+      const h = await fetchJSON(cfg.workerUrl.replace(/\/+$/, "") + "/health", { cache: "no-store" });
+      serverConfigured = !!(h && h.configured);
+    } catch (_) { /* offline or blocked; keep the last known status */ }
+    renderStatus();
+  }
+  function dismissOnBackdrop(overlay, closeFn) {
+    overlay.addEventListener("click", (e) => { if (e.target === overlay) closeFn(); });
   }
 
   function applyEs() {
     document.body.classList.toggle("no-es", !prefs.es);
     $("#btn-es").setAttribute("aria-pressed", String(prefs.es));
+    $("#btn-es").textContent = prefs.es ? "ES visible" : "ES oculto";
   }
 
   // ---------- wiring ----------
@@ -455,13 +498,19 @@
 
   function wire() {
     $("#btn-play").addEventListener("click", toggle);
-    holdable($("#btn-back"), () => skip(-10), () => lineStep(-1));
-    holdable($("#btn-fwd"), () => skip(10), () => lineStep(1));
+    $("#btn-back").addEventListener("click", () => skip(-10));
+    $("#btn-fwd").addEventListener("click", () => skip(10));
     $("#btn-prev").addEventListener("click", () => lineStep(-1));
     $("#btn-next").addEventListener("click", () => lineStep(1));
     $("#btn-doubt").addEventListener("click", markDoubt);
     $("#btn-speak").addEventListener("click", () => { const l = lines[lineAt(audio.currentTime)]; speakEs(l.es); });
     $("#btn-es").addEventListener("click", () => { prefs.es = !prefs.es; savePrefs(); applyEs(); });
+    $$("#speed [data-rate]").forEach((b) => b.addEventListener("click", () => {
+      prefs.rate = Number(b.dataset.rate) || 1; savePrefs(); applyRate();
+    }));
+    $("#more-voice").addEventListener("change", (e) => {
+      prefs.voiceURI = e.target.value; savePrefs(); pickVoice();
+    });
     const s = $("#seek");
     s.addEventListener("input", () => { seeking = true; $("#t-cur").textContent = fmtTime(+s.value); });
     s.addEventListener("change", () => { seeking = false; seek(+s.value); });
@@ -472,18 +521,33 @@
 
     $("#btn-dudas").addEventListener("click", () => openPanel("dudas"));
     $("#panel-close").addEventListener("click", closePanel);
+    $("#panel-close-2").addEventListener("click", closePanel);
     $$(".tab[data-tab]").forEach((b) => b.addEventListener("click", () => selectTab(b.dataset.tab)));
     $("#btn-review").addEventListener("click", () => review.start());
     $("#r-stop").addEventListener("click", () => review.stop());
     $("#r-prev").addEventListener("click", () => review.go(-1));
     $("#r-next").addEventListener("click", () => review.go(1));
 
+    $("#btn-more").addEventListener("click", openMore);
+    $("#more-close").addEventListener("click", closeMore);
     $("#btn-settings").addEventListener("click", () => openSettings());
-    $("#settings-close").addEventListener("click", () => ($("#settings").hidden = true));
-    $("#s-save").addEventListener("click", () => {
+    $("#settings-close").addEventListener("click", closeSettings);
+    $("#settings-close-2").addEventListener("click", closeSettings);
+    dismissOnBackdrop($("#more"), closeMore);
+    dismissOnBackdrop($("#settings"), closeSettings);
+    dismissOnBackdrop($("#panel"), closePanel);
+    dismissOnBackdrop($("#meaning"), () => closeMeaning(true));
+    dismissOnBackdrop($("#review"), () => review.stop());
+    $("#s-save").addEventListener("click", async () => {
       const v = $("#s-pass").value.trim();
-      if (v) { NSB.passphrase.set(v); toast("Contraseña guardada"); store.flush(); }
-      $("#settings").hidden = true;
+      if (v) {
+        NSB.passphrase.set(v);
+        toast("Contraseña guardada en este dispositivo");
+      }
+      $("#s-pass").value = "";
+      $("#s-pass").placeholder = NSB.passphrase.get() ? "•••••• (guardada)" : "Solo para guardar en la nube";
+      await checkServerConfig();
+      if (serverConfigured !== false) store.flush();
     });
     $("#s-pass").addEventListener("keydown", (e) => { if (e.key === "Enter") $("#s-save").click(); });
     $("#s-forget").addEventListener("click", () => { NSB.passphrase.forget(); store.setState("local"); toast("Contraseña olvidada en este dispositivo"); openSettings(); });
@@ -501,7 +565,9 @@
       if (e.key === "Escape") {
         if (!$("#meaning").hidden) return closeMeaning(true);
         if (review.active) return review.stop();
-        $("#panel").hidden = true; $("#settings").hidden = true; return;
+        if (!$("#settings").hidden) return closeSettings();
+        if (!$("#more").hidden) return closeMore();
+        $("#panel").hidden = true; return;
       }
       const k = e.key.toLowerCase();
       const map = {
