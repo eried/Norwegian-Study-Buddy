@@ -6,6 +6,7 @@ const ALLOWED = [
   "https://norwegian-study-buddy.pages.dev",
   "https://norwegian-study-buddy.erwin-ce6.workers.dev",
   "https://eried.github.io",
+  "https://ried.cl",
   "http://localhost:8000",
   "http://127.0.0.1:8000",
 ];

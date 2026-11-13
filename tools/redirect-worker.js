@@ -1,4 +1,5 @@
 // 301 the old workers.dev host to the GitHub Pages hub, keeping path and query.
+// eried.github.io currently 301s to the custom domain https://ried.cl/<repo>/
 const HUB = "https://eried.github.io/Norwegian-Study-Buddy";
 export default {
   async fetch(request) {
