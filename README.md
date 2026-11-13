@@ -38,3 +38,9 @@ Note: the repo is public, so synced dudas are public too.
 ## Adding an episode
 Add `episodes/<slug>/transcript.json` in the same shape and list it in `episodes/index.json`.
 Audio is streamed from the publisher. No audio files are committed.
+
+## Hosting and deploying
+The site is hosted on Cloudflare as the Worker `norwegian-study-buddy`, with the static files bundled into the script.
+Run `python3 tools/build-site-worker.py`, then upload `tools/site-worker.js` as the Worker's module.
+It is not deployed with GitHub Pages. A Cloudflare Pages project (`norwegian-study-buddy.pages.dev`) can serve the same files unchanged,
+and the notes Worker's CORS rules already allow `*.norwegian-study-buddy.pages.dev`.

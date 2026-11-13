@@ -8,7 +8,7 @@ for dp,dn,fn in os.walk(root):
   dn[:]=[d for d in dn if d not in ('.git','tools')]
   for f in fn:
     p=os.path.join(dp,f); rel='/'+os.path.relpath(p,root)
-    if f in('.gitkeep','.nojekyll') or rel=='/README.md': continue
+    if f.startswith('.') or rel=='/README.md': continue
     t=open(p,encoding='utf-8').read()
     files[rel]={'t':types[os.path.splitext(f)[1]],'e':'"'+hashlib.sha256(t.encode()).hexdigest()[:16]+'"','b':t}
 worker="const FILES = "+json.dumps(files,ensure_ascii=False)+""";
