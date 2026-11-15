@@ -280,6 +280,14 @@
       "type": "highlight",
       "text": "{\"kind\":\"duda\",\"id\":\"d-mwi776ja\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":1129.83,\"lineIndex\":236,\"no\":\"og for all del, slutt å spille av alle flauser og ting du har sagt feil på repeat i hodet.\",\"es\":\"y, sobre todo, deja de repetir en bucle en tu cabeza todas las meteduras de pata y cosas que dijiste mal.\",\"context\":{\"prev\":{\"no\":\"Granske deg selv etter feil, si negative ting til deg selv, sammenligne deg med andre,\",\"es\":\"examinarte buscando fallos, decirte cosas negativas, compararte con los demás,\",\"lineIndex\":235},\"next\":{\"no\":\"For jo mer du graver i disse tankene, jo verre blir det.\",\"es\":\"Porque cuanto más escarbas en esos pensamientos, peor se pone.\",\"lineIndex\":237}},\"vocab\":[],\"created\":\"2026-11-15T18:58:48.406Z\"}",
       "created": "2026-11-15T18:58:48.871Z"
+    },
+    {
+      "id": "3718d846-5f1c-4dbb-a098-e7fc7396671d",
+      "segmentId": "s9",
+      "start": 1143.27,
+      "type": "highlight",
+      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi77y2y\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":1143.27,\"lineIndex\":238,\"no\":\"Så neste gang du prater negativt til deg selv, bli bevisst på det og la det gå.\",\"es\":\"Así que la próxima vez que te hables en negativo, date cuenta y déjalo ir.\",\"context\":{\"prev\":{\"no\":\"For jo mer du graver i disse tankene, jo verre blir det.\",\"es\":\"Porque cuanto más escarbas en esos pensamientos, peor se pone.\",\"lineIndex\":237},\"next\":{\"no\":\"Det kan ta lang tid å lære seg dette.\",\"es\":\"Aprender esto puede llevar mucho tiempo.\",\"lineIndex\":239}},\"vocab\":[],\"created\":\"2026-11-15T18:59:24.106Z\"}",
+      "created": "2026-11-15T18:59:24.680Z"
     }
   ]
 }
