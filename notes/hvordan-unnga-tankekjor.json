@@ -24,14 +24,6 @@
       "type": "highlight",
       "text": "{\"kind\":\"duda\",\"id\":\"d-mwi3s7j8\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":44.5,\"lineIndex\":8,\"no\":\"Sånn her har jeg, og kanskje du også, ligget mange netter, og tenkt, og grublet.\",\"es\":\"Así me he pasado muchas noches, y quizá tú también, pensando y dándole vueltas.\",\"context\":{\"prev\":{\"no\":\"Hvorfor har jeg ikke kontroll på livet mitt?\",\"es\":\"¿Por qué no tengo control sobre mi vida?\"},\"next\":{\"no\":\"Heldigvis kan man lære seg å håndtere sånne negative tanker.\",\"es\":\"Por suerte, se puede aprender a manejar este tipo de pensamientos negativos.\"}},\"vocab\":[{\"no\":\"grubling (en/ei), gruble over\",\"es\":\"rumiación; darle vueltas a algo (del pasado)\"}],\"created\":\"2026-11-15T17:23:11.012Z\"}",
       "created": "2026-11-15T17:23:40.020Z"
-    },
-    {
-      "id": "1d29c20e-ec3c-4a23-afb2-736eb3bacada",
-      "segmentId": "s1",
-      "start": 1.8,
-      "type": "highlight",
-      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi3taox\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":1.8,\"lineIndex\":0,\"no\":\"En podcast fra NRK.\",\"es\":\"Un pódcast de NRK.\",\"context\":{\"prev\":null,\"next\":{\"no\":\"Klokken nærmer seg midnatt.\",\"es\":\"Se acerca la medianoche.\"}},\"vocab\":[],\"created\":\"2026-11-15T17:24:01.762Z\"}",
-      "created": "2026-11-15T17:24:02.170Z"
     }
   ]
 }
