@@ -7,7 +7,7 @@
   <meta name="theme-color" content="#000000">
   <meta name="color-scheme" content="dark">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/style.css?v=20261115c">
+  <link rel="stylesheet" href="assets/style.css?v=20261115d">
   <script>
     try { if (JSON.parse(localStorage.getItem("nsb:prefs") || "{}").hideTop) document.documentElement.classList.add("top-hidden","top-hidden-done"); } catch (e) {}
   </script>
@@ -68,6 +68,7 @@
   </section>
 
   <audio id="audio" preload="auto"></audio>
+  <audio id="es-audio" preload="auto"></audio>
 
   <!-- "Esto significa" card (also used for review) -->
   <div class="overlay" id="meaning" hidden>
@@ -183,6 +184,8 @@
         <button class="act warn" id="s-forget" type="button">Olvidar</button>
       </div>
       <label class="check"><input type="checkbox" id="s-follow" checked> Desplazar el texto con el audio</label>
+      <p class="hint" id="s-tts"></p>
+      <button class="act" id="s-test-es" type="button">Probar voz ES</button>
       <button class="act" id="s-export" type="button">Exportar mis dudas (JSON)</button>
       <p class="hint" id="s-about"></p>
       <p class="hint">Atajos de teclado: Espacio = play/pausa · I/D = 10 s · arriba/abajo = línea · N = No entendí · L = leer en español · E = mostrar español · D = Mis dudas</p>
@@ -191,10 +194,10 @@
     </div>
   </div>
 
-  <script src="config.js?v=20261115c"></script>
-  <script src="assets/common.js?v=20261115c"></script>
-  <script src="assets/notes.js?v=20261115c"></script>
+  <script src="config.js?v=20261115d"></script>
+  <script src="assets/common.js?v=20261115d"></script>
+  <script src="assets/notes.js?v=20261115d"></script>
   <script src="vendor/marked.min.js" defer></script>
-  <script src="assets/player.js?v=20261115c"></script>
+  <script src="assets/player.js?v=20261115d"></script>
 </body>
 </html>

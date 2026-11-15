@@ -11,6 +11,8 @@
   const savePrefs = () => lsSet(PREFS_KEY, prefs);
 
   const audio = $("#audio");
+  const esAudio = $("#es-audio");
+  const ES_AUDIO_V = "20261115d";
   let ep, lines = [], vocab = [], store, current = -1;
 
   // ---------- load ----------
@@ -272,6 +274,7 @@
     const vs = voicesList();
     voice = chooseVoice(vs);
     fillVoices(vs);
+    if ($("#settings") && !$("#settings").hidden) renderTtsDiag();
   }
   function fillVoices(vs) {
     const sel = $("#more-voice");
@@ -303,7 +306,59 @@
     });
   }
 
-  function speakEs(text, { resume = true } = {}) {
+  function esClipUrl(lineIndex) {
+    if (lineIndex == null || lineIndex < 0 || lineIndex !== lineIndex) return "";
+    return "episodes/" + slug + "/es/" + lineIndex + ".mp3?v=" + ES_AUDIO_V;
+  }
+  function lineIndexForText(text) {
+    const clean = String(text || "").trim();
+    if (!clean) return null;
+    const hit = lines.findIndex((l) => String(l.es || "").trim() === clean);
+    return hit >= 0 ? (lines[hit].idx != null ? lines[hit].idx : hit) : null;
+  }
+  let esAudioFinish = null;
+  function stopEsAudio() {
+    if (esAudioFinish) { const f = esAudioFinish; esAudioFinish = null; f(false); }
+    if (!esAudio) return;
+    try { esAudio.pause(); } catch (e) {}
+    try { esAudio.removeAttribute("src"); esAudio.load(); } catch (e) {}
+  }
+  function playEsClip(url, { resume = true } = {}) {
+    return new Promise((resolve) => {
+      if (!esAudio || !url) return resolve(false);
+      const wasPlaying = !audio.paused;
+      pause();
+      stopEsAudio();
+      let done = false;
+      const finish = (ok) => {
+        if (done) return;
+        done = true;
+        esAudioFinish = null;
+        esAudio.removeEventListener("ended", onEnded);
+        esAudio.removeEventListener("error", onError);
+        if (resume && wasPlaying && ok) play();
+        else if (resume && wasPlaying && !ok) play();
+        resolve(!!ok);
+      };
+      const onEnded = () => finish(true);
+      const onError = () => finish(false);
+      esAudioFinish = finish;
+      esAudio.muted = false;
+      if (!(esAudio.volume > 0)) esAudio.volume = 1;
+      esAudio.addEventListener("ended", onEnded);
+      esAudio.addEventListener("error", onError);
+      esAudio.src = url;
+      try { esAudio.load(); } catch (e) {}
+      const req = esAudio.play();
+      if (req && req.catch) {
+        req.catch((e) => {
+          if (e && e.name === "AbortError") return;
+          finish(false);
+        });
+      }
+    });
+  }
+  function speakEsSynth(text, { resume = true } = {}) {
     return new Promise((resolve) => {
       const clean = String(text || "").replace(/\[[^\]]*\]/g, "").trim();
       if (!clean || !("speechSynthesis" in window)) return resolve(false);
@@ -333,13 +388,10 @@
         u.onend = () => finish(true);
         u.onerror = () => finish(true);
         guard = setTimeout(() => finish(true), 4000 + clean.length * 120);
-        // Chromium bug: speak() in the same tick as cancel() is dropped.
         clearTimeout(speakTimer);
         speakTimer = setTimeout(() => {
           try { speechSynthesis.speak(u); }
           catch (e) { finish(true); return; }
-          // If the engine silently ignores speak() (empty voice list, no
-          // Spanish voice), do not block the 8-second countdown.
           setTimeout(() => {
             if (done) return;
             try {
@@ -351,8 +403,25 @@
       waitForVoices().then(start);
     });
   }
+  function speakEs(text, { resume = true, lineIndex = null, allowSynth = true } = {}) {
+    const clean = String(text || "").replace(/\[[^\]]*\]/g, "").trim();
+    if (!clean) return Promise.resolve(false);
+    let idx = lineIndex;
+    if (idx == null || idx < 0) idx = lineIndexForText(clean);
+    const url = esClipUrl(idx);
+    if (url) {
+      return playEsClip(url, { resume }).then((ok) => {
+        if (ok) return true;
+        if (!allowSynth) return false;
+        return speakEsSynth(clean, { resume });
+      });
+    }
+    if (!allowSynth) return Promise.resolve(false);
+    return speakEsSynth(clean, { resume });
+  }
   const stopSpeech = () => {
     clearTimeout(speakTimer);
+    stopEsAudio();
     if ("speechSynthesis" in window) try { speechSynthesis.cancel(); } catch (e) {}
   };
 
@@ -374,7 +443,7 @@
   // the time was currentTime-2, which often tagged the previous line; N also
   // kept working while the card was already open, creating more duplicates.
   const AUTO_CONTINUE_SEC = 8;
-  const lineInfo = (l) => (l ? { no: l.text, es: l.es || "" } : null);
+  const lineInfo = (l) => (l ? { no: l.text, es: l.es || "", lineIndex: l.idx } : null);
   let meaning = { item: null, wasPlaying: false, resumeAt: 0, token: 0 };
   let clipEnd = null;
   let autoContinueTimer = 0;
@@ -462,7 +531,7 @@
     setGoLabel("Continuar");
     closeWordHint();
     $("#m-es").textContent = item.es || "(sin traducción)";
-    linkWords($("#m-no"), item.no, { no: item.no, es: item.es || "" });
+    linkWords($("#m-no"), item.no, { no: item.no, es: item.es || "", lineIndex: item.lineIndex });
     const hits = item.vocab && item.vocab.length ? item.vocab : vocabIn(item.no).map((v) => ({ no: v.no, es: v.es }));
     $("#m-vocab").replaceChildren(...hits.map((v) => el("div", null, el("b", { lang: "nb" }, v.no), " = ", v.es)));
     const c = item.context || {};
@@ -475,7 +544,7 @@
     $("#meaning").hidden = false;
     $("#m-go").focus({ preventScroll: true });
     stopClip();
-    speakEs(item.es, { resume: false }).then(() => {
+    speakEs(item.es, { resume: false, lineIndex: item.lineIndex != null ? item.lineIndex : lineIndexForText(item.es) }).then(() => {
       if (token !== meaning.token || $("#meaning").hidden) return;
       startAutoContinue(token);
     });
@@ -520,7 +589,7 @@
   function replaySpanish() {
     cancelAutoContinue();
     const item = meaning.item;
-    if (item && item.es) speakEs(item.es, { resume: false });
+    if (item && item.es) speakEs(item.es, { resume: false, lineIndex: item.lineIndex != null ? item.lineIndex : lineIndexForText(item.es) });
   }
 
   function replayNorwegian() {
@@ -688,8 +757,14 @@
       $("#wh-ctx").hidden = false;
       $("#wh-ctx").textContent = lineEs;
     }
-    $("#wh-speak").hidden = !es;
+    const clipIdx = (lineEs && es === lineEs && lineCtx && lineCtx.lineIndex != null)
+      ? lineCtx.lineIndex
+      : lineIndexForText(es);
+    const hasClip = clipIdx != null && clipIdx >= 0;
+    const hasVoice = !!chooseVoice(voicesList());
+    $("#wh-speak").hidden = !(es && (hasClip || hasVoice));
     $("#wh-speak").dataset.es = es;
+    $("#wh-speak").dataset.lineIndex = hasClip ? String(clipIdx) : "";
     $("#wh-ordbok").href = "https://ordbokene.no/nob/bm/" + encodeURIComponent(raw.toLowerCase());
     box.hidden = false;
     $("#wh-close").focus({ preventScroll: true });
@@ -858,6 +933,22 @@
     $("#s-follow").checked = prefs.follow;
     $("#s-about").textContent = msg || "";
     renderStatus();
+    renderTtsDiag();
+  }
+  function renderTtsDiag() {
+    const box = $("#s-tts");
+    if (!box) return;
+    const supported = "speechSynthesis" in window;
+    const vs = supported ? voicesList() : [];
+    const es = vs.filter((v) => /^es/i.test(v.lang || ""));
+    box.textContent = "Síntesis del navegador: " + (supported ? "sí" : "no")
+      + " · voces: " + vs.length
+      + (es.length ? " · español: " + es.length : " · sin voz en español");
+  }
+  function testEsVoice() {
+    const l = lines[1] || lines[0];
+    if (!l) return;
+    speakEs(l.es, { resume: true, lineIndex: l.idx });
   }
   function dismissOnBackdrop(overlay, closeFn) {
     overlay.addEventListener("click", (e) => { if (e.target === overlay) closeFn(); });
@@ -940,7 +1031,7 @@
     $("#btn-prev").addEventListener("click", () => lineStep(-1));
     $("#btn-next").addEventListener("click", () => lineStep(1));
     $("#btn-doubt").addEventListener("click", markDoubt);
-    $("#btn-speak").addEventListener("click", () => { const l = lines[lineAt(audio.currentTime)]; speakEs(l.es); });
+    $("#btn-speak").addEventListener("click", () => { const l = lines[lineAt(audio.currentTime)]; if (l) speakEs(l.es, { lineIndex: l.idx }); });
     $("#btn-es").addEventListener("click", () => { prefs.es = !prefs.es; savePrefs(); applyEs(); });
     $$("#speed [data-rate]").forEach((b) => b.addEventListener("click", () => {
       prefs.rate = Number(b.dataset.rate) || 1; savePrefs(); applyRate();
@@ -961,7 +1052,9 @@
     $("#wh-close").addEventListener("click", closeWordHint);
     $("#wh-speak").addEventListener("click", () => {
       const es = $("#wh-speak").dataset.es || "";
-      if (es) speakEs(es, { resume: false });
+      const rawIdx = $("#wh-speak").dataset.lineIndex;
+      const idx = rawIdx === "" || rawIdx == null ? null : Number(rawIdx);
+      if (es) speakEs(es, { resume: false, lineIndex: idx, allowSynth: !!chooseVoice(voicesList()) });
     });
     dismissOnBackdrop($("#word-hint"), closeWordHint);
 
@@ -1000,6 +1093,7 @@
       openSettings();
     });
     $("#s-follow").addEventListener("change", (e) => { prefs.follow = e.target.checked; savePrefs(); });
+    if ($("#s-test-es")) $("#s-test-es").addEventListener("click", testEsVoice);
     $("#btn-hide-top").addEventListener("click", () => { prefs.hideTop = true; savePrefs(); applyTop(); });
     $("#btn-unhide").addEventListener("click", () => { prefs.hideTop = false; savePrefs(); applyTop(); });
     $("#s-export").addEventListener("click", () => {

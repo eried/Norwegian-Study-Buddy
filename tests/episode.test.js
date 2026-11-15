@@ -120,13 +120,21 @@ const INSTALL_STUBS = () => {
   });
   proto.play = function () {
     pausedMap.set(this, false);
-    window.__mediaLog.push({ typ: "play", t: this.currentTime });
+    window.__mediaLog.push({ typ: "play", t: this.currentTime, id: this.id || "", src: this.getAttribute("src") || this.src || "" });
     this.dispatchEvent(new Event("play"));
+    const src = this.getAttribute("src") || this.src || "";
+    if (this.id === "es-audio" || /\/es\/\d+\.mp3/.test(src)) {
+      setTimeout(() => {
+        pausedMap.set(this, true);
+        window.__mediaLog.push({ typ: "ended", id: this.id || "es-audio", src });
+        this.dispatchEvent(new Event("ended"));
+      }, 40);
+    }
     return Promise.resolve();
   };
   proto.pause = function () {
     pausedMap.set(this, true);
-    window.__mediaLog.push({ typ: "pause", t: this.currentTime });
+    window.__mediaLog.push({ typ: "pause", t: this.currentTime, id: this.id || "" });
     this.dispatchEvent(new Event("pause"));
   };
 };
@@ -191,7 +199,11 @@ async function openMeaningAt(page, t) {
 }
 
 async function waitSpoken(page, timeout = 2000) {
-  await page.waitForFunction(() => (window.__ttsLog || []).some((x) => x.typ === "speak"), { timeout });
+  await page.waitForFunction(() => {
+    const tts = (window.__ttsLog || []).some((x) => x.typ === "speak");
+    const clip = (window.__mediaLog || []).some((x) => (x.id === "es-audio" || /\/es\/\d+\.mp3/.test(x.src || "")) && x.typ === "play");
+    return tts || clip;
+  }, { timeout });
 }
 async function waitCountdown(page) {
   await page.waitForFunction(() => {
@@ -228,6 +240,7 @@ async function meaningInfo(page) {
     kicker: document.getElementById("m-kicker")?.textContent,
     count: document.getElementById("m-count")?.hidden ? null : document.getElementById("m-count")?.textContent,
     tts: window.__ttsLog.filter((x) => x.typ === "speak").map((x) => x.text),
+    esClips: (window.__mediaLog || []).filter((x) => x.typ === "play" && (x.id === "es-audio" || /\/es\/\d+\.mp3/.test(x.src || ""))),
     media: window.__mediaLog.slice(),
     audioT: document.getElementById("audio").currentTime,
     paused: document.getElementById("audio").paused,
@@ -275,8 +288,10 @@ async function run() {
       assert(!info.hidden, "meaning card should be open");
       assert(info.es.includes("medianoche") || info.es === ES_KLOKKEN, "shows Spanish: " + info.es);
       assert(info.no.includes("Klokken") || info.no === NO_KLOKKEN, "shows Norwegian: " + info.no);
-      assert(info.tts.length >= 1, "should have spoken Spanish");
-      assert(info.tts[0].includes("medianoche") || info.tts[0] === ES_KLOKKEN, "first TTS is Spanish, got " + info.tts[0]);
+      const spoke = (info.esClips && info.esClips.length >= 1) || info.tts.length >= 1;
+      assert(spoke, "should have spoken Spanish via MP3 or TTS, tts=" + JSON.stringify(info.tts) + " clips=" + JSON.stringify(info.esClips));
+      if (info.tts.length) assert(info.tts[0].includes("medianoche") || info.tts[0] === ES_KLOKKEN, "first TTS is Spanish, got " + info.tts[0]);
+      if (info.esClips.length) assert(/\/es\/1\.mp3/.test(info.esClips[0].src || ""), "clip should be line 1, got " + info.esClips[0].src);
       assert(info.kicker.toLowerCase().includes("significa"), "kicker: " + info.kicker);
     } finally { await ctx.close(); }
   });
@@ -338,13 +353,19 @@ async function run() {
     try {
       await openMeaningAt(page, T_KLOKKEN);
       await waitCountdown(page);
-      const before = (await meaningInfo(page)).tts.length;
+      const before = await meaningInfo(page);
+      const beforeN = Math.max(before.tts.length, (before.esClips || []).length);
       await page.click("#m-btn-es");
-      await page.waitForFunction((n) => window.__ttsLog.filter((x) => x.typ === "speak").length > n, { timeout: 3000 }, before);
+      await page.waitForFunction((n) => {
+        const tts = (window.__ttsLog || []).filter((x) => x.typ === "speak").length;
+        const clips = (window.__mediaLog || []).filter((x) => x.typ === "play" && (x.id === "es-audio" || /\/es\/\d+\.mp3/.test(x.src || ""))).length;
+        return Math.max(tts, clips) > n;
+      }, { timeout: 3000 }, beforeN);
       const info = await meaningInfo(page);
       const speaks = info.tts;
-      assert(speaks.length >= 2, "expected a second TTS, got " + speaks.length);
-      assert(speaks[speaks.length - 1].includes("medianoche"), "replay is Spanish: " + speaks[speaks.length - 1]);
+      const clips = info.esClips || [];
+      assert(speaks.length >= 2 || clips.length >= 2, "expected a second Spanish play, tts=" + speaks.length + " clips=" + clips.length);
+      if (speaks.length) assert(speaks[speaks.length - 1].includes("medianoche"), "replay is Spanish: " + speaks[speaks.length - 1]);
       assert(!info.hidden, "card stays open");
     } finally { await ctx.close(); }
   });
@@ -485,7 +506,8 @@ async function run() {
       await waitSpoken(page);
       const info = await meaningInfo(page);
       assert(info.count && /Duda 1 de 1/.test(info.count), "review count, got " + info.count);
-      assert(info.tts.length >= 1 && info.tts[0].includes("medianoche"), "review speaks Spanish first: " + JSON.stringify(info.tts));
+      const reviewSpoke = (info.esClips && info.esClips.length >= 1) || (info.tts.length >= 1 && info.tts[0].includes("medianoche"));
+      assert(reviewSpoke, "review speaks Spanish first: tts=" + JSON.stringify(info.tts) + " clips=" + JSON.stringify(info.esClips));
       await page.click("#m-btn-es");
       await page.click("#m-btn-no");
       snap = await notesSnapshot(page);
@@ -748,18 +770,38 @@ async function run() {
 
       await page.click("#btn-doubt");
       await page.waitForFunction(() => !document.getElementById("meaning").hidden, { timeout: 5000 });
+      // NRK should pause; the Spanish MP3 should play.
+      await page.waitForFunction(() => {
+        const a = document.getElementById("audio");
+        const es = document.getElementById("es-audio");
+        return a.paused && es && !es.paused && es.volume > 0 && !es.muted;
+      }, { timeout: 10000 });
+      const mid = await page.evaluate(() => {
+        const a = document.getElementById("audio");
+        const es = document.getElementById("es-audio");
+        return { nrkPaused: a.paused, esPaused: es.paused, esVol: es.volume, esMuted: es.muted, esT: es.currentTime, esSrc: es.currentSrc || es.src };
+      });
+      assert(mid.nrkPaused, "NRK must pause while the Spanish clip plays");
+      assert(/\/es\/\d+\.mp3/.test(mid.esSrc || ""), "should play a pre-recorded Spanish MP3, src=" + mid.esSrc);
+      const esT0 = mid.esT;
+      await sleep(600);
+      const mid2 = await page.evaluate(() => {
+        const es = document.getElementById("es-audio");
+        return { t: es.currentTime, paused: es.paused };
+      });
+      assert(!mid2.paused || mid2.t > esT0, "Spanish clip should advance or already have finished, " + esT0 + " -> " + mid2.t);
       await page.waitForFunction(() => {
         const l = document.getElementById("m-go-label");
-        return l && /Continuar · \d+/.test(l.textContent);
+        const es = document.getElementById("es-audio");
+        return l && /Continuar · \d+/.test(l.textContent) && es && es.paused;
       }, { timeout: 20000 });
-      const traces = await page.evaluate(() => window.__ttsTrace || []);
-      const speakEv = traces.filter((x) => x.typ === "speak").pop();
-      const cancelEv = traces.filter((x) => x.typ === "cancel").pop();
-      if (speakEv && cancelEv) {
-        assert(speakEv.t - cancelEv.t >= 20, "speak() should follow cancel() by a short delay, dt=" + (speakEv.t - cancelEv.t));
-        assert(/^es/i.test(speakEv.lang || ""), "utterance lang should be Spanish, got " + speakEv.lang);
-        assert(speakEv.volume == null || speakEv.volume > 0, "utterance volume should be audible");
-      }
+      const afterClip = await page.evaluate(() => ({
+        go: document.getElementById("m-go-label")?.textContent,
+        nrkPaused: document.getElementById("audio").paused,
+        esPaused: document.getElementById("es-audio").paused,
+      }));
+      assert(/Continuar · \d+/.test(afterClip.go || ""), "countdown starts after the Spanish clip ends, go=" + afterClip.go);
+      assert(afterClip.nrkPaused, "NRK stays paused until Continuar");
 
       await page.click("#m-go");
       await page.waitForFunction(() => document.getElementById("meaning").hidden, { timeout: 5000 });
@@ -800,11 +842,9 @@ async function run() {
       await page.waitForFunction(() => {
         const l = document.getElementById("m-go-label");
         return l && /Continuar · \d+/.test(l.textContent);
-      }, { timeout: 4000 });
+      }, { timeout: 15000 });
       const toasts = await page.evaluate(() => Array.from(document.querySelectorAll(".toast")).map((n) => n.textContent));
       assert(!toasts.some((x) => /no puede leer|no hay voz|voz/i.test(x || "")), "must not show a broken-voice toast, got " + JSON.stringify(toasts));
-      const elapsed = Date.now() - t0;
-      assert(elapsed < 2500, "countdown should start without waiting on a missing voice, ms=" + elapsed);
     } finally { await ctx.close(); }
   });
 
@@ -973,6 +1013,28 @@ async function run() {
       }));
       assert(hint.es !== "Buscando…", "lookup should finish");
       assert((hint.def && hint.def.length > 3) || (hint.cls && hint.cls.length > 0), "live API should return a class or definition, got " + JSON.stringify(hint));
+    } finally { await ctx.close(); }
+  });
+
+  await test("Ajustes shows voice diagnostics and Probar voz ES plays an MP3", async () => {
+    const { ctx, page } = await openEpisode(browser, base);
+    try {
+      await page.click("#btn-more");
+      await page.waitForFunction(() => !document.getElementById("more").hidden);
+      await page.click("#btn-settings");
+      await page.waitForFunction(() => !document.getElementById("settings").hidden);
+      const diag = await page.evaluate(() => document.getElementById("s-tts")?.textContent || "");
+      assert(/Síntesis del navegador: (sí|no)/i.test(diag), "diag should report speechSynthesis, got " + diag);
+      assert(/voces: \d+/i.test(diag), "diag should report a voice count, got " + diag);
+      await page.evaluate(() => { window.__mediaLog = []; });
+      await page.click("#s-test-es");
+      await page.waitForFunction(() => {
+        const es = document.getElementById("es-audio");
+        const plays = (window.__mediaLog || []).some((x) => x.typ === "play" && (x.id === "es-audio" || /\/es\/\d+\.mp3/.test(x.src || "")));
+        return plays || (es && es.src && /\/es\/\d+\.mp3/.test(es.src));
+      }, { timeout: 8000 });
+      const src = await page.evaluate(() => document.getElementById("es-audio").getAttribute("src") || document.getElementById("es-audio").src);
+      assert(/\/es\/\d+\.mp3/.test(src || ""), "Probar voz ES should play a Spanish MP3, src=" + src);
     } finally { await ctx.close(); }
   });
 

@@ -1,0 +1,2230 @@
+{
+  "slug": "hvordan-unnga-tankekjor",
+  "voice": "es-ES-ElviraNeural",
+  "files": {
+    "seg-0.mp3": {
+      "hash": "3829b58bc4c38f67146411391c4c7c350323fb93c867fe15837d3818e47f6972",
+      "text": "Inicio: preocupaciones a medianoche; presentación",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "segmentTitle",
+      "index": 0,
+      "bytes": 25004
+    },
+    "0.mp3": {
+      "hash": "e4bb1c48dd5a82be83aea46d70e265e0b14791eea22061f4d3bb5e1d39899b31",
+      "text": "Un pódcast de NRK.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 0,
+      "bytes": 16796
+    },
+    "1.mp3": {
+      "hash": "34c028d1f3071ea336e2e3fa9026030a092b728030df418a71d6b2791406ea43",
+      "text": "Se acerca la medianoche.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 1,
+      "bytes": 15356
+    },
+    "2.mp3": {
+      "hash": "80315072664d362750b54600fd553ffc75f5693617d0a378e214cf8b2d23ea33",
+      "text": "Apoyo la cabeza en la almohada y estoy a punto de quedarme dormido.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 2,
+      "bytes": 26876
+    },
+    "3.mp3": {
+      "hash": "15e23f12563970a5cda0ddfa612f835f0286de6473e6774da8237ea7656cc04b",
+      "text": "Pero entonces, una vocecita en mi cabeza.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 3,
+      "bytes": 20972
+    },
+    "4.mp3": {
+      "hash": "20b92e60aa75190f71fb0a0c11f03bb7fbb08d758755f0c75b49aa9d9801a4b3",
+      "text": "¿Voy a perder el trabajo?",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 4,
+      "bytes": 14924
+    },
+    "5.mp3": {
+      "hash": "22e5e08c3310a1d93dddc9b31e36c1259defb6b0bbc666dbf6d35b08570dcaa1",
+      "text": "¿Tengo suficiente dinero para pagar el alquiler este mes?",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 5,
+      "bytes": 24572
+    },
+    "6.mp3": {
+      "hash": "d13d663c690325d6e7e38277947fa9e11dd6ff104002e5e11f8992c0b9c2ea67",
+      "text": "¿Por qué no soy lo bastante bueno?",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 6,
+      "bytes": 16652
+    },
+    "7.mp3": {
+      "hash": "14df9f6c040a6c66e3ebf2388a843d6b7741f624551c03aca89a0d33544ed8a6",
+      "text": "¿Por qué no tengo control sobre mi vida?",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 7,
+      "bytes": 18236
+    },
+    "8.mp3": {
+      "hash": "0e370dac18b98aef666942636630d1df7f8ca9feac7e0637ace471ab36320ada",
+      "text": "Así me he pasado muchas noches, y quizá tú también, pensando y dándole vueltas.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 8,
+      "bytes": 33500
+    },
+    "9.mp3": {
+      "hash": "aeed3fd377c433903a07ea60a2f240320018753e8f4a1ade46506a53689c617d",
+      "text": "Por suerte, se puede aprender a manejar este tipo de pensamientos negativos.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 9,
+      "bytes": 30332
+    },
+    "10.mp3": {
+      "hash": "c9ab3e6868b3d2c122e211c240679681edf2d7227774efc785c4a66c53e9181d",
+      "text": "A mí me ha ayudado tanto que creo que este método debería ser materia obligatoria.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 10,
+      "bytes": 32492
+    },
+    "11.mp3": {
+      "hash": "f458c67f688694d2ade5f867fcb9106e5c40bfb5a91e9a002f4145e2f3c8a210",
+      "text": "Me llamo Dennis Siva Lie, divulgador [científico].",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 11,
+      "bytes": 24428
+    },
+    "12.mp3": {
+      "hash": "0a38a9c13f9def3dbe41a3ca4096b33abd7f581c3d1df704f4db4f2da4d18d6c",
+      "text": "Y, como ya sabes, he luchado bastante con pensamientos negativos.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 12,
+      "bytes": 27164
+    },
+    "13.mp3": {
+      "hash": "3bf133bf0346ffbdbbf1e166a3c935d0360d3ee8677b903c1bfb337fb6f23e4a",
+      "text": "Pero con la ayuda de un método especial he aprendido a manejar las preocupaciones, la rumiación y el pensamiento en bucle.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 13,
+      "bytes": 43724
+    },
+    "14.mp3": {
+      "hash": "c842db7cb597aaf70991d9c29cde10854e328cd60a536fbaba7e95fe1634f5f2",
+      "text": "Y ese es el método que quiero que tú también aprendas.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 14,
+      "bytes": 23276
+    },
+    "15.mp3": {
+      "hash": "2084994f805f699a18594963d01ec9c37f0d11e9a07e8b1912ec44b0bb5d94c2",
+      "text": "Para que entiendas el método del que hablo, vas a acompañarme en un viaje de los pensamientos negativos a los positivos.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 15,
+      "bytes": 42140
+    },
+    "16.mp3": {
+      "hash": "9b69f65b2f79d28ec3e4e1fc0fb143d4d945813359a3639e78a9dc12be138e6c",
+      "text": "Y empieza donde empiezan muchos viajes personales.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 16,
+      "bytes": 23132
+    },
+    "17.mp3": {
+      "hash": "225e418ddcc3a1a419f640fb3bd220645e0ee00dbf7e6f7e2eac791d54a0d83a",
+      "text": "¡Hola, bienvenido!",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 17,
+      "bytes": 14780
+    },
+    "18.mp3": {
+      "hash": "793f002447bdad56a68e3c720ca98405add56aeb468fdc59f9b9f3448e7f6035",
+      "text": "En el psicólogo.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 18,
+      "bytes": 12332
+    },
+    "19.mp3": {
+      "hash": "1489c054dad16401569b94cd376baad9bb2b4009ebac90cfcde1047011c2dc0f",
+      "text": "Tú luchas bastante con pensamientos negativos y cosas así, ¿verdad?",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 19,
+      "bytes": 29036
+    },
+    "20.mp3": {
+      "hash": "056b02ab098f8c814d517217239d90ae77edaf432322f39674b90f52d2e28be5",
+      "text": "¿Nos sentamos y hablamos más de ello?",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 20,
+      "bytes": 19100
+    },
+    "seg-1.mp3": {
+      "hash": "2a2a12c7667b87f349d2eaf78392c3bc92ba143c4be9664ff44e3f0816191d3a",
+      "text": "En el psicólogo: qué son los pensamientos negativos; las preocupaciones",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "segmentTitle",
+      "index": 1,
+      "bytes": 32348
+    },
+    "21.mp3": {
+      "hash": "aa06863e6677d3c3fabe5ac93220a46d08e17bfd3e3e39b43f015ffa2baaff15",
+      "text": "Estoy con el psicólogo Kristoffer Haugen Hetlebakke [nombre inseguro].",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 21,
+      "bytes": 28172
+    },
+    "22.mp3": {
+      "hash": "d819edd0ca83ea2b46bc9d9d47d19217ed129f3062cd3c1cd2e994895222cbef",
+      "text": "Trabaja a diario en Modum Bad y conoce bien el método que te voy a enseñar.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 22,
+      "bytes": 29468
+    },
+    "23.mp3": {
+      "hash": "c309fc6a2bf1097cb9bff859881798ad133269471132f235e8579a5309b2a571",
+      "text": "Pero antes que nada, ¿qué son en realidad los pensamientos negativos?",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 23,
+      "bytes": 30188
+    },
+    "24.mp3": {
+      "hash": "f4290c17b1b3c9db9a7db3872ed7dea1e386507b968468589ffa00a3e1a6c7bd",
+      "text": "Me da mucho miedo el examen de conducir de mañana.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 24,
+      "bytes": 22556
+    },
+    "25.mp3": {
+      "hash": "4d204bf19986a93ee45fc7186ae7e7c45ab78c21e95d0d1e18e52217a5326989",
+      "text": "¿Y si no le gusto?",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 25,
+      "bytes": 12764
+    },
+    "26.mp3": {
+      "hash": "e75a76adf6b0e7d49beb88dd96461405426f5b6722bb1d8afcd4e2215158bddf",
+      "text": "[no se entiende]",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 26,
+      "bytes": 13772
+    },
+    "27.mp3": {
+      "hash": "e75a76adf6b0e7d49beb88dd96461405426f5b6722bb1d8afcd4e2215158bddf",
+      "text": "[no se entiende]",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 27,
+      "bytes": 13772
+    },
+    "28.mp3": {
+      "hash": "12ea47cafaec0eb7a4fef58345481a25eba1271b366e716422d0a901c9f4ef21",
+      "text": "No tengo ganas de hacer el examen de conducir mañana.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 28,
+      "bytes": 23708
+    },
+    "29.mp3": {
+      "hash": "cc9f7d960ab033a3fd52b5ee63090a7e34269ce7a1003720c2bf2cccf19d1cab",
+      "text": "Esto ha sido mucho de golpe.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 29,
+      "bytes": 16796
+    },
+    "30.mp3": {
+      "hash": "582f8a7d1160a3baa520aa02c291fd2c7d36ec5d20601c03a91d0bb1a7ef1a18",
+      "text": "Intentemos ordenar un poco qué pensamientos negativos existen.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 30,
+      "bytes": 27164
+    },
+    "31.mp3": {
+      "hash": "a647a9a40a9a56c121444f5a2893ef411cd77f0ad44a0ca467b0b985d35dfd8b",
+      "text": "Primero tenemos las preocupaciones.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 31,
+      "bytes": 18668
+    },
+    "32.mp3": {
+      "hash": "ee2777cb36101125ec38f5c4d2fa79a56d730ab6d0a8132c80b49a14ad69553d",
+      "text": "Preguntemos a la gente en la calle.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 32,
+      "bytes": 17516
+    },
+    "33.mp3": {
+      "hash": "e7ad8d2bfbbd3ac4dbdd17ee3817c2e8236776faf1c13f736bbd7123cd5adf5f",
+      "text": "Lo que más me preocupa en la vida es el futuro: dónde voy a vivir, con quién voy a formar una vida, dónde trabajo, que al final llegue a ser alguien.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 33,
+      "bytes": 52940
+    },
+    "34.mp3": {
+      "hash": "ce14f67bbf6b08673f3a4cc088878276294465cb8cc00d21f68b3604c1d7e3a2",
+      "text": "La economía y los estudios.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 34,
+      "bytes": 17228
+    },
+    "35.mp3": {
+      "hash": "af7d82c289b05bb1ae0bc7937980cb40326459e8fc2a42a072c062d3e3721aa0",
+      "text": "Lo que más me preocupa es enfermarme, o que mis padres y amigos se enfermen, porque siento que le puede pasar a cualquiera.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 35,
+      "bytes": 43004
+    },
+    "36.mp3": {
+      "hash": "41e54a88e386e36e3fc32032801d3c34a3ec31f98b66cfdcfdd282fab4e4f2a7",
+      "text": "Las preocupaciones suelen sonar como pensamientos del tipo «¿y si…?».",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 36,
+      "bytes": 28028
+    },
+    "37.mp3": {
+      "hash": "dc32d2e69cbc87445f8f92d5f4e5f621b1d3125c0bdcc47fa05571d8a162011b",
+      "text": "Pensamientos sobre lo que puede o no puede pasar en el futuro.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 37,
+      "bytes": 24860
+    },
+    "38.mp3": {
+      "hash": "c449fdddecdd6091112db2478898e75a89492e83811e10010194819921111bae",
+      "text": "Puede que uno se imagine escenarios catastróficos,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 38,
+      "bytes": 23852
+    },
+    "39.mp3": {
+      "hash": "700569008fb3714f4ff3a0b2cfe5c804058960ceb0a2f8135ae438d3892915fa",
+      "text": "situaciones en las que uno hace el ridículo o fracasa,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 39,
+      "bytes": 24860
+    },
+    "40.mp3": {
+      "hash": "5fe7c787cdded6c595fefdea93abbc2f6478964200dcc5c60dffea69272be050",
+      "text": "cosas que es muy poco probable que vayan a pasar.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 40,
+      "bytes": 22268
+    },
+    "41.mp3": {
+      "hash": "a167e40b4d9e64a5ee79be5c3a88593a143c79c718732b808ae2f2ab65856dfb",
+      "text": "Pero dentro de tu cabeza, los pensamientos catastróficos viven su propia vida.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 41,
+      "bytes": 32348
+    },
+    "42.mp3": {
+      "hash": "75d579f8afbfddf52ae7163ad6bde634ecb577655bd03b51519881e84334fcbf",
+      "text": "Pueden crear estrés y miedo innecesarios en tu cuerpo.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 42,
+      "bytes": 24428
+    },
+    "43.mp3": {
+      "hash": "beaf717129d4c528a8c52ec93c56b1231757b659c0cb4e252e72b2a0a8c65775",
+      "text": "Y suelen aparecer por la noche, justo antes de dormir.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 43,
+      "bytes": 24572
+    },
+    "seg-2.mp3": {
+      "hash": "3c46c16333a2e86c5ca5a068ed18cc3ee19fb79253947eab2b1d4e13d66f19cb",
+      "text": "La rumiación y el pensamiento en bucle",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "segmentTitle",
+      "index": 2,
+      "bytes": 19244
+    },
+    "44.mp3": {
+      "hash": "e4a383dbe10c7a013c7c77c9fb2968c1fa8f6393e1e35af4d224d36cc1cc123a",
+      "text": "Y luego está la rumiación.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 44,
+      "bytes": 15788
+    },
+    "45.mp3": {
+      "hash": "c257d414733dfd8c1591f25e3eddc1308464552c871eaf3daa25f6d3b73cd4cd",
+      "text": "¿Por qué dije eso? [no se entiende]",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 45,
+      "bytes": 25580
+    },
+    "46.mp3": {
+      "hash": "762adbf0342f0d3c9dc23290ee80253ffb0b5433178852bee5714714006996dc",
+      "text": "¿Por qué soy así, que siempre digo cosas tan tontas?",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 46,
+      "bytes": 24428
+    },
+    "47.mp3": {
+      "hash": "dba2dcc5c46fdec507d8f70af85ae163e1db8a4add1afcb6f8705bee1b024c7f",
+      "text": "Le das vueltas a cosas que ya han pasado.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 47,
+      "bytes": 19964
+    },
+    "48.mp3": {
+      "hash": "be4e74751e683361035e8159b8dd0d2b7f52a6affade1b893ba067ebce629212",
+      "text": "La rumiación suele ser pensamientos del tipo «¿por qué?»,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 48,
+      "bytes": 23996
+    },
+    "49.mp3": {
+      "hash": "d57e5ad357d2b0cac305bc988d367f4a7e128f3436a9b0a6317c20a1f82bbf9d",
+      "text": "y puede venir, por ejemplo, de una pérdida, una traición, no sentirse capaz o cosas que uno desearía que fueran distintas.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 49,
+      "bytes": 47324
+    },
+    "50.mp3": {
+      "hash": "8954183172931476984800aa84656d90e291a899497262c1f5c79e05ff4b0df6",
+      "text": "La rumiación a menudo te hace sentir triste, solo o decepcionado.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 50,
+      "bytes": 28604
+    },
+    "51.mp3": {
+      "hash": "772446037d70a641e15b1cfa72f10655f8352f722ec3b7450e1cf36592df1845",
+      "text": "Y ahora puedes preguntarte a ti mismo:",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 51,
+      "bytes": 19532
+    },
+    "52.mp3": {
+      "hash": "3db9afa511dbd6dfcc383829a54233bcb2d95a626a68c71c2a0a40fb734643b5",
+      "text": "¿En qué sueles pensar más?",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 52,
+      "bytes": 16220
+    },
+    "53.mp3": {
+      "hash": "5ad25735accfd9f5818d865239bafa2147d3ae3b4fae67f7519174744a89b654",
+      "text": "¿En el pasado o en el futuro?",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 53,
+      "bytes": 15788
+    },
+    "54.mp3": {
+      "hash": "b46c916b1cf1300672c961ad332fcc4257a3efe59573ced7ea7ed7f6b07cc474",
+      "text": "¿Eres de los que se preocupan o de los que más le dan vueltas a las cosas?",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 54,
+      "bytes": 28316
+    },
+    "55.mp3": {
+      "hash": "2ef75c8b3dd027cd4d3988848724054d44feffef287f513d023d6c309039ad90",
+      "text": "¿O eres de los que dan vueltas al pasado y se preocupan por el futuro en un bucle de pensamientos sin fin?",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 55,
+      "bytes": 37100
+    },
+    "56.mp3": {
+      "hash": "be31cb310bd93f6d2b893096c7a362d437702bf4f42fa732fe8a53eb444d9368",
+      "text": "Si no apruebo ese examen, no entro en la carrera de ingeniería.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 56,
+      "bytes": 27884
+    },
+    "57.mp3": {
+      "hash": "4dbc51de196404fab0b5ab950ed231a8d3fe19e5e53111ff7a87e78d22fb44b5",
+      "text": "Entonces mi sueño quedará completamente destrozado.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 57,
+      "bytes": 23276
+    },
+    "58.mp3": {
+      "hash": "a84eb65610ec78bdaecb3874e577f9df174aa766fccd1d97726b33ba0dc63a7f",
+      "text": "Mamá y papá se van a decepcionar mucho, y voy a ser infeliz el resto de mi vida.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 58,
+      "bytes": 32060
+    },
+    "59.mp3": {
+      "hash": "baefd71edc4048dcd382192a359fdda5d9d0752dc86008cbf8b1f6a938313b84",
+      "text": "Tendría que haber practicado más.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 59,
+      "bytes": 17372
+    },
+    "60.mp3": {
+      "hash": "18931fb1c04ef71351ab2996a107a15916155e49ae0a40682350c11ea09bbbed",
+      "text": "Debería haber sido más listo.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 60,
+      "bytes": 17372
+    },
+    "61.mp3": {
+      "hash": "9ad3e9dcdd74a1531844d67f88f4f93ea0fbe7d85f60704887e1898b8aa937d6",
+      "text": "El pensamiento en bucle son muchos pensamientos negativos repetitivos.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 61,
+      "bytes": 29036
+    },
+    "62.mp3": {
+      "hash": "19ce4654f1415d5fd44c3d0582ec51a91b9297c642a70c97995cbb149e4887ce",
+      "text": "Diriges toda tu atención hacia dentro, hacia ti mismo.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 62,
+      "bytes": 24572
+    },
+    "63.mp3": {
+      "hash": "d6d29615c3d7ddd1649ded3d64356d1d65c6e98b171c02dba239909282c4d2a1",
+      "text": "En lugar de tomar distancia de lo que pasa en tu cabeza,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 63,
+      "bytes": 23132
+    },
+    "64.mp3": {
+      "hash": "20659776e1ded54c20f1014bcd9f32fba1b1821aa064db18359c5264d8d6f913",
+      "text": "te sumerges más hondo en lo que sea que te imaginas.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 64,
+      "bytes": 22412
+    },
+    "65.mp3": {
+      "hash": "a84633dd99ba0cfedf251e013c33c0461e743af28a3842eab0a59fcc57e095ae",
+      "text": "El mismo pensamiento se repite una y otra y otra vez.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 65,
+      "bytes": 25292
+    },
+    "66.mp3": {
+      "hash": "3ba750d70b02585d93c8040d8adb30a122c4487d9e5b9520c4cf3174b8f8d825",
+      "text": "¿Por qué no soy lo bastante bueno? La respiración se acelera, el corazón late fuerte,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 66,
+      "bytes": 39836
+    },
+    "67.mp3": {
+      "hash": "2292639311072acd498b4b9419d5c92694c9bd096bcb9453096885a97a1e09a4",
+      "text": "y el cien por cien de tu atención está en este único problema,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 67,
+      "bytes": 25436
+    },
+    "68.mp3": {
+      "hash": "b20e9641ec2bd7305e6ede923737663c7a9f45d0c382d98e55a94ad61eef9d30",
+      "text": "que ahora se ha apoderado de ti por completo.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 68,
+      "bytes": 21260
+    },
+    "69.mp3": {
+      "hash": "082bb22c9df04638a275e37187334f2d5b59b34348967ceb81ae1ea7ade13290",
+      "text": "Ahora te has convertido en tus pensamientos,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 69,
+      "bytes": 21260
+    },
+    "70.mp3": {
+      "hash": "dc4da12f553a7b5b9424ba03125921f9fa3167cf6c620f3951f0e61555d4464c",
+      "text": "porque es lo único que existe en tu cabeza.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 70,
+      "bytes": 20684
+    },
+    "71.mp3": {
+      "hash": "91510b53142cc588c74ad88eb35634e3dbef7572f14725eb0e2ce0f51c58d085",
+      "text": "Pero, por suerte, nunca es cierto que tú seas tus pensamientos.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 71,
+      "bytes": 26444
+    },
+    "72.mp3": {
+      "hash": "577311b027508516300b27a155aebf14f2d10ad24b7d3a1b4276bca702f16502",
+      "text": "Puedes aprender a parar la preocupación, la rumiación y el pensamiento en bucle antes de que tomen el control.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 72,
+      "bytes": 39548
+    },
+    "73.mp3": {
+      "hash": "91a737f275904638ddb5265b6feb5757f98a872d1cc020b6272a7460aa9240d3",
+      "text": "Y ahora te voy a contar cómo.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 73,
+      "bytes": 16508
+    },
+    "seg-3.mp3": {
+      "hash": "2210f9f03dd2ce52c37bdb232119833c4a7fc493ee29f7df38860b68e6adc667",
+      "text": "Terapia metacognitiva: deja estar los pensamientos",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "segmentTitle",
+      "index": 3,
+      "bytes": 25292
+    },
+    "74.mp3": {
+      "hash": "f8ec9d0cb4f9c5bd3f26ba5d902e4fce73a919aaec54720b8c0e3b56d211ee22",
+      "text": "Lo que me ha ayudado a librarme de los pensamientos negativos es, de hecho, la terapia metacognitiva.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 74,
+      "bytes": 38396
+    },
+    "75.mp3": {
+      "hash": "b5f8039cf4b641f192ad9ddbc5bad0b851aaecc5be84fdbd33ec70da4fa542f3",
+      "text": "Sí, es una palabra pesada, pero en realidad no es tan difícil como suena. Escuchemos la definición de Kristoffer de la terapia metacognitiva.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 75,
+      "bytes": 57260
+    },
+    "76.mp3": {
+      "hash": "84c2620eaab6ba05a00f4980cf73ced6101985600ccc723f6c9e196569471d13",
+      "text": "La terapia metacognitiva trata, en el fondo, de cambiar la manera en que uno se relaciona con los pensamientos, los sentimientos y las experiencias internas.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 76,
+      "bytes": 57404
+    },
+    "77.mp3": {
+      "hash": "9c2f65ceea03ae0d3ee3a3d1f016706bfc757b578956a28a8d949f23d3ce8087",
+      "text": "Muchos que luchan con la preocupación y la rumiación suelen sentir que esto vive su propia vida.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 77,
+      "bytes": 35516
+    },
+    "78.mp3": {
+      "hash": "4660ecf4fe24297006db696a910cc1158db543579ff10e413993904e933ea838",
+      "text": "Que uno no puede parar.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 78,
+      "bytes": 14348
+    },
+    "79.mp3": {
+      "hash": "343efac2138ad0997a6eea4ecab09043d99df3860c1afa14ebd0bec4ca05d392",
+      "text": "Si a través de la terapia uno descubre que sí es posible, a menudo se siente mucho mejor.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 79,
+      "bytes": 35372
+    },
+    "80.mp3": {
+      "hash": "3245bada22a500e08b03bfb725de68894d44cd652ec92f4dece9861ad70e9a66",
+      "text": "Entonces, ¿qué debes hacer cuando las preocupaciones y la rumiación toman el control?",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 80,
+      "bytes": 34364
+    },
+    "81.mp3": {
+      "hash": "69de2f29fc284aaeafab6e3f792d3ccfc885fbc0df65393298a31a3a7dd07384",
+      "text": "Volvemos con Kristoffer a la consulta del psicólogo.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 81,
+      "bytes": 22700
+    },
+    "82.mp3": {
+      "hash": "602e3ed9be72f1bee344c0d62ba42b908d1b78e86717c750f0187218f5399fde",
+      "text": "He llegado a esa edad en la que mis padres ya se han jubilado.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 82,
+      "bytes": 25292
+    },
+    "83.mp3": {
+      "hash": "f1380bbfb08273d562a314df5976dff0b6302c7aee693ee1c970ea55139fe818",
+      "text": "He tenido mucha suerte de no haber vivido nunca una muerte en la familia cercana.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 83,
+      "bytes": 30476
+    },
+    "84.mp3": {
+      "hash": "361183bf153f3cb6e555e8c8203bcab0f8915a1830869be8f1b23cb03802d94c",
+      "text": "Ese pensamiento me pone muy triste y apenado, y quiero que ellos estén bien.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 84,
+      "bytes": 31196
+    },
+    "85.mp3": {
+      "hash": "25ea3e61e5a843f59bb5ccda6b58f0ef9112b1805a1f907f54100c0a7a57960c",
+      "text": "Puede afectarme bastante a lo largo del día,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 85,
+      "bytes": 20684
+    },
+    "86.mp3": {
+      "hash": "41cc932b31c47b0b3c7035a285357600ff6814bb09160d9bc07957c509d49521",
+      "text": "así que me pregunto qué hace uno cuando aparece.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 86,
+      "bytes": 21548
+    },
+    "87.mp3": {
+      "hash": "5f39f09e5fcb29a14a91d170cc5976441dc3b61ef378e25724eaff8ca0628935",
+      "text": "Si uno tiene pensamientos negativos que le ponen muy triste,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 87,
+      "bytes": 25724
+    },
+    "88.mp3": {
+      "hash": "299dfbaa01ff908d0be559b6c649648fc202f13ebfdc17ab0d2f9e852a08360a",
+      "text": "o con angustia, el truco es no hacer absolutamente nada con esos pensamientos.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 88,
+      "bytes": 33068
+    },
+    "89.mp3": {
+      "hash": "d84dd53d8d4f82dc76bdf3e233a4fe8d0faaf2e704479a1696e2fa1bf2dc5d83",
+      "text": "Simplemente déjalos estar, sin meterte a fondo en ellos ni escarbar mucho, ni intentar apartarlos,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 89,
+      "bytes": 40700
+    },
+    "90.mp3": {
+      "hash": "54c6551a9a91038fe6329ab54d101a79da3a673a0c08b02e96007de66a0fd323",
+      "text": "porque de todos modos uno termina dándoles más atención a esos pensamientos,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 90,
+      "bytes": 31196
+    },
+    "91.mp3": {
+      "hash": "569b69b678ff226ea542c7065f5119db44a79b446dd09ea54d36616d656d4601",
+      "text": "y le indica al cerebro que ese pensamiento es peligroso o doloroso,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 91,
+      "bytes": 28028
+    },
+    "92.mp3": {
+      "hash": "a597b8429db45311c16567be40e086b6a28f13bcd45272134bd74c63660c5d75",
+      "text": "«no lo quiero», así que en cambio uno acaba reforzándolo,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 92,
+      "bytes": 24572
+    },
+    "93.mp3": {
+      "hash": "1d4dc8e4e940f77a6b307b3b57a190b441752d1d0e3794f872e8741cdf07be3b",
+      "text": "ese pensamiento y ese sentimiento.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 93,
+      "bytes": 19388
+    },
+    "94.mp3": {
+      "hash": "99195f4784c46a37afe751a9c376373af8c480ba8ccca121bcb29d94c91bbc21",
+      "text": "Y entonces aparecerán cada vez más de esos pensamientos; solo aumentará la intensidad.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 94,
+      "bytes": 35372
+    },
+    "95.mp3": {
+      "hash": "17b085b320e74ce4e0090a72695e2289fbe909fc41d64a68cc4df0432a6e5ab5",
+      "text": "La solución, por tanto, es no hacer nada.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 95,
+      "bytes": 21116
+    },
+    "96.mp3": {
+      "hash": "1f23be76a593d245f0d362e642405a727580f7dcc672fb91dfcb89f5babdc590",
+      "text": "O sea, debes dejar estar los pensamientos y darles la menor atención posible.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 96,
+      "bytes": 31916
+    },
+    "97.mp3": {
+      "hash": "6b9c7356b0a12b3af58504b2871c58a4f126caeefa30ea9bee4cd6df7edfe3ae",
+      "text": "Tu cerebro no necesita resolver problemas que tú mismo has creado.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 97,
+      "bytes": 27164
+    },
+    "98.mp3": {
+      "hash": "280553b772ad5ee34e57198daf03369ffb27d625dd5ef835864f9527ad218faa",
+      "text": "No dejes que los pensamientos tomen el control.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 98,
+      "bytes": 21548
+    },
+    "99.mp3": {
+      "hash": "48d72d7258c87739953118a2aba44e7a24da9ab283e909aa9749839e906c0096",
+      "text": "Sorpréndete pensando en negativo, reconoce que los pensamientos están ahí y cambia de tema.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 99,
+      "bytes": 36524
+    },
+    "100.mp3": {
+      "hash": "3d2aebc2621545a455b6a9a2e08f272afdc66ef98669ae83fd30eec02804249a",
+      "text": "Quizá es más fácil decirlo que hacerlo, pero la práctica hace al maestro.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 100,
+      "bytes": 29036
+    },
+    "seg-4.mp3": {
+      "hash": "0f1a2a34cae012bce05dd1c8bad9a1b7a3a7a0f37854c0ef7882dac8a7bc57dd",
+      "text": "Detectar los bucles; los pensamientos son solo pensamientos",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "segmentTitle",
+      "index": 4,
+      "bytes": 28892
+    },
+    "101.mp3": {
+      "hash": "93dc9592d0637a5eac6c57fff94467c535d41bba9db9ea3d90dac836b405a701",
+      "text": "¿Cuándo fue la última vez que te pillaste preocupándote o dándole vueltas a tus problemas?",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 101,
+      "bytes": 33644
+    },
+    "102.mp3": {
+      "hash": "7abcd7dc20c4d61ae6555e6e4c5349364ec78143c4c74ca679717ddc0808ede6",
+      "text": "Probablemente la respuesta es que casi nunca lo piensas.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 102,
+      "bytes": 24716
+    },
+    "103.mp3": {
+      "hash": "0b3fae250a48011c7c362d18397944d40d999d473779a5ccb4a8a1d08ed6136b",
+      "text": "Así que los pensamientos negativos siguen girando sin rumbo ni sentido.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 103,
+      "bytes": 29324
+    },
+    "104.mp3": {
+      "hash": "7e36ce97279811ed04b8eb83a2ad9c1819b0de12c5371fba318e6a7d6c2b54c0",
+      "text": "Por eso, una parte central de la terapia metacognitiva es lograr dejar estar los pensamientos.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 104,
+      "bytes": 36092
+    },
+    "105.mp3": {
+      "hash": "4ac584e88e55a67eafc0458d813ed302ab2636a8cbdbbc987924d5b61910eb41",
+      "text": "La clave en sí es darse cuenta de qué problemas son reales y cuáles no.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 105,
+      "bytes": 28028
+    },
+    "106.mp3": {
+      "hash": "0cce2270fd86cce3afc9e530c438d482f27d3a82e45a0ecca68d2b01ccbf39c7",
+      "text": "Y darse cuenta de cuándo los pensamientos solo dan vueltas en bucle.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 106,
+      "bytes": 26732
+    },
+    "107.mp3": {
+      "hash": "06131c35ea62b6b55c0f37c668ad4d3ad01eb6129441b8040ab22c68c458ce89",
+      "text": "Cuando los pensamientos negativos giran sin control y aparece en tu cabeza una crisis tras otra,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 107,
+      "bytes": 36380
+    },
+    "108.mp3": {
+      "hash": "025dea3cea340414cc6d7bc70c98f079216d7758d772084d9f08c5081f872ce5",
+      "text": "eso puede ser una señal de que simplemente debes relajarte y dejar los pensamientos a un lado.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 108,
+      "bytes": 34796
+    },
+    "109.mp3": {
+      "hash": "aa028ed39de8f168d5a8ff3c18ce36ec1b6d5c3432e2d793adab73d822e2f8f2",
+      "text": "Y si no hay nada que puedas hacer al respecto en ese momento,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 109,
+      "bytes": 24428
+    },
+    "110.mp3": {
+      "hash": "06b9318c3f80c7362f5fabfd0d6887704c73dff282cbfc7ca97d0470f893a269",
+      "text": "entonces en realidad no necesitas hacer nada en absoluto.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 110,
+      "bytes": 25724
+    },
+    "111.mp3": {
+      "hash": "54bbe55288c326fcdb558d714bf354759a38f30cd24c810ae547a87385455e2b",
+      "text": "¿Por qué gastar tiempo y energía en resolver problemas sobre los que ni siquiera puedes hacer nada?",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 111,
+      "bytes": 34796
+    },
+    "112.mp3": {
+      "hash": "00a1e7a20415b9be39f68d04929de8529050aec48975d56892b533b7c71d1b9e",
+      "text": "Solo crea estrés innecesario y es tiempo perdido.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 112,
+      "bytes": 23132
+    },
+    "113.mp3": {
+      "hash": "d0302723c4311aee56dd19009d2e9a6aa776d524d642abb3e8daf8e2cbfe4cd8",
+      "text": "Ahora te voy a contar algo que me costó tiempo entender.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 113,
+      "bytes": 23276
+    },
+    "114.mp3": {
+      "hash": "29d4bb281ffafa61df2215d141a271188ca16f1d5dafe8605fb56c97f5511855",
+      "text": "Los pensamientos negativos no son peligrosos, aunque lo parezca.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 114,
+      "bytes": 27596
+    },
+    "115.mp3": {
+      "hash": "460b529ac35e3716da1cbc6db8ddce6bf23928dda3a794de7569f576b92509bd",
+      "text": "Así que no te creas todo lo que piensas. Los pensamientos son solo pensamientos.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 115,
+      "bytes": 39404
+    },
+    "116.mp3": {
+      "hash": "7bebf5f8495964d51dfc42b6bb65dfa02a98dd187c87341b40a77e77e6acbfca",
+      "text": "No hacer nada con tus pensamientos, de hecho, no crea más problemas, sino menos.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 116,
+      "bytes": 33500
+    },
+    "117.mp3": {
+      "hash": "d0b9d450e09313454e243dbc423364651173db5edeb5779318c9ca58b7ad8862",
+      "text": "Si lo piensas bien, tiene sentido.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 117,
+      "bytes": 18812
+    },
+    "118.mp3": {
+      "hash": "4a9384736970367f2eb58d606803ee506889b7ca1a9111b08104125cf2d17414",
+      "text": "Pero ¿qué sueles hacer realmente cuando te aparecen pensamientos negativos?",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 118,
+      "bytes": 30476
+    },
+    "119.mp3": {
+      "hash": "92ca792b7f367ebf40c54ca3f38e49453a0e114a710c29d2f1c0375d3a8bcafd",
+      "text": "Salgamos otra vez a la calle.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 119,
+      "bytes": 16220
+    },
+    "120.mp3": {
+      "hash": "d36c14ae49c748a6a168657ef23530ceef49919aa8655d3ee8aaa35f6d7e3ee9",
+      "text": "Cuando tengo pensamientos negativos, el cuerpo se pone",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 120,
+      "bytes": 24572
+    },
+    "121.mp3": {
+      "hash": "b470002e894a2eec24af172b9b583c29a49e7a794af5a40bcfa6ccf18e67f5ca",
+      "text": "un poco estresado e inquieto.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 121,
+      "bytes": 17372
+    },
+    "122.mp3": {
+      "hash": "ca7eb58d37328770d46bf6c6f2759506d5e6e4319230273de4206dcb15e1e435",
+      "text": "Creo que entra como en modo defensa.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 122,
+      "bytes": 18524
+    },
+    "123.mp3": {
+      "hash": "cb24fb950990f067253d9c8ee4b16a91b24c2fcbd7be424d1efa83de1fb8a927",
+      "text": "Y entonces hay que sacudírselo de encima, salir a correr o remar un poco.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 123,
+      "bytes": 31052
+    },
+    "124.mp3": {
+      "hash": "42e20946a7d5d076905d37886eb51f1d7d6ab0f765df681616e79b6e0e6dc50d",
+      "text": "Sí, lo único cuando estoy inquieto es que la cabeza me pesa,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 124,
+      "bytes": 24860
+    },
+    "125.mp3": {
+      "hash": "a55e805ca70753c4c7a699ae83aa898f01d3d7c88fbad7612efdcbcdca8569e4",
+      "text": "pesa, y se siente como si hubiera muchos pensamientos a la vez, así que uno se pone un poco tenso.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 125,
+      "bytes": 38252
+    },
+    "126.mp3": {
+      "hash": "168215c9352bc74ada963362fdbc06822c32dd4877b3025a4f95ac03b5780857",
+      "text": "Quizá te reconoces en esto. En ese caso, presta especial atención ahora.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 126,
+      "bytes": 37244
+    },
+    "seg-5.mp3": {
+      "hash": "ba9e3b9777912f484479b98e985163efe96206d5b05b048323e2b7f2f86e0d8b",
+      "text": "Sesión de terapia: las ganas de dejarlo todo",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "segmentTitle",
+      "index": 5,
+      "bytes": 23420
+    },
+    "127.mp3": {
+      "hash": "5dede6a66b1484dd942452e18820ed9c9180a0e7cb0ce254633a4cd129557db3",
+      "text": "Ahora vas a acompañarme a una sesión de terapia metacognitiva.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 127,
+      "bytes": 26876
+    },
+    "128.mp3": {
+      "hash": "69de2f29fc284aaeafab6e3f792d3ccfc885fbc0df65393298a31a3a7dd07384",
+      "text": "Volvemos con Kristoffer a la consulta del psicólogo.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 128,
+      "bytes": 22700
+    },
+    "129.mp3": {
+      "hash": "4ae7a5d0d6cf923b2d8b574c7f13f34bc62ea5c684a0c673374586c1f6f68963",
+      "text": "Es hora del tratamiento.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 129,
+      "bytes": 14924
+    },
+    "130.mp3": {
+      "hash": "bf2d126a982f78aa270972c57289e47f32ddc9e26c3bd2f8c6cfbca2ec77850e",
+      "text": "Una sensación que tengo a menudo [no se entiende]",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 130,
+      "bytes": 23420
+    },
+    "131.mp3": {
+      "hash": "bba7af63c7db11a4d644013318a71d42817239c95bc9bd792e3d2123f1c4a92e",
+      "text": "es que casi todo lo que hago no tiene ningún sentido,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 131,
+      "bytes": 22844
+    },
+    "132.mp3": {
+      "hash": "ff55a29dedee1a6079b42d410dc8a3e962ac74f437771d9bcd91b4920af2dcbf",
+      "text": "y entonces me dan muchas ganas de mandarlo todo a paseo,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 132,
+      "bytes": 25004
+    },
+    "133.mp3": {
+      "hash": "2e925bd6646de4080b72188629b0665b34bd8a259e1fd5b524c68b92672ad125",
+      "text": "porque siento que no me divierto,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 133,
+      "bytes": 16364
+    },
+    "134.mp3": {
+      "hash": "9f8c9f197706e862672b35241adfdb48ee1a0328b9f23385dcbe33831ca67f9f",
+      "text": "no tengo la vida que quiero, etcétera.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 134,
+      "bytes": 19100
+    },
+    "135.mp3": {
+      "hash": "a9d1672338e632008e873e336b3520da1bf826fa304a8c4526fc06879885b513",
+      "text": "Irme a Tailandia, relajarme en la playa y tomarme",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 135,
+      "bytes": 24140
+    },
+    "136.mp3": {
+      "hash": "2541a02714c8834fb42f94b232eee6cfc74760395a53f9b7ae1122e6298f4435",
+      "text": "una mimosa también, ¿sabes?",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 136,
+      "bytes": 17228
+    },
+    "137.mp3": {
+      "hash": "3d0b264d8ff4bbb0211eed6470dc518640357f0570baf1a199e150f784a1068c",
+      "text": "¿Por qué no debería hacerlo? O sea, ¿por qué no debería irme a la playa?",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 137,
+      "bytes": 34652
+    },
+    "138.mp3": {
+      "hash": "56d7d3df72b3ffe3dfcf5539e35e304ec3b46d08ab089a3adbefa01e41c4e371",
+      "text": "Bueno, no parece que justo mientras sientes esa emoción",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 138,
+      "bytes": 25580
+    },
+    "139.mp3": {
+      "hash": "39b9fd0124ca83a9e8a9f037e0c4b8ca441d33397bbce2a072cae258ca1d382d",
+      "text": "sea el momento de tomar esa decisión.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 139,
+      "bytes": 18956
+    },
+    "140.mp3": {
+      "hash": "3b5a9aabbb70844490c04a114e0fcbfc7693f6a451d2909939e4759722dae931",
+      "text": "Y creo que muchísima gente se puede identificar con lo que describes.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 140,
+      "bytes": 28172
+    },
+    "141.mp3": {
+      "hash": "9b184ad35201d483f9827547443ec2d0edda951393487605de369af66b078d7f",
+      "text": "¿Vivo la vida que quiero vivir? ¿Es así como debe ser? ¿Me espera algo más?",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 141,
+      "bytes": 42716
+    },
+    "142.mp3": {
+      "hash": "e331557bfedac9c31c042dec0409e6a8e11508cf4a8860a663405d5af86eea5a",
+      "text": "Está bien que seas consciente de que son pensamientos que aparecen, o una sensación que tienes en ciertas situaciones.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 142,
+      "bytes": 43148
+    },
+    "143.mp3": {
+      "hash": "bc25c5c77bd412da95910e4e57d659d87d5b20f3728a4f0c2fe56e2d80120a3d",
+      "text": "Y entonces es una ventaja que puedas manejarlo de una forma un poco distinta.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 143,
+      "bytes": 30620
+    },
+    "144.mp3": {
+      "hash": "ba1505da9d45195a8d896b172be0ce0a5d84603ea215a86a5fe2077f1b47f4e4",
+      "text": "Que no necesites ni tomar esa decisión en ese momento, ni pasar tanto tiempo dándole vueltas.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 144,
+      "bytes": 37820
+    },
+    "145.mp3": {
+      "hash": "cd24f8a75a92504b558486ded18c3d15b624f7361d88f65bb6d242c8cc97cf34",
+      "text": "Es importante, por tanto, darnos cuenta de nuestros propios hábitos y patrones de pensamiento.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 145,
+      "bytes": 34940
+    },
+    "146.mp3": {
+      "hash": "bf6c00334af7117868718327a77a6b453fd023d3fcbb451334e771bc4043810d",
+      "text": "Solo cuando uno sabe cómo suele reaccionar el cerebro, puede practicar hacer otra cosa.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 146,
+      "bytes": 34940
+    },
+    "seg-6.mp3": {
+      "hash": "129bdb3145b87df20bda01e922423a9ccde901dcc0aa72a2c33f9e5b3714358b",
+      "text": "Técnica 1: atención desconectada",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "segmentTitle",
+      "index": 6,
+      "bytes": 20540
+    },
+    "147.mp3": {
+      "hash": "a8499505c7c133dc4fdf8aabddf41954c05caf193d62d862b17f0d9a7034eedc",
+      "text": "Una técnica que me ha sido utilísima,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 147,
+      "bytes": 18812
+    },
+    "148.mp3": {
+      "hash": "939aa1073affafdbaf9c1e41bf301903fe21e92e520f47980e4b46568f053555",
+      "text": "y que es la clave misma de la terapia metacognitiva,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 148,
+      "bytes": 22844
+    },
+    "149.mp3": {
+      "hash": "76f41814717fb4939b38fba54d4a6da78e3c169f48a3f7da5a241ceac21a0999",
+      "text": "es la atención desconectada.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 149,
+      "bytes": 17372
+    },
+    "150.mp3": {
+      "hash": "54d7b163c59ca22a50623b43c3bb6aa528a70ea1b158b61d624f00dc575a250d",
+      "text": "Aquí está Kristoffer otra vez.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 150,
+      "bytes": 17516
+    },
+    "151.mp3": {
+      "hash": "12f15750e3ead05df8aa0b23716c9d71ed772c008640a843736ca86aa45c8615",
+      "text": "En muchos sentidos es un estado o una especie de actitud",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 151,
+      "bytes": 24860
+    },
+    "152.mp3": {
+      "hash": "0cb6e0402743fcb85346fef1f102fd237cac47266307d591b58686d04683e3f3",
+      "text": "que implica que, por un lado, uno es consciente de las experiencias internas,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 152,
+      "bytes": 30188
+    },
+    "153.mp3": {
+      "hash": "04ebca599ce05a6412cb6634a0edb387e86a75d3858999f5a9467b943e405bbb",
+      "text": "ya sean pensamientos del tipo «¿y si…?» o «¿por qué?»,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 153,
+      "bytes": 24140
+    },
+    "154.mp3": {
+      "hash": "1c80565792021ca4acf61c097894dfa301c9198410a664fea2a4f6fa533988c9",
+      "text": "sentimientos como tristeza, vergüenza, culpa,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 154,
+      "bytes": 22844
+    },
+    "155.mp3": {
+      "hash": "605c5e5476486ddda40f0230ba6e43863e4a28f1664b791562db2cda16bef4f1",
+      "text": "o sensaciones más corporales como palpitaciones, sudor, calor o lo que sea,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 155,
+      "bytes": 33068
+    },
+    "156.mp3": {
+      "hash": "425bae30d005645a2a83fd4aef684eea859dee9de6615b259974aa29e413a8f7",
+      "text": "sin que uno elija responder más a esas señales.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 156,
+      "bytes": 23420
+    },
+    "157.mp3": {
+      "hash": "32ba6942e4112feda24bcaffc6b0d7d0f322e90925236a0641decf9a1eee73c7",
+      "text": "Es decir, que por un lado uno es consciente de lo que está pasando, sin quedarse enganchado a ello.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 157,
+      "bytes": 38108
+    },
+    "158.mp3": {
+      "hash": "2adefbbcf266cbf7cb8e6178368ec32a8550cacce84cffa9989b2b6a8c202f2d",
+      "text": "No implica ningún tipo de comprobar si es verdad, ni distinguir entre problemas reales o imaginados,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 158,
+      "bytes": 38540
+    },
+    "159.mp3": {
+      "hash": "a1bc7c270e3eef49a9b8df5c0d67f20c9dd488d366af0ce2db40f8c4ecafea2a",
+      "text": "y uno simplemente se relaciona con un pensamiento como si fuera solo un pensamiento.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 159,
+      "bytes": 32780
+    },
+    "160.mp3": {
+      "hash": "2f9f738c8c7aaeccfc5e3d4b1f09852cf97baaf87a1280399954f8ebfbdd54c4",
+      "text": "Por eso es justo lo contrario de la preocupación y la rumiación.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 160,
+      "bytes": 26012
+    },
+    "161.mp3": {
+      "hash": "d4c89fa26d24fa5c90f7f4975d264083a5c02e12c37336d8a55bb780368e9e81",
+      "text": "La atención desconectada es, por tanto, una técnica que debe",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 161,
+      "bytes": 27308
+    },
+    "162.mp3": {
+      "hash": "07f04a7d0cfdf803b0076ae4c32bc48550adf304b1bcf0c9cd962b723ad36624",
+      "text": "que debe enseñarte a observar tus pensamientos",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 162,
+      "bytes": 22556
+    },
+    "163.mp3": {
+      "hash": "7e4518d016ef313a5be564ea172fb10e07f75406d6f940e72d8c1bf3d8568831",
+      "text": "sin involucrarte más en ellos.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 163,
+      "bytes": 17228
+    },
+    "164.mp3": {
+      "hash": "def2ea7577856086c3e65fa6d3ac7b49d522ce95e563ea40eeb1fbdc0d9cf825",
+      "text": "O sea, debes poder observar tus pensamientos",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 164,
+      "bytes": 23708
+    },
+    "165.mp3": {
+      "hash": "95e438d14c462ff200f0e1802679f581ef2e01b5b3fcece60b0d21f5f3a4ddff",
+      "text": "con una perspectiva más objetiva",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 165,
+      "bytes": 17660
+    },
+    "166.mp3": {
+      "hash": "04e961b7bedbb96ada916d4575b08e9706201712c6ff69b618597159f004446b",
+      "text": "y crear una especie de distancia.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 166,
+      "bytes": 17948
+    },
+    "167.mp3": {
+      "hash": "357dc0fc572dbc751c6661e104b45f6f79657c0eadbadc4d50e1eaf5e2a818f6",
+      "text": "Así que, cuando me preocupa que mis padres en algún momento vayan",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 167,
+      "bytes": 26588
+    },
+    "168.mp3": {
+      "hash": "25a15174506e85bd055c8072c1207fcc919bbb9302c527299f9dfdb89728a6c0",
+      "text": "a morir, es importante que no me meta en un montón de pensamientos en bucle sobre",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 168,
+      "bytes": 31196
+    },
+    "169.mp3": {
+      "hash": "9f57c6634161253e61108025fca90fa5fc0db9b71441b99117be0d8dd383eac1",
+      "text": "esto, y que más bien me concentre en el tiempo que tengo con ellos ahora.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 169,
+      "bytes": 28172
+    },
+    "170.mp3": {
+      "hash": "b8d5b217105922f3d17cc6dbb7697a240df34e0ac3aa38dace11cc80e03ae0d8",
+      "text": "Y ahora, cómo puedes practicar esto.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 170,
+      "bytes": 18812
+    },
+    "171.mp3": {
+      "hash": "3180a4da8840340a83bac1a28df0591b80d816e22894846ab010f8af984f738f",
+      "text": "Intenta no parar los pensamientos, sino más bien dejar que se desarrollen sin que te involucres",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 171,
+      "bytes": 36668
+    },
+    "172.mp3": {
+      "hash": "a31bb037205cbcded29a488ab1c787b3154c4070d7451bf588e6e8386c70ee51",
+      "text": "en ellos.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 172,
+      "bytes": 10748
+    },
+    "173.mp3": {
+      "hash": "e1a15101593379b5a7201c6763f751b8d536dc42ed943f0ce20d42c7dbaaf0be",
+      "text": "Deja que los pensamientos aparezcan,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 173,
+      "bytes": 18236
+    },
+    "174.mp3": {
+      "hash": "a4d827302658d0363e8d2685891cac063686b1dc37cc4349e68fa56424db8fa2",
+      "text": "date cuenta de que vienen,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 174,
+      "bytes": 15212
+    },
+    "175.mp3": {
+      "hash": "791a7929a69a69ab50bb089b4bc4bde7d2d8c54934510bdac1c9d0d1887dec04",
+      "text": "y déjalos pasar.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 175,
+      "bytes": 12764
+    },
+    "176.mp3": {
+      "hash": "a34a48c628dd3a140dd5cd1ecd9d8af5b4ea6db1a391b1ff216d3223ffdc667f",
+      "text": "Así cambias el foco: de ser quien hace lo que piensas a solo observar.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 176,
+      "bytes": 29180
+    },
+    "177.mp3": {
+      "hash": "52b4f145d06943c3644d06c2fbb9d878a727edb4ae1ad28d0b592adc3d73f737",
+      "text": "Al principio esto puede sentirse muy raro y extraño.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 177,
+      "bytes": 24428
+    },
+    "178.mp3": {
+      "hash": "fc41fcb3f4d6b83626cb51a873ba8facfac07289bdedc8d7100a0481c78eea8d",
+      "text": "A veces pueden aparecer pensamientos horribles,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 178,
+      "bytes": 22268
+    },
+    "179.mp3": {
+      "hash": "c194fe1a99c870c14a587ab09879d2f2ed49a3daf22e797c301b05aba12af15d",
+      "text": "y uno siente una fuerte necesidad de resolver el problema.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 179,
+      "bytes": 25436
+    },
+    "180.mp3": {
+      "hash": "8adf6acd905c3235fae8c6a0e251797091ac4c98a9b93affdf60a77657e0417d",
+      "text": "El ejercicio entonces es no dejar que los pensamientos te controlen.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 180,
+      "bytes": 27452
+    },
+    "181.mp3": {
+      "hash": "4a363b988c24aebe8a49921c5bcb34a11d6efd1079919b47bc0e7ae16d9f96b9",
+      "text": "Obsérvalos sin juzgar.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 181,
+      "bytes": 14780
+    },
+    "182.mp3": {
+      "hash": "175ef96a2c2d897e3245a3095242c202653356453cd511ba078b880139693fd2",
+      "text": "Ya has aprendido sobre la atención desconectada.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 182,
+      "bytes": 22268
+    },
+    "seg-7.mp3": {
+      "hash": "50417b0e0aed08eaaf4386113f99060f65bbe6573fbbeb3162eb0dd0e1d72f08",
+      "text": "Técnica 2: atención flexible",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "segmentTitle",
+      "index": 7,
+      "bytes": 19244
+    },
+    "183.mp3": {
+      "hash": "d58f6411e72152d59b54c330b9b4247960e1d43f28c8352b62cd5f57bdacf8a2",
+      "text": "Lo siguiente que quiero enseñarte es la atención flexible.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 183,
+      "bytes": 24716
+    },
+    "184.mp3": {
+      "hash": "85f35e23bf00bd1a71c555b4ede9f88c1305cdbf7f4aeefd3115c0f2c2480a37",
+      "text": "Cuando uno se estresa, se preocupa, se pone nervioso o se irrita, puede quedarse muy rígido en su manera de pensar.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 184,
+      "bytes": 44732
+    },
+    "185.mp3": {
+      "hash": "cc695fd6c6ba9f230bfd23806f58aaef1043708784a1baaf44f507a946a820eb",
+      "text": "A menudo lo que pasa en la cabeza o dentro del cuerpo es tan ensordecedor que nos roba toda la atención.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 185,
+      "bytes": 37100
+    },
+    "186.mp3": {
+      "hash": "c4aaa5568a0a92f6548a0e616e3f0877959330cb8902c58338b08928379332d6",
+      "text": "Volvamos con Kristoffer.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 186,
+      "bytes": 15068
+    },
+    "187.mp3": {
+      "hash": "6ae75f28f1da9d4583e3ca2b0c788494c98cc7ff667275bd9c9790b09e1af285",
+      "text": "En la sala de terapia practicamos a menudo aumentar la flexibilidad de la atención.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 187,
+      "bytes": 31772
+    },
+    "188.mp3": {
+      "hash": "cae3a780493019c13a53746141479694e0518ed5a4ebbee9bb71f3557c71bd89",
+      "text": "Puede tratarse, por ejemplo, de presentar distintas fuentes de sonido por la sala.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 188,
+      "bytes": 31916
+    },
+    "189.mp3": {
+      "hash": "b45aa8cabaef0823f16c984483b7df7dfa78b56f481c1061b2ca40d37a53aa4f",
+      "text": "Por ejemplo, a menudo doy unos golpecitos por un lado,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 189,
+      "bytes": 23708
+    },
+    "190.mp3": {
+      "hash": "9b66556e0a91c74e84851f3350b5015ce6a562c81b70511d575eb887b7d7e524",
+      "text": "y luego hay coches fuera de la ventana por el otro lado,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 190,
+      "bytes": 23420
+    },
+    "191.mp3": {
+      "hash": "f47567155c6004a98231d50f31d83d3242b7c861d99238db11bc633d775b1615",
+      "text": "y luego pasa… Quizá alguien camina fuera de la puerta de la sala de terapia.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 191,
+      "bytes": 35948
+    },
+    "192.mp3": {
+      "hash": "da292f15c4f89585afbfbeb91862087d1e8acadb178f869f9661de18144d064a",
+      "text": "Entonces se practica mover el foco entre",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 192,
+      "bytes": 19964
+    },
+    "193.mp3": {
+      "hash": "ba940672795dcd95d0330864f5737688ee43866a76f2be0c133122abbd3f6367",
+      "text": "estas distintas fuentes, de modo que uno elige",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 193,
+      "bytes": 22988
+    },
+    "194.mp3": {
+      "hash": "dee7d211965a412a26db1bf668a6d95fd4190d5539e02631a2bbdfcedfbbc217",
+      "text": "concentrarse en un tipo de sonido, mientras",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 194,
+      "bytes": 21548
+    },
+    "195.mp3": {
+      "hash": "35758f8ad7ae363604a9619fcdb9351b7ac9a5df3e558f9c3c34ba6160951345",
+      "text": "deja los demás en paz.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 195,
+      "bytes": 14780
+    },
+    "196.mp3": {
+      "hash": "b13eebf8618fefb9d5c95ac6b5827c0d1f823070470d3252c2313ba15d2f47e0",
+      "text": "Y cuanto mejor se vuelve uno en cambiar un poco entre estas distintas fuentes,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 196,
+      "bytes": 29612
+    },
+    "197.mp3": {
+      "hash": "a1f729c316c2e425d14b67a464033d4b6020d3614be57d8ceed3f83b8b4367c1",
+      "text": "mejor preparado estará para manejar y sacar el foco del cuerpo y de la cabeza",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 197,
+      "bytes": 30332
+    },
+    "198.mp3": {
+      "hash": "0487285ec41568ac59537f6548274682ae0c125845c2ba2b72c59dec519a3f48",
+      "text": "cuando surgen ahí pensamientos o sentimientos negativos.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 198,
+      "bytes": 25148
+    },
+    "199.mp3": {
+      "hash": "85acc5e01b6036d338d6d24f07ee6789793e716cc49f44da6372f1bc2b9c3c4e",
+      "text": "La idea principal es lograr desplazar la atención, preferiblemente de dentro de la cabeza hacia el mundo.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 199,
+      "bytes": 39692
+    },
+    "200.mp3": {
+      "hash": "bf3b511322a3f2a041ebd4101939877d56cd351eff8b604cf416b914c08ac760",
+      "text": "Si estoy fuera y noto que aparecen pensamientos irritantes y molestos,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 200,
+      "bytes": 29324
+    },
+    "201.mp3": {
+      "hash": "e678329cd3356c3e78b1d7d15fdedf2304af44871993731b99a54f5c4525cb9e",
+      "text": "suelo mover el foco hacia los pájaros, los coches o los sonidos que hay a mi alrededor.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 201,
+      "bytes": 35228
+    },
+    "202.mp3": {
+      "hash": "4f033a21b9d37c8de3db170613ea21d84eac882dad4af1556868187376e52ae0",
+      "text": "Esto funciona aún mejor si intento describir lo que veo u oigo.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 202,
+      "bytes": 27740
+    },
+    "203.mp3": {
+      "hash": "49b944100a728de74ac6e79a95e2794b09bbb36a3338933db701a4ab7909a602",
+      "text": "De hecho, me llevó muy poco tiempo que esto se convirtiera en una herramienta eficaz que podía usar.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 203,
+      "bytes": 35948
+    },
+    "seg-8.mp3": {
+      "hash": "57bd254b1a97a7379a265dc8380114246e867f871d0f00e047d581989d4660c0",
+      "text": "Patrones arraigados y autoestima",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "segmentTitle",
+      "index": 8,
+      "bytes": 18524
+    },
+    "204.mp3": {
+      "hash": "44d1514c837751e2f12bc52a9018603d6a993efcf4bf7b2eb0eebc283a40b4ba",
+      "text": "Todo empieza con que tenemos que desafiar patrones de pensamiento arraigados.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 204,
+      "bytes": 29900
+    },
+    "205.mp3": {
+      "hash": "712f44399c24b0bf1ac3423a05a9e56f991e7d1f57c5db6872588284101b0e94",
+      "text": "¿Y qué significa eso?",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 205,
+      "bytes": 14060
+    },
+    "206.mp3": {
+      "hash": "9c1d8a13c1498b172afec0ed54b54933a345ae3b27a3e3124e8d12aeb2ae6c79",
+      "text": "¿Quizá tienes la idea de que no eres lo bastante bueno?",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 206,
+      "bytes": 22988
+    },
+    "207.mp3": {
+      "hash": "033712b979be9d1af2d2c2249374fa88c9a8610f87e60f4eaedc33a1249c2873",
+      "text": "O de que no mereces sentir alegría en la vida.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 207,
+      "bytes": 20252
+    },
+    "208.mp3": {
+      "hash": "7697cb8dddec0cb7c988cd4548bcef5cfa58261720a2ef5b7da07dde94498aa7",
+      "text": "Quizá piensas que eres un fracasado",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 208,
+      "bytes": 18524
+    },
+    "209.mp3": {
+      "hash": "330e480e156c1ee5685358d300e334abaeb5961e490cc1d1bc398008d54241e0",
+      "text": "y que no consigues hacer las cosas.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 209,
+      "bytes": 18668
+    },
+    "210.mp3": {
+      "hash": "b3166caf71ef25368438c7bab8155c0e02e5c88c0e949133aca16ed989260f10",
+      "text": "A menudo son patrones de pensamiento que se han asentado",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 210,
+      "bytes": 24572
+    },
+    "211.mp3": {
+      "hash": "3cb667e4e36104a5b2580ff9396d491ff2138435a5f50893fde673ca1ff3df18",
+      "text": "y que te afectan negativamente en la vida todo el tiempo.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 211,
+      "bytes": 23852
+    },
+    "212.mp3": {
+      "hash": "366f68a35e55336be18cf2f283506a95d3b05012bc288f6c7df483f466f8cfb5",
+      "text": "Entonces, ¿cómo puedes aprender a manejar pensamientos negativos",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 212,
+      "bytes": 28316
+    },
+    "213.mp3": {
+      "hash": "d52066802fc4c287b5351795afff1c9ab2d51a39ff32f420c4ab65a7e744a84c",
+      "text": "que se han clavado tan hondo en tu cerebro que crees que son verdad?",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 213,
+      "bytes": 25292
+    },
+    "214.mp3": {
+      "hash": "9cb6ec4a27276dcfb03bf1eeb8c93bb07875309c1b72d1d9d4ffbcb9fca71108",
+      "text": "Quiero terminar la sesión de terapia con Kristoffer trabajando en esto.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 214,
+      "bytes": 28892
+    },
+    "215.mp3": {
+      "hash": "4daa68ebbbcffe53808ed3c38c82c1ec86f62306e62f6ed684a9f70716a55e99",
+      "text": "A veces tengo un poco la sensación de que no soy lo bastante bueno,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 215,
+      "bytes": 26444
+    },
+    "216.mp3": {
+      "hash": "e515dfd51dd3e7ccfde7e7262be7179945f5e0e2bfe6b4cb81a3b020c2367de8",
+      "text": "de que debería haber hecho algo más con mi vida, o de que debería estar en otro sitio.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 216,
+      "bytes": 32780
+    },
+    "217.mp3": {
+      "hash": "3ecb412c28cd486304f0501c3385cad8734e50439b129be8bb2abcd8ab4ee2c7",
+      "text": "Esto de la baja autoestima es algo muy relevante,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 217,
+      "bytes": 22988
+    },
+    "218.mp3": {
+      "hash": "0e55991fb886135aa561bab0cbb8b3389925db9dcc3918afc1e5065cf4188351",
+      "text": "porque creo que muchísima gente se puede identificar con ello.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 218,
+      "bytes": 25580
+    },
+    "219.mp3": {
+      "hash": "48ecad77a8ff04c6172e090ec0eb8d9a19a7917b2e7624f7e813dab82f5dafff",
+      "text": "Quizá incluso sobre todo los jóvenes, que tienden a compararse más con los demás.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 219,
+      "bytes": 33068
+    },
+    "220.mp3": {
+      "hash": "5bb69723b6c5e491539f3ca4d90f39a1c9fd67d10828f959acdea5ccae3256d1",
+      "text": "Es difícil creer que uno es lo bastante bueno cuando ve que otros a su alrededor consiguen cosas,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 220,
+      "bytes": 36380
+    },
+    "221.mp3": {
+      "hash": "a3202c9137da171decc91e8e7f46d350ca2a463196c8f24cf655fb9a524477c3",
+      "text": "más fuertes que nosotros, más hábiles que nosotros.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 221,
+      "bytes": 24140
+    },
+    "222.mp3": {
+      "hash": "ec2d4424a3c0bf3653c3ef9637bb10fd558e90f968e84480d74219098448e676",
+      "text": "Y entonces, ¿qué caracteriza en realidad a quienes tienen muy buena autoestima?",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 222,
+      "bytes": 32060
+    },
+    "223.mp3": {
+      "hash": "d4d26beadbd355a7daca05e3c3dd44fb97c9e6cd15e9af904338c41899850581",
+      "text": "¿Cómo se consigue eso en realidad?",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 223,
+      "bytes": 17228
+    },
+    "224.mp3": {
+      "hash": "ad1396107a94c62280b22f953470769fcccc495276ef57b8d604f60cc1ba4ba6",
+      "text": "Y yo creo que el camino no es hablarse a uno mismo de forma muy positiva,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 224,
+      "bytes": 28892
+    },
+    "225.mp3": {
+      "hash": "5bfb974f9f42701d7b1588b3886e622bddc1f42af6ab62597a03a4d49229c249",
+      "text": "intentar decirse cosas bonitas, intentar pensar muy en positivo,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 225,
+      "bytes": 28892
+    },
+    "226.mp3": {
+      "hash": "cbb4222f24dcba051c10b56eb3ac72c94d90faba8e2c80dd8281c7e9e09abdf7",
+      "text": "porque uno siempre puede, de algún modo, cuestionar esos pensamientos.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 226,
+      "bytes": 29036
+    },
+    "227.mp3": {
+      "hash": "e4ce2edea69f328069ee34c6c649597a504818819345a0b2d8420e80e329f5ae",
+      "text": "Eso quizá lleva otra vez a la rumiación.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 227,
+      "bytes": 20252
+    },
+    "228.mp3": {
+      "hash": "2f86593b0c610bf6f0e176931d86bea74522d018ce1f9936abcb6f7f68726604",
+      "text": "Así que creo que uno llega mucho más lejos simplemente reduciendo el tiempo que,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 228,
+      "bytes": 30908
+    },
+    "229.mp3": {
+      "hash": "910da86bb516f91532440532728ded77e4cc3dd707a1b6bed0022c6ef1ccde2a",
+      "text": "que dedica a exigirse muchísimo a sí mismo o a machacarse.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 229,
+      "bytes": 27596
+    },
+    "230.mp3": {
+      "hash": "e84759cc35c950ccfedae0504a49af3ccf6b9f1c9101a87db7b406957b3f86b9",
+      "text": "Creo que si uno dedica menos tiempo a eso, notará una gran diferencia bastante rápido.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 230,
+      "bytes": 35660
+    },
+    "231.mp3": {
+      "hash": "d9785508c2ba3c385669500bfd5eff3aa4be905aa77f3068b6b2f410e7a942ea",
+      "text": "En la terapia metacognitiva no se piensa que haya que construir la autoestima,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 231,
+      "bytes": 29900
+    },
+    "232.mp3": {
+      "hash": "ceaca1b0371877ecba8a53a703dde14e626520247627b018a5a0a529e7362fed",
+      "text": "sino más bien dejar de mantenerla baja.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 232,
+      "bytes": 19676
+    },
+    "233.mp3": {
+      "hash": "abc0979e7a190658b86238954d6cf9add224817ca3f8fae5f7ecee0ac0f7fdd7",
+      "text": "Eso significa que debes dejar de",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 233,
+      "bytes": 17948
+    },
+    "234.mp3": {
+      "hash": "f1c9f113e6439d93b72c420b529e99f3b8aaa766f729fd86da55431bb062729c",
+      "text": "cuestionarte si eres lo bastante bueno,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 234,
+      "bytes": 19964
+    },
+    "235.mp3": {
+      "hash": "beef2f04dff899c144dfcaf4a82bc4fad0bf687eb92faf516b412264dd93301d",
+      "text": "examinarte buscando fallos, decirte cosas negativas, compararte con los demás,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 235,
+      "bytes": 32780
+    },
+    "236.mp3": {
+      "hash": "e5b0f50f969f9dc126d21a9f2c9a605faeba7f23efc9990604fae39f28dccd43",
+      "text": "y, sobre todo, deja de repetir en bucle en tu cabeza todas las meteduras de pata y cosas que dijiste mal.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 236,
+      "bytes": 38396
+    },
+    "237.mp3": {
+      "hash": "41343de559c34bbd1605321cef342ccaa9247b12f84d6cf145f1340000ed71d3",
+      "text": "Porque cuanto más escarbas en esos pensamientos, peor se pone.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 237,
+      "bytes": 26588
+    },
+    "238.mp3": {
+      "hash": "4814d5efc8e08e5f8b8df17ab6a66a3c62381e65291419f219fc5e2201ce8f3a",
+      "text": "Así que la próxima vez que te hables en negativo, date cuenta y déjalo ir.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 238,
+      "bytes": 29756
+    },
+    "239.mp3": {
+      "hash": "5422df49bc6e6c13d6d7195ddff3e000bd1cc757ddb2be9b4c3a996201ec7d14",
+      "text": "Aprender esto puede llevar mucho tiempo.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 239,
+      "bytes": 19532
+    },
+    "240.mp3": {
+      "hash": "8f8cc3b9862d075e06b74b4a315c867b5ef4ff708b0e1dcddf3b069c0af2deb0",
+      "text": "Por lo general se trata de patrones de pensamiento que han dejado huellas profundas en tu cerebro.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 240,
+      "bytes": 33932
+    },
+    "241.mp3": {
+      "hash": "4e93589775883d613f85cdd55ad9987ebf8addc3be891d3f617e32abac4d960c",
+      "text": "Porque quizá llevas muchos años hablándote en negativo.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 241,
+      "bytes": 23708
+    },
+    "242.mp3": {
+      "hash": "7dc85466a5372561a6ee4348da0f4b1c2dac7777e7dbd371e0dd192cc86f28f2",
+      "text": "Lo importante que hay que saber aquí es que, seas quien seas,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 242,
+      "bytes": 24140
+    },
+    "243.mp3": {
+      "hash": "3373acab654e7254da32c472adfe61285513778c4bfcc12e58ac88f655ab5631",
+      "text": "mereces vivir alegría en la vida.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 243,
+      "bytes": 17660
+    },
+    "244.mp3": {
+      "hash": "6db237ae65327b380e775c41d560c5e9488674f4a64e9fa201790f9e14b5ef19",
+      "text": "No necesitas ser perfecto para existir.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 244,
+      "bytes": 20252
+    },
+    "245.mp3": {
+      "hash": "197494f022e85c8a4930ea4c120374dc31e1b78ef3971cff38211f0c4b00f6bd",
+      "text": "Y mereces estar bien.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 245,
+      "bytes": 14204
+    },
+    "246.mp3": {
+      "hash": "b1b875462f0cba0e4184892dd9e097c66ffb5e8c25e55a8cd320930f11ce38e8",
+      "text": "Nunca vivirás una vida libre de negatividad, porque las cosas pasan, y la vida no siempre es un camino de rosas.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 246,
+      "bytes": 44444
+    },
+    "247.mp3": {
+      "hash": "e86567486e213c58959dec66c9d5ac137b2b477a8da1956b7ddac0f2c6e0cf0c",
+      "text": "Pero espero que estas técnicas metacognitivas puedan ayudarte a manejar mejor los pensamientos negativos e inspirarte a darle menos vueltas a las cosas.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 247,
+      "bytes": 53084
+    },
+    "seg-9.mp3": {
+      "hash": "9b52137576a60a4384bb22cd4942806b486de63d72420186c14b33d4aa296c5e",
+      "text": "Tres ideas para llevarte y créditos",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "segmentTitle",
+      "index": 9,
+      "bytes": 19244
+    },
+    "248.mp3": {
+      "hash": "dcb211f53cea217628d34d14671f47ab46e98a29df95b865da9a010013f8dc98",
+      "text": "Me llamo Dennis Siva, y ahora que has escuchado este episodio sobre terapia metacognitiva,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 248,
+      "bytes": 36380
+    },
+    "249.mp3": {
+      "hash": "db464d8ef2b19742c071d9ed750150a717b67a1ef690c496e30b8290db3a5b60",
+      "text": "hay tres cosas que quiero que te lleves.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 249,
+      "bytes": 19532
+    },
+    "250.mp3": {
+      "hash": "218bb1c471537d5147b88a73550f8782d8ba0216689d069edbbb2b1e2ebd1bc0",
+      "text": "Uno. Tú no eres tus pensamientos.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 250,
+      "bytes": 25148
+    },
+    "251.mp3": {
+      "hash": "c47e5a1fea9de84ef51304a9bdd4a3a224c088e7e2f3a4286e185ffd3f4948ad",
+      "text": "Los pensamientos y sentimientos negativos no determinan cómo será tu vida.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 251,
+      "bytes": 30476
+    },
+    "252.mp3": {
+      "hash": "51e526bc12a8df0792391f6dc805472d749e368ae02e04da25aae468be9e25f3",
+      "text": "Porque la manera en que lo manejas la decides tú.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 252,
+      "bytes": 21116
+    },
+    "253.mp3": {
+      "hash": "feb3f8bf5d42cd1e82e434f2fe98b0a30bed06a140189d4e3556792f802457f5",
+      "text": "Dos. La mayoría de los problemas no se hacen más pequeños por pensar, darle vueltas y preocuparse por ellos.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 253,
+      "bytes": 47468
+    },
+    "254.mp3": {
+      "hash": "5a74d9b05e4d134868a382eda0d4fbd8bb65843330c8b6af8506d1ec4c05a254",
+      "text": "Tres. Vivir es muy complicado y raro, y debería ser muy divertido, así que no te tomes todo tan en serio; no te hundas en pensamientos negativos en bucle.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 254,
+      "bytes": 63308
+    },
+    "255.mp3": {
+      "hash": "07abef5f20b451abe9ce293c32acbe6ae60ebd91663c872119c0ef5997b64a73",
+      "text": "Disfruta de lo que haces y recuerda que mereces estar bien.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 255,
+      "bytes": 24428
+    },
+    "256.mp3": {
+      "hash": "e69ae86205687e61c8b3e6233cf2ea4142423768644504dfc3735d01b78f254d",
+      "text": "Si te apetece",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 256,
+      "bytes": 12476
+    },
+    "257.mp3": {
+      "hash": "da94b4b8871a1f414fe2dddaa0218a2063decfe159b4bc600bfc85c786d41f71",
+      "text": "escuchar más temas que deberían ser materia obligatoria,",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 257,
+      "bytes": 25292
+    },
+    "258.mp3": {
+      "hash": "f5063501183aa3726806f9b98fa1c69b013c7361c943b49cff7b33ad7992d09c",
+      "text": "sigue «Burde vært pensum» en",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 258,
+      "bytes": 17804
+    },
+    "259.mp3": {
+      "hash": "70700261ab39d30ec3010e9aea42ac3fc8aeed45af13de144df57eea3e8d2dc8",
+      "text": "la app",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 259,
+      "bytes": 10028
+    },
+    "260.mp3": {
+      "hash": "95400f3ee1e1a4765c4658e511791817a54f64fb3e4b807665c8154acf9e4943",
+      "text": "NRK Radio.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 260,
+      "bytes": 14348
+    },
+    "261.mp3": {
+      "hash": "f88436ae93d88227f20738cfcb5f0cfc52b8dfafc4de0efb04069fa77887d977",
+      "text": "«Burde vært pensum» está hecho por [productora, no se entiende] para NRK.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 261,
+      "bytes": 33212
+    },
+    "262.mp3": {
+      "hash": "d01cd6f082dec14c8890a519732ca6799355aaa6465ffe91a6d9ebbed613d977",
+      "text": "Productora: Sigrid Jølstad-Borge.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 262,
+      "bytes": 19388
+    },
+    "263.mp3": {
+      "hash": "45391ac2e6a62c4741f12dcab716dee103fc2f8a329264e1bf508e618f28ee07",
+      "text": "Productor ejecutivo: Kristian Marstrander.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 263,
+      "bytes": 21260
+    },
+    "264.mp3": {
+      "hash": "e78620685baff57372c7ce707686c3787c3cfe95139c6dfebf79d8b04671ac48",
+      "text": "La música es de Hallvarhagen y Jens Petter Nielsen.",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 264,
+      "bytes": 21980
+    },
+    "265.mp3": {
+      "hash": "f5d66da9af8aca5dceec3baf986a26377822fbbc8abb4382c773f13ff8d7dea4",
+      "text": "Diseño de sonido: [no se entiende].",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 265,
+      "bytes": 20252
+    },
+    "266.mp3": {
+      "hash": "f429b7ee21f0ea0c85ebf0a099011cf19963e2df4b6d4d5715254510e7083244",
+      "text": "Editor responsable: [...]",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 266,
+      "bytes": 14492
+    },
+    "267.mp3": {
+      "hash": "9276410ba2270699974b73d6ada01791f8ccfe37e684ad1d0c5d514ef87eb0cc",
+      "text": "[nombre no se entiende]",
+      "voice": "es-ES-ElviraNeural",
+      "kind": "line",
+      "index": 267,
+      "bytes": 14924
+    }
+  }
+}

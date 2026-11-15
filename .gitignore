@@ -1,4 +1,5 @@
 *.mp3
+!episodes/**/es/*.mp3
 *.raw
 *.wav
 tools/site-worker.js
