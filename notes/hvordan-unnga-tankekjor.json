@@ -192,6 +192,14 @@
       "type": "highlight",
       "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6wcw9\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":854.82,\"lineIndex\":174,\"no\":\"bli bevisst på at de kommer,\",\"es\":\"date cuenta de que vienen,\",\"context\":{\"prev\":{\"no\":\"La tankene, dukke opp,\",\"es\":\"Deja que los pensamientos aparezcan,\",\"lineIndex\":173},\"next\":{\"no\":\"og la dem passere.\",\"es\":\"y déjalos pasar.\",\"lineIndex\":175}},\"vocab\":[],\"created\":\"2026-11-15T18:50:23.433Z\"}",
       "created": "2026-11-15T18:50:23.999Z"
+    },
+    {
+      "id": "71b53f7d-35ea-4f53-a0d3-e9695e60af2e",
+      "segmentId": "s7",
+      "start": 884.44,
+      "type": "highlight",
+      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6xczt\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":884.44,\"lineIndex\":181,\"no\":\"Observer dem uten å dømme.\",\"es\":\"Obsérvalos sin juzgar.\",\"context\":{\"prev\":{\"no\":\"Øvelsen da er å ikke la tankene kontrollere deg.\",\"es\":\"El ejercicio entonces es no dejar que los pensamientos te controlen.\",\"lineIndex\":180},\"next\":{\"no\":\"Du har nå lært om frakoblet oppmerksomhet.\",\"es\":\"Ya has aprendido sobre la atención desconectada.\",\"lineIndex\":182}},\"vocab\":[{\"no\":\"uten å dømme\",\"es\":\"sin juzgar\"}],\"created\":\"2026-11-15T18:51:10.218Z\"}",
+      "created": "2026-11-15T18:51:10.680Z"
     }
   ]
 }
