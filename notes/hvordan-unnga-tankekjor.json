@@ -224,6 +224,14 @@
       "type": "highlight",
       "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6zxni\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":920.92,\"lineIndex\":187,\"no\":\"I terapirommet øver vi ofte på å øke fleksibiliteten til oppmerksomheten.\",\"es\":\"En la sala de terapia practicamos a menudo aumentar la flexibilidad de la atención.\",\"context\":{\"prev\":{\"no\":\"La oss dra tilbake til Kristoffer.\",\"es\":\"Volvamos con Kristoffer.\",\"lineIndex\":186},\"next\":{\"no\":\"Da kan det handle om at man for eksempel presenterer ulike kilder til lyd rundt omkring i rommet.\",\"es\":\"Puede tratarse, por ejemplo, de presentar distintas fuentes de sonido por la sala.\",\"lineIndex\":188}},\"vocab\":[{\"no\":\"oppmerksomhet (en)\",\"es\":\"atención\"},{\"no\":\"fleksibel oppmerksomhet\",\"es\":\"atención flexible\"}],\"created\":\"2026-11-15T18:53:10.302Z\"}",
       "created": "2026-11-15T18:53:10.653Z"
+    },
+    {
+      "id": "5cfbb134-a722-4a0c-8336-cd116604f941",
+      "segmentId": "s8",
+      "start": 925.92,
+      "type": "highlight",
+      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi70ao1\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":925.92,\"lineIndex\":188,\"no\":\"Da kan det handle om at man for eksempel presenterer ulike kilder til lyd rundt omkring i rommet.\",\"es\":\"Puede tratarse, por ejemplo, de presentar distintas fuentes de sonido por la sala.\",\"context\":{\"prev\":{\"no\":\"I terapirommet øver vi ofte på å øke fleksibiliteten til oppmerksomheten.\",\"es\":\"En la sala de terapia practicamos a menudo aumentar la flexibilidad de la atención.\",\"lineIndex\":187},\"next\":{\"no\":\"For eksempel banker jeg ofte litt på ene siden,\",\"es\":\"Por ejemplo, a menudo doy unos golpecitos por un lado,\",\"lineIndex\":189}},\"vocab\":[],\"created\":\"2026-11-15T18:53:27.169Z\"}",
+      "created": "2026-11-15T18:53:27.878Z"
     }
   ]
 }
