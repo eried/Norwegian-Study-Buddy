@@ -7,7 +7,7 @@
   <meta name="theme-color" content="#000000">
   <meta name="color-scheme" content="dark">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/style.css?v=20261115c">
   <script>
     try { if (JSON.parse(localStorage.getItem("nsb:prefs") || "{}").hideTop) document.documentElement.classList.add("top-hidden","top-hidden-done"); } catch (e) {}
   </script>
@@ -79,10 +79,11 @@
         </div>
         <button class="btn-cerrar" id="m-close" type="button"><svg width="22" height="22" aria-hidden="true"><use href="#i-x"/></svg>Cerrar</button>
       </div>
+      <div class="ctx ctx-prev" id="m-prev" hidden></div>
       <div class="es-big" id="m-es"></div>
       <div class="no-big" id="m-no" lang="nb"></div>
       <div class="vocab-hits" id="m-vocab"></div>
-      <div class="ctx" id="m-ctx"></div>
+      <div class="ctx ctx-next" id="m-next" hidden></div>
       <div class="actions meaning-actions">
         <button class="act replay" id="m-btn-no" type="button" aria-label="Escuchar noruego"><svg aria-hidden="true"><use href="#i-play"/></svg>NO</button>
         <button class="act replay" id="m-btn-es" type="button" aria-label="Escuchar español"><svg aria-hidden="true"><use href="#i-play"/></svg>ES</button>
@@ -190,10 +191,10 @@
     </div>
   </div>
 
-  <script src="config.js"></script>
-  <script src="assets/common.js"></script>
-  <script src="assets/notes.js"></script>
+  <script src="config.js?v=20261115c"></script>
+  <script src="assets/common.js?v=20261115c"></script>
+  <script src="assets/notes.js?v=20261115c"></script>
   <script src="vendor/marked.min.js" defer></script>
-  <script src="assets/player.js"></script>
+  <script src="assets/player.js?v=20261115c"></script>
 </body>
 </html>

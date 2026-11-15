@@ -438,6 +438,20 @@
     }, 1000);
   }
 
+  function fillContextLine(node, line) {
+    if (!node) return;
+    if (!line || !line.no) {
+      node.hidden = true;
+      node.replaceChildren();
+      return;
+    }
+    node.hidden = false;
+    const noEl = el("div", { class: "ctx-no", lang: "nb" });
+    linkWords(noEl, line.no, line);
+    const esEl = el("div", { class: "ctx-es", lang: "es" }, line.es || "");
+    node.replaceChildren(noEl, esEl);
+  }
+
   function showMeaning(item, opts = {}) {
     const wasPlaying = !!(opts.wasPlaying);
     const resumeAt = opts.resumeAt != null ? opts.resumeAt : (audio.currentTime || 0);
@@ -452,9 +466,8 @@
     const hits = item.vocab && item.vocab.length ? item.vocab : vocabIn(item.no).map((v) => ({ no: v.no, es: v.es }));
     $("#m-vocab").replaceChildren(...hits.map((v) => el("div", null, el("b", { lang: "nb" }, v.no), " = ", v.es)));
     const c = item.context || {};
-    $("#m-ctx").replaceChildren(
-      c.prev ? el("div", null, "Antes: ", (() => { const b = el("b", { lang: "nb" }); linkWords(b, c.prev.no, c.prev); return b; })(), el("i", null, c.prev.es)) : "",
-      c.next ? el("div", null, "Después: ", (() => { const b = el("b", { lang: "nb" }); linkWords(b, c.next.no, c.next); return b; })(), el("i", null, c.next.es)) : "");
+    fillContextLine($("#m-prev"), c.prev);
+    fillContextLine($("#m-next"), c.next);
     const inReview = review.active;
     $("#m-count").hidden = !inReview;
     if (inReview) $("#m-count").textContent = "Duda " + (review.i + 1) + " de " + review.items.length;

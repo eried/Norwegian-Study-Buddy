@@ -808,6 +808,69 @@ async function run() {
     } finally { await ctx.close(); }
   });
 
+  await test("previous and next lines sit as faint context around the main line", async () => {
+    const { ctx, page } = await openEpisode(browser, base);
+    try {
+      await openMeaningAt(page, T_KLOKKEN);
+      const info = await page.evaluate(() => {
+        const card = document.querySelector(".meaning-card").getBoundingClientRect();
+        const prev = document.getElementById("m-prev");
+        const next = document.getElementById("m-next");
+        const es = document.getElementById("m-es");
+        const no = document.getElementById("m-no");
+        const pr = prev.getBoundingClientRect();
+        const nr = next.getBoundingClientRect();
+        const er = es.getBoundingClientRect();
+        const nor = no.getBoundingClientRect();
+        const prevNo = prev.querySelector(".ctx-no");
+        const prevEs = prev.querySelector(".ctx-es");
+        const nextNo = next.querySelector(".ctx-no");
+        const nextEs = next.querySelector(".ctx-es");
+        const csNo = prevNo ? getComputedStyle(prevNo) : null;
+        const csEs = prevEs ? getComputedStyle(prevEs) : null;
+        const lum = (c) => {
+          const m = String(c).match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+          if (!m) return 1;
+          return (Number(m[1]) + Number(m[2]) + Number(m[3])) / (3 * 255);
+        };
+        const ids = ["m-btn-no", "m-btn-es", "m-gotit", "m-go"];
+        const ys = ids.map((id) => Math.round(document.getElementById(id).getBoundingClientRect().y));
+        return {
+          prevHidden: prev.hidden,
+          nextHidden: next.hidden,
+          prevNo: prevNo && prevNo.textContent,
+          prevEs: prevEs && prevEs.textContent,
+          nextNo: nextNo && nextNo.textContent,
+          nextEs: nextEs && nextEs.textContent,
+          prevBottom: pr.bottom,
+          esTop: er.top,
+          noBottom: nor.bottom,
+          nextTop: nr.top,
+          prevLum: csNo && lum(csNo.color),
+          prevEsLum: csEs && lum(csEs.color),
+          mainLum: lum(getComputedStyle(no).color),
+          wrapDelta: Math.max(...ys) - Math.min(...ys),
+          cardH: card.height,
+          viewH: window.innerHeight,
+          overflowY: ys.some((y) => y > window.innerHeight - 4),
+          labels: ["Antes", "Después"].filter((w) => (prev.textContent + next.textContent).includes(w)),
+        };
+      });
+      assert(!info.prevHidden && !info.nextHidden, "both context lines should be visible");
+      assert(/podcast fra NRK/i.test(info.prevNo || ""), "previous Norwegian above, got " + info.prevNo);
+      assert(/pódcast de NRK|podcast de NRK/i.test(info.prevEs || ""), "previous Spanish under it, got " + info.prevEs);
+      assert(/legger hodet/i.test(info.nextNo || ""), "next Norwegian below, got " + info.nextNo);
+      assert(/almohada/i.test(info.nextEs || ""), "next Spanish under it, got " + info.nextEs);
+      assert(info.prevBottom <= info.esTop + 2, "previous line must sit ABOVE the main text");
+      assert(info.nextTop >= info.noBottom - 2, "next line must sit BELOW the main text");
+      assert(info.prevLum < info.mainLum - 0.15, "context Norwegian should be fainter than the main line, " + info.prevLum + " vs " + info.mainLum);
+      assert(info.prevEsLum <= info.prevLum + 0.02, "context Spanish should be fainter or equal, " + info.prevEsLum + " vs " + info.prevLum);
+      assert(info.wrapDelta < 8, "buttons must stay in one row, wrapDelta=" + info.wrapDelta);
+      assert(!info.overflowY, "buttons should remain on screen at 1180x700");
+      assert(info.labels.length === 0, "context should not use Antes/Después labels, got " + JSON.stringify(info.labels));
+    } finally { await ctx.close(); }
+  });
+
   await test("transcript words are not tappable and a line tap still seeks", async () => {
     const { ctx, page } = await openEpisode(browser, base);
     try {
@@ -844,7 +907,7 @@ async function run() {
       await waitCountdown(page);
       const setup = await page.evaluate(() => {
         const noWords = [...document.querySelectorAll("#m-no button.word")].map((b) => b.dataset.word);
-        const ctxWords = [...document.querySelectorAll("#m-ctx button.word")].map((b) => b.dataset.word);
+        const ctxWords = [...document.querySelectorAll("#m-prev button.word, #m-next button.word")].map((b) => b.dataset.word);
         return { noWords, ctxWords, meaningOpen: !document.getElementById("meaning").hidden };
       });
       assert(setup.meaningOpen, "meaning card should be open");
