@@ -112,6 +112,14 @@
       "type": "highlight",
       "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6hhpw\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":442.11,\"lineIndex\":89,\"no\":\"Bare la de være, uten å enten gå dypt inn i de grave masse i de eller prøve å skyve de bort,\",\"es\":\"Simplemente déjalos estar, sin meterte a fondo en ellos ni escarbar mucho, ni intentar apartarlos,\",\"context\":{\"prev\":{\"no\":\"trist eller engstelig over, så er det et triks å ikke gjøre noe som helst med de tankene.\",\"es\":\"o con angustia, el truco es no hacer absolutamente nada con esos pensamientos.\",\"lineIndex\":88},\"next\":{\"no\":\"for da ender man uansett på en måte opp med å bare gi de tankene mer oppmerksomhet,\",\"es\":\"porque de todos modos uno termina dándoles más atención a esos pensamientos,\",\"lineIndex\":90}},\"vocab\":[{\"no\":\"skyve bort\",\"es\":\"apartar, empujar lejos\"}],\"created\":\"2026-11-15T18:38:49.844Z\"}",
       "created": "2026-11-15T18:38:50.473Z"
+    },
+    {
+      "id": "f8683fc6-2199-4b45-b4af-b1a9fe872607",
+      "segmentId": "s5",
+      "start": 515.28,
+      "type": "highlight",
+      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6jkb3\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":515.28,\"lineIndex\":102,\"no\":\"Sannsynligvis er svaret at du sjelden tenker over det.\",\"es\":\"Probablemente la respuesta es que casi nunca lo piensas.\",\"context\":{\"prev\":{\"no\":\"Når var sist gang du tok deg selv, i å bekymre deg, eller gruble over problemene dine?\",\"es\":\"¿Cuándo fue la última vez que te pillaste preocupándote o dándole vueltas a tus problemas?\",\"lineIndex\":101},\"next\":{\"no\":\"Så de negative tankene får bare spinne videre, uten mål og mening.\",\"es\":\"Así que los pensamientos negativos siguen girando sin rumbo ni sentido.\",\"lineIndex\":103}},\"vocab\":[{\"no\":\"sannsynlig / sannsynligvis\",\"es\":\"probable / probablemente\"}],\"created\":\"2026-11-15T18:40:26.511Z\"}",
+      "created": "2026-11-15T18:40:27.058Z"
     }
   ]
 }
