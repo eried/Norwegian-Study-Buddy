@@ -32,6 +32,14 @@
       "type": "highlight",
       "text": "{\"kind\":\"duda\",\"id\":\"d-mwi5nyj0\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":123.43,\"lineIndex\":22,\"no\":\"Han jobber til daglig på Modum Bad og kjenner godt til metoden jeg skal lære deg.\",\"es\":\"Trabaja a diario en Modum Bad y conoce bien el método que te voy a enseñar.\",\"context\":{\"prev\":{\"no\":\"Jeg er hos psykolog Kristoffer Haugen Hetlebakke [navn usikkert].\",\"es\":\"Estoy con el psicólogo Kristoffer Haugen Hetlebakke [nombre inseguro].\",\"lineIndex\":21},\"next\":{\"no\":\"Men aller først, hva er egentlig negative tanker?\",\"es\":\"Pero antes que nada, ¿qué son en realidad los pensamientos negativos?\",\"lineIndex\":23}},\"vocab\":[],\"created\":\"2026-11-15T18:15:51.949Z\"}",
       "created": "2026-11-15T18:15:52.452Z"
+    },
+    {
+      "id": "1c2a5895-9741-47bf-9342-91f323fc90ff",
+      "segmentId": "s2",
+      "start": 162.83,
+      "type": "highlight",
+      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi5p7g5\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":162.83,\"lineIndex\":33,\"no\":\"Det jeg bekymrer meg mest for i livet er, fremtiden, hvor jeg skal bo, hvem jeg skal etablere meg med, hvor jeg jobber, at det blir noe av meg til slutt.\",\"es\":\"Lo que más me preocupa en la vida es el futuro: dónde voy a vivir, con quién voy a formar una vida, dónde trabajo, que al final llegue a ser alguien.\",\"context\":{\"prev\":{\"no\":\"La oss høre med folk på gata.\",\"es\":\"Preguntemos a la gente en la calle.\",\"lineIndex\":32},\"next\":{\"no\":\"Økonomi og studier.\",\"es\":\"La economía y los estudios.\",\"lineIndex\":34}},\"vocab\":[{\"no\":\"bekymring (en/ei), bekymre seg for\",\"es\":\"preocupación; preocuparse por\"}],\"created\":\"2026-11-15T18:16:50.166Z\"}",
+      "created": "2026-11-15T18:16:50.685Z"
     }
   ]
 }
