@@ -64,6 +64,14 @@
       "type": "highlight",
       "text": "{\"kind\":\"duda\",\"id\":\"d-mwi69rmo\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":223.51,\"lineIndex\":44,\"no\":\"Og så er det grubling.\",\"es\":\"Y luego está la rumiación.\",\"context\":{\"prev\":{\"no\":\"Og dukker typisk opp på kvelden rett før du skal sove.\",\"es\":\"Y suelen aparecer por la noche, justo antes de dormir.\",\"lineIndex\":43},\"next\":{\"no\":\"Hvorfor sa jeg det [...]? [uklart]\",\"es\":\"¿Por qué dije eso? [no se entiende]\",\"lineIndex\":45}},\"vocab\":[{\"no\":\"grubling (en/ei), gruble over\",\"es\":\"rumiación; darle vueltas a algo (del pasado)\"}],\"created\":\"2026-11-15T18:32:49.441Z\"}",
       "created": "2026-11-15T18:32:49.989Z"
+    },
+    {
+      "id": "60c186cd-4520-48e1-9a73-4e4644b14a5e",
+      "segmentId": "s3",
+      "start": 290.58,
+      "type": "highlight",
+      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6bghw\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":290.58,\"lineIndex\":59,\"no\":\"Altså, jeg skulle bare ha øvd mer.\",\"es\":\"Tendría que haber practicado más.\",\"context\":{\"prev\":{\"no\":\"Altså mamma og pappa kommer til bli så skuffet, og jeg kommer til være ulykkelig resten av livet.\",\"es\":\"Mamá y papá se van a decepcionar mucho, y voy a ser infeliz el resto de mi vida.\",\"lineIndex\":58},\"next\":{\"no\":\"Jeg burde vært smartere.\",\"es\":\"Debería haber sido más listo.\",\"lineIndex\":60}},\"vocab\":[],\"created\":\"2026-11-15T18:34:08.325Z\"}",
+      "created": "2026-11-15T18:34:08.866Z"
     }
   ]
 }
