@@ -160,6 +160,14 @@
       "type": "highlight",
       "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6ogsd\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":637.5,\"lineIndex\":125,\"no\":\"det er tungt, og det føles ut som om det er mange tanker på en gang, så man blir litt anspent.\",\"es\":\"pesa, y se siente como si hubiera muchos pensamientos a la vez, así que uno se pone un poco tenso.\",\"context\":{\"prev\":{\"no\":\"Ja, altså den eneste greien når jeg er urolig liksom, det er jo bare at hodet er tungt [usikkert]\",\"es\":\"Sí, lo único cuando estoy inquieto es que la cabeza me pesa,\",\"lineIndex\":124},\"next\":{\"no\":\"Kanskje kjenner du deg igjen i dette. i så fall bør du følge ekstra nøye med nå.\",\"es\":\"Quizá te reconoces en esto. En ese caso, presta especial atención ahora.\",\"lineIndex\":126}},\"vocab\":[],\"created\":\"2026-11-15T18:44:15.229Z\"}",
       "created": "2026-11-15T18:44:15.731Z"
+    },
+    {
+      "id": "f882c55f-7878-455b-a5aa-932fed1affae",
+      "segmentId": "s7",
+      "start": 751.98,
+      "type": "highlight",
+      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6r6gl\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":751.98,\"lineIndex\":149,\"no\":\"er frakoblet oppmerksomhet.\",\"es\":\"es la atención desconectada.\",\"context\":{\"prev\":{\"no\":\"og som er selve nøkkelen i metakognitiv terapi,\",\"es\":\"y que es la clave misma de la terapia metacognitiva,\",\"lineIndex\":148},\"next\":{\"no\":\"Her er Kristoffer igjen.\",\"es\":\"Aquí está Kristoffer otra vez.\",\"lineIndex\":150}},\"vocab\":[{\"no\":\"oppmerksomhet (en)\",\"es\":\"atención\"},{\"no\":\"frakoblet oppmerksomhet\",\"es\":\"atención desconectada (mindfulness desapegado)\"}],\"created\":\"2026-11-15T18:46:21.813Z\"}",
+      "created": "2026-11-15T18:46:22.329Z"
     }
   ]
 }
