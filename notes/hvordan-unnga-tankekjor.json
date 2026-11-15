@@ -72,6 +72,14 @@
       "type": "highlight",
       "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6bghw\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":290.58,\"lineIndex\":59,\"no\":\"Altså, jeg skulle bare ha øvd mer.\",\"es\":\"Tendría que haber practicado más.\",\"context\":{\"prev\":{\"no\":\"Altså mamma og pappa kommer til bli så skuffet, og jeg kommer til være ulykkelig resten av livet.\",\"es\":\"Mamá y papá se van a decepcionar mucho, y voy a ser infeliz el resto de mi vida.\",\"lineIndex\":58},\"next\":{\"no\":\"Jeg burde vært smartere.\",\"es\":\"Debería haber sido más listo.\",\"lineIndex\":60}},\"vocab\":[],\"created\":\"2026-11-15T18:34:08.325Z\"}",
       "created": "2026-11-15T18:34:08.866Z"
+    },
+    {
+      "id": "4293d992-28e1-4e7e-970f-29515f8dd3a7",
+      "segmentId": "s3",
+      "start": 285.58,
+      "type": "highlight",
+      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6bs7o\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":285.58,\"lineIndex\":58,\"no\":\"Altså mamma og pappa kommer til bli så skuffet, og jeg kommer til være ulykkelig resten av livet.\",\"es\":\"Mamá y papá se van a decepcionar mucho, y voy a ser infeliz el resto de mi vida.\",\"context\":{\"prev\":{\"no\":\"Da kommer drømmen min til å bli helt ødelagt.\",\"es\":\"Entonces mi sueño quedará completamente destrozado.\",\"lineIndex\":57},\"next\":{\"no\":\"Altså, jeg skulle bare ha øvd mer.\",\"es\":\"Tendría que haber practicado más.\",\"lineIndex\":59}},\"vocab\":[],\"created\":\"2026-11-15T18:34:23.509Z\"}",
+      "created": "2026-11-15T18:34:23.840Z"
     }
   ]
 }
