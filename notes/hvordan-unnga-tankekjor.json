@@ -296,6 +296,14 @@
       "type": "highlight",
       "text": "{\"kind\":\"duda\",\"id\":\"d-mwi792ft\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":1177.6,\"lineIndex\":245,\"no\":\"Og du fortjener å ha det godt.\",\"es\":\"Y mereces estar bien.\",\"context\":{\"prev\":{\"no\":\"Du trenger ikke å være perfekt for å eksistere.\",\"es\":\"No necesitas ser perfecto para existir.\",\"lineIndex\":244},\"next\":{\"no\":\"Du vil aldri leve et liv fritt for negativitet, for ting skjer, og livet er ikke alltid en dans på roser.\",\"es\":\"Nunca vivirás una vida libre de negatividad, porque las cosas pasan, y la vida no siempre es un camino de rosas.\",\"lineIndex\":246}},\"vocab\":[{\"no\":\"fortjene\",\"es\":\"merecer\"}],\"created\":\"2026-11-15T19:00:16.409Z\"}",
       "created": "2026-11-15T19:00:16.947Z"
+    },
+    {
+      "id": "20c1f7f9-3dee-4f43-a776-fd77ad4c19d5",
+      "segmentId": "s10",
+      "start": 1253.48,
+      "type": "highlight",
+      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi7b9kg\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":1253.48,\"lineIndex\":255,\"no\":\"Kos deg med hva du gjør, og husk at du fortjener å ha det bra.\",\"es\":\"Disfruta de lo que haces y recuerda que mereces estar bien.\",\"context\":{\"prev\":{\"no\":\"3. Å leve er veldig komplisert og rart, og det burde være utrolig morsomt [uklart], så ikke ta alt så seriøst, ikke grav deg ned i negativt tankespinn.\",\"es\":\"Tres. Vivir es muy complicado y raro, y debería ser muy divertido, así que no te tomes todo tan en serio; no te hundas en pensamientos negativos en bucle.\",\"lineIndex\":254},\"next\":{\"no\":\"Har du lyst til\",\"es\":\"Si te apetece\",\"lineIndex\":256}},\"vocab\":[{\"no\":\"fortjene\",\"es\":\"merecer\"}],\"created\":\"2026-11-15T19:01:58.960Z\"}",
+      "created": "2026-11-15T19:01:59.559Z"
     }
   ]
 }
