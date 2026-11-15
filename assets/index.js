@@ -9,13 +9,13 @@
   };
 
   const LANGS = {
-    no: { name: "Noruego", flag: "🇳🇴", titleLang: "nb" },
-    en: { name: "Inglés", flag: "🇬🇧", titleLang: "en" },
-    es: { name: "Español", flag: "🇪🇸", titleLang: "es" },
-    de: { name: "Alemán", flag: "🇩🇪", titleLang: "de" },
-    fr: { name: "Francés", flag: "🇫🇷", titleLang: "fr" },
-    sv: { name: "Sueco", flag: "🇸🇪", titleLang: "sv" },
-    da: { name: "Danés", flag: "🇩🇰", titleLang: "da" },
+    no: { name: "Noruego", flag: "", titleLang: "nb" },
+    en: { name: "Inglés", flag: "", titleLang: "en" },
+    es: { name: "Español", flag: "", titleLang: "es" },
+    de: { name: "Alemán", flag: "", titleLang: "de" },
+    fr: { name: "Francés", flag: "", titleLang: "fr" },
+    sv: { name: "Sueco", flag: "", titleLang: "sv" },
+    da: { name: "Danés", flag: "", titleLang: "da" },
   };
   const langInfo = (code) => LANGS[code] || { name: code, flag: "", titleLang: "en" };
 

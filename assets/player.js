@@ -75,9 +75,51 @@
       el("a", { href: ep.showUrl || "https://radio.nrk.no/podkast/burde_vaert_pensum", target: "_blank", rel: "noopener" }, ep.show)));
     stage.append(frag);
     let t;
-    const manual = () => { stage.dataset.manual = "1"; clearTimeout(t); t = setTimeout(() => delete stage.dataset.manual, 5000); };
+    const manual = () => {
+      stage.dataset.manual = "1";
+      stopLineScroll();
+      clearTimeout(t);
+      t = setTimeout(() => delete stage.dataset.manual, 5000);
+    };
     stage.addEventListener("wheel", manual, { passive: true });
     stage.addEventListener("touchmove", manual, { passive: true });
+  }
+
+  // Smooth ease-in-out scroll of the transcript to the active line.
+  // Native scrollIntoView({behavior:"smooth"}) steps on Tesla's Chromium.
+  const reduceMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const SCROLL_MS = 700;
+  let scrollRaf = 0;
+  function easeInOutCubic(u) {
+    return u < 0.5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2;
+  }
+  function stopLineScroll() {
+    if (scrollRaf) { cancelAnimationFrame(scrollRaf); scrollRaf = 0; }
+  }
+  function lineScrollTop(el, stage) {
+    const cr = stage.getBoundingClientRect();
+    const er = el.getBoundingClientRect();
+    const mid = er.top - cr.top + stage.scrollTop + er.height / 2;
+    const max = Math.max(0, stage.scrollHeight - stage.clientHeight);
+    return Math.max(0, Math.min(max, mid - cr.height / 2));
+  }
+  function scrollLineIntoView(el) {
+    const stage = $("#stage");
+    if (!stage || stage.dataset.manual) return;
+    const dest = lineScrollTop(el, stage);
+    if (Math.abs(dest - stage.scrollTop) < 1.5) { stage.scrollTop = dest; return; }
+    if (reduceMotion()) { stopLineScroll(); stage.scrollTop = dest; return; }
+    stopLineScroll();
+    const from = stage.scrollTop;
+    const start = performance.now();
+    const tick = (now) => {
+      if (stage.dataset.manual) { scrollRaf = 0; return; }
+      const u = Math.min(1, (now - start) / SCROLL_MS);
+      stage.scrollTop = from + (dest - from) * easeInOutCubic(u);
+      if (u < 1) scrollRaf = requestAnimationFrame(tick);
+      else { stage.scrollTop = dest; scrollRaf = 0; }
+    };
+    scrollRaf = requestAnimationFrame(tick);
   }
 
   function lineAt(t) {
@@ -99,7 +141,7 @@
     const n = lines[i].node;
     n.classList.add("now");
     [i - 1, i + 1].forEach((j) => lines[j] && lines[j].node.classList.add("near"));
-    if (scroll && prefs.follow && !$("#stage").dataset.manual) n.scrollIntoView({ block: "center", behavior: "smooth" });
+    if (scroll && prefs.follow && !$("#stage").dataset.manual) scrollLineIntoView(n);
   }
 
   // ---------- audio ----------
@@ -314,7 +356,7 @@
       const c = d.context || {};
       return el("div", { class: "item" + (d.pending && store.cloudOk ? " syncing" : "") },
         el("button", { class: "main", type: "button", onclick: () => { closePanel(); seek(d.t - 1); play(); } },
-          el("span", { class: "when" }, "▶ " + fmtTime(d.t)),
+          el("span", { class: "when" }, svgUse("#i-play"), " " + fmtTime(d.t)),
           el("span", { class: "no", lang: "nb" }, d.no),
           el("span", { class: "es" }, d.es),
           (c.prev || c.next) && el("span", { class: "cx", lang: "nb" }, [c.prev && "… " + c.prev.no, c.next && c.next.no + " …"].filter(Boolean).join("  /  "))),
@@ -336,7 +378,7 @@
         el("span", { class: "no", lang: "nb" }, v.no),
         el("span", { class: "es" }, v.es || v.en),
         v.note && el("span", { class: "cx", lang: "nb" }, v.note),
-        seg && el("button", { class: "tab", type: "button", style: "justify-self:start;margin-top:4px", onclick: () => { closePanel(); seek(seg.start); } }, "▶ " + fmtTime(seg.start))));
+        seg && el("button", { class: "tab", type: "button", style: "justify-self:start;margin-top:4px", onclick: () => { closePanel(); seek(seg.start); } }, svgUse("#i-play"), " " + fmtTime(seg.start))));
     }));
   }
 
