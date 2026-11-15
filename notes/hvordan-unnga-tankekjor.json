@@ -184,6 +184,14 @@
       "type": "highlight",
       "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6umiv\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":860.6,\"lineIndex\":176,\"no\":\"Du skifter da fokuset vekk fra å være den, som gjør det du tenker på, til å kun observere.\",\"es\":\"Así cambias el foco: de ser quien hace lo que piensas a solo observar.\",\"context\":{\"prev\":{\"no\":\"og la dem passere.\",\"es\":\"y déjalos pasar.\",\"lineIndex\":175},\"next\":{\"no\":\"Dette kan føles veldig rart og uvant ut i begynnelsen.\",\"es\":\"Al principio esto puede sentirse muy raro y extraño.\",\"lineIndex\":177}},\"vocab\":[],\"created\":\"2026-11-15T18:49:02.599Z\"}",
       "created": "2026-11-15T18:49:02.934Z"
+    },
+    {
+      "id": "7a6c485f-a02f-4793-b53c-7ee7a2cb4959",
+      "segmentId": "s7",
+      "start": 854.82,
+      "type": "highlight",
+      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6wcw9\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":854.82,\"lineIndex\":174,\"no\":\"bli bevisst på at de kommer,\",\"es\":\"date cuenta de que vienen,\",\"context\":{\"prev\":{\"no\":\"La tankene, dukke opp,\",\"es\":\"Deja que los pensamientos aparezcan,\",\"lineIndex\":173},\"next\":{\"no\":\"og la dem passere.\",\"es\":\"y déjalos pasar.\",\"lineIndex\":175}},\"vocab\":[],\"created\":\"2026-11-15T18:50:23.433Z\"}",
+      "created": "2026-11-15T18:50:23.999Z"
     }
   ]
 }
