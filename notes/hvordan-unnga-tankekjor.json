@@ -272,6 +272,14 @@
       "type": "highlight",
       "text": "{\"kind\":\"duda\",\"id\":\"d-mwi76ofy\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":1121.99,\"lineIndex\":235,\"no\":\"Granske deg selv etter feil, si negative ting til deg selv, sammenligne deg med andre,\",\"es\":\"examinarte buscando fallos, decirte cosas negativas, compararte con los demás,\",\"context\":{\"prev\":{\"no\":\"sette spørsmål ved om du er god nok,\",\"es\":\"cuestionarte si eres lo bastante bueno,\",\"lineIndex\":234},\"next\":{\"no\":\"og for all del, slutt å spille av alle flauser og ting du har sagt feil på repeat i hodet.\",\"es\":\"y, sobre todo, deja de repetir en bucle en tu cabeza todas las meteduras de pata y cosas que dijiste mal.\",\"lineIndex\":236}},\"vocab\":[],\"created\":\"2026-11-15T18:58:24.958Z\"}",
       "created": "2026-11-15T18:58:25.455Z"
+    },
+    {
+      "id": "80eed1c4-59e7-4fea-a8ab-6cae09469696",
+      "segmentId": "s9",
+      "start": 1129.83,
+      "type": "highlight",
+      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi776ja\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":1129.83,\"lineIndex\":236,\"no\":\"og for all del, slutt å spille av alle flauser og ting du har sagt feil på repeat i hodet.\",\"es\":\"y, sobre todo, deja de repetir en bucle en tu cabeza todas las meteduras de pata y cosas que dijiste mal.\",\"context\":{\"prev\":{\"no\":\"Granske deg selv etter feil, si negative ting til deg selv, sammenligne deg med andre,\",\"es\":\"examinarte buscando fallos, decirte cosas negativas, compararte con los demás,\",\"lineIndex\":235},\"next\":{\"no\":\"For jo mer du graver i disse tankene, jo verre blir det.\",\"es\":\"Porque cuanto más escarbas en esos pensamientos, peor se pone.\",\"lineIndex\":237}},\"vocab\":[],\"created\":\"2026-11-15T18:58:48.406Z\"}",
+      "created": "2026-11-15T18:58:48.871Z"
     }
   ]
 }
