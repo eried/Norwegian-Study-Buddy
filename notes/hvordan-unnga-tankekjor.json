@@ -144,6 +144,14 @@
       "type": "highlight",
       "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6lcpl\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":531.52,\"lineIndex\":105,\"no\":\"Selve nøkkelen er å innse hvilke problemer som er reelle og ikke.\",\"es\":\"La clave en sí es darse cuenta de qué problemas son reales y cuáles no.\",\"context\":{\"prev\":{\"no\":\"Så en sentral del i den metakognitive terapien er altså å klare å la tankene være.\",\"es\":\"Por eso, una parte central de la terapia metacognitiva es lograr dejar estar los pensamientos.\",\"lineIndex\":104},\"next\":{\"no\":\"Og innse når tankene bare går i loop.\",\"es\":\"Y darse cuenta de cuándo los pensamientos solo dan vueltas en bucle.\",\"lineIndex\":106}},\"vocab\":[{\"no\":\"innse\",\"es\":\"darse cuenta, reconocer\"}],\"created\":\"2026-11-15T18:41:49.977Z\"}",
       "created": "2026-11-15T18:41:50.607Z"
+    },
+    {
+      "id": "180399f0-806e-4ec8-8591-269c36bbc44d",
+      "segmentId": "s5",
+      "start": 586.28,
+      "type": "highlight",
+      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6n39z\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":586.28,\"lineIndex\":114,\"no\":\"Negative tanker er ikke farlige, selv om det kan føles slik ut.\",\"es\":\"Los pensamientos negativos no son peligrosos, aunque lo parezca.\",\"context\":{\"prev\":{\"no\":\"Nå skal jeg fortelle deg noe som tok tid for meg å skjønne.\",\"es\":\"Ahora te voy a contar algo que me costó tiempo entender.\",\"lineIndex\":113},\"next\":{\"no\":\"Så ikke tro på alt du tenker. Tanker er bare tanker.\",\"es\":\"Así que no te creas todo lo que piensas. Los pensamientos son solo pensamientos.\",\"lineIndex\":115}},\"vocab\":[],\"created\":\"2026-11-15T18:43:11.063Z\"}",
+      "created": "2026-11-15T18:43:11.605Z"
     }
   ]
 }
