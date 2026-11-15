@@ -136,6 +136,14 @@
       "type": "highlight",
       "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6kodo\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":524.52,\"lineIndex\":104,\"no\":\"Så en sentral del i den metakognitive terapien er altså å klare å la tankene være.\",\"es\":\"Por eso, una parte central de la terapia metacognitiva es lograr dejar estar los pensamientos.\",\"context\":{\"prev\":{\"no\":\"Så de negative tankene får bare spinne videre, uten mål og mening.\",\"es\":\"Así que los pensamientos negativos siguen girando sin rumbo ni sentido.\",\"lineIndex\":103},\"next\":{\"no\":\"Selve nøkkelen er å innse hvilke problemer som er reelle og ikke.\",\"es\":\"La clave en sí es darse cuenta de qué problemas son reales y cuáles no.\",\"lineIndex\":105}},\"vocab\":[{\"no\":\"metakognitiv terapi\",\"es\":\"terapia metacognitiva\"}],\"created\":\"2026-11-15T18:41:18.444Z\"}",
       "created": "2026-11-15T18:41:19.001Z"
+    },
+    {
+      "id": "3acc4872-adc5-44c2-8321-d791291fa3d2",
+      "segmentId": "s5",
+      "start": 531.52,
+      "type": "highlight",
+      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6lcpl\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":531.52,\"lineIndex\":105,\"no\":\"Selve nøkkelen er å innse hvilke problemer som er reelle og ikke.\",\"es\":\"La clave en sí es darse cuenta de qué problemas son reales y cuáles no.\",\"context\":{\"prev\":{\"no\":\"Så en sentral del i den metakognitive terapien er altså å klare å la tankene være.\",\"es\":\"Por eso, una parte central de la terapia metacognitiva es lograr dejar estar los pensamientos.\",\"lineIndex\":104},\"next\":{\"no\":\"Og innse når tankene bare går i loop.\",\"es\":\"Y darse cuenta de cuándo los pensamientos solo dan vueltas en bucle.\",\"lineIndex\":106}},\"vocab\":[{\"no\":\"innse\",\"es\":\"darse cuenta, reconocer\"}],\"created\":\"2026-11-15T18:41:49.977Z\"}",
+      "created": "2026-11-15T18:41:50.607Z"
     }
   ]
 }
