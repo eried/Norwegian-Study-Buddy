@@ -96,6 +96,14 @@
       "type": "highlight",
       "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6fbt8\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":377.35,\"lineIndex\":76,\"no\":\"Metakognitiv terapi handler i bunn og grunn om å endre måten man forholder seg til tanker, følelser og indre opplevelser på.\",\"es\":\"La terapia metacognitiva trata, en el fondo, de cambiar la manera en que uno se relaciona con los pensamientos, los sentimientos y las experiencias internas.\",\"context\":{\"prev\":{\"no\":\"Ja, et tungt ord, men det er faktisk ikke så vanskelig som det høres ut. La oss høre Kristoffers definisjon på metakognitiv terapi.\",\"es\":\"Sí, es una palabra pesada, pero en realidad no es tan difícil como suena. Escuchemos la definición de Kristoffer de la terapia metacognitiva.\",\"lineIndex\":75},\"next\":{\"no\":\"Mange som strever med bekymring og grubling, de har ofte en opplevelse av at det lever sitt eget liv.\",\"es\":\"Muchos que luchan con la preocupación y la rumiación suelen sentir que esto vive su propia vida.\",\"lineIndex\":77}},\"vocab\":[{\"no\":\"metakognitiv terapi\",\"es\":\"terapia metacognitiva\"},{\"no\":\"forholde seg til\",\"es\":\"relacionarse con, manejar\"},{\"no\":\"i bunn og grunn\",\"es\":\"en el fondo, básicamente\"}],\"created\":\"2026-11-15T18:37:08.877Z\"}",
       "created": "2026-11-15T18:37:09.419Z"
+    },
+    {
+      "id": "e2d3b1fd-f270-4d46-990d-af658bc06db0",
+      "segmentId": "s4",
+      "start": 437.35,
+      "type": "highlight",
+      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6h40v\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":437.35,\"lineIndex\":88,\"no\":\"trist eller engstelig over, så er det et triks å ikke gjøre noe som helst med de tankene.\",\"es\":\"o con angustia, el truco es no hacer absolutamente nada con esos pensamientos.\",\"context\":{\"prev\":{\"no\":\"Så man får sånne negative tanker som man blir veldig lei seg av,\",\"es\":\"Si uno tiene pensamientos negativos que le ponen muy triste,\",\"lineIndex\":87},\"next\":{\"no\":\"Bare la de være, uten å enten gå dypt inn i de grave masse i de eller prøve å skyve de bort,\",\"es\":\"Simplemente déjalos estar, sin meterte a fondo en ellos ni escarbar mucho, ni intentar apartarlos,\",\"lineIndex\":89}},\"vocab\":[],\"created\":\"2026-11-15T18:38:32.096Z\"}",
+      "created": "2026-11-15T18:38:32.599Z"
     }
   ]
 }
