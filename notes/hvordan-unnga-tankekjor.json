@@ -240,6 +240,14 @@
       "type": "highlight",
       "text": "{\"kind\":\"duda\",\"id\":\"d-mwi71o7w\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":966.02,\"lineIndex\":199,\"no\":\"Hovedpoenget er å klare å forskyve oppmerksomheten, gjerne fra inne i hodet til ut i verden.\",\"es\":\"La idea principal es lograr desplazar la atención, preferiblemente de dentro de la cabeza hacia el mundo.\",\"context\":{\"prev\":{\"no\":\"når det oppstår negative tanker eller følelser der.\",\"es\":\"cuando surgen ahí pensamientos o sentimientos negativos.\",\"lineIndex\":198},\"next\":{\"no\":\"Hvis jeg er ute og at jeg merker at irriterende og plagsomme tanker dukker opp,\",\"es\":\"Si estoy fuera y noto que aparecen pensamientos irritantes y molestos,\",\"lineIndex\":200}},\"vocab\":[{\"no\":\"oppmerksomhet (en)\",\"es\":\"atención\"}],\"created\":\"2026-11-15T18:54:31.388Z\"}",
       "created": "2026-11-15T18:54:31.941Z"
+    },
+    {
+      "id": "ca249177-acd6-4e34-afc8-4407895c19ea",
+      "segmentId": "s8",
+      "start": 978.02,
+      "type": "highlight",
+      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi727sj\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":978.02,\"lineIndex\":201,\"no\":\"så pleier jeg å flytte fokuset over på fugler eller biler eller lyder som er rundt meg.\",\"es\":\"suelo mover el foco hacia los pájaros, los coches o los sonidos que hay a mi alrededor.\",\"context\":{\"prev\":{\"no\":\"Hvis jeg er ute og at jeg merker at irriterende og plagsomme tanker dukker opp,\",\"es\":\"Si estoy fuera y noto que aparecen pensamientos irritantes y molestos,\",\"lineIndex\":200},\"next\":{\"no\":\"Dette funker, enda bedre om jeg prøver å beskrive det jeg ser eller hører.\",\"es\":\"Esto funciona aún mejor si intento describir lo que veo u oigo.\",\"lineIndex\":202}},\"vocab\":[],\"created\":\"2026-11-15T18:54:56.756Z\"}",
+      "created": "2026-11-15T18:54:57.137Z"
     }
   ]
 }
