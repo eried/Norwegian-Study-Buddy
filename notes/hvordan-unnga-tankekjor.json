@@ -152,6 +152,14 @@
       "type": "highlight",
       "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6n39z\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":586.28,\"lineIndex\":114,\"no\":\"Negative tanker er ikke farlige, selv om det kan føles slik ut.\",\"es\":\"Los pensamientos negativos no son peligrosos, aunque lo parezca.\",\"context\":{\"prev\":{\"no\":\"Nå skal jeg fortelle deg noe som tok tid for meg å skjønne.\",\"es\":\"Ahora te voy a contar algo que me costó tiempo entender.\",\"lineIndex\":113},\"next\":{\"no\":\"Så ikke tro på alt du tenker. Tanker er bare tanker.\",\"es\":\"Así que no te creas todo lo que piensas. Los pensamientos son solo pensamientos.\",\"lineIndex\":115}},\"vocab\":[],\"created\":\"2026-11-15T18:43:11.063Z\"}",
       "created": "2026-11-15T18:43:11.605Z"
+    },
+    {
+      "id": "27a3cf6b-08b5-451b-82bd-4e908c356c6c",
+      "segmentId": "s5",
+      "start": 637.5,
+      "type": "highlight",
+      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6ogsd\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":637.5,\"lineIndex\":125,\"no\":\"det er tungt, og det føles ut som om det er mange tanker på en gang, så man blir litt anspent.\",\"es\":\"pesa, y se siente como si hubiera muchos pensamientos a la vez, así que uno se pone un poco tenso.\",\"context\":{\"prev\":{\"no\":\"Ja, altså den eneste greien når jeg er urolig liksom, det er jo bare at hodet er tungt [usikkert]\",\"es\":\"Sí, lo único cuando estoy inquieto es que la cabeza me pesa,\",\"lineIndex\":124},\"next\":{\"no\":\"Kanskje kjenner du deg igjen i dette. i så fall bør du følge ekstra nøye med nå.\",\"es\":\"Quizá te reconoces en esto. En ese caso, presta especial atención ahora.\",\"lineIndex\":126}},\"vocab\":[],\"created\":\"2026-11-15T18:44:15.229Z\"}",
+      "created": "2026-11-15T18:44:15.731Z"
     }
   ]
 }
