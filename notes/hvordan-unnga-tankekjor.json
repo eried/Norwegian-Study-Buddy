@@ -200,6 +200,14 @@
       "type": "highlight",
       "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6xczt\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":884.44,\"lineIndex\":181,\"no\":\"Observer dem uten å dømme.\",\"es\":\"Obsérvalos sin juzgar.\",\"context\":{\"prev\":{\"no\":\"Øvelsen da er å ikke la tankene kontrollere deg.\",\"es\":\"El ejercicio entonces es no dejar que los pensamientos te controlen.\",\"lineIndex\":180},\"next\":{\"no\":\"Du har nå lært om frakoblet oppmerksomhet.\",\"es\":\"Ya has aprendido sobre la atención desconectada.\",\"lineIndex\":182}},\"vocab\":[{\"no\":\"uten å dømme\",\"es\":\"sin juzgar\"}],\"created\":\"2026-11-15T18:51:10.218Z\"}",
       "created": "2026-11-15T18:51:10.680Z"
+    },
+    {
+      "id": "e989f501-19bb-46ab-85f6-c452aadcb04e",
+      "segmentId": "s8",
+      "start": 948.22,
+      "type": "highlight",
+      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6z23e\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":948.22,\"lineIndex\":194,\"no\":\"å fokusere på én type lyd, mens man\",\"es\":\"concentrarse en un tipo de sonido, mientras\",\"context\":{\"prev\":{\"no\":\"disse ulike kildene, så da man velger\",\"es\":\"estas distintas fuentes, de modo que uno elige\",\"lineIndex\":193},\"next\":{\"no\":\"lar det andre bare være.\",\"es\":\"deja los demás en paz.\",\"lineIndex\":195}},\"vocab\":[],\"created\":\"2026-11-15T18:52:29.402Z\"}",
+      "created": "2026-11-15T18:52:29.999Z"
     }
   ]
 }
