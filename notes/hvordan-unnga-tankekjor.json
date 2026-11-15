@@ -40,6 +40,14 @@
       "type": "highlight",
       "text": "{\"kind\":\"duda\",\"id\":\"d-mwi5p7g5\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":162.83,\"lineIndex\":33,\"no\":\"Det jeg bekymrer meg mest for i livet er, fremtiden, hvor jeg skal bo, hvem jeg skal etablere meg med, hvor jeg jobber, at det blir noe av meg til slutt.\",\"es\":\"Lo que más me preocupa en la vida es el futuro: dónde voy a vivir, con quién voy a formar una vida, dónde trabajo, que al final llegue a ser alguien.\",\"context\":{\"prev\":{\"no\":\"La oss høre med folk på gata.\",\"es\":\"Preguntemos a la gente en la calle.\",\"lineIndex\":32},\"next\":{\"no\":\"Økonomi og studier.\",\"es\":\"La economía y los estudios.\",\"lineIndex\":34}},\"vocab\":[{\"no\":\"bekymring (en/ei), bekymre seg for\",\"es\":\"preocupación; preocuparse por\"}],\"created\":\"2026-11-15T18:16:50.166Z\"}",
       "created": "2026-11-15T18:16:50.685Z"
+    },
+    {
+      "id": "fa8df1cf-e90b-4e49-9c5d-508933633748",
+      "segmentId": "s2",
+      "start": 160.75,
+      "type": "highlight",
+      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi67rjr\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":160.75,\"lineIndex\":32,\"no\":\"La oss høre med folk på gata.\",\"es\":\"Preguntemos a la gente en la calle.\",\"context\":{\"prev\":{\"no\":\"Først har vi bekymringer.\",\"es\":\"Primero tenemos las preocupaciones.\",\"lineIndex\":31},\"next\":{\"no\":\"Det jeg bekymrer meg mest for i livet er, fremtiden, hvor jeg skal bo, hvem jeg skal etablere meg med, hvor jeg jobber, at det blir noe av meg til slutt.\",\"es\":\"Lo que más me preocupa en la vida es el futuro: dónde voy a vivir, con quién voy a formar una vida, dónde trabajo, que al final llegue a ser alguien.\",\"lineIndex\":33}},\"vocab\":[],\"created\":\"2026-11-15T18:31:16.024Z\"}",
+      "created": "2026-11-15T18:31:16.632Z"
     }
   ]
 }
