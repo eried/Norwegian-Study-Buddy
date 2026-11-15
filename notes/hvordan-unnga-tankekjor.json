@@ -208,6 +208,14 @@
       "type": "highlight",
       "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6z23e\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":948.22,\"lineIndex\":194,\"no\":\"å fokusere på én type lyd, mens man\",\"es\":\"concentrarse en un tipo de sonido, mientras\",\"context\":{\"prev\":{\"no\":\"disse ulike kildene, så da man velger\",\"es\":\"estas distintas fuentes, de modo que uno elige\",\"lineIndex\":193},\"next\":{\"no\":\"lar det andre bare være.\",\"es\":\"deja los demás en paz.\",\"lineIndex\":195}},\"vocab\":[],\"created\":\"2026-11-15T18:52:29.402Z\"}",
       "created": "2026-11-15T18:52:29.999Z"
+    },
+    {
+      "id": "bf800fe7-5012-49d0-a621-04f2d8d807f1",
+      "segmentId": "s8",
+      "start": 938.94,
+      "type": "highlight",
+      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6zfli\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":938.94,\"lineIndex\":191,\"no\":\"og så går. Kanskje går noen utenfor døren foran terapi-rommet.\",\"es\":\"y luego pasa… Quizá alguien camina fuera de la puerta de la sala de terapia.\",\"context\":{\"prev\":{\"no\":\"og så er det noe biler utenfor vinduet på andre siden\",\"es\":\"y luego hay coches fuera de la ventana por el otro lado,\",\"lineIndex\":190},\"next\":{\"no\":\"Så øver man på å flytte fokuset mellom\",\"es\":\"Entonces se practica mover el foco entre\",\"lineIndex\":192}},\"vocab\":[],\"created\":\"2026-11-15T18:52:46.902Z\"}",
+      "created": "2026-11-15T18:52:47.262Z"
     }
   ]
 }
