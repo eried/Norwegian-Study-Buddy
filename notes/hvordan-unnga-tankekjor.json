@@ -80,6 +80,14 @@
       "type": "highlight",
       "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6bs7o\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":285.58,\"lineIndex\":58,\"no\":\"Altså mamma og pappa kommer til bli så skuffet, og jeg kommer til være ulykkelig resten av livet.\",\"es\":\"Mamá y papá se van a decepcionar mucho, y voy a ser infeliz el resto de mi vida.\",\"context\":{\"prev\":{\"no\":\"Da kommer drømmen min til å bli helt ødelagt.\",\"es\":\"Entonces mi sueño quedará completamente destrozado.\",\"lineIndex\":57},\"next\":{\"no\":\"Altså, jeg skulle bare ha øvd mer.\",\"es\":\"Tendría que haber practicado más.\",\"lineIndex\":59}},\"vocab\":[],\"created\":\"2026-11-15T18:34:23.509Z\"}",
       "created": "2026-11-15T18:34:23.840Z"
+    },
+    {
+      "id": "35b6941e-3032-473f-a37c-3f3ca2c27df4",
+      "segmentId": "s4",
+      "start": 359.35,
+      "type": "highlight",
+      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6ed45\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":359.35,\"lineIndex\":74,\"no\":\"Det som har hjulpet meg med å bli kvitt negative tanker, er nemlig metakognitiv terapi.\",\"es\":\"Lo que me ha ayudado a librarme de los pensamientos negativos es, de hecho, la terapia metacognitiva.\",\"context\":{\"prev\":{\"no\":\"Og nå skal jeg fortelle deg hvordan.\",\"es\":\"Y ahora te voy a contar cómo.\",\"lineIndex\":73},\"next\":{\"no\":\"Ja, et tungt ord, men det er faktisk ikke så vanskelig som det høres ut. La oss høre Kristoffers definisjon på metakognitiv terapi.\",\"es\":\"Sí, es una palabra pesada, pero en realidad no es tan difícil como suena. Escuchemos la definición de Kristoffer de la terapia metacognitiva.\",\"lineIndex\":75}},\"vocab\":[{\"no\":\"bli kvitt\",\"es\":\"librarse de\"},{\"no\":\"metakognitiv terapi\",\"es\":\"terapia metacognitiva\"}],\"created\":\"2026-11-15T18:36:23.910Z\"}",
+      "created": "2026-11-15T18:36:24.513Z"
     }
   ]
 }
