@@ -16,6 +16,14 @@
       "type": "highlight",
       "text": "{\"kind\":\"duda\",\"id\":\"d-mwi3di9e\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":84.6,\"lineIndex\":13,\"no\":\"Men ved hjelp av en spesiell metode, har jeg lært å håndtere bekymringer, grubling og tankekjør.\",\"es\":\"Pero con la ayuda de un método especial he aprendido a manejar las preocupaciones, la rumiación y el pensamiento en bucle.\",\"context\":{\"prev\":{\"no\":\"Og, som du nå vet, har jeg slitt en del med negative tanker.\",\"es\":\"Y, como ya sabes, he luchado bastante con pensamientos negativos.\"},\"next\":{\"no\":\"Og det er den metoden jeg vil at du også skal lære.\",\"es\":\"Y ese es el método que quiero que tú también aprendas.\"}},\"vocab\":[{\"no\":\"tankekjør (et)\",\"es\":\"pensamiento en bucle, darle vueltas a todo\"},{\"no\":\"bekymring (en/ei), bekymre seg for\",\"es\":\"preocupación; preocuparse por\"},{\"no\":\"grubling (en/ei), gruble over\",\"es\":\"rumiación; darle vueltas a algo (del pasado)\"},{\"no\":\"håndtere\",\"es\":\"manejar, gestionar\"},{\"no\":\"ved hjelp av\",\"es\":\"con ayuda de\"}],\"created\":\"2026-11-15T17:11:45.074Z\"}",
       "created": "2026-11-15T17:23:38.330Z"
+    },
+    {
+      "id": "d402f87b-c88f-453e-8744-d921d2acadd5",
+      "segmentId": "s1",
+      "start": 44.5,
+      "type": "highlight",
+      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi3s7j8\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":44.5,\"lineIndex\":8,\"no\":\"Sånn her har jeg, og kanskje du også, ligget mange netter, og tenkt, og grublet.\",\"es\":\"Así me he pasado muchas noches, y quizá tú también, pensando y dándole vueltas.\",\"context\":{\"prev\":{\"no\":\"Hvorfor har jeg ikke kontroll på livet mitt?\",\"es\":\"¿Por qué no tengo control sobre mi vida?\"},\"next\":{\"no\":\"Heldigvis kan man lære seg å håndtere sånne negative tanker.\",\"es\":\"Por suerte, se puede aprender a manejar este tipo de pensamientos negativos.\"}},\"vocab\":[{\"no\":\"grubling (en/ei), gruble over\",\"es\":\"rumiación; darle vueltas a algo (del pasado)\"}],\"created\":\"2026-11-15T17:23:11.012Z\"}",
+      "created": "2026-11-15T17:23:40.020Z"
     }
   ]
 }
