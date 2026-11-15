@@ -587,12 +587,46 @@
     overlay.addEventListener("click", (e) => { if (e.target === overlay) closeFn(); });
   }
 
+  let topHideTimer = 0;
   function applyTop() {
-    document.documentElement.classList.toggle("top-hidden", !!prefs.hideTop);
+    const topEl = $("#top");
     const un = $("#btn-unhide");
+    const hide = !!prefs.hideTop;
+    const root = document.documentElement;
     if (un) {
-      un.setAttribute("aria-hidden", prefs.hideTop ? "false" : "true");
-      un.tabIndex = prefs.hideTop ? 0 : -1;
+      un.setAttribute("aria-hidden", hide ? "false" : "true");
+      un.tabIndex = hide ? 0 : -1;
+    }
+    if (!topEl) {
+      root.classList.toggle("top-hidden", hide);
+      root.classList.toggle("top-hidden-done", hide);
+      return;
+    }
+    clearTimeout(topHideTimer);
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (hide) {
+      root.classList.remove("top-hidden-done");
+      root.classList.add("top-hidden");
+      const finish = () => { if (prefs.hideTop) root.classList.add("top-hidden-done"); };
+      if (reduce) finish();
+      else {
+        const onEnd = (e) => {
+          if (e && e.target && e.target !== topEl) return;
+          topEl.removeEventListener("transitionend", onEnd);
+          finish();
+        };
+        topEl.addEventListener("transitionend", onEnd);
+        topHideTimer = setTimeout(() => onEnd({ target: topEl }), 550);
+      }
+    } else {
+      const startHidden = root.classList.contains("top-hidden-done") || getComputedStyle(topEl).display === "none";
+      root.classList.remove("top-hidden-done");
+      if (startHidden) {
+        root.classList.add("top-hidden");
+        void topEl.offsetHeight;
+      }
+      if (reduce) root.classList.remove("top-hidden");
+      else requestAnimationFrame(() => { requestAnimationFrame(() => root.classList.remove("top-hidden")); });
     }
   }
 

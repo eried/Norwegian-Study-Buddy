@@ -131,7 +131,23 @@ const INSTALL_STUBS = () => {
   };
 };
 
-async function openEpisode(browser, base, { passphrase, hideTop, extras } = {}) {
+async function stubNotesApi(page) {
+  await page.setRequestInterception(true);
+  page.on("request", (req) => {
+    const url = req.url();
+    if (url.includes("norwegian-study-buddy-notes") || /\/notes\/[^/]+\.json(\?|$)/.test(url)) {
+      return req.respond({
+        status: 200,
+        contentType: "application/json",
+        headers: { "Access-Control-Allow-Origin": "*" },
+        body: JSON.stringify({ slug: SLUG, notes: [] }),
+      });
+    }
+    return req.continue();
+  });
+}
+
+async function openEpisode(browser, base, { passphrase, hideTop, extras, liveNotes } = {}) {
   const ctx = await browser.createBrowserContext();
   const page = await ctx.newPage();
   await page.setViewport({ width: 1180, height: 700, deviceScaleFactor: 1, hasTouch: true });
@@ -144,6 +160,7 @@ async function openEpisode(browser, base, { passphrase, hideTop, extras } = {}) 
       if (hide) localStorage.setItem("nsb:prefs", JSON.stringify({ hideTop: true }));
     }, pass, hide);
   }
+  if (!liveNotes) await stubNotesApi(page);
   await page.goto(base + "/episode.html?ep=" + SLUG, { waitUntil: "networkidle2", timeout: 60000 });
   await page.waitForFunction(() => {
     const btn = document.getElementById("btn-doubt");
@@ -409,19 +426,20 @@ async function run() {
   await test("Ya entiendo removes the mark locally and syncs the delete", async () => {
     const before = await fetchNotes();
     const beforeIds = new Set(before.map((n) => n.id));
-    const { ctx, page } = await openEpisode(browser, base, { passphrase: PASS });
+    const { ctx, page } = await openEpisode(browser, base, { passphrase: PASS, liveNotes: true });
     let createdIds = [];
     try {
+      const startSnap = await notesSnapshot(page);
+      const startCount = Number(startSnap.badge) || 0;
       await openMeaningAt(page, T_KLOKKEN);
       let snap = await notesSnapshot(page);
-      assert(String(snap.badge) === "1", "mark added, badge=" + snap.badge);
+      assert(Number(snap.badge) === startCount + 1, "mark added, badge=" + snap.badge + " from " + startCount);
       // Give the worker a moment to accept the add if the passphrase works.
       await sleep(2500);
       await page.click("#m-gotit");
       await page.waitForFunction(() => document.getElementById("meaning").hidden, { timeout: 5000 });
       snap = await notesSnapshot(page);
-      assert(String(snap.badge) === "0", "local badge should be 0 after Ya entiendo, got " + snap.badge);
-      assert(snap.marked === 0, "no line should stay marked");
+      assert(Number(snap.badge) === startCount, "local badge should return to " + startCount + " after Ya entiendo, got " + snap.badge);
       // Wait until the worker no longer has notes we created.
       const deadline = Date.now() + 25000;
       let leftover = [];
@@ -474,6 +492,55 @@ async function run() {
     } finally { await ctx.close(); }
   });
 
+  await test("meaning buttons sit in one unwrapped row at Tesla viewports", async () => {
+    const viewports = [
+      { w: 1100, h: 600 },
+      { w: 1180, h: 700 },
+      { w: 1920, h: 1200 },
+      { w: 1200, h: 1600 },
+    ];
+    for (const vp of viewports) {
+      const ctx = await browser.createBrowserContext();
+      const page = await ctx.newPage();
+      await page.setViewport({ width: vp.w, height: vp.h, deviceScaleFactor: 1, hasTouch: true });
+      await page.evaluateOnNewDocument(INSTALL_STUBS);
+      await stubNotesApi(page);
+      await page.goto(base + "/episode.html?ep=" + SLUG, { waitUntil: "networkidle2", timeout: 60000 });
+      await page.waitForFunction(() => document.getElementById("btn-doubt") && document.querySelectorAll(".ln").length > 50, { timeout: 30000 });
+      await openMeaningAt(page, T_KLOKKEN);
+      const layout = await page.evaluate(() => {
+        const ids = ["m-btn-no", "m-btn-es", "m-gotit", "m-go"];
+        const btns = ids.map((id) => {
+          const b = document.getElementById(id);
+          const r = b.getBoundingClientRect();
+          return { id, text: b.innerText.replace(/\s+/g, " ").trim(), x: r.x, y: r.y, w: r.width, h: r.height, right: r.right, bottom: r.bottom };
+        });
+        const row = document.querySelector(".meaning-actions");
+        const rr = row.getBoundingClientRect();
+        const card = document.querySelector(".meaning-card").getBoundingClientRect();
+        const wrap = window.getComputedStyle(row).flexWrap;
+        const tops = btns.map((b) => Math.round(b.y));
+        const sameRow = Math.max(...tops) - Math.min(...tops) < 8;
+        const overflow = btns.some((b) => b.right > card.right + 2 || b.bottom > card.bottom + 2 || b.x < card.x - 2);
+        return {
+          order: btns.map((b) => b.id),
+          labels: btns.map((b) => b.text),
+          tops, sameRow, wrap, overflow,
+          rowW: rr.width, cardW: card.width,
+        };
+      });
+      try {
+        assert(layout.order.join(",") === "m-btn-no,m-btn-es,m-gotit,m-go", vp.w + "x" + vp.h + " order " + layout.order);
+        assert(/^NO\b/.test(layout.labels[0]) && /^ES\b/.test(layout.labels[1]), "labels " + layout.labels);
+        assert(/Ya entiendo/i.test(layout.labels[2]), "Ya entiendo label: " + layout.labels[2]);
+        assert(/Continuar/i.test(layout.labels[3]), "Continuar label: " + layout.labels[3]);
+        assert(layout.wrap === "nowrap", vp.w + "x" + vp.h + " flex-wrap is " + layout.wrap);
+        assert(layout.sameRow, vp.w + "x" + vp.h + " buttons wrapped, tops=" + layout.tops);
+        assert(!layout.overflow, vp.w + "x" + vp.h + " buttons overflow the card");
+      } finally { await ctx.close(); }
+    }
+  });
+
   await test("top bar hide, unhide, persistence, and back button", async () => {
     const { ctx, page } = await openEpisode(browser, base);
     try {
@@ -506,25 +573,47 @@ async function run() {
 
       await page.click("#btn-hide-top");
       await page.waitForFunction(() => document.documentElement.classList.contains("top-hidden"));
-      // allow the ease-in-out to finish
-      await sleep(500);
+      await page.waitForFunction(() => document.documentElement.classList.contains("top-hidden-done"), { timeout: 2000 });
       const hidden = await page.evaluate(() => {
         const top = document.getElementById("top");
         const un = document.getElementById("btn-unhide");
+        const stage = document.getElementById("stage");
         const ub = un.getBoundingClientRect();
         const s = getComputedStyle(un);
+        const tr = top.getBoundingClientRect();
+        const cs = getComputedStyle(top);
+        const band = [];
+        for (const el of document.querySelectorAll("body *")) {
+          if (el === un || un.contains(el)) continue;
+          if (stage === el || stage.contains(el)) continue;
+          if (el.hidden || el.getAttribute("hidden") != null) continue;
+          const r = el.getBoundingClientRect();
+          if (r.height <= 0 || r.width <= 0) continue;
+          const st = getComputedStyle(el);
+          if (st.display === "none" || st.visibility === "hidden" || st.opacity === "0") continue;
+          if (r.top < 60 && r.bottom > 0 && r.left < window.innerWidth && r.right > 0) {
+            band.push((el.id ? "#" + el.id : el.tagName) + (el.className && typeof el.className === "string" ? "." + String(el.className).trim().split(/\s+/).join(".") : ""));
+          }
+        }
         return {
-          topH: top.getBoundingClientRect().height,
+          topH: tr.height,
+          topDisplay: cs.display,
+          topBorder: cs.borderBottomWidth,
+          topPad: cs.paddingTop + "/" + cs.paddingBottom,
           unVisible: s.opacity !== "0" && s.pointerEvents !== "none",
           unW: Math.round(ub.width),
           unH: Math.round(ub.height),
           stored: JSON.parse(localStorage.getItem("nsb:prefs") || "{}").hideTop,
+          done: document.documentElement.classList.contains("top-hidden-done"),
+          band,
         };
       });
-      assert(hidden.topH < 8, "top bar should collapse, height=" + hidden.topH);
+      assert(hidden.topH === 0, "top bar height must be 0, got " + hidden.topH);
+      assert(hidden.topDisplay === "none" || (hidden.topBorder === "0px" && hidden.topPad === "0px/0px"), "no remnant strip, display=" + hidden.topDisplay + " border=" + hidden.topBorder + " pad=" + hidden.topPad);
       assert(hidden.unVisible, "unhide button should appear");
       assert(hidden.unW >= 48 && hidden.unH >= 48, "unhide at least 48px, got " + hidden.unW + "x" + hidden.unH);
       assert(hidden.stored === true, "hideTop saved in localStorage");
+      assert(hidden.band.length === 0, "only unhide (and transcript) may sit in the top 60px, found " + JSON.stringify(hidden.band));
 
       await page.click("#btn-unhide");
       await page.waitForFunction(() => !document.documentElement.classList.contains("top-hidden"));
@@ -543,14 +632,14 @@ async function run() {
       await page.waitForFunction(() => document.documentElement.classList.contains("top-hidden"));
       await page.reload({ waitUntil: "networkidle2", timeout: 60000 });
       await page.waitForFunction(() => document.getElementById("btn-unhide"), { timeout: 30000 });
-      await sleep(400);
+      await page.waitForFunction(() => document.documentElement.classList.contains("top-hidden-done") || document.getElementById("top")?.getBoundingClientRect().height === 0, { timeout: 5000 });
       const persisted = await page.evaluate(() => ({
         cls: document.documentElement.classList.contains("top-hidden"),
         topH: document.getElementById("top")?.getBoundingClientRect().height || 0,
         stored: JSON.parse(localStorage.getItem("nsb:prefs") || "{}").hideTop,
       }));
       assert(persisted.cls && persisted.stored, "hidden state should persist after reload");
-      assert(persisted.topH < 8, "top bar stays collapsed after reload, height=" + persisted.topH);
+      assert(persisted.topH === 0, "top bar stays gone after reload, height=" + persisted.topH);
 
       // Back navigation from a visible bar.
       await page.click("#btn-unhide");

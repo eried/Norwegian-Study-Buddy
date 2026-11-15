@@ -9,7 +9,7 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/style.css">
   <script>
-    try { if (JSON.parse(localStorage.getItem("nsb:prefs") || "{}").hideTop) document.documentElement.classList.add("top-hidden"); } catch (e) {}
+    try { if (JSON.parse(localStorage.getItem("nsb:prefs") || "{}").hideTop) document.documentElement.classList.add("top-hidden","top-hidden-done"); } catch (e) {}
   </script>
 </head>
 <body>
@@ -82,8 +82,8 @@
       <div class="vocab-hits" id="m-vocab"></div>
       <div class="ctx" id="m-ctx"></div>
       <div class="actions meaning-actions">
-        <button class="act replay" id="m-btn-es" type="button" aria-label="Escuchar español"><svg aria-hidden="true"><use href="#i-play"/></svg>ES</button>
         <button class="act replay" id="m-btn-no" type="button" aria-label="Escuchar noruego"><svg aria-hidden="true"><use href="#i-play"/></svg>NO</button>
+        <button class="act replay" id="m-btn-es" type="button" aria-label="Escuchar español"><svg aria-hidden="true"><use href="#i-play"/></svg>ES</button>
         <button class="act" id="m-gotit" type="button"><svg aria-hidden="true"><use href="#i-check"/></svg>Ya entiendo</button>
         <button class="act go" id="m-go" type="button"><svg aria-hidden="true"><use href="#i-play"/></svg><span id="m-go-label">Continuar</span></button>
       </div>
