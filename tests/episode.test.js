@@ -808,6 +808,111 @@ async function run() {
     } finally { await ctx.close(); }
   });
 
+  await test("transcript words are not tappable and a line tap still seeks", async () => {
+    const { ctx, page } = await openEpisode(browser, base);
+    try {
+      const before = await page.evaluate(() => ({
+        words: document.querySelectorAll(".ln .word, .stage .word, main .word").length,
+        t: document.getElementById("audio").currentTime,
+      }));
+      assert(before.words === 0, "transcript must not have tappable word spans, found " + before.words);
+      const target = await page.evaluate(() => {
+        const ln = document.querySelector('.ln[data-i="20"]') || document.querySelectorAll(".ln")[20];
+        if (!ln) return null;
+        ln.click();
+        return { i: ln.getAttribute("data-i"), startHint: ln.querySelector(".t")?.textContent };
+      });
+      assert(target, "expected a transcript line to click");
+      await page.waitForFunction((prev) => Math.abs((document.getElementById("audio").currentTime || 0) - prev) > 1, { timeout: 4000 }, before.t).catch(() => {});
+      const after = await page.evaluate(() => ({
+        t: document.getElementById("audio").currentTime,
+        words: document.querySelectorAll(".ln .word").length,
+        meaningOpen: !document.getElementById("meaning").hidden,
+        hintOpen: document.getElementById("word-hint") && !document.getElementById("word-hint").hidden,
+      }));
+      assert(after.t > 10, "clicking a line should seek, currentTime=" + after.t);
+      assert(after.words === 0, "seeking must not create word spans in the transcript");
+      assert(!after.meaningOpen && !after.hintOpen, "line tap must not open the hint or meaning card");
+    } finally { await ctx.close(); }
+  });
+
+  await test("tapping a Norwegian word on the meaning card opens a mini hint", async () => {
+    const { ctx, page } = await openEpisode(browser, base);
+    try {
+      // Line with «håndtere» / «bekymringer» in the episode vocabulary (starts 77.62).
+      await openMeaningAt(page, 80);
+      await waitCountdown(page);
+      const setup = await page.evaluate(() => {
+        const noWords = [...document.querySelectorAll("#m-no button.word")].map((b) => b.dataset.word);
+        const ctxWords = [...document.querySelectorAll("#m-ctx button.word")].map((b) => b.dataset.word);
+        return { noWords, ctxWords, meaningOpen: !document.getElementById("meaning").hidden };
+      });
+      assert(setup.meaningOpen, "meaning card should be open");
+      assert(setup.noWords.length > 0, "Norwegian line should have tappable words");
+      assert(setup.noWords.some((w) => /h[åa]ndtere/i.test(w)), "expected håndtere among " + setup.noWords.join(","));
+      assert(setup.ctxWords.length > 0, "context lines should have tappable words");
+
+      const beforeNotes = await notesSnapshot(page);
+      await page.evaluate(() => {
+        const btn = [...document.querySelectorAll("#m-no button.word")].find((b) => /h[åa]ndtere/i.test(b.dataset.word));
+        btn.click();
+      });
+      await page.waitForFunction(() => document.getElementById("word-hint") && !document.getElementById("word-hint").hidden, { timeout: 5000 });
+      const hint = await page.evaluate(() => ({
+        word: document.getElementById("wh-word")?.textContent,
+        es: document.getElementById("wh-es")?.textContent,
+        meaningOpen: !document.getElementById("meaning").hidden,
+        go: document.getElementById("m-go-label")?.textContent,
+        href: document.getElementById("wh-ordbok")?.getAttribute("href"),
+        hasSpeak: !document.getElementById("wh-speak")?.hidden,
+      }));
+      assert(hint.meaningOpen, "hint must layer over the meaning card, not close it");
+      assert(/h[åa]ndtere/i.test(hint.word), "hint shows the word, got " + hint.word);
+      assert(/manejar|gestionar/i.test(hint.es), "vocab Spanish hint, got " + hint.es);
+      assert(hint.go === "Continuar", "tapping a word cancels the auto-continue countdown");
+      assert(hint.hasSpeak, "ES speak button should be visible when there is a Spanish hint");
+      assert(/ordbokene\.no/i.test(hint.href || ""), "Ordbøkene link, got " + hint.href);
+      const afterNotes = await notesSnapshot(page);
+      assert(afterNotes.badge === beforeNotes.badge, "tapping a word must not add a mark");
+
+      await page.click("#wh-close");
+      await page.waitForFunction(() => document.getElementById("word-hint").hidden, { timeout: 3000 });
+      const still = await page.evaluate(() => !document.getElementById("meaning").hidden);
+      assert(still, "closing the hint leaves the meaning card open");
+    } finally { await ctx.close(); }
+  });
+
+  await test("live Ordbøkene API fills word class or a definition when there is no vocab hit", async () => {
+    const { ctx, page } = await openEpisode(browser, base);
+    try {
+      await openMeaningAt(page, T_KLOKKEN);
+      const clicked = await page.evaluate(() => {
+        const btn = [...document.querySelectorAll("#m-no button.word")].find((b) => /medianoche|midnatt/i.test(b.dataset.word) || (b.dataset.word || "").toLowerCase() === "midnatt");
+        if (!btn) return null;
+        btn.click();
+        return btn.dataset.word;
+      });
+      assert(clicked, "expected to click midnatt");
+      await page.waitForFunction(() => {
+        const box = document.getElementById("word-hint");
+        if (!box || box.hidden) return false;
+        const es = document.getElementById("wh-es")?.textContent || "";
+        const def = document.getElementById("wh-def")?.textContent || "";
+        const cls = document.getElementById("wh-class")?.textContent || "";
+        if (es === "Buscando…") return false;
+        return def.length > 0 || cls.length > 0 || es === "Sin resultados";
+      }, { timeout: 15000 });
+      const hint = await page.evaluate(() => ({
+        word: document.getElementById("wh-word")?.textContent,
+        es: document.getElementById("wh-es")?.textContent,
+        def: document.getElementById("wh-def")?.textContent,
+        cls: document.getElementById("wh-class")?.hidden ? "" : document.getElementById("wh-class")?.textContent,
+      }));
+      assert(hint.es !== "Buscando…", "lookup should finish");
+      assert((hint.def && hint.def.length > 3) || (hint.cls && hint.cls.length > 0), "live API should return a class or definition, got " + JSON.stringify(hint));
+    } finally { await ctx.close(); }
+  });
+
   await browser.close();
   server.close();
 

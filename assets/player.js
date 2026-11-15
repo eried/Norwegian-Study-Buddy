@@ -446,14 +446,15 @@
     autoContinueCancelled = false;
     if (autoContinueTimer) { clearInterval(autoContinueTimer); autoContinueTimer = 0; }
     setGoLabel("Continuar");
+    closeWordHint();
     $("#m-es").textContent = item.es || "(sin traducción)";
-    $("#m-no").textContent = item.no;
+    linkWords($("#m-no"), item.no, { no: item.no, es: item.es || "" });
     const hits = item.vocab && item.vocab.length ? item.vocab : vocabIn(item.no).map((v) => ({ no: v.no, es: v.es }));
     $("#m-vocab").replaceChildren(...hits.map((v) => el("div", null, el("b", { lang: "nb" }, v.no), " = ", v.es)));
     const c = item.context || {};
     $("#m-ctx").replaceChildren(
-      c.prev ? el("div", null, "Antes: ", el("b", { lang: "nb" }, c.prev.no), el("i", null, c.prev.es)) : "",
-      c.next ? el("div", null, "Después: ", el("b", { lang: "nb" }, c.next.no), el("i", null, c.next.es)) : "");
+      c.prev ? el("div", null, "Antes: ", (() => { const b = el("b", { lang: "nb" }); linkWords(b, c.prev.no, c.prev); return b; })(), el("i", null, c.prev.es)) : "",
+      c.next ? el("div", null, "Después: ", (() => { const b = el("b", { lang: "nb" }); linkWords(b, c.next.no, c.next); return b; })(), el("i", null, c.next.es)) : "");
     const inReview = review.active;
     $("#m-count").hidden = !inReview;
     if (inReview) $("#m-count").textContent = "Duda " + (review.i + 1) + " de " + review.items.length;
@@ -470,6 +471,7 @@
   function stopClip() { clipEnd = null; }
 
   function closeMeaningCard() {
+    closeWordHint();
     stopSpeech();
     cancelAutoContinue();
     stopClip();
@@ -520,6 +522,180 @@
     clipEnd = end;
     seek(start);
     play();
+  }
+
+
+  // ---------- word hint (only on the «Esto significa» / review card) ----------
+  const POS_ES = { VERB: "verbo", NOUN: "sustantivo", ADJ: "adjetivo", ADV: "adverbio", PREP: "preposición", PRON: "pronombre", DET: "determinante", CONJ: "conjunción", INTJ: "interjección" };
+  let wordHintToken = 0;
+
+  function normalizeWord(w) {
+    return String(w || "").replace(/^[«»“”"'‘’(\[]+|[»“”"'‘’)\],.:;!?…]+$/g, "").trim();
+  }
+
+  function splitWords(text) {
+    const s = String(text || "");
+    try { return s.split(/([^\p{L}\p{N}-]+)/u); }
+    catch (e) { return s.split(/([^A-Za-zÀ-ÖØ-öø-ÿ0-9-]+)/); }
+  }
+
+  function linkWords(root, text, lineCtx) {
+    if (!root) return;
+    root.replaceChildren();
+    const parts = splitWords(text);
+    for (const part of parts) {
+      const isWord = (function () {
+        try { return /[\p{L}]/u.test(part); }
+        catch (e) { return /[A-Za-zÀ-ÖØ-öø-ÿ]/.test(part); }
+      })();
+      if (isWord) {
+        const b = el("button", { type: "button", class: "word", "data-word": part }, part);
+        b.addEventListener("click", (ev) => {
+          ev.preventDefault();
+          ev.stopPropagation();
+          openWordHint(part, lineCtx);
+        });
+        root.append(b);
+      } else if (part) root.append(part);
+    }
+  }
+
+  function vocabForWord(word) {
+    const w = normalizeWord(word).toLowerCase();
+    if (!w) return null;
+    const exact = [];
+    const soft = [];
+    for (const v of vocab) {
+      const tokens = splitWords(String(v.no || "")).map((tok) => tok.toLowerCase()).filter((tok) => {
+        try { return /[\p{L}\p{N}]/u.test(tok); }
+        catch (e) { return /[A-Za-zÀ-ÖØ-öø-ÿ0-9]/.test(tok); }
+      });
+      if (tokens.includes(w)) { exact.push(v); continue; }
+      if (v.keys && v.keys.some((phrase) => phrase.some((k) => (k.exact ? w === k.w : w.startsWith(k.w) || k.w.startsWith(w))))) {
+        soft.push(v);
+      }
+    }
+    return exact[0] || soft[0] || null;
+  }
+
+  function firstExplanation(node) {
+    if (!node) return "";
+    if (Array.isArray(node)) {
+      for (const n of node) { const t = firstExplanation(n); if (t) return t; }
+      return "";
+    }
+    if (typeof node !== "object") return "";
+    if (node.type_ === "explanation" || (node.content && !node.elements)) {
+      let c = String(node.content || "");
+      const items = node.items || [];
+      let i = 0;
+      c = c.replace(/\$/g, () => {
+        const it = items[i++];
+        if (!it) return "";
+        if (it.text) return it.text;
+        if (it.lemmas && it.lemmas[0] && it.lemmas[0].lemma) return it.lemmas[0].lemma;
+        return "";
+      });
+      c = c.replace(/\s+/g, " ").trim();
+      return c;
+    }
+    if (node.definitions) return firstExplanation(node.definitions);
+    if (node.elements) return firstExplanation(node.elements);
+    if (node.body) return firstExplanation(node.body);
+    return "";
+  }
+
+  function parseArticle(art) {
+    if (!art) return null;
+    const lemma = (art.lemmas && art.lemmas[0] && art.lemmas[0].lemma) || "";
+    const para = art.lemmas && art.lemmas[0] && (art.lemmas[0].paradigm_info || [])[0];
+    const tags = (para && para.tags) || [];
+    const main = tags.find((t) => POS_ES[t]) || tags[0] || "";
+    let pos = POS_ES[main] || (main ? main.toLowerCase() : "");
+    if (main === "NOUN") {
+      if (tags.includes("Masc")) pos += " (m.)";
+      else if (tags.includes("Fem")) pos += " (f.)";
+    }
+    const def = firstExplanation(art.body);
+    return { lemma, pos, def };
+  }
+
+  async function lookupOrd(word) {
+    const n = normalizeWord(word);
+    const tries = [];
+    if (n) tries.push(n);
+    const lower = n.toLowerCase();
+    if (lower && lower !== n) tries.push(lower);
+    const seen = new Set();
+    for (const w of tries) {
+      if (seen.has(w)) continue;
+      seen.add(w);
+      try {
+        const res = await fetch("https://ord.uib.no/api/articles?w=" + encodeURIComponent(w) + "&dict=bm&scope=ei");
+        if (!res.ok) continue;
+        const data = await res.json();
+        const ids = (data.articles && data.articles.bm) || [];
+        if (!ids.length) continue;
+        const artRes = await fetch("https://ord.uib.no/bm/article/" + ids[0] + ".json");
+        if (!artRes.ok) continue;
+        return parseArticle(await artRes.json());
+      } catch (e) { /* network or CORS */ }
+    }
+    return null;
+  }
+
+  function closeWordHint() {
+    wordHintToken += 1;
+    const box = $("#word-hint");
+    if (box) box.hidden = true;
+    const speakBtn = $("#wh-speak");
+    if (speakBtn) speakBtn.dataset.es = "";
+  }
+
+  function openWordHint(word, lineCtx) {
+    cancelAutoContinue();
+    const token = ++wordHintToken;
+    const raw = normalizeWord(word) || word;
+    const box = $("#word-hint");
+    if (!box) return;
+    $("#wh-word").textContent = raw;
+    $("#wh-class").hidden = true;
+    $("#wh-class").textContent = "";
+    $("#wh-es").textContent = "";
+    $("#wh-def").textContent = "";
+    $("#wh-ctx").hidden = true;
+    $("#wh-ctx").textContent = "";
+    const v = vocabForWord(raw);
+    const vocabEs = (v && v.es) || "";
+    const lineEs = (lineCtx && lineCtx.es) || "";
+    const es = vocabEs || lineEs;
+    if (es) $("#wh-es").textContent = es;
+    else $("#wh-es").textContent = "Buscando…";
+    if (lineEs && vocabEs && lineEs !== vocabEs) {
+      $("#wh-ctx").hidden = false;
+      $("#wh-ctx").textContent = lineEs;
+    }
+    $("#wh-speak").hidden = !es;
+    $("#wh-speak").dataset.es = es;
+    $("#wh-ordbok").href = "https://ordbokene.no/nob/bm/" + encodeURIComponent(raw.toLowerCase());
+    box.hidden = false;
+    $("#wh-close").focus({ preventScroll: true });
+    lookupOrd(raw).then((api) => {
+      if (token !== wordHintToken) return;
+      if (api && api.lemma && api.lemma.toLowerCase() !== raw.toLowerCase()) {
+        $("#wh-word").textContent = raw + " · " + api.lemma;
+        $("#wh-ordbok").href = "https://ordbokene.no/nob/bm/" + encodeURIComponent(api.lemma.toLowerCase());
+      }
+      if (api && api.pos) { $("#wh-class").hidden = false; $("#wh-class").textContent = api.pos; }
+      if (api && api.def) $("#wh-def").textContent = api.def;
+      if (!es) {
+        // No Spanish from vocab or line context: show the Norwegian definition.
+        $("#wh-es").textContent = "";
+        $("#wh-speak").hidden = true;
+        $("#wh-speak").dataset.es = "";
+        if (!(api && api.def)) $("#wh-es").textContent = "Sin resultados";
+      }
+    });
   }
 
   // ---------- collection ("Mis dudas") ----------
@@ -769,6 +945,12 @@
     $("#m-btn-no").addEventListener("click", replayNorwegian);
     $("#m-close").addEventListener("click", continueMeaning);
     $("#meaning").addEventListener("pointerdown", cancelAutoContinue);
+    $("#wh-close").addEventListener("click", closeWordHint);
+    $("#wh-speak").addEventListener("click", () => {
+      const es = $("#wh-speak").dataset.es || "";
+      if (es) speakEs(es, { resume: false });
+    });
+    dismissOnBackdrop($("#word-hint"), closeWordHint);
 
     $("#btn-dudas").addEventListener("click", () => openPanel("dudas"));
     $("#panel-close").addEventListener("click", closePanel);
@@ -816,6 +998,7 @@
     document.addEventListener("keydown", (e) => {
       if (e.target.closest("input,textarea,select") || e.metaKey || e.ctrlKey || e.altKey) return;
       if (e.key === "Escape") {
+        if ($("#word-hint") && !$("#word-hint").hidden) return closeWordHint();
         if (!$("#meaning").hidden) {
           if (review.active) return review.stop();
           return continueMeaning();

@@ -92,6 +92,25 @@
     </div>
   </div>
 
+  <!-- Mini hint for a tapped Norwegian word (only on the meaning card) -->
+  <div class="overlay" id="word-hint" hidden>
+    <div class="hint-card" role="dialog" aria-modal="true" aria-labelledby="wh-word">
+      <div class="panel-head">
+        <div class="kicker">Palabra</div>
+        <button class="btn-cerrar" id="wh-close" type="button"><svg width="22" height="22" aria-hidden="true"><use href="#i-x"/></svg>Cerrar</button>
+      </div>
+      <div class="wh-word" id="wh-word" lang="nb"></div>
+      <div class="wh-class" id="wh-class" hidden></div>
+      <div class="wh-es" id="wh-es" lang="es"></div>
+      <div class="wh-def" id="wh-def" lang="nb"></div>
+      <div class="wh-ctx" id="wh-ctx" hidden></div>
+      <div class="wh-actions">
+        <button class="act replay" id="wh-speak" type="button" aria-label="Escuchar español"><svg aria-hidden="true"><use href="#i-play"/></svg>ES</button>
+        <a class="act" id="wh-ordbok" href="https://ordbokene.no/" target="_blank" rel="noopener">Ordbøkene</a>
+      </div>
+    </div>
+  </div>
+
   <!-- Mis dudas / Vocabulario / Apuntes -->
   <div class="overlay" id="panel" hidden>
     <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="panel-title">
