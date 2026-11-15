@@ -88,6 +88,14 @@
       "type": "highlight",
       "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6ed45\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":359.35,\"lineIndex\":74,\"no\":\"Det som har hjulpet meg med å bli kvitt negative tanker, er nemlig metakognitiv terapi.\",\"es\":\"Lo que me ha ayudado a librarme de los pensamientos negativos es, de hecho, la terapia metacognitiva.\",\"context\":{\"prev\":{\"no\":\"Og nå skal jeg fortelle deg hvordan.\",\"es\":\"Y ahora te voy a contar cómo.\",\"lineIndex\":73},\"next\":{\"no\":\"Ja, et tungt ord, men det er faktisk ikke så vanskelig som det høres ut. La oss høre Kristoffers definisjon på metakognitiv terapi.\",\"es\":\"Sí, es una palabra pesada, pero en realidad no es tan difícil como suena. Escuchemos la definición de Kristoffer de la terapia metacognitiva.\",\"lineIndex\":75}},\"vocab\":[{\"no\":\"bli kvitt\",\"es\":\"librarse de\"},{\"no\":\"metakognitiv terapi\",\"es\":\"terapia metacognitiva\"}],\"created\":\"2026-11-15T18:36:23.910Z\"}",
       "created": "2026-11-15T18:36:24.513Z"
+    },
+    {
+      "id": "09cee44b-7651-4419-874f-bb4948dddea8",
+      "segmentId": "s4",
+      "start": 377.35,
+      "type": "highlight",
+      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6fbt8\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":377.35,\"lineIndex\":76,\"no\":\"Metakognitiv terapi handler i bunn og grunn om å endre måten man forholder seg til tanker, følelser og indre opplevelser på.\",\"es\":\"La terapia metacognitiva trata, en el fondo, de cambiar la manera en que uno se relaciona con los pensamientos, los sentimientos y las experiencias internas.\",\"context\":{\"prev\":{\"no\":\"Ja, et tungt ord, men det er faktisk ikke så vanskelig som det høres ut. La oss høre Kristoffers definisjon på metakognitiv terapi.\",\"es\":\"Sí, es una palabra pesada, pero en realidad no es tan difícil como suena. Escuchemos la definición de Kristoffer de la terapia metacognitiva.\",\"lineIndex\":75},\"next\":{\"no\":\"Mange som strever med bekymring og grubling, de har ofte en opplevelse av at det lever sitt eget liv.\",\"es\":\"Muchos que luchan con la preocupación y la rumiación suelen sentir que esto vive su propia vida.\",\"lineIndex\":77}},\"vocab\":[{\"no\":\"metakognitiv terapi\",\"es\":\"terapia metacognitiva\"},{\"no\":\"forholde seg til\",\"es\":\"relacionarse con, manejar\"},{\"no\":\"i bunn og grunn\",\"es\":\"en el fondo, básicamente\"}],\"created\":\"2026-11-15T18:37:08.877Z\"}",
+      "created": "2026-11-15T18:37:09.419Z"
     }
   ]
 }
