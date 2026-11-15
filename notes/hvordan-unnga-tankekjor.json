@@ -232,6 +232,14 @@
       "type": "highlight",
       "text": "{\"kind\":\"duda\",\"id\":\"d-mwi70ao1\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":925.92,\"lineIndex\":188,\"no\":\"Da kan det handle om at man for eksempel presenterer ulike kilder til lyd rundt omkring i rommet.\",\"es\":\"Puede tratarse, por ejemplo, de presentar distintas fuentes de sonido por la sala.\",\"context\":{\"prev\":{\"no\":\"I terapirommet øver vi ofte på å øke fleksibiliteten til oppmerksomheten.\",\"es\":\"En la sala de terapia practicamos a menudo aumentar la flexibilidad de la atención.\",\"lineIndex\":187},\"next\":{\"no\":\"For eksempel banker jeg ofte litt på ene siden,\",\"es\":\"Por ejemplo, a menudo doy unos golpecitos por un lado,\",\"lineIndex\":189}},\"vocab\":[],\"created\":\"2026-11-15T18:53:27.169Z\"}",
       "created": "2026-11-15T18:53:27.878Z"
+    },
+    {
+      "id": "102adf21-e6f8-4af2-9dda-9095b28ee3c2",
+      "segmentId": "s8",
+      "start": 966.02,
+      "type": "highlight",
+      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi71o7w\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":966.02,\"lineIndex\":199,\"no\":\"Hovedpoenget er å klare å forskyve oppmerksomheten, gjerne fra inne i hodet til ut i verden.\",\"es\":\"La idea principal es lograr desplazar la atención, preferiblemente de dentro de la cabeza hacia el mundo.\",\"context\":{\"prev\":{\"no\":\"når det oppstår negative tanker eller følelser der.\",\"es\":\"cuando surgen ahí pensamientos o sentimientos negativos.\",\"lineIndex\":198},\"next\":{\"no\":\"Hvis jeg er ute og at jeg merker at irriterende og plagsomme tanker dukker opp,\",\"es\":\"Si estoy fuera y noto que aparecen pensamientos irritantes y molestos,\",\"lineIndex\":200}},\"vocab\":[{\"no\":\"oppmerksomhet (en)\",\"es\":\"atención\"}],\"created\":\"2026-11-15T18:54:31.388Z\"}",
+      "created": "2026-11-15T18:54:31.941Z"
     }
   ]
 }
