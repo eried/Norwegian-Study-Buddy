@@ -56,6 +56,14 @@
       "type": "highlight",
       "text": "{\"kind\":\"duda\",\"id\":\"d-mwi67wux\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":157.43,\"lineIndex\":31,\"no\":\"Først har vi bekymringer.\",\"es\":\"Primero tenemos las preocupaciones.\",\"context\":{\"prev\":{\"no\":\"La oss prøve å rydde litt opp i hvilke negative tanker som finnes.\",\"es\":\"Intentemos ordenar un poco qué pensamientos negativos existen.\",\"lineIndex\":30},\"next\":{\"no\":\"La oss høre med folk på gata.\",\"es\":\"Preguntemos a la gente en la calle.\",\"lineIndex\":32}},\"vocab\":[{\"no\":\"bekymring (en/ei), bekymre seg for\",\"es\":\"preocupación; preocuparse por\"}],\"created\":\"2026-11-15T18:31:22.906Z\"}",
       "created": "2026-11-15T18:31:23.280Z"
+    },
+    {
+      "id": "cc934646-8e34-4e8e-bbfe-a99f3db54055",
+      "segmentId": "s3",
+      "start": 223.51,
+      "type": "highlight",
+      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi69rmo\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":223.51,\"lineIndex\":44,\"no\":\"Og så er det grubling.\",\"es\":\"Y luego está la rumiación.\",\"context\":{\"prev\":{\"no\":\"Og dukker typisk opp på kvelden rett før du skal sove.\",\"es\":\"Y suelen aparecer por la noche, justo antes de dormir.\",\"lineIndex\":43},\"next\":{\"no\":\"Hvorfor sa jeg det [...]? [uklart]\",\"es\":\"¿Por qué dije eso? [no se entiende]\",\"lineIndex\":45}},\"vocab\":[{\"no\":\"grubling (en/ei), gruble over\",\"es\":\"rumiación; darle vueltas a algo (del pasado)\"}],\"created\":\"2026-11-15T18:32:49.441Z\"}",
+      "created": "2026-11-15T18:32:49.989Z"
     }
   ]
 }
