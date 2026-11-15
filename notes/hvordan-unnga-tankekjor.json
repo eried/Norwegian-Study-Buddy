@@ -216,6 +216,14 @@
       "type": "highlight",
       "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6zfli\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":938.94,\"lineIndex\":191,\"no\":\"og så går. Kanskje går noen utenfor døren foran terapi-rommet.\",\"es\":\"y luego pasa… Quizá alguien camina fuera de la puerta de la sala de terapia.\",\"context\":{\"prev\":{\"no\":\"og så er det noe biler utenfor vinduet på andre siden\",\"es\":\"y luego hay coches fuera de la ventana por el otro lado,\",\"lineIndex\":190},\"next\":{\"no\":\"Så øver man på å flytte fokuset mellom\",\"es\":\"Entonces se practica mover el foco entre\",\"lineIndex\":192}},\"vocab\":[],\"created\":\"2026-11-15T18:52:46.902Z\"}",
       "created": "2026-11-15T18:52:47.262Z"
+    },
+    {
+      "id": "6f077f9a-1ca8-469a-8744-a5a2671f0275",
+      "segmentId": "s8",
+      "start": 920.92,
+      "type": "highlight",
+      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6zxni\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":920.92,\"lineIndex\":187,\"no\":\"I terapirommet øver vi ofte på å øke fleksibiliteten til oppmerksomheten.\",\"es\":\"En la sala de terapia practicamos a menudo aumentar la flexibilidad de la atención.\",\"context\":{\"prev\":{\"no\":\"La oss dra tilbake til Kristoffer.\",\"es\":\"Volvamos con Kristoffer.\",\"lineIndex\":186},\"next\":{\"no\":\"Da kan det handle om at man for eksempel presenterer ulike kilder til lyd rundt omkring i rommet.\",\"es\":\"Puede tratarse, por ejemplo, de presentar distintas fuentes de sonido por la sala.\",\"lineIndex\":188}},\"vocab\":[{\"no\":\"oppmerksomhet (en)\",\"es\":\"atención\"},{\"no\":\"fleksibel oppmerksomhet\",\"es\":\"atención flexible\"}],\"created\":\"2026-11-15T18:53:10.302Z\"}",
+      "created": "2026-11-15T18:53:10.653Z"
     }
   ]
 }
