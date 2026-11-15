@@ -120,6 +120,14 @@
       "type": "highlight",
       "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6jkb3\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":515.28,\"lineIndex\":102,\"no\":\"Sannsynligvis er svaret at du sjelden tenker over det.\",\"es\":\"Probablemente la respuesta es que casi nunca lo piensas.\",\"context\":{\"prev\":{\"no\":\"Når var sist gang du tok deg selv, i å bekymre deg, eller gruble over problemene dine?\",\"es\":\"¿Cuándo fue la última vez que te pillaste preocupándote o dándole vueltas a tus problemas?\",\"lineIndex\":101},\"next\":{\"no\":\"Så de negative tankene får bare spinne videre, uten mål og mening.\",\"es\":\"Así que los pensamientos negativos siguen girando sin rumbo ni sentido.\",\"lineIndex\":103}},\"vocab\":[{\"no\":\"sannsynlig / sannsynligvis\",\"es\":\"probable / probablemente\"}],\"created\":\"2026-11-15T18:40:26.511Z\"}",
       "created": "2026-11-15T18:40:27.058Z"
+    },
+    {
+      "id": "a3464d97-613a-4796-b6bd-7ee10206b6a9",
+      "segmentId": "s5",
+      "start": 507,
+      "type": "highlight",
+      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6jtrs\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":507,\"lineIndex\":101,\"no\":\"Når var sist gang du tok deg selv, i å bekymre deg, eller gruble over problemene dine?\",\"es\":\"¿Cuándo fue la última vez que te pillaste preocupándote o dándole vueltas a tus problemas?\",\"context\":{\"prev\":{\"no\":\"Kanskje enklere sagt enn gjort, men øvelse gjør mester.\",\"es\":\"Quizá es más fácil decirlo que hacerlo, pero la práctica hace al maestro.\",\"lineIndex\":100},\"next\":{\"no\":\"Sannsynligvis er svaret at du sjelden tenker over det.\",\"es\":\"Probablemente la respuesta es que casi nunca lo piensas.\",\"lineIndex\":102}},\"vocab\":[{\"no\":\"bekymring (en/ei), bekymre seg for\",\"es\":\"preocupación; preocuparse por\"},{\"no\":\"grubling (en/ei), gruble over\",\"es\":\"rumiación; darle vueltas a algo (del pasado)\"}],\"created\":\"2026-11-15T18:40:38.776Z\"}",
+      "created": "2026-11-15T18:40:39.135Z"
     }
   ]
 }
