@@ -176,6 +176,14 @@
       "type": "highlight",
       "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6s3v0\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":772.58,\"lineIndex\":155,\"no\":\"eller mer sånn kroppslige fornemmelser som hjertebank eller svetting eller varme eller hva det skulle være,\",\"es\":\"o sensaciones más corporales como palpitaciones, sudor, calor o lo que sea,\",\"context\":{\"prev\":{\"no\":\"følelser som tristhet, skam, skyld,\",\"es\":\"sentimientos como tristeza, vergüenza, culpa,\",\"lineIndex\":154},\"next\":{\"no\":\"uten at man velger å respondere noe mer på de signalene.\",\"es\":\"sin que uno elija responder más a esas señales.\",\"lineIndex\":156}},\"vocab\":[],\"created\":\"2026-11-15T18:47:05.100Z\"}",
       "created": "2026-11-15T18:47:05.712Z"
+    },
+    {
+      "id": "35861b58-fac6-419f-8345-00c0d986c1ca",
+      "segmentId": "s7",
+      "start": 860.6,
+      "type": "highlight",
+      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6umiv\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":860.6,\"lineIndex\":176,\"no\":\"Du skifter da fokuset vekk fra å være den, som gjør det du tenker på, til å kun observere.\",\"es\":\"Así cambias el foco: de ser quien hace lo que piensas a solo observar.\",\"context\":{\"prev\":{\"no\":\"og la dem passere.\",\"es\":\"y déjalos pasar.\",\"lineIndex\":175},\"next\":{\"no\":\"Dette kan føles veldig rart og uvant ut i begynnelsen.\",\"es\":\"Al principio esto puede sentirse muy raro y extraño.\",\"lineIndex\":177}},\"vocab\":[],\"created\":\"2026-11-15T18:49:02.599Z\"}",
+      "created": "2026-11-15T18:49:02.934Z"
     }
   ]
 }
