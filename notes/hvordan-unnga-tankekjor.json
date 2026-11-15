@@ -264,6 +264,14 @@
       "type": "highlight",
       "text": "{\"kind\":\"duda\",\"id\":\"d-mwi76d33\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":1119.15,\"lineIndex\":234,\"no\":\"sette spørsmål ved om du er god nok,\",\"es\":\"cuestionarte si eres lo bastante bueno,\",\"context\":{\"prev\":{\"no\":\"Det betyr at du skal slutte å\",\"es\":\"Eso significa que debes dejar de\",\"lineIndex\":233},\"next\":{\"no\":\"Granske deg selv etter feil, si negative ting til deg selv, sammenligne deg med andre,\",\"es\":\"examinarte buscando fallos, decirte cosas negativas, compararte con los demás,\",\"lineIndex\":235}},\"vocab\":[],\"created\":\"2026-11-15T18:58:10.239Z\"}",
       "created": "2026-11-15T18:58:10.901Z"
+    },
+    {
+      "id": "099b50c7-4beb-4b03-9e56-8483d1ea1b48",
+      "segmentId": "s9",
+      "start": 1121.99,
+      "type": "highlight",
+      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi76ofy\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":1121.99,\"lineIndex\":235,\"no\":\"Granske deg selv etter feil, si negative ting til deg selv, sammenligne deg med andre,\",\"es\":\"examinarte buscando fallos, decirte cosas negativas, compararte con los demás,\",\"context\":{\"prev\":{\"no\":\"sette spørsmål ved om du er god nok,\",\"es\":\"cuestionarte si eres lo bastante bueno,\",\"lineIndex\":234},\"next\":{\"no\":\"og for all del, slutt å spille av alle flauser og ting du har sagt feil på repeat i hodet.\",\"es\":\"y, sobre todo, deja de repetir en bucle en tu cabeza todas las meteduras de pata y cosas que dijiste mal.\",\"lineIndex\":236}},\"vocab\":[],\"created\":\"2026-11-15T18:58:24.958Z\"}",
+      "created": "2026-11-15T18:58:25.455Z"
     }
   ]
 }
