@@ -169,6 +169,40 @@ class GenEsAudioTests(unittest.TestCase):
         with self.assertRaises(SystemExit):
             gen.generate("no-such-slug", root=self.root, synthesize=self.synth)
 
+    def _duration(self, path: Path) -> float:
+        probe = subprocess.check_output(
+            ["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(path)],
+            text=True,
+        )
+        return float(probe.strip())
+
+    def test_pad_appends_trailing_silence_and_changes_hash(self):
+        plain = self.run_gen(pad=0)
+        self.assertEqual(plain["generated"], 4)
+        out = self.es_dir() / "0.mp3"
+        dur0 = self._duration(out)
+        self.assertLess(dur0, 1.0)
+        man0 = json.loads((self.es_dir() / "manifest.json").read_text(encoding="utf-8"))
+        hash0 = man0["files"]["0.mp3"]["hash"]
+        self.assertEqual(hash0, gen.text_hash("Uno.", "es-ES-ElviraNeural"))
+
+        self.calls.clear()
+        padded = self.run_gen(pad=1)
+        self.assertEqual(padded["generated"], 4)
+        self.assertEqual(padded["skipped"], 0)
+        dur1 = self._duration(out)
+        self.assertGreater(dur1, dur0 + 0.85)
+        man1 = json.loads((self.es_dir() / "manifest.json").read_text(encoding="utf-8"))
+        self.assertEqual(man1["files"]["0.mp3"]["pad"], 1)
+        self.assertEqual(man1["files"]["0.mp3"]["hash"], gen.text_hash("Uno.", "es-ES-ElviraNeural", 1))
+        self.assertNotEqual(man1["files"]["0.mp3"]["hash"], hash0)
+
+        self.calls.clear()
+        again = self.run_gen(pad=1)
+        self.assertEqual(again["generated"], 0)
+        self.assertEqual(again["skipped"], 4)
+        self.assertEqual(self.calls, [])
+
 
 if __name__ == "__main__":
     unittest.main()

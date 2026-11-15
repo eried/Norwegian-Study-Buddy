@@ -48,9 +48,10 @@ Note: the repo is public, so synced dudas are public too.
 python3 tools/gen_es_audio.py <slug>
 # optional: --voice es-ES-AlvaroNeural
 #           --force    regenerate every file
+#           --pad 4    append 4 s of trailing silence (helps some car browsers keep audio focus)
 ```
 
-Install the generator with `pip install edge-tts` (or in a venv). It reads `episodes/<slug>/transcript.json` and writes small mono MP3s to `episodes/<slug>/es/<lineIndex>.mp3`, plus `seg-<n>.mp3` for each `titleEs`. A `manifest.json` stores a hash of the voice and text, so re-running the script skips unchanged lines.
+Install the generator with `pip install edge-tts` (or in a venv). It reads `episodes/<slug>/transcript.json` and writes small mono MP3s to `episodes/<slug>/es/<lineIndex>.mp3`, plus `seg-<n>.mp3` for each `titleEs`. A `manifest.json` stores a hash of the voice and text (and pad, if used), so re-running the script skips unchanged lines.
 
 4. Commit the transcript, the index entry, and the `es/` MP3s.
 

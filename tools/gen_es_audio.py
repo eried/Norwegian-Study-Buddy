@@ -2,7 +2,7 @@
 """Generate Spanish MP3 clips for an episode transcript with edge-tts.
 
 Usage:
-  python tools/gen_es_audio.py <slug> [--voice es-ES-ElviraNeural] [--force]
+  python tools/gen_es_audio.py <slug> [--voice es-ES-ElviraNeural] [--force] [--pad 4]
 
 Reads episodes/<slug>/transcript.json and writes small mono MP3s to
 episodes/<slug>/es/<lineIndex>.mp3 (plus seg-<i>.mp3 for segment titleEs).
@@ -30,11 +30,14 @@ RETRY_BACKOFF = 1.5
 ROOT_DEFAULT = Path(__file__).resolve().parent.parent
 
 
-def text_hash(text: str, voice: str) -> str:
+def text_hash(text: str, voice: str, pad: float = 0) -> str:
     h = hashlib.sha256()
     h.update(voice.encode("utf-8"))
     h.update(b"\n")
     h.update(text.encode("utf-8"))
+    if pad and float(pad) > 0:
+        h.update(b"\n")
+        h.update(f"pad={float(pad)}".encode("utf-8"))
     return h.hexdigest()
 
 
@@ -74,6 +77,35 @@ def iter_jobs(transcript: dict):
                     "index": line_i,
                 }
             line_i += 1
+
+
+def pad_trailing_silence(src: Path, dest: Path, pad: float, bitrate: str = DEFAULT_BITRATE, rate: str = DEFAULT_RATE) -> None:
+    """Append pad seconds of silence to a mono MP3."""
+    pad = float(pad or 0)
+    if pad <= 0:
+        if src.resolve() != dest.resolve():
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            dest.write_bytes(src.read_bytes())
+        return
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.NamedTemporaryFile(suffix=".mp3", delete=False) as tmp:
+        tmp_path = Path(tmp.name)
+    try:
+        cmd = [
+            "ffmpeg", "-y", "-loglevel", "error",
+            "-i", str(src),
+            "-f", "lavfi", "-t", str(pad),
+            "-i", f"anullsrc=r={rate}:cl=mono",
+            "-filter_complex", "[0:a][1:a]concat=n=2:v=0:a=1",
+            "-ac", "1", "-ar", rate, "-b:a", bitrate,
+            "-vn", "-f", "mp3",
+            str(tmp_path),
+        ]
+        subprocess.run(cmd, check=True)
+        tmp_path.replace(dest)
+    finally:
+        if tmp_path.exists() and tmp_path != dest:
+            tmp_path.unlink(missing_ok=True)
 
 
 def transcode_mono_mp3(src: Path, dest: Path, bitrate: str = DEFAULT_BITRATE, rate: str = DEFAULT_RATE) -> None:
@@ -153,13 +185,13 @@ def load_manifest(path: Path) -> dict:
     return data
 
 
-def should_skip(job: dict, dest: Path, manifest: dict, voice: str, force: bool) -> bool:
+def should_skip(job: dict, dest: Path, manifest: dict, voice: str, force: bool, pad: float = 0) -> bool:
     if force:
         return False
     if not dest.exists() or dest.stat().st_size < 64:
         return False
     entry = (manifest.get("files") or {}).get(job["file"]) or {}
-    expected = text_hash(job["text"], voice)
+    expected = text_hash(job["text"], voice, pad)
     return entry.get("hash") == expected and entry.get("voice") == voice
 
 
@@ -170,6 +202,7 @@ def generate(
     voice: str = DEFAULT_VOICE,
     force: bool = False,
     bitrate: str = DEFAULT_BITRATE,
+    pad: float = 0,
     synthesize=None,
     retries: int = RETRIES,
 ) -> dict:
@@ -190,8 +223,8 @@ def generate(
 
     for job in jobs:
         dest = out_dir / job["file"]
-        digest = text_hash(job["text"], voice)
-        if should_skip(job, dest, manifest, voice, force):
+        digest = text_hash(job["text"], voice, pad)
+        if should_skip(job, dest, manifest, voice, force, pad):
             skipped += 1
             print(f"skip  {job['file']}")
             continue
@@ -201,13 +234,20 @@ def generate(
                 raw = Path(tmp.name)
             print(f"make  {job['file']}  ({job['kind']} {job['index']})")
             synth(job["text"], voice, raw, retries=retries)
-            transcode_mono_mp3(raw, dest, bitrate=bitrate)
+            if pad and float(pad) > 0:
+                mid = raw.with_suffix(".mono.mp3")
+                transcode_mono_mp3(raw, mid, bitrate=bitrate)
+                pad_trailing_silence(mid, dest, pad, bitrate=bitrate)
+                mid.unlink(missing_ok=True)
+            else:
+                transcode_mono_mp3(raw, dest, bitrate=bitrate)
             files[job["file"]] = {
                 "hash": digest,
                 "text": job["text"],
                 "voice": voice,
                 "kind": job["kind"],
                 "index": job["index"],
+                "pad": float(pad or 0),
                 "bytes": dest.stat().st_size,
             }
             generated += 1
@@ -259,6 +299,7 @@ def parse_args(argv=None):
     p.add_argument("--force", action="store_true", help="regenerate files even when the text is unchanged")
     p.add_argument("--root", type=Path, default=ROOT_DEFAULT, help="repo root (default: parent of tools/)")
     p.add_argument("--bitrate", default=DEFAULT_BITRATE, help="MP3 bitrate (default: 48k)")
+    p.add_argument("--pad", type=float, default=0, help="seconds of trailing silence to append (default: 0)")
     return p.parse_args(argv)
 
 
@@ -270,6 +311,7 @@ def main(argv=None, synthesize=None) -> int:
         voice=args.voice,
         force=args.force,
         bitrate=args.bitrate,
+        pad=args.pad,
         synthesize=synthesize,
     )
     return 1 if summary["failed"] else 0

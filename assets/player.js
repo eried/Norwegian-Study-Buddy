@@ -12,7 +12,10 @@
 
   const audio = $("#audio");
   const esAudio = $("#es-audio");
+  const keepAudio = $("#keep-audio");
   const ES_AUDIO_V = "20261115d";
+  const KEEP_AUDIO_V = "20261115f";
+  const KEEP_AUDIO_URL = "assets/silence.mp3?v=" + KEEP_AUDIO_V;
   let ep, lines = [], vocab = [], store, current = -1;
 
   // ---------- load ----------
@@ -34,6 +37,12 @@
     applyEs();
     audio.preload = "auto";
     audio.src = ep.audioUrl;
+    if (keepAudio) {
+      keepAudio.loop = true;
+      keepAudio.preload = "auto";
+      keepAudio.src = KEEP_AUDIO_URL;
+      try { keepAudio.load(); } catch (e) {}
+    }
     resolveAudioSrc(ep.audioUrl);
     $("#seek").max = ep.durationSec || 0;
     $("#t-dur").textContent = fmtTime(ep.durationSec);
@@ -176,6 +185,7 @@
         try { audio.load(); } catch (err) {}
       });
     }
+    return req;
   };
   const pause = () => audio.pause();
   const toggle = () => (audio.paused ? play() : pause());
@@ -211,16 +221,27 @@
     if (isFinite(audio.duration)) { $("#seek").max = Math.floor(audio.duration); $("#t-dur").textContent = fmtTime(audio.duration); }
     updatePosition();
   });
+  const isPlayingEl = (el) => !!(el && !el.paused && !el.ended);
+  function syncMediaSessionState() {
+    if (!("mediaSession" in navigator)) return;
+    const holding = isPlayingEl(keepAudio) || isPlayingEl(esAudio);
+    navigator.mediaSession.playbackState = (!audio.paused || holding) ? "playing" : "paused";
+  }
   const syncPlay = () => {
     const playing = !audio.paused;
     $("#play-icon").setAttribute("href", playing ? "#i-pause" : "#i-play");
     $("#play-label").textContent = playing ? "Pausa" : "Play";
     $("#btn-play").setAttribute("aria-label", playing ? "Pausa" : "Reproducir");
-    if ("mediaSession" in navigator) navigator.mediaSession.playbackState = playing ? "playing" : "paused";
+    syncMediaSessionState();
     updatePosition();
   };
   audio.addEventListener("play", syncPlay);
   audio.addEventListener("pause", syncPlay);
+  if (esAudio) {
+    esAudio.addEventListener("play", syncMediaSessionState);
+    esAudio.addEventListener("pause", syncMediaSessionState);
+    esAudio.addEventListener("ended", syncMediaSessionState);
+  }
   audio.addEventListener("ratechange", updatePosition);
   audio.addEventListener("error", () => toast("No se pudo cargar el audio de NRK"));
   let seeking = false;
@@ -442,13 +463,91 @@
   // Root cause of the old bug: every press called store.add() with a new id, and
   // the time was currentTime-2, which often tagged the previous line; N also
   // kept working while the card was already open, creating more duplicates.
-  const AUTO_CONTINUE_SEC = 8;
+  const AUTO_CONTINUE_SEC = 3;
+  const HOLD_SILENCE_SEC = 4;
   const lineInfo = (l) => (l ? { no: l.text, es: l.es || "", lineIndex: l.idx } : null);
   let meaning = { item: null, wasPlaying: false, resumeAt: 0, token: 0 };
   let clipEnd = null;
   let autoContinueTimer = 0;
   let autoContinueLeft = 0;
   let autoContinueCancelled = false;
+  let keepAliveWanted = false;
+  let holdSilenceTimer = 0;
+
+  function cancelHoldSilence() {
+    if (holdSilenceTimer) { clearTimeout(holdSilenceTimer); holdSilenceTimer = 0; }
+  }
+  function waitHoldSilence(token) {
+    cancelHoldSilence();
+    return new Promise((resolve) => {
+      holdSilenceTimer = setTimeout(() => {
+        holdSilenceTimer = 0;
+        resolve(token === meaning.token && !$("#meaning").hidden);
+      }, HOLD_SILENCE_SEC * 1000);
+    });
+  }
+  function startKeepAlive() {
+    keepAliveWanted = true;
+    if (!keepAudio) return Promise.resolve(false);
+    keepAudio.loop = true;
+    keepAudio.muted = false;
+    if (!(keepAudio.volume > 0)) keepAudio.volume = 1;
+    const src = keepAudio.getAttribute("src") || keepAudio.src || "";
+    if (!/silence\.mp3/.test(src)) {
+      keepAudio.src = KEEP_AUDIO_URL;
+      try { keepAudio.load(); } catch (e) {}
+    }
+    if (!keepAudio.paused && !keepAudio.ended) {
+      syncMediaSessionState();
+      return Promise.resolve(true);
+    }
+    const req = keepAudio.play();
+    syncMediaSessionState();
+    if (req && req.catch) {
+      return req.catch((e) => {
+        if (e && e.name === "AbortError") return false;
+        return false;
+      }).then((v) => v === false ? false : true);
+    }
+    return Promise.resolve(true);
+  }
+  function stopKeepAlive() {
+    keepAliveWanted = false;
+    if (!keepAudio) return;
+    try { keepAudio.pause(); } catch (e) {}
+    try { keepAudio.currentTime = 0; } catch (e) {}
+    syncMediaSessionState();
+  }
+  function resumePodcastThenRelease(shouldPlay, t) {
+    // Start NRK first so there is never a gap with no audio element playing,
+    // then drop the keep-alive once the podcast is actually playing (or if we are not resuming).
+    if (t != null) seek(t);
+    if (!shouldPlay) {
+      stopKeepAlive();
+      return;
+    }
+    const release = () => {
+      audio.removeEventListener("playing", release);
+      stopKeepAlive();
+    };
+    audio.addEventListener("playing", release, { once: true });
+    const req = play();
+    if (req && req.then) {
+      req.then(() => { if (!audio.paused) release(); }).catch(() => release());
+    }
+    setTimeout(() => { if (keepAliveWanted && !audio.paused) release(); }, 400);
+  }
+  if (keepAudio) {
+    keepAudio.addEventListener("play", syncMediaSessionState);
+    keepAudio.addEventListener("pause", syncMediaSessionState);
+    keepAudio.addEventListener("ended", () => {
+      syncMediaSessionState();
+      if (keepAliveWanted && !$("#meaning").hidden) startKeepAlive();
+    });
+    keepAudio.addEventListener("error", () => {
+      if (keepAliveWanted && !$("#meaning").hidden) setTimeout(() => startKeepAlive(), 50);
+    });
+  }
 
   function markDoubt() {
     if (!$("#meaning").hidden) return;
@@ -472,6 +571,7 @@
       item.noteId = note.id;
     }
     if (navigator.vibrate) navigator.vibrate(60);
+    startKeepAlive();
     pause();
     showMeaning(item, { wasPlaying, resumeAt });
   }
@@ -544,27 +644,34 @@
     $("#meaning").hidden = false;
     $("#m-go").focus({ preventScroll: true });
     stopClip();
+    startKeepAlive();
     speakEs(item.es, { resume: false, lineIndex: item.lineIndex != null ? item.lineIndex : lineIndexForText(item.es) }).then(() => {
       if (token !== meaning.token || $("#meaning").hidden) return;
+      startKeepAlive();
+      return waitHoldSilence(token);
+    }).then((ok) => {
+      if (!ok || token !== meaning.token || $("#meaning").hidden) return;
       startAutoContinue(token);
     });
   }
 
   function stopClip() { clipEnd = null; }
 
-  function closeMeaningCard() {
+  function closeMeaningCard({ releaseKeepAlive = true } = {}) {
     closeWordHint();
     stopSpeech();
     cancelAutoContinue();
+    cancelHoldSilence();
     stopClip();
     $("#meaning").hidden = true;
+    if (releaseKeepAlive) stopKeepAlive();
   }
 
   function continueMeaning() {
     const state = meaning;
     const inReview = review.active;
-    closeMeaningCard();
     if (inReview) {
+      closeMeaningCard({ releaseKeepAlive: false });
       review.items = dudas();
       if (state._removed) { /* stay on the same index: the next item slid into it */ }
       else review.i += 1;
@@ -572,9 +679,10 @@
       else review.stop();
       return;
     }
+    const shouldPlay = !!state.wasPlaying;
     const t = state.resumeAt || 0;
-    seek(t);
-    if (state.wasPlaying) play();
+    closeMeaningCard({ releaseKeepAlive: false });
+    resumePodcastThenRelease(shouldPlay, t);
   }
 
   function gotIt() {
@@ -926,6 +1034,7 @@
     showCurrent() {
       const d = this.items[this.i];
       if (!d) { this.stop(); return; }
+      startKeepAlive();
       pause();
       showMeaning(d, { wasPlaying: false, resumeAt: audio.currentTime || 0 });
     },
@@ -938,7 +1047,7 @@
     },
     stop() {
       this.active = false;
-      closeMeaningCard();
+      closeMeaningCard({ releaseKeepAlive: true });
       pause();
     },
   };

@@ -34,6 +34,7 @@ const TYPES = {
   ".svg": "image/svg+xml",
   ".md": "text/markdown; charset=utf-8",
   ".png": "image/png",
+  ".mp3": "audio/mpeg",
 };
 
 function startServer() {
@@ -205,11 +206,11 @@ async function waitSpoken(page, timeout = 2000) {
     return tts || clip;
   }, { timeout });
 }
-async function waitCountdown(page) {
+async function waitCountdown(page, timeout = 12000) {
   await page.waitForFunction(() => {
     const l = document.getElementById("m-go-label");
     return l && /Continuar · \d+/.test(l.textContent);
-  }, { timeout: 5000 });
+  }, { timeout });
 }
 
 async function notesSnapshot(page) {
@@ -244,6 +245,8 @@ async function meaningInfo(page) {
     media: window.__mediaLog.slice(),
     audioT: document.getElementById("audio").currentTime,
     paused: document.getElementById("audio").paused,
+    keepPlaying: !!(document.getElementById("keep-audio") && !document.getElementById("keep-audio").paused),
+    session: navigator.mediaSession ? navigator.mediaSession.playbackState : "",
     badge: document.getElementById("dudas-count")?.textContent,
   }));
 }
@@ -313,20 +316,21 @@ async function run() {
       await waitCountdown(page);
       const mid = await meaningInfo(page);
       assert(!mid.hidden, "should still be open when countdown starts");
-      assert(/Continuar · [1-8]/.test(mid.go), "countdown on Continuar, got: " + mid.go);
-      await sleep(2000);
+      assert(/Continuar · [1-3]/.test(mid.go), "countdown on Continuar, got: " + mid.go);
+      assert(mid.keepPlaying, "keep-alive audio should be playing during the countdown");
+      await sleep(1000);
       const later = await meaningInfo(page);
-      assert(!later.hidden, "must not auto-advance 2s into the 8s timeout");
+      assert(!later.hidden, "must not auto-advance 1s into the 3s timeout");
       assert(/Continuar · \d+/.test(later.go), "countdown still running: " + later.go);
     } finally { await ctx.close(); }
   });
 
-  await test("auto-continue closes the card after ~8 seconds if nothing is pressed", async () => {
+  await test("auto-continue closes the card after ~3 seconds if nothing is pressed", async () => {
     const { ctx, page } = await openEpisode(browser, base);
     try {
       await openMeaningAt(page, T_KLOKKEN);
       await waitCountdown(page);
-      await page.waitForFunction(() => document.getElementById("meaning").hidden, { timeout: 12000 });
+      await page.waitForFunction(() => document.getElementById("meaning").hidden, { timeout: 8000 });
       const info = await meaningInfo(page);
       assert(info.hidden, "meaning should have closed after the timeout");
     } finally { await ctx.close(); }
@@ -341,7 +345,7 @@ async function run() {
       const afterTap = await meaningInfo(page);
       assert(!afterTap.hidden, "still open after tap");
       assert(afterTap.go === "Continuar", "countdown label cleared, got: " + afterTap.go);
-      await sleep(9000);
+      await sleep(5000);
       const later = await meaningInfo(page);
       assert(!later.hidden, "must not auto-continue after the timeout was cancelled");
       assert(later.go === "Continuar", "label stays Continuar");
@@ -392,6 +396,7 @@ async function run() {
       assert(after.paused, "should stop at line end");
       assert(Math.abs(after.audioT - KLOKKEN_END) < 0.4, "should stop near line end, got " + after.audioT);
       assert(!after.hidden, "replay must not close the card");
+      assert(after.keepPlaying, "keep-alive should keep playing after the NO clip ends");
     } finally { await ctx.close(); }
   });
 
@@ -768,13 +773,37 @@ async function run() {
       assert(a2.volume > 0 && !a2.muted, "volume must be audible after Play, volume=" + a2.volume + " muted=" + a2.muted);
       assert(a2.t > t1 + 0.4, "currentTime should advance, " + t1 + " -> " + a2.t);
 
+      await page.evaluate(() => {
+        const ids = ["audio", "es-audio", "keep-audio"];
+        const anyPlaying = () => ids.some((id) => {
+          const el = document.getElementById(id);
+          return el && !el.paused && !el.ended;
+        });
+        window.__gap = { max: 0, last: performance.now(), samples: 0 };
+        const tick = () => {
+          const now = performance.now();
+          const g = window.__gap;
+          if (anyPlaying()) g.last = now;
+          else g.max = Math.max(g.max, now - g.last);
+          g.samples += 1;
+        };
+        if (window.__gapTimer) clearInterval(window.__gapTimer);
+        window.__gapTimer = setInterval(tick, 20);
+        ids.forEach((id) => {
+          const el = document.getElementById(id);
+          if (!el) return;
+          ["play", "playing", "pause", "ended"].forEach((ev) => el.addEventListener(ev, tick));
+        });
+        tick();
+      });
       await page.click("#btn-doubt");
       await page.waitForFunction(() => !document.getElementById("meaning").hidden, { timeout: 5000 });
-      // NRK should pause; the Spanish MP3 should play.
+      // NRK should pause; the Spanish MP3 should play. Keep-alive holds the audio focus.
       await page.waitForFunction(() => {
         const a = document.getElementById("audio");
         const es = document.getElementById("es-audio");
-        return a.paused && es && !es.paused && es.volume > 0 && !es.muted;
+        const k = document.getElementById("keep-audio");
+        return a.paused && es && !es.paused && es.volume > 0 && !es.muted && k && !k.paused;
       }, { timeout: 10000 });
       const mid = await page.evaluate(() => {
         const a = document.getElementById("audio");
@@ -790,18 +819,38 @@ async function run() {
         return { t: es.currentTime, paused: es.paused };
       });
       assert(!mid2.paused || mid2.t > esT0, "Spanish clip should advance or already have finished, " + esT0 + " -> " + mid2.t);
+      // After the Spanish clip ends, ~4s of silence must elapse before the countdown starts.
+      await page.waitForFunction(() => {
+        const es = document.getElementById("es-audio");
+        return es && es.paused;
+      }, { timeout: 20000 });
+      const justAfterClip = await page.evaluate(() => ({
+        go: document.getElementById("m-go-label")?.textContent,
+        keepPlaying: !!(document.getElementById("keep-audio") && !document.getElementById("keep-audio").paused),
+        nrkPaused: document.getElementById("audio").paused,
+        t: Date.now(),
+        session: navigator.mediaSession ? navigator.mediaSession.playbackState : "",
+      }));
+      assert(justAfterClip.keepPlaying, "keep-alive must play in the silence after the Spanish clip");
+      assert(justAfterClip.nrkPaused, "NRK stays paused after the Spanish clip");
+      assert(justAfterClip.go === "Continuar", "countdown must not start until after the trailing silence, got " + justAfterClip.go);
+      if (justAfterClip.session) assert(justAfterClip.session === "playing", "Media Session should stay playing during the hold, got " + justAfterClip.session);
       await page.waitForFunction(() => {
         const l = document.getElementById("m-go-label");
-        const es = document.getElementById("es-audio");
-        return l && /Continuar · \d+/.test(l.textContent) && es && es.paused;
-      }, { timeout: 20000 });
-      const afterClip = await page.evaluate(() => ({
+        return l && /Continuar · [1-3]/.test(l.textContent);
+      }, { timeout: 8000 });
+      const afterHold = await page.evaluate(() => ({
         go: document.getElementById("m-go-label")?.textContent,
+        keepPlaying: !!(document.getElementById("keep-audio") && !document.getElementById("keep-audio").paused),
         nrkPaused: document.getElementById("audio").paused,
-        esPaused: document.getElementById("es-audio").paused,
+        t: Date.now(),
+        session: navigator.mediaSession ? navigator.mediaSession.playbackState : "",
       }));
-      assert(/Continuar · \d+/.test(afterClip.go || ""), "countdown starts after the Spanish clip ends, go=" + afterClip.go);
-      assert(afterClip.nrkPaused, "NRK stays paused until Continuar");
+      const holdMs = afterHold.t - justAfterClip.t;
+      assert(holdMs >= 3500, "countdown should start after ~4s of silence, waited " + holdMs + " ms");
+      assert(/Continuar · [1-3]/.test(afterHold.go || ""), "countdown starts after the silence, go=" + afterHold.go);
+      assert(afterHold.keepPlaying, "keep-alive still playing when the countdown starts");
+      assert(afterHold.nrkPaused, "NRK stays paused until Continuar");
 
       await page.click("#m-go");
       await page.waitForFunction(() => document.getElementById("meaning").hidden, { timeout: 5000 });
@@ -815,6 +864,39 @@ async function run() {
       assert(b2.volume > 0 && !b2.muted, "after Continuar, audio must not stay muted or at volume 0");
       assert(!b2.paused, "after Continuar, playback should resume");
       assert(b2.t > b1.t + 0.4, "after Continuar, currentTime should advance, " + b1.t + " -> " + b2.t);
+      const gap = await page.evaluate(() => {
+        if (window.__gapTimer) clearInterval(window.__gapTimer);
+        return window.__gap || { max: 0 };
+      });
+      assert(gap.max <= 100, "audio element gap during the card and NRK resume must be <= 100 ms, got " + gap.max + " ms");
+    } finally { await ctx.close(); }
+  });
+
+  await test("countdown starts only after 4s of silence, with keep-alive already playing", async () => {
+    const { ctx, page } = await openEpisode(browser, base);
+    try {
+      const t0 = Date.now();
+      await openMeaningAt(page, T_KLOKKEN);
+      await waitSpoken(page);
+      const during = await page.evaluate(() => {
+        const es = document.getElementById("es-audio");
+        const k = document.getElementById("keep-audio");
+        return {
+          go: document.getElementById("m-go-label")?.textContent,
+          keepPlaying: !!(k && !k.paused),
+          keepSrc: k ? (k.getAttribute("src") || k.src) : "",
+          session: navigator.mediaSession ? navigator.mediaSession.playbackState : "",
+        };
+      });
+      assert(during.keepPlaying, "keep-alive should already be playing with the Spanish clip");
+      assert(/silence\.mp3/.test(during.keepSrc || ""), "keep-alive should be the silent clip, src=" + during.keepSrc);
+      assert(during.go === "Continuar", "label stays Continuar during the trailing silence, got " + during.go);
+      await waitCountdown(page);
+      const waited = Date.now() - t0;
+      const after = await meaningInfo(page);
+      assert(/Continuar · [1-3]/.test(after.go), "3s countdown, got " + after.go);
+      assert(after.keepPlaying, "keep-alive still playing when countdown starts");
+      assert(waited >= 3500, "4s hold should elapse before the countdown, waited " + waited + " ms");
     } finally { await ctx.close(); }
   });
 
