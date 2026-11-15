@@ -961,19 +961,31 @@ async function run() {
         btn.click();
       });
       await page.waitForFunction(() => document.getElementById("word-hint") && !document.getElementById("word-hint").hidden, { timeout: 5000 });
+      await page.waitForFunction(() => {
+        const def = document.getElementById("wh-def")?.textContent || "";
+        return def && def !== "Søker…";
+      }, { timeout: 15000 });
       const hint = await page.evaluate(() => ({
         word: document.getElementById("wh-word")?.textContent,
-        es: document.getElementById("wh-es")?.textContent,
+        cls: document.getElementById("wh-class")?.hidden ? "" : document.getElementById("wh-class")?.textContent,
+        def: document.getElementById("wh-def")?.textContent,
+        syn: document.getElementById("wh-syn")?.hidden ? "" : document.getElementById("wh-syn")?.textContent,
+        ant: document.getElementById("wh-ant")?.hidden ? "" : document.getElementById("wh-ant")?.textContent,
+        ex: document.getElementById("wh-ex")?.hidden ? "" : document.getElementById("wh-ex")?.textContent,
         meaningOpen: !document.getElementById("meaning").hidden,
         go: document.getElementById("m-go-label")?.textContent,
         href: document.getElementById("wh-ordbok")?.getAttribute("href"),
-        hasSpeak: !document.getElementById("wh-speak")?.hidden,
+        hasSpeak: !!document.getElementById("wh-speak"),
+        hasEs: !!document.getElementById("wh-es"),
+        cardText: document.querySelector(".hint-card")?.innerText || "",
       }));
       assert(hint.meaningOpen, "hint must layer over the meaning card, not close it");
-      assert(/h[åa]ndtere/i.test(hint.word), "hint shows the word, got " + hint.word);
-      assert(/manejar|gestionar/i.test(hint.es), "vocab Spanish hint, got " + hint.es);
+      assert(/h[åa]ndtere/i.test(hint.word), "hint shows the lemma, got " + hint.word);
+      assert(/verb/i.test(hint.cls || ""), "word class should be Norwegian, got " + hint.cls);
+      assert(/bruke|behandle|mestre|ta seg av/i.test(hint.def || ""), "Bokmål definition, got " + hint.def);
+      assert(!/manejar|gestionar|método especial|preocupaciones/i.test(hint.cardText), "must not show Spanish or the episode sentence, got " + hint.cardText);
+      assert(!hint.hasSpeak && !hint.hasEs, "no ES button or Spanish line on the hint");
       assert(hint.go === "Continuar", "tapping a word cancels the auto-continue countdown");
-      assert(hint.hasSpeak, "ES speak button should be visible when there is a Spanish hint");
       assert(/ordbokene\.no/i.test(hint.href || ""), "Ordbøkene link, got " + hint.href);
       const afterNotes = await notesSnapshot(page);
       assert(afterNotes.badge === beforeNotes.badge, "tapping a word must not add a mark");
@@ -999,20 +1011,53 @@ async function run() {
       await page.waitForFunction(() => {
         const box = document.getElementById("word-hint");
         if (!box || box.hidden) return false;
-        const es = document.getElementById("wh-es")?.textContent || "";
         const def = document.getElementById("wh-def")?.textContent || "";
-        const cls = document.getElementById("wh-class")?.textContent || "";
-        if (es === "Buscando…") return false;
-        return def.length > 0 || cls.length > 0 || es === "Sin resultados";
+        return def && def !== "Søker…";
       }, { timeout: 15000 });
       const hint = await page.evaluate(() => ({
         word: document.getElementById("wh-word")?.textContent,
-        es: document.getElementById("wh-es")?.textContent,
         def: document.getElementById("wh-def")?.textContent,
         cls: document.getElementById("wh-class")?.hidden ? "" : document.getElementById("wh-class")?.textContent,
+        ex: document.getElementById("wh-ex")?.hidden ? "" : document.getElementById("wh-ex")?.textContent,
+        cardText: document.querySelector(".hint-card")?.innerText || "",
+        hasSpeak: !!document.getElementById("wh-speak"),
       }));
-      assert(hint.es !== "Buscando…", "lookup should finish");
-      assert((hint.def && hint.def.length > 3) || (hint.cls && hint.cls.length > 0), "live API should return a class or definition, got " + JSON.stringify(hint));
+      assert(/midnatt/i.test(hint.word || ""), "lemma midnatt, got " + hint.word);
+      assert(/substantiv/i.test(hint.cls || "") && /hankjønn/i.test(hint.cls || ""), "Norwegian word class, got " + hint.cls);
+      assert(/tolv|natt/i.test(hint.def || ""), "Bokmål definition, got " + hint.def);
+      assert(!/medianoche|Se acerca|Esto significa/i.test(hint.cardText), "must not show the line's Spanish sentence, got " + hint.cardText);
+      assert(!hint.hasSpeak, "no ES button");
+      if (hint.ex) assert(/midnatt/i.test(hint.ex) && hint.ex.split(/\s+/).length <= 10, "example should be a short Norwegian phrase, got " + hint.ex);
+    } finally { await ctx.close(); }
+  });
+
+  await test("hint shows Norwegian synonyms when the article has them", async () => {
+    const { ctx, page } = await openEpisode(browser, base);
+    try {
+      await openMeaningAt(page, 1064);
+      const clicked = await page.evaluate(() => {
+        const btn = [...document.querySelectorAll("#m-no button.word, #m-prev button.word, #m-next button.word")].find((b) => (b.dataset.word || "").toLowerCase() === "god");
+        if (!btn) return null;
+        btn.click();
+        return btn.dataset.word;
+      });
+      assert(clicked, "expected to click god");
+      await page.waitForFunction(() => {
+        const syn = document.getElementById("wh-syn");
+        const def = document.getElementById("wh-def")?.textContent || "";
+        return syn && !syn.hidden && /Synonymer:/i.test(syn.textContent || "") && def && def !== "Søker…";
+      }, { timeout: 15000 });
+      const hint = await page.evaluate(() => ({
+        word: document.getElementById("wh-word")?.textContent,
+        cls: document.getElementById("wh-class")?.textContent,
+        def: document.getElementById("wh-def")?.textContent,
+        syn: document.getElementById("wh-syn")?.textContent,
+        cardText: document.querySelector(".hint-card")?.innerText || "",
+      }));
+      assert(/god/i.test(hint.word || ""), "lemma god, got " + hint.word);
+      assert(/adjektiv/i.test(hint.cls || ""), "class should be adjektiv, got " + hint.cls);
+      assert(/Synonymer:.*(bra|fin|utmerket)/i.test(hint.syn || ""), "expected Norwegian synonyms, got " + hint.syn);
+      assert(!/bueno|buena|quality/i.test(hint.cardText), "no Spanish on the card, got " + hint.cardText);
     } finally { await ctx.close(); }
   });
 

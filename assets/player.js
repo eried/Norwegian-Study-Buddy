@@ -608,7 +608,8 @@
 
 
   // ---------- word hint (only on the «Esto significa» / review card) ----------
-  const POS_ES = { VERB: "verbo", NOUN: "sustantivo", ADJ: "adjetivo", ADV: "adverbio", PREP: "preposición", PRON: "pronombre", DET: "determinante", CONJ: "conjunción", INTJ: "interjección" };
+  const POS_NB = { VERB: "verb", NOUN: "substantiv", ADJ: "adjektiv", ADV: "adverb", PREP: "preposisjon", PRON: "pronomen", DET: "determinativ", CONJ: "konjunksjon", INTJ: "interjeksjon" };
+  const GENDER_NB = { Masc: "hankjønn", Fem: "hunkjønn", Neut: "intetkjønn", Neuter: "intetkjønn" };
   let wordHintToken = 0;
 
   function normalizeWord(w) {
@@ -660,46 +661,93 @@
     return exact[0] || soft[0] || null;
   }
 
-  function firstExplanation(node) {
-    if (!node) return "";
-    if (Array.isArray(node)) {
-      for (const n of node) { const t = firstExplanation(n); if (t) return t; }
+  function expandOrdContent(content, items) {
+    items = items || [];
+    let i = 0;
+    return String(content || "").replace(/\$/g, () => {
+      const it = items[i++];
+      if (!it) return "";
+      if (it.text) return it.text;
+      if (it.type_ === "relation" && it.id === "el") return "eller";
+      const lems = it.lemmas;
+      if (lems && lems[0]) return (lems[0].lemma != null ? lems[0].lemma : String(lems[0]));
       return "";
-    }
-    if (typeof node !== "object") return "";
-    if (node.type_ === "explanation" || (node.content && !node.elements)) {
-      let c = String(node.content || "");
-      const items = node.items || [];
-      let i = 0;
-      c = c.replace(/\$/g, () => {
-        const it = items[i++];
-        if (!it) return "";
-        if (it.text) return it.text;
-        if (it.lemmas && it.lemmas[0] && it.lemmas[0].lemma) return it.lemmas[0].lemma;
-        return "";
-      });
-      c = c.replace(/\s+/g, " ").trim();
-      return c;
-    }
-    if (node.definitions) return firstExplanation(node.definitions);
-    if (node.elements) return firstExplanation(node.elements);
-    if (node.body) return firstExplanation(node.body);
-    return "";
+    }).replace(/\s+/g, " ").trim();
   }
-
+  function lemmaOfRef(it) {
+    if (!it) return "";
+    const lems = it.lemmas;
+    if (lems && lems[0]) return (lems[0].lemma != null ? lems[0].lemma : String(lems[0]));
+    return it.text || "";
+  }
+  function hasOrdItem(items, typ, id) {
+    return (items || []).some((it) => it && it.type_ === typ && it.id === id);
+  }
+  function isSynList(text) {
+    const parts = String(text || "").split(/,\s*/).map((s) => s.trim()).filter(Boolean);
+    if (parts.length < 2) return false;
+    return parts.every((p) => p.length <= 24 && p.split(/\s+/).length <= 3 && !/[.!?]$/.test(p));
+  }
+  function eachSense(node, fn) {
+    if (!node) return;
+    if (Array.isArray(node)) { node.forEach((n) => eachSense(n, fn)); return; }
+    if (typeof node !== "object") return;
+    const els = node.elements || [];
+    if (node.type_ === "definition" && els.some((e) => e && e.type_ === "explanation")) {
+      fn(node);
+      return;
+    }
+    if (node.elements) eachSense(node.elements, fn);
+    if (node.body) eachSense(node.body, fn);
+    if (node.definitions) eachSense(node.definitions, fn);
+  }
   function parseArticle(art) {
     if (!art) return null;
     const lemma = (art.lemmas && art.lemmas[0] && art.lemmas[0].lemma) || "";
     const para = art.lemmas && art.lemmas[0] && (art.lemmas[0].paradigm_info || [])[0];
     const tags = (para && para.tags) || [];
-    const main = tags.find((t) => POS_ES[t]) || tags[0] || "";
-    let pos = POS_ES[main] || (main ? main.toLowerCase() : "");
-    if (main === "NOUN") {
-      if (tags.includes("Masc")) pos += " (m.)";
-      else if (tags.includes("Fem")) pos += " (f.)";
-    }
-    const def = firstExplanation(art.body);
-    return { lemma, pos, def };
+    const main = tags.find((t) => POS_NB[t]) || tags[0] || "";
+    let pos = POS_NB[main] || (main ? main.toLowerCase() : "");
+    const gender = tags.find((t) => GENDER_NB[t]);
+    if (gender) pos = pos ? pos + ", " + GENDER_NB[gender] : GENDER_NB[gender];
+    const defs = [];
+    const syns = [];
+    const ants = [];
+    const examples = [];
+    let senseI = 0;
+    eachSense(art.body, (sense) => {
+      const first = senseI === 0;
+      for (const el of (sense.elements || [])) {
+        if (!el || typeof el !== "object") continue;
+        if (el.type_ === "explanation") {
+          const items = el.items || [];
+          if (hasOrdItem(items, "entity", "mots") || hasOrdItem(items, "relation", "mots")) {
+            for (const it of items) {
+              const w = lemmaOfRef(it);
+              if (w && syns.indexOf(w) < 0 && ants.indexOf(w) < 0) ants.push(w);
+            }
+            continue;
+          }
+          if (hasOrdItem(items, "entity", "jf") || hasOrdItem(items, "relation", "jf")) continue;
+          const text = expandOrdContent(el.content, items);
+          if (!text) continue;
+          if (first && defs.length && isSynList(text)) {
+            for (const part of text.split(/,\s*/)) {
+              const w = part.trim();
+              if (w && syns.indexOf(w) < 0) syns.push(w);
+            }
+            continue;
+          }
+          if (defs.length < 2) defs.push(text);
+        } else if (el.type_ === "example") {
+          const q = el.quote || {};
+          const text = expandOrdContent(q.content, q.items);
+          if (text && text.length <= 70 && text.split(/\s+/).length <= 10) examples.push(text);
+        }
+      }
+      senseI += 1;
+    });
+    return { lemma, pos, defs, syns: syns.slice(0, 6), ants: ants.slice(0, 6), example: examples[0] || "" };
   }
 
   async function lookupOrd(word) {
@@ -730,59 +778,44 @@
     wordHintToken += 1;
     const box = $("#word-hint");
     if (box) box.hidden = true;
-    const speakBtn = $("#wh-speak");
-    if (speakBtn) speakBtn.dataset.es = "";
   }
 
-  function openWordHint(word, lineCtx) {
+  function fillHintField(id, text) {
+    const node = $("#" + id);
+    if (!node) return;
+    const val = String(text || "").trim();
+    node.hidden = !val;
+    node.textContent = val;
+  }
+  function openWordHint(word) {
     cancelAutoContinue();
     const token = ++wordHintToken;
     const raw = normalizeWord(word) || word;
     const box = $("#word-hint");
     if (!box) return;
     $("#wh-word").textContent = raw;
-    $("#wh-class").hidden = true;
-    $("#wh-class").textContent = "";
-    $("#wh-es").textContent = "";
-    $("#wh-def").textContent = "";
-    $("#wh-ctx").hidden = true;
-    $("#wh-ctx").textContent = "";
-    const v = vocabForWord(raw);
-    const vocabEs = (v && v.es) || "";
-    const lineEs = (lineCtx && lineCtx.es) || "";
-    const es = vocabEs || lineEs;
-    if (es) $("#wh-es").textContent = es;
-    else $("#wh-es").textContent = "Buscando…";
-    if (lineEs && vocabEs && lineEs !== vocabEs) {
-      $("#wh-ctx").hidden = false;
-      $("#wh-ctx").textContent = lineEs;
-    }
-    const clipIdx = (lineEs && es === lineEs && lineCtx && lineCtx.lineIndex != null)
-      ? lineCtx.lineIndex
-      : lineIndexForText(es);
-    const hasClip = clipIdx != null && clipIdx >= 0;
-    const hasVoice = !!chooseVoice(voicesList());
-    $("#wh-speak").hidden = !(es && (hasClip || hasVoice));
-    $("#wh-speak").dataset.es = es;
-    $("#wh-speak").dataset.lineIndex = hasClip ? String(clipIdx) : "";
+    fillHintField("wh-class", "");
+    fillHintField("wh-def", "Søker…");
+    fillHintField("wh-syn", "");
+    fillHintField("wh-ant", "");
+    fillHintField("wh-ex", "");
     $("#wh-ordbok").href = "https://ordbokene.no/nob/bm/" + encodeURIComponent(raw.toLowerCase());
     box.hidden = false;
     $("#wh-close").focus({ preventScroll: true });
     lookupOrd(raw).then((api) => {
       if (token !== wordHintToken) return;
-      if (api && api.lemma && api.lemma.toLowerCase() !== raw.toLowerCase()) {
-        $("#wh-word").textContent = raw + " · " + api.lemma;
+      if (api && api.lemma) {
+        $("#wh-word").textContent = api.lemma;
         $("#wh-ordbok").href = "https://ordbokene.no/nob/bm/" + encodeURIComponent(api.lemma.toLowerCase());
       }
-      if (api && api.pos) { $("#wh-class").hidden = false; $("#wh-class").textContent = api.pos; }
-      if (api && api.def) $("#wh-def").textContent = api.def;
-      if (!es) {
-        // No Spanish from vocab or line context: show the Norwegian definition.
-        $("#wh-es").textContent = "";
-        $("#wh-speak").hidden = true;
-        $("#wh-speak").dataset.es = "";
-        if (!(api && api.def)) $("#wh-es").textContent = "Sin resultados";
-      }
+      if (api && api.pos) fillHintField("wh-class", api.pos);
+      const defs = (api && api.defs) || [];
+      if (defs.length === 1) fillHintField("wh-def", defs[0]);
+      else if (defs.length > 1) fillHintField("wh-def", defs.map((d, i) => (i + 1) + ". " + d).join("\n"));
+      else fillHintField("wh-def", "Ingen treff");
+      fillHintField("wh-syn", api && api.syns && api.syns.length ? "Synonymer: " + api.syns.join(", ") : "");
+      fillHintField("wh-ant", api && api.ants && api.ants.length ? "Antonymer: " + api.ants.join(", ") : "");
+      fillHintField("wh-ex", api && api.example ? api.example : "");
     });
   }
 
@@ -1050,12 +1083,6 @@
     $("#m-close").addEventListener("click", continueMeaning);
     $("#meaning").addEventListener("pointerdown", cancelAutoContinue);
     $("#wh-close").addEventListener("click", closeWordHint);
-    $("#wh-speak").addEventListener("click", () => {
-      const es = $("#wh-speak").dataset.es || "";
-      const rawIdx = $("#wh-speak").dataset.lineIndex;
-      const idx = rawIdx === "" || rawIdx == null ? null : Number(rawIdx);
-      if (es) speakEs(es, { resume: false, lineIndex: idx, allowSynth: !!chooseVoice(voicesList()) });
-    });
     dismissOnBackdrop($("#word-hint"), closeWordHint);
 
     $("#btn-dudas").addEventListener("click", () => openPanel("dudas"));

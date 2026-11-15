@@ -7,7 +7,7 @@
   <meta name="theme-color" content="#000000">
   <meta name="color-scheme" content="dark">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/style.css?v=20261115d">
+  <link rel="stylesheet" href="assets/style.css?v=20261115e">
   <script>
     try { if (JSON.parse(localStorage.getItem("nsb:prefs") || "{}").hideTop) document.documentElement.classList.add("top-hidden","top-hidden-done"); } catch (e) {}
   </script>
@@ -96,20 +96,18 @@
 
   <!-- Mini hint for a tapped Norwegian word (only on the meaning card) -->
   <div class="overlay" id="word-hint" hidden>
-    <div class="hint-card" role="dialog" aria-modal="true" aria-labelledby="wh-word">
+    <div class="hint-card" role="dialog" aria-modal="true" aria-labelledby="wh-word" lang="nb">
       <div class="panel-head">
-        <div class="kicker">Palabra</div>
-        <button class="btn-cerrar" id="wh-close" type="button"><svg width="22" height="22" aria-hidden="true"><use href="#i-x"/></svg>Cerrar</button>
+        <div></div>
+        <button class="btn-cerrar" id="wh-close" type="button" aria-label="Lukk"><svg width="22" height="22" aria-hidden="true"><use href="#i-x"/></svg></button>
       </div>
       <div class="wh-word" id="wh-word" lang="nb"></div>
       <div class="wh-class" id="wh-class" hidden></div>
-      <div class="wh-es" id="wh-es" lang="es"></div>
       <div class="wh-def" id="wh-def" lang="nb"></div>
-      <div class="wh-ctx" id="wh-ctx" hidden></div>
-      <div class="wh-actions">
-        <button class="act replay" id="wh-speak" type="button" aria-label="Escuchar español"><svg aria-hidden="true"><use href="#i-play"/></svg>ES</button>
-        <a class="act" id="wh-ordbok" href="https://ordbokene.no/" target="_blank" rel="noopener">Ordbøkene</a>
-      </div>
+      <div class="wh-syn" id="wh-syn" hidden></div>
+      <div class="wh-ant" id="wh-ant" hidden></div>
+      <div class="wh-ex" id="wh-ex" hidden lang="nb"></div>
+      <a class="wh-ordbok" id="wh-ordbok" href="https://ordbokene.no/" target="_blank" rel="noopener">Ordbøkene</a>
     </div>
   </div>
 
@@ -194,10 +192,10 @@
     </div>
   </div>
 
-  <script src="config.js?v=20261115d"></script>
-  <script src="assets/common.js?v=20261115d"></script>
-  <script src="assets/notes.js?v=20261115d"></script>
+  <script src="config.js?v=20261115e"></script>
+  <script src="assets/common.js?v=20261115e"></script>
+  <script src="assets/notes.js?v=20261115e"></script>
   <script src="vendor/marked.min.js" defer></script>
-  <script src="assets/player.js?v=20261115d"></script>
+  <script src="assets/player.js?v=20261115e"></script>
 </body>
 </html>
