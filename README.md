@@ -39,9 +39,22 @@ notes/<slug>.json          written by the Worker (do not edit by hand)
 
 Note: the repo is public, so synced dudas are public too.
 
-## Adding an episode
-Add `episodes/<slug>/transcript.json` in the same shape and list it in `episodes/index.json`.
-Audio is streamed from the publisher. No audio files are committed.
+## Adding a new chapter
+1. Add `episodes/<slug>/transcript.json` in the same shape as the existing episode: `segments` with `lines` (`start`, `end`, `text`, `es`), plus `titleEs` and `vocabulary` (`no`, `en`, `es`).
+2. List the episode in `episodes/index.json`.
+3. Generate the Spanish audio clips (needed because many browsers, including Tesla's, have no Spanish `speechSynthesis` voice):
+
+```bash
+python3 tools/gen_es_audio.py <slug>
+# optional: --voice es-ES-AlvaroNeural
+#           --force    regenerate every file
+```
+
+Install the generator with `pip install edge-tts` (or in a venv). It reads `episodes/<slug>/transcript.json` and writes small mono MP3s to `episodes/<slug>/es/<lineIndex>.mp3`, plus `seg-<n>.mp3` for each `titleEs`. A `manifest.json` stores a hash of the voice and text, so re-running the script skips unchanged lines.
+
+4. Commit the transcript, the index entry, and the `es/` MP3s.
+
+The original Norwegian audio is still streamed from the publisher. Only the Spanish clips are stored in the repo.
 
 ## Hosting and deploying
 `index.html` is the hub for every language study: it groups entries by the `lang` field in `episodes/index.json` (for example `"lang": "no"`). Existing episode URLs such as `episode.html?ep=hvordan-unnga-tankekjor` stay the same. New languages can later use folders like `episodes/<lang>/<slug>/` without moving the studies already in the repo.
