@@ -1,4 +1,13 @@
 {
   "slug": "hvordan-unnga-tankekjor",
-  "notes": []
+  "notes": [
+    {
+      "id": "88a1ba85-e837-421f-8b82-03affcb6cfea",
+      "segmentId": "s1",
+      "start": 83.6,
+      "type": "highlight",
+      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi3dcoy\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":83.6,\"lineIndex\":13,\"no\":\"Men ved hjelp av en spesiell metode, har jeg lært å håndtere bekymringer, grubling og tankekjør.\",\"es\":\"Pero con la ayuda de un método especial he aprendido a manejar las preocupaciones, la rumiación y el pensamiento en bucle.\",\"context\":{\"prev\":{\"no\":\"Og, som du nå vet, har jeg slitt en del med negative tanker.\",\"es\":\"Y, como ya sabes, he luchado bastante con pensamientos negativos.\"},\"next\":{\"no\":\"Og det er den metoden jeg vil at du også skal lære.\",\"es\":\"Y ese es el método que quiero que tú también aprendas.\"}},\"vocab\":[{\"no\":\"tankekjør (et)\",\"es\":\"pensamiento en bucle, darle vueltas a todo\"},{\"no\":\"bekymring (en/ei), bekymre seg for\",\"es\":\"preocupación; preocuparse por\"},{\"no\":\"grubling (en/ei), gruble over\",\"es\":\"rumiación; darle vueltas a algo (del pasado)\"},{\"no\":\"håndtere\",\"es\":\"manejar, gestionar\"},{\"no\":\"ved hjelp av\",\"es\":\"con ayuda de\"}],\"created\":\"2026-11-15T17:11:37.859Z\"}",
+      "created": "2026-11-15T17:23:36.500Z"
+    }
+  ]
 }
