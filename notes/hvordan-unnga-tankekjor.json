@@ -104,6 +104,14 @@
       "type": "highlight",
       "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6h40v\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":437.35,\"lineIndex\":88,\"no\":\"trist eller engstelig over, så er det et triks å ikke gjøre noe som helst med de tankene.\",\"es\":\"o con angustia, el truco es no hacer absolutamente nada con esos pensamientos.\",\"context\":{\"prev\":{\"no\":\"Så man får sånne negative tanker som man blir veldig lei seg av,\",\"es\":\"Si uno tiene pensamientos negativos que le ponen muy triste,\",\"lineIndex\":87},\"next\":{\"no\":\"Bare la de være, uten å enten gå dypt inn i de grave masse i de eller prøve å skyve de bort,\",\"es\":\"Simplemente déjalos estar, sin meterte a fondo en ellos ni escarbar mucho, ni intentar apartarlos,\",\"lineIndex\":89}},\"vocab\":[],\"created\":\"2026-11-15T18:38:32.096Z\"}",
       "created": "2026-11-15T18:38:32.599Z"
+    },
+    {
+      "id": "87869d03-e90b-49a2-98e3-7af6e560ac5e",
+      "segmentId": "s4",
+      "start": 442.11,
+      "type": "highlight",
+      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6hhpw\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":442.11,\"lineIndex\":89,\"no\":\"Bare la de være, uten å enten gå dypt inn i de grave masse i de eller prøve å skyve de bort,\",\"es\":\"Simplemente déjalos estar, sin meterte a fondo en ellos ni escarbar mucho, ni intentar apartarlos,\",\"context\":{\"prev\":{\"no\":\"trist eller engstelig over, så er det et triks å ikke gjøre noe som helst med de tankene.\",\"es\":\"o con angustia, el truco es no hacer absolutamente nada con esos pensamientos.\",\"lineIndex\":88},\"next\":{\"no\":\"for da ender man uansett på en måte opp med å bare gi de tankene mer oppmerksomhet,\",\"es\":\"porque de todos modos uno termina dándoles más atención a esos pensamientos,\",\"lineIndex\":90}},\"vocab\":[{\"no\":\"skyve bort\",\"es\":\"apartar, empujar lejos\"}],\"created\":\"2026-11-15T18:38:49.844Z\"}",
+      "created": "2026-11-15T18:38:50.473Z"
     }
   ]
 }
