@@ -28,29 +28,24 @@ button{font:inherit;color:inherit}
 [hidden]{display:none!important}
 
 /* ---------- top bar (in-flow, opaque — never covers transcript) ---------- */
+.top-slot{
+  flex:0 0 auto;min-height:0;overflow:hidden;
+  transition:height .3s ease-in-out;
+}
+html.top-hidden.top-hidden-done .top-slot,
+html.top-hidden.top-hidden-done .top{display:none;height:0}
 .top{
-  position:relative;z-index:40;flex:0 0 auto;
+  position:relative;z-index:40;
   display:flex;align-items:center;gap:8px;
   padding:calc(env(safe-area-inset-top,0px) + 8px) 12px 8px;
   background:#000;border-bottom:2px solid var(--line);
-  max-height:8rem;min-height:0;overflow:hidden;
-  transition:transform .45s ease-in-out,opacity .45s ease-in-out,max-height .45s ease-in-out,padding .45s ease-in-out,border-width .45s ease-in-out,margin .45s ease-in-out;
+  transform:translateY(0);
+  transition:transform .3s ease-in-out;
 }
 html.top-hidden .top{
   transform:translateY(-100%);
-  opacity:0;
-  max-height:0;
-  min-height:0;
-  height:0;
-  padding:0;
-  margin:0;
-  border:0;
-  border-bottom-width:0;
-  overflow:hidden;
-  flex:0 0 0;
   pointer-events:none;
 }
-html.top-hidden.top-hidden-done .top{display:none}
 .tbtn-back{min-width:auto;padding:0 14px;gap:6px;font-weight:800}
 .tbtn-back .tbtn-label{font-size:16px}
 .unhide{
@@ -62,7 +57,7 @@ html.top-hidden.top-hidden-done .top{display:none}
   display:grid;place-items:center;cursor:pointer;
   opacity:0;pointer-events:none;
   transform:translateY(-10px);
-  transition:opacity .45s ease-in-out,transform .45s ease-in-out,background .2s ease-in-out,color .2s ease-in-out;
+  transition:opacity .3s ease-in-out,transform .3s ease-in-out,background .2s ease-in-out,color .2s ease-in-out;
 }
 .unhide svg{width:22px;height:22px}
 html.top-hidden .unhide{
@@ -183,8 +178,11 @@ body.no-es .ln .es{display:none}
 .act:active{transform:scale(.97)}
 .meaning .actions,.sheet .actions{position:sticky;bottom:0;background:#000;padding:10px 0 2px;margin-top:8px;box-shadow:0 -14px 14px #000}
 
-.panel-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;position:sticky;top:0;background:#000;z-index:2;padding-bottom:4px}
+.panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px;position:sticky;top:0;background:#000;z-index:2;padding-bottom:4px;width:100%}
 .panel-head h2{flex:1;margin:0;font-size:clamp(22px,4vw,28px);min-width:0;overflow-wrap:anywhere}
+.meaning .panel-head{align-items:flex-start}
+.meaning .panel-head > div{flex:1;min-width:0}
+.meaning .panel-head .btn-cerrar{margin-left:auto;flex:0 0 auto;align-self:flex-start}
 .btn-cerrar{
   appearance:none;border:2px solid var(--line);background:var(--card);color:var(--text);
   border-radius:16px;min-width:120px;min-height:64px;padding:0 16px;

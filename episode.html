@@ -37,6 +37,7 @@
 
   <div id="loading" class="loading">Cargando episodio…</div>
 
+  <div class="top-slot" id="top-slot">
   <header class="top" id="top" hidden>
     <a class="tbtn tbtn-back" id="btn-hub" href="./" aria-label="Volver a la lista">
       <svg width="26" height="26" aria-hidden="true"><use href="#i-left"/></svg>
@@ -47,6 +48,7 @@
     <button class="tbtn" id="btn-more" type="button" aria-label="Más opciones" aria-haspopup="dialog" aria-controls="more"><span class="dot" id="sync-dot"></span><svg width="26" height="26" aria-hidden="true"><use href="#i-more"/></svg></button>
     <button class="tbtn" id="btn-hide-top" type="button" aria-label="Ocultar menú"><svg width="26" height="26" aria-hidden="true"><use href="#i-up"/></svg></button>
   </header>
+  </div>
   <button class="unhide" id="btn-unhide" type="button" aria-label="Mostrar menú"><svg width="22" height="22" aria-hidden="true"><use href="#i-down"/></svg></button>
 
   <main class="stage" id="stage" aria-label="Transcripción"></main>
@@ -65,7 +67,7 @@
     </div>
   </section>
 
-  <audio id="audio" preload="metadata"></audio>
+  <audio id="audio" preload="auto"></audio>
 
   <!-- "Esto significa" card (also used for review) -->
   <div class="overlay" id="meaning" hidden>

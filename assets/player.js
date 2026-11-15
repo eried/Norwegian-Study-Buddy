@@ -30,7 +30,9 @@
     renderTranscript();
     renderVocab();
     applyEs();
+    audio.preload = "auto";
     audio.src = ep.audioUrl;
+    resolveAudioSrc(ep.audioUrl);
     $("#seek").max = ep.durationSec || 0;
     $("#t-dur").textContent = fmtTime(ep.durationSec);
 
@@ -146,7 +148,33 @@
   }
 
   // ---------- audio ----------
-  const play = () => audio.play().catch((e) => { if (e.name !== "AbortError") toast("No se pudo reproducir el audio"); });
+  function unlockAudio() {
+    audio.muted = false;
+    if (!(audio.volume > 0)) audio.volume = 1;
+  }
+  async function resolveAudioSrc(url) {
+    if (!url) return;
+    try {
+      const res = await fetch(url, { method: "HEAD", redirect: "follow", mode: "cors", cache: "no-store" });
+      if (!res.ok || !res.url || res.url === url) return;
+      if (!audio.paused && audio.currentTime > 0.25) return;
+      const t0 = audio.currentTime || 0;
+      audio.src = res.url;
+      if (t0 > 0) audio.currentTime = t0;
+    } catch (e) { /* keep the original URL */ }
+  }
+  const play = () => {
+    unlockAudio();
+    const req = audio.play();
+    if (req && req.catch) {
+      req.catch((e) => {
+        if (e.name === "AbortError") return;
+        const retry = () => { audio.removeEventListener("canplay", retry); unlockAudio(); audio.play().catch((e2) => { if (e2.name !== "AbortError") toast("No se pudo reproducir el audio"); }); };
+        audio.addEventListener("canplay", retry, { once: true });
+        try { audio.load(); } catch (err) {}
+      });
+    }
+  };
   const pause = () => audio.pause();
   const toggle = () => (audio.paused ? play() : pause());
   function seek(t) {
@@ -222,14 +250,27 @@
   }
 
   // ---------- Spanish speech (Web Speech API) ----------
+  // Tesla / older Chromium often has empty getVoices() at start, and drops
+  // speak() if it runs in the same tick as cancel(). Keep a live utterance
+  // reference so it is not garbage-collected before onend.
   let voice = null;
-  function pickVoice() {
-    if (!("speechSynthesis" in window)) return;
-    const vs = speechSynthesis.getVoices();
-    voice = (prefs.voiceURI && vs.find((v) => v.voiceURI === prefs.voiceURI))
+  let currentUtterance = null;
+  let speakTimer = 0;
+  function voicesList() {
+    try { return (speechSynthesis.getVoices && speechSynthesis.getVoices()) || []; }
+    catch (e) { return []; }
+  }
+  function chooseVoice(vs) {
+    vs = vs || [];
+    return (prefs.voiceURI && vs.find((v) => v.voiceURI === prefs.voiceURI))
       || vs.find((v) => /^es[-_]ES/i.test(v.lang))
       || vs.find((v) => /^es/i.test(v.lang))
       || null;
+  }
+  function pickVoice() {
+    if (!("speechSynthesis" in window)) return;
+    const vs = voicesList();
+    voice = chooseVoice(vs);
     fillVoices(vs);
   }
   function fillVoices(vs) {
@@ -250,24 +291,70 @@
     $$("#speed [data-rate]").forEach((b) => b.setAttribute("aria-pressed", String(Number(b.dataset.rate) === r)));
   }
 
-  function speakEs(text, { resume = true } = {}) {
+  function waitForVoices() {
     return new Promise((resolve) => {
-      if (!("speechSynthesis" in window) || !text) { if (text) toast("Este navegador no puede leer en voz alta"); return resolve(false); }
-      const wasPlaying = !audio.paused;
-      pause();
-      speechSynthesis.cancel();
-      const u = new SpeechSynthesisUtterance(text.replace(/\[[^\]]*\]/g, ""));
-      u.lang = "es-ES";
-      if (voice) u.voice = voice;
-      u.rate = 0.95;
+      if (!("speechSynthesis" in window)) return resolve([]);
+      const have = voicesList();
+      if (have.length) return resolve(have);
       let done = false;
-      const finish = () => { if (done) return; done = true; clearTimeout(guard); if (resume && wasPlaying) play(); resolve(true); };
-      u.onend = finish; u.onerror = finish;
-      const guard = setTimeout(finish, 4000 + text.length * 120); // some engines never fire onend
-      speechSynthesis.speak(u);
+      const finish = () => { if (done) return; done = true; speechSynthesis.removeEventListener?.("voiceschanged", finish); resolve(voicesList()); };
+      speechSynthesis.addEventListener?.("voiceschanged", finish);
+      setTimeout(finish, 800);
     });
   }
-  const stopSpeech = () => { if ("speechSynthesis" in window) speechSynthesis.cancel(); };
+
+  function speakEs(text, { resume = true } = {}) {
+    return new Promise((resolve) => {
+      const clean = String(text || "").replace(/\[[^\]]*\]/g, "").trim();
+      if (!clean || !("speechSynthesis" in window)) return resolve(false);
+      const wasPlaying = !audio.paused;
+      pause();
+      let done = false;
+      let guard = 0;
+      const finish = (ok) => {
+        if (done) return;
+        done = true;
+        clearTimeout(guard);
+        clearTimeout(speakTimer);
+        if (resume && wasPlaying) play();
+        resolve(!!ok);
+      };
+      const start = (vs) => {
+        if (done) return;
+        try { speechSynthesis.cancel(); } catch (e) {}
+        const u = new SpeechSynthesisUtterance(clean);
+        currentUtterance = u;
+        u.lang = "es-ES";
+        u.rate = 0.95;
+        u.volume = 1;
+        u.pitch = 1;
+        const v = chooseVoice(vs);
+        if (v) u.voice = v;
+        u.onend = () => finish(true);
+        u.onerror = () => finish(true);
+        guard = setTimeout(() => finish(true), 4000 + clean.length * 120);
+        // Chromium bug: speak() in the same tick as cancel() is dropped.
+        clearTimeout(speakTimer);
+        speakTimer = setTimeout(() => {
+          try { speechSynthesis.speak(u); }
+          catch (e) { finish(true); return; }
+          // If the engine silently ignores speak() (empty voice list, no
+          // Spanish voice), do not block the 8-second countdown.
+          setTimeout(() => {
+            if (done) return;
+            try {
+              if (!speechSynthesis.speaking && !speechSynthesis.pending) finish(true);
+            } catch (e) { finish(true); }
+          }, 180);
+        }, 60);
+      };
+      waitForVoices().then(start);
+    });
+  }
+  const stopSpeech = () => {
+    clearTimeout(speakTimer);
+    if ("speechSynthesis" in window) try { speechSynthesis.cancel(); } catch (e) {}
+  };
 
   // ---------- vocabulary matching ----------
   function vocabKeys(no) {
@@ -588,8 +675,10 @@
   }
 
   let topHideTimer = 0;
+  const TOP_SLIDE_MS = 300;
   function applyTop() {
     const topEl = $("#top");
+    const slot = $("#top-slot");
     const un = $("#btn-unhide");
     const hide = !!prefs.hideTop;
     const root = document.documentElement;
@@ -606,27 +695,37 @@
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (hide) {
       root.classList.remove("top-hidden-done");
+      const h = (slot && (slot.offsetHeight || topEl.offsetHeight)) || topEl.offsetHeight;
+      if (slot) slot.style.height = h + "px";
+      void (slot || topEl).offsetHeight;
       root.classList.add("top-hidden");
-      const finish = () => { if (prefs.hideTop) root.classList.add("top-hidden-done"); };
+      if (slot) slot.style.height = "0px";
+      const finish = () => {
+        if (!prefs.hideTop) return;
+        root.classList.add("top-hidden-done");
+        if (slot) slot.style.height = "";
+      };
       if (reduce) finish();
-      else {
-        const onEnd = (e) => {
-          if (e && e.target && e.target !== topEl) return;
-          topEl.removeEventListener("transitionend", onEnd);
-          finish();
-        };
-        topEl.addEventListener("transitionend", onEnd);
-        topHideTimer = setTimeout(() => onEnd({ target: topEl }), 550);
-      }
+      else topHideTimer = setTimeout(finish, TOP_SLIDE_MS + 50);
     } else {
-      const startHidden = root.classList.contains("top-hidden-done") || getComputedStyle(topEl).display === "none";
+      const startHidden = root.classList.contains("top-hidden-done") || (slot && getComputedStyle(slot).display === "none") || getComputedStyle(topEl).display === "none";
       root.classList.remove("top-hidden-done");
       if (startHidden) {
         root.classList.add("top-hidden");
+        if (slot) slot.style.height = "0px";
         void topEl.offsetHeight;
       }
-      if (reduce) root.classList.remove("top-hidden");
-      else requestAnimationFrame(() => { requestAnimationFrame(() => root.classList.remove("top-hidden")); });
+      const h = topEl.offsetHeight;
+      if (reduce) {
+        root.classList.remove("top-hidden");
+        if (slot) slot.style.height = "";
+      } else {
+        requestAnimationFrame(() => {
+          root.classList.remove("top-hidden");
+          if (slot) slot.style.height = h + "px";
+          topHideTimer = setTimeout(() => { if (!prefs.hideTop && slot) slot.style.height = ""; }, TOP_SLIDE_MS + 50);
+        });
+      }
     }
   }
 

@@ -190,6 +190,9 @@ async function openMeaningAt(page, t) {
   await page.waitForFunction(() => !document.getElementById("meaning").hidden, { timeout: 5000 });
 }
 
+async function waitSpoken(page, timeout = 2000) {
+  await page.waitForFunction(() => (window.__ttsLog || []).some((x) => x.typ === "speak"), { timeout });
+}
 async function waitCountdown(page) {
   await page.waitForFunction(() => {
     const l = document.getElementById("m-go-label");
@@ -267,6 +270,7 @@ async function run() {
     const { ctx, page } = await openEpisode(browser, base);
     try {
       await openMeaningAt(page, T_KLOKKEN);
+      await waitSpoken(page);
       const info = await meaningInfo(page);
       assert(!info.hidden, "meaning card should be open");
       assert(info.es.includes("medianoche") || info.es === ES_KLOKKEN, "shows Spanish: " + info.es);
@@ -478,6 +482,7 @@ async function run() {
       await page.evaluate(() => { window.__ttsLog = []; });
       await page.click("#btn-review");
       await page.waitForFunction(() => !document.getElementById("meaning").hidden, { timeout: 5000 });
+      await waitSpoken(page);
       const info = await meaningInfo(page);
       assert(info.count && /Duda 1 de 1/.test(info.count), "review count, got " + info.count);
       assert(info.tts.length >= 1 && info.tts[0].includes("medianoche"), "review speaks Spanish first: " + JSON.stringify(info.tts));
@@ -573,6 +578,20 @@ async function run() {
 
       await page.click("#btn-hide-top");
       await page.waitForFunction(() => document.documentElement.classList.contains("top-hidden"));
+      const mid = await page.evaluate(() => new Promise((resolve) => {
+        setTimeout(() => {
+          const top = document.getElementById("top");
+          const slot = document.getElementById("top-slot");
+          const cs = getComputedStyle(top);
+          resolve({
+            transform: cs.transform,
+            opacity: cs.opacity,
+            slotH: slot ? slot.getBoundingClientRect().height : null,
+          });
+        }, 80);
+      }));
+      assert(mid.transform && mid.transform !== "none", "bar should be sliding, transform=" + mid.transform);
+      assert(Number(mid.opacity) > 0.9, "no fade on the bar, opacity=" + mid.opacity);
       await page.waitForFunction(() => document.documentElement.classList.contains("top-hidden-done"), { timeout: 2000 });
       const hidden = await page.evaluate(() => {
         const top = document.getElementById("top");
@@ -617,14 +636,20 @@ async function run() {
 
       await page.click("#btn-unhide");
       await page.waitForFunction(() => !document.documentElement.classList.contains("top-hidden"));
-      await sleep(500);
-      const shown = await page.evaluate(() => ({
-        topH: document.getElementById("top").getBoundingClientRect().height,
-        hub: document.getElementById("btn-hub").getBoundingClientRect().height,
-        stored: JSON.parse(localStorage.getItem("nsb:prefs") || "{}").hideTop,
-      }));
+      await sleep(400);
+      const shown = await page.evaluate(() => {
+        const top = document.getElementById("top");
+        const cs = getComputedStyle(top);
+        return {
+          topH: top.getBoundingClientRect().height,
+          hub: document.getElementById("btn-hub").getBoundingClientRect().height,
+          transform: cs.transform,
+          stored: JSON.parse(localStorage.getItem("nsb:prefs") || "{}").hideTop,
+        };
+      });
       assert(shown.topH > 20, "top bar returns, height=" + shown.topH);
       assert(shown.hub > 20, "back button visible again");
+      assert(shown.transform === "none" || shown.transform === "matrix(1, 0, 0, 1, 0, 0)", "bar should sit in place after show, transform=" + shown.transform);
       assert(shown.stored === false, "hideTop cleared in localStorage");
 
       // Persistence: hide, then reload (stubs reinstalled on new document).
@@ -653,6 +678,133 @@ async function run() {
       assert(/\/(index\.html)?(\?|$)/.test(url.replace(/https?:\/\/[^/]+/, "")) || url.endsWith("/"), "should navigate to the hub, got " + url);
       const home = await page.evaluate(() => document.body.classList.contains("home-page") || !!document.querySelector("h1"));
       assert(home, "hub page should load");
+    } finally { await ctx.close(); }
+  });
+
+  await test("Cerrar sits at the top-right of the meaning card", async () => {
+    const { ctx, page } = await openEpisode(browser, base);
+    try {
+      await openMeaningAt(page, T_KLOKKEN);
+      const pos = await page.evaluate(() => {
+        const card = document.querySelector(".meaning-card").getBoundingClientRect();
+        const btn = document.getElementById("m-close").getBoundingClientRect();
+        const kicker = document.getElementById("m-kicker").getBoundingClientRect();
+        return {
+          cardRight: card.right, cardTop: card.top, cardMid: card.left + card.width / 2,
+          btnRight: btn.right, btnTop: btn.top, btnLeft: btn.left,
+          kickerRight: kicker.right,
+        };
+      });
+      assert(pos.btnLeft > pos.cardMid, "Cerrar should be on the right half, left=" + pos.btnLeft + " mid=" + pos.cardMid);
+      assert(pos.cardRight - pos.btnRight < 32, "Cerrar should sit near the right edge, gap=" + (pos.cardRight - pos.btnRight));
+      assert(pos.btnTop - pos.cardTop < 36, "Cerrar should sit near the top, gap=" + (pos.btnTop - pos.cardTop));
+      assert(pos.btnLeft >= pos.kickerRight - 1, "Cerrar should not sit in the middle of the title");
+    } finally { await ctx.close(); }
+  });
+
+  await test("real Norwegian audio plays and resumes after Spanish TTS", async () => {
+    const ctx = await browser.createBrowserContext();
+    const page = await ctx.newPage();
+    try {
+      await page.setViewport({ width: 1180, height: 700, deviceScaleFactor: 1, hasTouch: true });
+      await page.evaluateOnNewDocument(() => {
+        window.__ttsTrace = [];
+        const wrap = () => {
+          if (!window.speechSynthesis || window.__ttsWrapped) return;
+          window.__ttsWrapped = true;
+          const s = window.speechSynthesis;
+          const origCancel = s.cancel.bind(s);
+          const origSpeak = s.speak.bind(s);
+          s.cancel = function () { window.__ttsTrace.push({ typ: "cancel", t: performance.now() }); return origCancel(); };
+          s.speak = function (u) {
+            window.__ttsTrace.push({ typ: "speak", t: performance.now(), lang: u.lang, rate: u.rate, volume: u.volume, hasVoice: !!u.voice });
+            return origSpeak(u);
+          };
+        };
+        wrap();
+        document.addEventListener("DOMContentLoaded", wrap);
+      });
+      await stubNotesApi(page);
+      await page.goto(base + "/episode.html?ep=" + SLUG, { waitUntil: "networkidle2", timeout: 60000 });
+      await page.waitForFunction(() => document.getElementById("btn-play") && document.querySelectorAll(".ln").length > 50, { timeout: 30000 });
+
+      const snap = () => page.evaluate(() => {
+        const a = document.getElementById("audio");
+        return { paused: a.paused, muted: a.muted, volume: a.volume, t: a.currentTime, ready: a.readyState, err: a.error && a.error.message };
+      });
+
+      await page.click("#btn-play");
+      await page.waitForFunction(() => {
+        const a = document.getElementById("audio");
+        return !a.paused && a.currentTime > 0.2;
+      }, { timeout: 20000 });
+      const a1 = await snap();
+      const t1 = a1.t;
+      await sleep(1200);
+      const a2 = await snap();
+      assert(!a2.paused, "Play should leave the episode playing");
+      assert(a2.volume > 0 && !a2.muted, "volume must be audible after Play, volume=" + a2.volume + " muted=" + a2.muted);
+      assert(a2.t > t1 + 0.4, "currentTime should advance, " + t1 + " -> " + a2.t);
+
+      await page.click("#btn-doubt");
+      await page.waitForFunction(() => !document.getElementById("meaning").hidden, { timeout: 5000 });
+      await page.waitForFunction(() => {
+        const l = document.getElementById("m-go-label");
+        return l && /Continuar · \d+/.test(l.textContent);
+      }, { timeout: 20000 });
+      const traces = await page.evaluate(() => window.__ttsTrace || []);
+      const speakEv = traces.filter((x) => x.typ === "speak").pop();
+      const cancelEv = traces.filter((x) => x.typ === "cancel").pop();
+      if (speakEv && cancelEv) {
+        assert(speakEv.t - cancelEv.t >= 20, "speak() should follow cancel() by a short delay, dt=" + (speakEv.t - cancelEv.t));
+        assert(/^es/i.test(speakEv.lang || ""), "utterance lang should be Spanish, got " + speakEv.lang);
+        assert(speakEv.volume == null || speakEv.volume > 0, "utterance volume should be audible");
+      }
+
+      await page.click("#m-go");
+      await page.waitForFunction(() => document.getElementById("meaning").hidden, { timeout: 5000 });
+      await page.waitForFunction(() => {
+        const a = document.getElementById("audio");
+        return !a.paused && a.volume > 0 && !a.muted;
+      }, { timeout: 10000 });
+      const b1 = await snap();
+      await sleep(1200);
+      const b2 = await snap();
+      assert(b2.volume > 0 && !b2.muted, "after Continuar, audio must not stay muted or at volume 0");
+      assert(!b2.paused, "after Continuar, playback should resume");
+      assert(b2.t > b1.t + 0.4, "after Continuar, currentTime should advance, " + b1.t + " -> " + b2.t);
+    } finally { await ctx.close(); }
+  });
+
+  await test("countdown still starts when there is no Spanish voice", async () => {
+    const ctx = await browser.createBrowserContext();
+    const page = await ctx.newPage();
+    try {
+      await page.setViewport({ width: 1180, height: 700, deviceScaleFactor: 1, hasTouch: true });
+      await page.evaluateOnNewDocument(() => {
+        window.__INSTALL_STUBS = true;
+        const stub = {
+          cancel() {},
+          speak() {},
+          getVoices() { return []; },
+          addEventListener() {},
+          removeEventListener() {},
+        };
+        Object.defineProperty(window, "speechSynthesis", { configurable: true, get() { return stub; } });
+      });
+      await stubNotesApi(page);
+      await page.goto(base + "/episode.html?ep=" + SLUG, { waitUntil: "networkidle2", timeout: 30000 });
+      await page.waitForFunction(() => document.getElementById("btn-play") && document.querySelectorAll(".ln").length > 50, { timeout: 30000 });
+      const t0 = Date.now();
+      await openMeaningAt(page, T_KLOKKEN);
+      await page.waitForFunction(() => {
+        const l = document.getElementById("m-go-label");
+        return l && /Continuar · \d+/.test(l.textContent);
+      }, { timeout: 4000 });
+      const toasts = await page.evaluate(() => Array.from(document.querySelectorAll(".toast")).map((n) => n.textContent));
+      assert(!toasts.some((x) => /no puede leer|no hay voz|voz/i.test(x || "")), "must not show a broken-voice toast, got " + JSON.stringify(toasts));
+      const elapsed = Date.now() - t0;
+      assert(elapsed < 2500, "countdown should start without waiting on a missing voice, ms=" + elapsed);
     } finally { await ctx.close(); }
   });
 
