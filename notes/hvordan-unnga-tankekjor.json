@@ -176,6 +176,14 @@
       "type": "highlight",
       "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6s3v0\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":772.58,\"lineIndex\":155,\"no\":\"eller mer sånn kroppslige fornemmelser som hjertebank eller svetting eller varme eller hva det skulle være,\",\"es\":\"o sensaciones más corporales como palpitaciones, sudor, calor o lo que sea,\",\"context\":{\"prev\":{\"no\":\"følelser som tristhet, skam, skyld,\",\"es\":\"sentimientos como tristeza, vergüenza, culpa,\",\"lineIndex\":154},\"next\":{\"no\":\"uten at man velger å respondere noe mer på de signalene.\",\"es\":\"sin que uno elija responder más a esas señales.\",\"lineIndex\":156}},\"vocab\":[],\"created\":\"2026-11-15T18:47:05.100Z\"}",
       "created": "2026-11-15T18:47:05.712Z"
+    },
+    {
+      "id": "5d05f9be-c071-43f2-8196-1f85deeffc21",
+      "segmentId": "s7",
+      "start": 857.26,
+      "type": "highlight",
+      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi6uc81\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":857.26,\"lineIndex\":175,\"no\":\"og la dem passere.\",\"es\":\"y déjalos pasar.\",\"context\":{\"prev\":{\"no\":\"bli bevisst på at de kommer,\",\"es\":\"date cuenta de que vienen,\",\"lineIndex\":174},\"next\":{\"no\":\"Du skifter da fokuset vekk fra å være den, som gjør det du tenker på, til å kun observere.\",\"es\":\"Así cambias el foco: de ser quien hace lo que piensas a solo observar.\",\"lineIndex\":176}},\"vocab\":[{\"no\":\"la dem passere\",\"es\":\"déjalos pasar\"}],\"created\":\"2026-11-15T18:48:49.249Z\"}",
+      "created": "2026-11-15T18:48:49.805Z"
     }
   ]
 }
