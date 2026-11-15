@@ -24,6 +24,14 @@
       "type": "highlight",
       "text": "{\"kind\":\"duda\",\"id\":\"d-mwi3s7j8\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":44.5,\"lineIndex\":8,\"no\":\"Sånn her har jeg, og kanskje du også, ligget mange netter, og tenkt, og grublet.\",\"es\":\"Así me he pasado muchas noches, y quizá tú también, pensando y dándole vueltas.\",\"context\":{\"prev\":{\"no\":\"Hvorfor har jeg ikke kontroll på livet mitt?\",\"es\":\"¿Por qué no tengo control sobre mi vida?\"},\"next\":{\"no\":\"Heldigvis kan man lære seg å håndtere sånne negative tanker.\",\"es\":\"Por suerte, se puede aprender a manejar este tipo de pensamientos negativos.\"}},\"vocab\":[{\"no\":\"grubling (en/ei), gruble over\",\"es\":\"rumiación; darle vueltas a algo (del pasado)\"}],\"created\":\"2026-11-15T17:23:11.012Z\"}",
       "created": "2026-11-15T17:23:40.020Z"
+    },
+    {
+      "id": "46e5747a-53e5-42db-acdf-9bf5f2b5a465",
+      "segmentId": "s2",
+      "start": 123.43,
+      "type": "highlight",
+      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi5nyj0\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":123.43,\"lineIndex\":22,\"no\":\"Han jobber til daglig på Modum Bad og kjenner godt til metoden jeg skal lære deg.\",\"es\":\"Trabaja a diario en Modum Bad y conoce bien el método que te voy a enseñar.\",\"context\":{\"prev\":{\"no\":\"Jeg er hos psykolog Kristoffer Haugen Hetlebakke [navn usikkert].\",\"es\":\"Estoy con el psicólogo Kristoffer Haugen Hetlebakke [nombre inseguro].\",\"lineIndex\":21},\"next\":{\"no\":\"Men aller først, hva er egentlig negative tanker?\",\"es\":\"Pero antes que nada, ¿qué son en realidad los pensamientos negativos?\",\"lineIndex\":23}},\"vocab\":[],\"created\":\"2026-11-15T18:15:51.949Z\"}",
+      "created": "2026-11-15T18:15:52.452Z"
     }
   ]
 }
