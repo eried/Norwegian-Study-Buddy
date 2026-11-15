@@ -7,7 +7,7 @@
   const params = new URLSearchParams(location.search);
   const slug = (params.get("ep") || "hvordan-unnga-tankekjor").replace(/[^a-z0-9-]/g, "");
   const PREFS_KEY = "nsb:prefs";
-  const prefs = Object.assign({ es: true, autoSpeak: true, autoResume: true, follow: true, askedPass: false, rate: 1, voiceURI: "" }, lsGet(PREFS_KEY, {}));
+  const prefs = Object.assign({ es: true, autoSpeak: true, autoResume: true, follow: true, askedPass: false, rate: 1, voiceURI: "", hideTop: false }, lsGet(PREFS_KEY, {}));
   const savePrefs = () => lsSet(PREFS_KEY, prefs);
 
   const audio = $("#audio");
@@ -48,6 +48,7 @@
     setupMediaSession();
     wire();
     applyRate();
+    applyTop();
     setCurrent(0, false);
   }
 
@@ -165,6 +166,12 @@
   }
 
   audio.addEventListener("timeupdate", () => {
+    if (clipEnd != null && audio.currentTime >= clipEnd - 0.05) {
+      const end = clipEnd;
+      clipEnd = null;
+      pause();
+      audio.currentTime = end;
+    }
     setCurrent(lineAt(audio.currentTime));
     if (!seeking) $("#seek").value = Math.floor(audio.currentTime);
     $("#t-cur").textContent = fmtTime(audio.currentTime);
@@ -199,8 +206,8 @@
       stop: () => pause(),
       seekbackward: (d) => skip(-(d.seekOffset || 10)),
       seekforward: (d) => skip(d.seekOffset || 10),
-      previoustrack: () => (review.active ? review.go(-1) : lineStep(-1)),
-      nexttrack: () => (review.active ? review.go(1) : lineStep(1)),
+      previoustrack: () => { if (!$("#meaning").hidden) return review.active ? review.go(-1) : null; lineStep(-1); },
+      nexttrack: () => { if (!$("#meaning").hidden) return review.active ? review.go(1) : null; lineStep(1); },
       seekto: (d) => { if (d.fastSeek && "fastSeek" in audio) audio.fastSeek(d.seekTime); else seek(d.seekTime); },
     };
     for (const [k, fn] of Object.entries(h)) { try { navigator.mediaSession.setActionHandler(k, fn); } catch (e) { /* unsupported action */ } }
@@ -273,30 +280,85 @@
     return vocab.filter((v) => v.keys.some((phrase) => phrase.every(hit)));
   }
 
-  // ---------- "No entendí" ----------
+  // ---------- "No entendí" / "Esto significa" ----------
+  // A mark is added only by an explicit press of «No entendí» (or the N key),
+  // at most once per line. Review, replay, Continuar and Ya entiendo never add marks.
+  // Root cause of the old bug: every press called store.add() with a new id, and
+  // the time was currentTime-2, which often tagged the previous line; N also
+  // kept working while the card was already open, creating more duplicates.
+  const AUTO_CONTINUE_SEC = 8;
   const lineInfo = (l) => (l ? { no: l.text, es: l.es || "" } : null);
+  let meaning = { item: null, wasPlaying: false, resumeAt: 0, token: 0 };
+  let clipEnd = null;
+  let autoContinueTimer = 0;
+  let autoContinueLeft = 0;
+  let autoContinueCancelled = false;
+
   function markDoubt() {
+    if (!$("#meaning").hidden) return;
     stopSpeech();
+    cancelAutoContinue();
     const wasPlaying = !audio.paused;
-    const t = Math.max(0, (audio.currentTime || 0) - 2);
-    const i = lineAt(t);
+    const resumeAt = audio.currentTime || 0;
+    const i = lineAt(resumeAt);
     const l = lines[i];
-    const item = {
-      kind: "duda", id: "d-" + Date.now().toString(36), ep: slug, t: Math.round(t * 10) / 10, lineIndex: i,
-      no: l.text, es: l.es || "",
-      context: { prev: lineInfo(lines[i - 1]), next: lineInfo(lines[i + 1]) },
-      vocab: vocabIn(l.text).map((v) => ({ no: v.no, es: v.es })),
-      created: new Date().toISOString(),
-    };
-    store.add({ segmentId: l.seg.id, start: item.t, type: "highlight", text: JSON.stringify(item) });
+    if (!l) return;
+    let item = dudas().find((d) => d.lineIndex === i);
+    if (!item) {
+      item = {
+        kind: "duda", id: "d-" + Date.now().toString(36), ep: slug,
+        t: l.start, lineIndex: i, no: l.text, es: l.es || "",
+        context: { prev: lineInfo(lines[i - 1]), next: lineInfo(lines[i + 1]) },
+        vocab: vocabIn(l.text).map((v) => ({ no: v.no, es: v.es })),
+        created: new Date().toISOString(),
+      };
+      const note = store.add({ segmentId: l.seg.id, start: l.start, type: "highlight", text: JSON.stringify(item) });
+      item.noteId = note.id;
+    }
     if (navigator.vibrate) navigator.vibrate(60);
     pause();
-    showMeaning(item, wasPlaying);
+    showMeaning(item, { wasPlaying, resumeAt });
   }
 
-  let meaningResume = false;
-  function showMeaning(item, wasPlaying) {
-    meaningResume = wasPlaying;
+  function setGoLabel(text) {
+    const n = $("#m-go-label");
+    if (n) n.textContent = text;
+  }
+
+  function cancelAutoContinue() {
+    autoContinueCancelled = true;
+    if (autoContinueTimer) { clearInterval(autoContinueTimer); autoContinueTimer = 0; }
+    autoContinueLeft = 0;
+    if (!$("#meaning").hidden) setGoLabel("Continuar");
+  }
+
+  function startAutoContinue(token) {
+    if (autoContinueCancelled || $("#meaning").hidden || token !== meaning.token) return;
+    autoContinueLeft = AUTO_CONTINUE_SEC;
+    setGoLabel("Continuar · " + autoContinueLeft);
+    autoContinueTimer = setInterval(() => {
+      if (autoContinueCancelled || $("#meaning").hidden || token !== meaning.token) {
+        cancelAutoContinue();
+        return;
+      }
+      autoContinueLeft -= 1;
+      if (autoContinueLeft <= 0) {
+        cancelAutoContinue();
+        continueMeaning();
+        return;
+      }
+      setGoLabel("Continuar · " + autoContinueLeft);
+    }, 1000);
+  }
+
+  function showMeaning(item, opts = {}) {
+    const wasPlaying = !!(opts.wasPlaying);
+    const resumeAt = opts.resumeAt != null ? opts.resumeAt : (audio.currentTime || 0);
+    meaning = { item, wasPlaying, resumeAt, token: meaning.token + 1 };
+    const token = meaning.token;
+    autoContinueCancelled = false;
+    if (autoContinueTimer) { clearInterval(autoContinueTimer); autoContinueTimer = 0; }
+    setGoLabel("Continuar");
     $("#m-es").textContent = item.es || "(sin traducción)";
     $("#m-no").textContent = item.no;
     const hits = item.vocab && item.vocab.length ? item.vocab : vocabIn(item.no).map((v) => ({ no: v.no, es: v.es }));
@@ -305,19 +367,72 @@
     $("#m-ctx").replaceChildren(
       c.prev ? el("div", null, "Antes: ", el("b", { lang: "nb" }, c.prev.no), el("i", null, c.prev.es)) : "",
       c.next ? el("div", null, "Después: ", el("b", { lang: "nb" }, c.next.no), el("i", null, c.next.es)) : "");
+    const inReview = review.active;
+    $("#m-count").hidden = !inReview;
+    if (inReview) $("#m-count").textContent = "Duda " + (review.i + 1) + " de " + review.items.length;
+    $("#m-kicker").textContent = inReview ? "Repaso" : "Esto significa:";
     $("#meaning").hidden = false;
     $("#m-go").focus({ preventScroll: true });
-    $("#meaning").dataset.t = item.t;
-    if (prefs.autoSpeak) {
-      speakEs(item.es, { resume: false }).then(() => {
-        if (prefs.autoResume && meaningResume && !$("#meaning").hidden) setTimeout(() => { if (!$("#meaning").hidden) closeMeaning(true); }, 1200);
-      });
-    }
+    stopClip();
+    speakEs(item.es, { resume: false }).then(() => {
+      if (token !== meaning.token || $("#meaning").hidden) return;
+      startAutoContinue(token);
+    });
   }
-  function closeMeaning(resume) {
+
+  function stopClip() { clipEnd = null; }
+
+  function closeMeaningCard() {
     stopSpeech();
+    cancelAutoContinue();
+    stopClip();
     $("#meaning").hidden = true;
-    if (resume) play();
+  }
+
+  function continueMeaning() {
+    const state = meaning;
+    const inReview = review.active;
+    closeMeaningCard();
+    if (inReview) {
+      review.items = dudas();
+      if (state._removed) { /* stay on the same index: the next item slid into it */ }
+      else review.i += 1;
+      if (review.i < review.items.length) review.showCurrent();
+      else review.stop();
+      return;
+    }
+    const t = state.resumeAt || 0;
+    seek(t);
+    if (state.wasPlaying) play();
+  }
+
+  function gotIt() {
+    cancelAutoContinue();
+    const item = meaning.item;
+    const id = item && item.noteId;
+    if (id) store.remove(id);
+    meaning._removed = true;
+    continueMeaning();
+  }
+
+  function replaySpanish() {
+    cancelAutoContinue();
+    const item = meaning.item;
+    if (item && item.es) speakEs(item.es, { resume: false });
+  }
+
+  function replayNorwegian() {
+    cancelAutoContinue();
+    stopSpeech();
+    const item = meaning.item;
+    if (!item) return;
+    const l = (item.lineIndex != null && lines[item.lineIndex]) || lines[lineAt(item.t)] || null;
+    if (!l) return;
+    const start = l.start;
+    const end = (l.end != null && l.end > start) ? l.end : (lines[l.idx + 1] ? lines[l.idx + 1].start : (isFinite(audio.duration) ? audio.duration : start + 8));
+    clipEnd = end;
+    seek(start);
+    play();
   }
 
   // ---------- collection ("Mis dudas") ----------
@@ -355,7 +470,7 @@
     $("#dudas-list").replaceChildren(...list.map((d) => {
       const c = d.context || {};
       return el("div", { class: "item" + (d.pending && store.cloudOk ? " syncing" : "") },
-        el("button", { class: "main", type: "button", onclick: () => { closePanel(); seek(d.t - 1); play(); } },
+        el("button", { class: "main", type: "button", onclick: () => { closePanel(); pause(); showMeaning(d, { wasPlaying: false, resumeAt: audio.currentTime || 0 }); } },
           el("span", { class: "when" }, svgUse("#i-play"), " " + fmtTime(d.t)),
           el("span", { class: "no", lang: "nb" }, d.no),
           el("span", { class: "es" }, d.es),
@@ -414,59 +529,35 @@
     if (tab === "notes") loadStudyNotes();
   }
 
-  // ---------- review mode ("Repasar todo") ----------
+  // ---------- review mode ("Repasar todo") — same card as «No entendí» ----------
   const review = {
-    active: false, i: 0, items: [], token: 0, LISTEN: 10,
+    active: false, i: 0, items: [],
     start() {
       this.items = dudas();
       if (!this.items.length) return;
       this.active = true; this.i = 0;
       closePanel();
-      $("#review").hidden = false;
-      this.run();
+      this.showCurrent();
     },
-    async run() {
-      const my = ++this.token;
+    showCurrent() {
       const d = this.items[this.i];
-      $("#r-count").textContent = "Duda " + (this.i + 1) + " de " + this.items.length;
-      $("#r-es").textContent = d.es;
-      $("#r-no").textContent = d.no;
-      $("#r-phase").textContent = "Escucha";
-      stopSpeech();
-      seek(d.t - 3);
-      play();
-      const from = audio.currentTime;
-      await waitFor(() => audio.currentTime >= from + this.LISTEN || audio.ended, this.LISTEN * 1000 + 4000, () => my !== this.token);
-      if (my !== this.token) return;
+      if (!d) { this.stop(); return; }
       pause();
-      $("#r-phase").textContent = "Significa";
-      await speakEs(d.es, { resume: false });
-      if (my !== this.token) return;
-      await sleep(900);
-      if (my !== this.token) return;
-      if (this.i < this.items.length - 1) { this.i++; this.run(); }
-      else { this.stop(); toast("Repaso terminado"); }
+      showMeaning(d, { wasPlaying: false, resumeAt: audio.currentTime || 0 });
     },
     go(dir) {
       if (!this.active) return;
+      cancelAutoContinue();
+      this.items = dudas();
       this.i = Math.max(0, Math.min(this.items.length - 1, this.i + dir));
-      this.run();
+      this.showCurrent();
     },
     stop() {
-      this.token++; this.active = false;
-      stopSpeech(); pause();
-      $("#review").hidden = true;
+      this.active = false;
+      closeMeaningCard();
+      pause();
     },
   };
-  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-  function waitFor(cond, timeout, cancelled) {
-    return new Promise((resolve) => {
-      const t0 = Date.now();
-      const iv = setInterval(() => {
-        if (cancelled() || cond() || Date.now() - t0 > timeout) { clearInterval(iv); resolve(); }
-      }, 200);
-    });
-  }
 
   // ---------- settings ----------
   function statusText() {
@@ -488,14 +579,21 @@
     $("#settings").hidden = false;
     $("#s-pass").value = "";
     $("#s-pass").placeholder = NSB.passphrase.get() ? "•••••• (guardada)" : "Solo para guardar en la nube";
-    $("#s-autospeak").checked = prefs.autoSpeak;
-    $("#s-autoresume").checked = prefs.autoResume;
     $("#s-follow").checked = prefs.follow;
     $("#s-about").textContent = msg || "";
     renderStatus();
   }
   function dismissOnBackdrop(overlay, closeFn) {
     overlay.addEventListener("click", (e) => { if (e.target === overlay) closeFn(); });
+  }
+
+  function applyTop() {
+    document.documentElement.classList.toggle("top-hidden", !!prefs.hideTop);
+    const un = $("#btn-unhide");
+    if (un) {
+      un.setAttribute("aria-hidden", prefs.hideTop ? "false" : "true");
+      un.tabIndex = prefs.hideTop ? 0 : -1;
+    }
   }
 
   function applyEs() {
@@ -532,18 +630,18 @@
     s.addEventListener("input", () => { seeking = true; $("#t-cur").textContent = fmtTime(+s.value); });
     s.addEventListener("change", () => { seeking = false; seek(+s.value); });
 
-    $("#m-go").addEventListener("click", () => closeMeaning(true));
-    $("#m-speak").addEventListener("click", () => speakEs($("#m-es").textContent, { resume: false }));
-    $("#m-replay").addEventListener("click", () => { meaningResume = false; closeMeaning(false); seek(+$("#meaning").dataset.t - 3); play(); });
+    $("#m-go").addEventListener("click", continueMeaning);
+    $("#m-gotit").addEventListener("click", gotIt);
+    $("#m-btn-es").addEventListener("click", replaySpanish);
+    $("#m-btn-no").addEventListener("click", replayNorwegian);
+    $("#m-close").addEventListener("click", continueMeaning);
+    $("#meaning").addEventListener("pointerdown", cancelAutoContinue);
 
     $("#btn-dudas").addEventListener("click", () => openPanel("dudas"));
     $("#panel-close").addEventListener("click", closePanel);
     $("#panel-close-2").addEventListener("click", closePanel);
     $$(".tab[data-tab]").forEach((b) => b.addEventListener("click", () => selectTab(b.dataset.tab)));
     $("#btn-review").addEventListener("click", () => review.start());
-    $("#r-stop").addEventListener("click", () => review.stop());
-    $("#r-prev").addEventListener("click", () => review.go(-1));
-    $("#r-next").addEventListener("click", () => review.go(1));
 
     $("#btn-more").addEventListener("click", openMore);
     $("#more-close").addEventListener("click", closeMore);
@@ -553,8 +651,7 @@
     dismissOnBackdrop($("#more"), closeMore);
     dismissOnBackdrop($("#settings"), closeSettings);
     dismissOnBackdrop($("#panel"), closePanel);
-    dismissOnBackdrop($("#meaning"), () => closeMeaning(true));
-    dismissOnBackdrop($("#review"), () => review.stop());
+    dismissOnBackdrop($("#meaning"), continueMeaning);
     $("#s-save").addEventListener("click", () => {
       const v = $("#s-pass").value.trim();
       if (v) {
@@ -574,9 +671,9 @@
       store.setState("local");
       openSettings();
     });
-    $("#s-autospeak").addEventListener("change", (e) => { prefs.autoSpeak = e.target.checked; savePrefs(); });
-    $("#s-autoresume").addEventListener("change", (e) => { prefs.autoResume = e.target.checked; savePrefs(); });
     $("#s-follow").addEventListener("change", (e) => { prefs.follow = e.target.checked; savePrefs(); });
+    $("#btn-hide-top").addEventListener("click", () => { prefs.hideTop = true; savePrefs(); applyTop(); });
+    $("#btn-unhide").addEventListener("click", () => { prefs.hideTop = false; savePrefs(); applyTop(); });
     $("#s-export").addEventListener("click", () => {
       const blob = new Blob([JSON.stringify({ ep: slug, exported: new Date().toISOString(), dudas: dudas() }, null, 2)], { type: "application/json" });
       const a = el("a", { href: URL.createObjectURL(blob), download: "mis-dudas-" + slug + ".json" });
@@ -586,12 +683,15 @@
     document.addEventListener("keydown", (e) => {
       if (e.target.closest("input,textarea,select") || e.metaKey || e.ctrlKey || e.altKey) return;
       if (e.key === "Escape") {
-        if (!$("#meaning").hidden) return closeMeaning(true);
-        if (review.active) return review.stop();
+        if (!$("#meaning").hidden) {
+          if (review.active) return review.stop();
+          return continueMeaning();
+        }
         if (!$("#settings").hidden) return closeSettings();
         if (!$("#more").hidden) return closeMore();
         $("#panel").hidden = true; return;
       }
+      if (!$("#meaning").hidden) return;
       const k = e.key.toLowerCase();
       const map = {
         " ": toggle, k: toggle, arrowleft: () => skip(-10), arrowright: () => skip(10), j: () => skip(-10), l: null,

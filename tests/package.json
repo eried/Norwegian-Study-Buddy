@@ -1,0 +1,11 @@
+{
+  "name": "nsb-site-tests",
+  "private": true,
+  "description": "Headless Chromium tests for the Norwegian Study Buddy episode player",
+  "scripts": {
+    "test": "node episode.test.js"
+  },
+  "dependencies": {
+    "puppeteer-core": "^23.11.1"
+  }
+}
