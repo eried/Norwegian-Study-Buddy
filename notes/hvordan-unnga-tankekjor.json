@@ -248,6 +248,14 @@
       "type": "highlight",
       "text": "{\"kind\":\"duda\",\"id\":\"d-mwi727sj\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":978.02,\"lineIndex\":201,\"no\":\"så pleier jeg å flytte fokuset over på fugler eller biler eller lyder som er rundt meg.\",\"es\":\"suelo mover el foco hacia los pájaros, los coches o los sonidos que hay a mi alrededor.\",\"context\":{\"prev\":{\"no\":\"Hvis jeg er ute og at jeg merker at irriterende og plagsomme tanker dukker opp,\",\"es\":\"Si estoy fuera y noto que aparecen pensamientos irritantes y molestos,\",\"lineIndex\":200},\"next\":{\"no\":\"Dette funker, enda bedre om jeg prøver å beskrive det jeg ser eller hører.\",\"es\":\"Esto funciona aún mejor si intento describir lo que veo u oigo.\",\"lineIndex\":202}},\"vocab\":[],\"created\":\"2026-11-15T18:54:56.756Z\"}",
       "created": "2026-11-15T18:54:57.137Z"
+    },
+    {
+      "id": "71bf7787-8da0-4681-8a06-028b518e0f37",
+      "segmentId": "s9",
+      "start": 1011.36,
+      "type": "highlight",
+      "text": "{\"kind\":\"duda\",\"id\":\"d-mwi73fyc\",\"ep\":\"hvordan-unnga-tankekjor\",\"t\":1011.36,\"lineIndex\":208,\"no\":\"Kanskje du har en tanke om at du er misslykket\",\"es\":\"Quizá piensas que eres un fracasado\",\"context\":{\"prev\":{\"no\":\"Eller at du ikke fortjener å føle glede i livet.\",\"es\":\"O de que no mereces sentir alegría en la vida.\",\"lineIndex\":207},\"next\":{\"no\":\"og at du ikke får til ting.\",\"es\":\"y que no consigues hacer las cosas.\",\"lineIndex\":209}},\"vocab\":[],\"created\":\"2026-11-15T18:55:53.988Z\"}",
+      "created": "2026-11-15T18:55:54.584Z"
     }
   ]
 }
